@@ -1,3 +1,3 @@
-# Roberts book
+# University LaTeX files
 
-This LaTeX files are from a book comisioned by robert dellner.
+All files related to my uni courses at [Simon Bolivar University](https://en.wikipedia.org/wiki/Sim%C3%B3n_Bol%C3%ADvar_University_%28Venezuela%29)
