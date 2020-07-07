@@ -1,0 +1,288 @@
+% \usepackage[spanish]{babel}
+\usepackage{polyglossia}
+\setmainlanguage[spanishoperators=all]{spanish}
+\PolyglossiaSetup{spanish}{indentfirst=false}
+
+\usepackage{amsmath}
+
+\DeclareMathOperator{\Rea}{Re}
+\DeclareMathOperator{\Ima}{Im}
+\DeclareMathOperator{\car}{car}
+\DeclareMathOperator{\traz}{tr}
+\DeclareMathOperator{\gen}{gen}
+\DeclareMathOperator{\mcm}{mcm}
+
+
+\usepackage{unicode-math}
+\setmainfont[Numbers={OldStyle,Proportional},SmallCapsFeatures{LetterSpace=10}]{Libertinus Serif}
+\defaultfontfeatures{Scale=MatchLowercase}
+\setsansfont{Latin Modern Sans}
+\setmonofont{Luxi Mono}
+\setmathfont{Libertinus Math}
+\newfontfamily{\dispfont}{Libertinus Serif Display}
+\newfontfamily{\commentfont}{etbb Italic}
+
+\linespread{1.04}
+\frenchspacing
+\hfuzz1pc
+
+\usepackage{microtype}
+
+\usepackage{%
+	xcolor,%
+	marginnote,%
+	graphicx,%
+	cancel,%
+	%tikz,%
+	pdfpages,
+	imakeidx,
+	hyperref,
+	epigraph,
+	enumitem,
+	metalogo,
+	cleveref,
+	caption,
+	%floatrow,
+	booktabs,
+	%longtable
+	csquotes,
+}
+
+\usepackage[
+backref,
+backend=biber,
+style=trad-abbrv,
+sorting=ynt
+]{biblatex}
+\addbibresource{../../../bib/general.bib}
+
+\hypersetup{colorlinks=true,allcolors=black}
+% Color definitions
+\definecolor{darkred}{HTML}{66000c}
+\definecolor{darkblue}{HTML}{142850}
+
+\makeindex[columns=3, title=Índice Alfabético, intoc]
+
+\setlist[enumerate]{label=\arabic*,left=-11pt}
+\setlist[description]{font=\normalfont,leftmargin=\parindent,nosep}
+\setlist[itemize]{label={\footnotesize\textbullet},left=-11pt}
+
+%\floatsetup{footposition=bottom}% For all floats
+
+%\floatsetup[longtable]{LTcapwidth=table}% https://tex.stackexchange.com/a/345772/120853
+
+%\floatsetup[table]%
+%{%
+	%style=plaintop,% Always above, no matter where \caption is called
+	%footnoterule=none,%
+	%footskip=.35\skip\footins,%
+%}%
+
+%\floatsetup[figure]%
+%{%
+	%capbesidewidth=figure,
+	%capbesideposition=right,%
+	%capbesidesep=quad,%
+%}%
+
+\captionsetup{font={small},indention=.5cm,justification=raggedright}
+
+\usepackage[explicit]{titlesec}
+\titleformat{\part}[display]
+	{\flushleft\fontsize{22}{22}\selectfont}
+	{\LARGE Parte\;\scshape\MakeLowercase{\thepart}}
+	{3em}
+	{#1}
+	[]
+\titleformat{\chapter}[hang]
+{\flushleft\itshape\fontsize{14}{14}\selectfont}
+	{\hspace{-1.2em}\thechapter\;\rule[-5.5pt]{1pt}{23pt}}
+	{.3em}
+	{#1}
+	[]
+\titlespacing*{\chapter}
+	{0em}
+	{0em}
+	{1\baselineskip}
+\titleformat{\section}[runin]
+	{\normalfont}
+	{\hspace*{-2.25em}\thesection}
+	{5pt}
+	{\scshape\MakeLowercase{#1.}}
+	[]
+\titlespacing*{\section}
+	{0em}
+	{0em}
+	{.5em}
+\titleformat{\subsection}
+	{\flushleft}
+	{\hspace{-1.5em}\thesubsection}
+	{.5em}
+	{#1}
+	[]
+\titlespacing*{\subsection}
+	{0em}
+	{1\baselineskip}
+	{1\baselineskip}
+\titleformat{\paragraph}[runin]
+	{}
+	{}
+	{1em}
+	{#1}
+	[.]
+\titlespacing*{\paragraph}
+	{0em}
+	{0\parskip}
+	{1\parskip}
+
+\usepackage{titletoc}
+% The following changes part entries
+\titlecontents{part}
+[1.6em]
+{\vspace{.3em}}%
+{\contentsmargin{0pt}}
+{\contentsmargin{0pt}}
+{}                 		
+[\vspace{4pt}]
+% The following changes chapter entries
+\titlecontents{chapter}
+[2.5em]
+{\vspace{.3em}}%
+{\contentsmargin{0pt}}
+{\contentsmargin{0pt}}
+{\hspace{5pt}\contentspage}                 		
+[\vspace{4pt}]
+% The following changes section entries
+\titlecontents{section}
+[5em]
+{}
+{\contentsmargin{0pt}}
+{\contentsmargin{0pt}}
+{\hspace{5pt}\contentspage}
+[\vspace{5pt}]
+% The following changes subsection entries
+\titlecontents{subsection}
+[6.5em]                              
+{\vspace{-4pt}}
+{\contentsmargin{0pt}\small\enspace}
+{\contentsmargin{0pt}}        
+{\small\contentspage}                 
+[\vspace{3pt}]
+% For the appendicies
+
+
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{%
+	\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+	\fancyhead[OL]{\sffamily\nouppercase\rightmark}
+	\fancyhead[EL]{\sffamily\thepage}
+	\fancyhead[ER]{\sffamily\nouppercase{\leftmark}}
+	\fancyhead[OR]{\sffamily\thepage}
+	\fancyfoot[L]{}
+	\fancyfoot[C]{}
+\fancypagestyle{plain}{%
+	\fancyhead[R]{}
+	\fancyhead[L]{}
+	\fancyfoot[R]{}%
+	\fancyfoot[L]{}
+	\fancyfoot[C]{}
+}
+
+\usepackage[thmmarks]{ntheorem}
+	\theoremstyle{plain}
+	\theoremindent0cm
+	\theorempreskip{.5\baselineskip}
+	\theoremheaderfont{\upshape}
+	\theorembodyfont{\normalfont}
+	\theoremseparator{.}
+	\newtheorem{defi}{Definición}[section]
+	\newtheorem{teo}{Teorema}[section]
+	\newtheorem{cor}{Corolario}[teo]
+	\newtheorem{prop}{Proposición}[section]
+	\newtheorem{lem}{Lema}[section]
+	\theoremindent0cm
+	\newtheorem{ejem}{Ejemplo}[section]
+	\newtheorem{cejem}{Contraejemplo}[section]
+	\newtheorem{ejer}{Ejercicio}[section]
+	\theoremstyle{nonumberplain}
+	\newtheorem{sol}{Solución}
+	\newtheorem{obs}{Observación}
+	\theoremindent0cm
+	\newtheorem{proof}{Demostración}
+
+
+\renewcommand*{\marginfont}{\small\sffamily}
+%\renewcommand{\marginnotevadjust}{.7em}
+\setlength{\marginparwidth}{2cm}
+
+\newcounter{NumeroClase}
+\newcommand{\Clase}[1]{%
+	\marginnote{\refstepcounter{NumeroClase}%
+		Clase Nº\,\theNumeroClase,\\ #1/2020.}%
+}
+
+\newlength{\savedparindent}
+\setlength{\savedparindent}{\parindent}
+\newenvironment{nota}{
+\raggedright\setlength{\parindent}{\savedparindent}\commentfont
+}{\par}
+
+\makeatletter
+\newcommand*{\docname}{document}
+%\newcommand{\Nota}[1]{
+%\begingroup
+%\ifx\@currenvir\docname
+%	\raggedright\setlength{\parindent}{\savedparindent}\commentfont
+%    \else
+%	\raggedright\sffamily
+%   \fi	
+%\makeatother
+%#1
+%\par
+%\endgroup
+%}
+\newcommand{\Nota}[1]{\marginnote{\commentfont #1}}
+\newenvironment{primerpar}{
+	\fontsize{11}{13}\selectfont
+}{\par\smallskip}
+
+\newcommand{\Keyword}[1]{\textsc{#1}\index{#1}}
+\newcommand{\KKeyword}[1]{\emph{#1}}
+
+\let\mathbb=\mathbf
+
+\renewcommand{\emptyset}{\varnothing}
+
+%\let\oldemph\emph
+%\renewcommand{\emph}{}
+%\let\oldamp=\&
+%\renewcommand{\&}{\textit{\oldamp}}
+
+% LEGACY MACROS
+\newcommand{\id}[1]{\mathfrak{#1}}
+\newcommand{\an}[1]{\mathscr{#1}}
+\newcommand{\subsq}{\subseteq}
+\newcommand{\inv}{^{-1}}
+\newcommand{\notall}[1]{\marginnote{\small \textcolor{darkgray}{#1}}}
+\newcommand{\ho}[2]{\text{hom}(#1,#2)}
+\newcommand{\hoo}[1]{\text{hom}(#1)}
+\renewcommand{\t}{\times}
+\newcommand{\dt}[2]{#1_1 #2 #1_2 #2 \cdots #2 #1_n}
+\newcommand{\li}[2]{\lim_{#1 \to #2}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pds}[2]{\dfrac{\partial^2 #1}{\partial #2^2}}
+\newcommand{\pdx}[3]{\dfrac{\partial^2 #1}{\partial #2 \partial #3}}
+\newcommand{\pol}[1]{#1_n x^n + #1_{n-1} x^{n-1} + \dots + #1_1 x + #1_0}
+\newcommand{\Zn}{\mathscr{Z}/n\mathscr{Z}}
+\renewcommand{\Rn}{\mathscr{R}^{\mathrm n}}
+\newcommand{\R}{\mathscr{R}}
+\newcommand{\Co}{\mathscr{C}}
+\newcommand{\Z}{\mathscr{Z}}
+\newcommand{\Q}{\mathscr{Q}}
+\newcommand{\N}{\mathscr{N}}
+\newcommand{\Ha}{\mathscr{H}}
+\newcommand{\eb}[1]{\left\{ #1 \right\}}

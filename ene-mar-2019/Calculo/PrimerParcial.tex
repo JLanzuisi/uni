@@ -1,0 +1,188 @@
+\input{../Plantillas-Fomato/Tareas/tarea.tex}
+\cabe{primer parcial}
+\tcabe{Cálculo \textsc{ii}}{Jhonny Lanzuisi 1510759}
+\begin{document}
+ \thispagestyle{plain}
+\chapter*{Primer Parcial}
+\subsection*{Ejercicio 1}
+	Sea $ f(x,y) = e^{x^2+y^2} $. Calcule \textit{la grafica de $g$}: 
+\begin{enumerate}
+	\item La derivada direccional de $f$ en $(0,0)$ según el vector $(1,1)$.
+	\item Halle, alrededor del punto $(0,0)$, el polinomio de Taylor de orden dos.
+\end{enumerate}
+\begin{sol} Veamos cada parte por separado. 
+	\begin{enumerate}
+		\item Calculamos primero el gradiente de $f$ en $(0,0)$
+		\begin{align*} \grd{f}(0,0) &= (2xe^{x^2+y^2}, 2ye^{x^2+y^2})|_{(x,y) = (0,0)} \\
+		&= (0,0).	
+		\end{align*}
+		
+		Ahora, normalizamos el vector $(1,1)$, dividiendo por su norma, para obte\-ner el vector
+		\[ u = \left( \frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}} \right).  \]
+		
+		Por último, la derivada direccional viene dada por el producto punto:
+		\[ \grd{f}(0,0) \cdot u = (0,0) \cdot \left( \frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}} \right) = 0. \]
+		
+		\item  Es claro que $e^{x^2+y^2} = e^{x^2} e^{y^2}$. Entonces podemos calcular el polinomio de Taylor de orden 2 de $f$ usando la serie de Taylor de la función $e^x$. Veamos que, por un lado
+		\begin{equation}
+		e^{x^2} = 1 + x^2 + \cdots
+		\end{equation}
+		donde los puntos suspensivos denotan a los términos de orden mayor que dos en la serie de taylor de $e^{x^2}$. 
+		
+		Por otro lado, 
+		\begin{equation}
+		e^{y^2} = 1 + y^2 + \cdots
+		\end{equation}
+		donde, igual que antes, los puntos suspensivos denotan a los términos de orden mayor que dos.
+		
+		Por último, usando $(1)$ y $(2)$, obtenemos
+		\begin{align*}
+		e^{x^2+y^2} &= e^{x^2}e^{y^2} = (1 + x^2 + \cdots) (1 + y^2 + \cdots) \\
+		&= (1 + x^2 + y^2 + x^2y^2 + \cdots).
+		\end{align*} 
+	\end{enumerate}
+\end{sol}
+
+\subsection*{Ejercicio 2}
+	Sea $S$ la superficie dada por $z=k/xy$ y $P_0 = (x_0,y_0,z_0)$ un punto de $S$.
+\begin{enumerate}
+	\item ¿Será que el plano tangente a $S$ en $P_0$ puede escribirse de la forma
+	\[ \frac{x}{x_0} + \frac{y}{y_0} + \frac{z}{z_0} = 3? \] 
+	\item Calcule el volumen de los planos tangentes a $S$
+\end{enumerate}
+\begin{sol} 
+	Veamos la parte 1. Sea $f(x,y,z) = xyz$, entonces el plano tangente a $S$ en el punto $P_0$ es
+	\[ \pd{f}{x}(P_0)[x-x_0]+\pd{f}{y}(P_0)[y-y_0]+\pd{f}{z}(P_0)[z-z_0] = 0. \tag{3} \]
+	Calculemos entonces cada una de las derivadas parciales:
+	\[ \pd{f}{x}(P_0) = y_0z_0, \; \pd{f}{y}(P_0)=x_0z_0, \; \pd{f}{z}(P_0)=x_0y_0 . \]
+	Y sustituyendo en $(3)$, obtenemos
+	\[ y_0z_0(x-x_0) + x_0z_0(y-y_0) + x_0y_0(z-z_0) = 0,  \]
+	multiplicando ambos lados por $(x_0y_0z_0)^{-1}$,
+	\[ \frac{x-x_0}{x_0} + \frac{y-y_0}{y_0} + \frac{z-z_0}{z_0} = 0, \]
+	que al separar las fracciones y simplificar es
+	\[ \eb{\frac{x}{x_0} + \frac{y}{y_0} + \frac{z}{z_0}} = 3. \]
+\end{sol}
+
+\subsection*{Ejercicio 3}
+	Encontrar los valores máximos y mínimos de $h(x,y)=x^2+24xy+8y^2$ en la región $x^2+y^2\leq 25$.
+\begin{sol}
+	Para empezar, denotamos por $\calU$ a la región $x^2+y^2<25$ y por $\calU_f$ a su frontera, es decir, a $x^2+y^2=25$.
+	
+	Los puntos críticos de $h$ en $\calU$ vienen dados por los puntos en que se anula el gradiente, estos son, todos los $(x,y)$ en $\mathbf{R}^2$ tales que
+	\[ \grd{f}(x,y) = (2x+24y, 24x+16y) = 0. \] 
+	
+	Pero de esto último se obtiene el siguiente sistema
+	\[ \begin{cases} 2x+24y = 0 \\ 24x+16y = 0 \end{cases} \] 
+	que solo posee la solución trivial\footnote{Debido a que el determinante es distinto de cero y la matriz de coeficientes es invertible.}. Así, el único punto critico de $h$ en $\calU$ es $(0,0)$.
+	
+	Para hallar los puntos críticos en $\calU_f$ usamos el método de los multiplicadores de Lagrange. Definamos $g(x,y) = x^2+y^2$, entonces $\grd{g}(x,y) = (2x,2y)$.
+	
+	El teorema de multiplicadores de Lagrange nos dice que los puntos críticos en la frontera son los $(x,y)$ en $\R^2$ que cumplen con el siguiente sistema de ecuaciones
+	\begin{align*}
+	\grd{h}(x,y) &= \lambda \grd{g}(x,y) \\
+	g(x,y) &= 25,		
+	\end{align*} 
+	que de forma explícita es,
+	\begin{align*}
+	2x+24y &= 2\lambda x \\
+	24x + 16y &= 2\lambda y \tag{4} \\
+	x^2+y^2 &= 25.
+	\end{align*}
+	
+	De la tercera ecuación, en $(4)$, se tiene que $x^2 = 25 - y^2$. Por lo que los valores posibles (enteros) para $y$ son $(\pm1,\pm2,\pm3,\pm4,\pm5)$.
+	
+	Probando todos los valores posibles, es decir, viendo uno por uno cuales de ellos satisfacen el sistema $(4)$, se llega a la conclusión de que los valores para $y$ son $\pm4$. Por lo tanto, los puntos críticos en la frontera son
+	\[ (3,4), \; (-3,-4), \; (-3,4), \; (3,-4). \]
+	
+	Por último, para ver cuales de ellos son los vales máximos o mínimos, evaluamos en $h$. Veamos que
+	\[ h(3,4)=h(-3,-4)=425, \]
+	y 
+	\[ h(-3,4)=h(3,-4)=-200, \]
+	por último
+	\[ h(0,0)=0. \] 
+\end{sol}
+
+\subsection*{Ejercicio 4}
+	Sea $f\mathpunct{:} \R^2 \to \R$ la función definida por
+\[
+f(x,y)= \begin{cases}
+(x^2+y^2)\sen\left(\dfrac{\pi}{x+y}\right)  &\text{si} \; x+y \neq 0 \\
+\hfill 0 \hfill  &\text{si} \; x+y = 0
+\end{cases}.
+\]
+¿Es $f$ diferenciable en $(0,0)$?
+\begin{sol}
+	Empezamos calculando las derivadas parciales de $f$. Usando la definición, tenemos
+	\begin{align*} 
+	\pd{f}{x}(0,0) &= \lim{x\to 0} \frac{f((0,0) + x(1,0)) + f(0,0)}{x} \\
+	&= \lim{x\to 0} \frac{f(x,0) + 0}{x} \\
+	&= \lim{x\to 0} 2x\sen\left(\frac{\pi}{x} \right) \\
+	&= 0
+	\end{align*}
+	donde la ultima igualdad se sigue del teorema del sandwich\footnote{Con la desigualdad $-2x<2x\sen\frac{\pi}{x}<2x$.}. De forma similar se obtiene
+	\begin{align*}
+	\pd{f}{y} &= \li{y\to 0} \frac{f(0,y) + 0}{y} \\
+	&= \li{y\to 0} 2y\sen\left(\frac{\pi}{y} \right) \\
+	&= 0.
+	\end{align*}
+	
+	Para ver que $f$ es diferenciable, queremos ver que 
+	\[ \li{(x,y)\to (0,0)} \frac{f(x,y)}{||(x,y)||} = 0, \]
+	o lo que es lo mismo,
+	\[ \li{(x,y)\to (0,0)} \left[ (x^2+y^2)\sen\left(\frac{\pi}{x+y} \right) \right] \frac{1}{\sqrt{x^2+y^2}} = 0. \tag{5} \]
+	
+	Consideramos primero el límite al aproximarnos por la recta $y=0$
+	\[ \li{x\to 0} \left( x^2 \sen\left( \frac{\pi}{x} \right) \right) \frac{1}{\sqrt{x^2}} = \li{x\to 0} x\sen\left(\frac{\pi}{x}\right) = 0, \]
+	luego veamos el limite al aproximarnos por la recta $y=mx$
+	\[ \li{x\to 0} \left[ x^2(1+m^2) \sen\left(\frac{\pi}{x(1+m)} \right) \right] \frac{1}{\sqrt{x^2(1+m^2)}}, \]
+	que se reduce a
+	\[ \li{x\to 0} x\frac{(1+m^2)}{\sqrt{1+m^2}} \sen\left(\frac{\pi}{x(1+m)} \right), \]
+	que finalmente es cero por el teorema del sandiwch.
+	
+	Parece entonces ser cierto que el limite (5) es cero, por lo que debemos demostrarlo. 
+	
+	Queremos ver que, para cada $\epsilon$ real y positivo, existe un $\delta>0$ tal que
+	\[ ||(x,y)|| < \delta \rightarrow \left|\frac{f(x,y)}{||(x,y)||}\right| < \epsilon, \]
+	que en el caso $x=-y$ es trivialmente cierto. Para los demás casos, tenemos 
+	\[ \sqrt{x^2+y^2} < \delta \rightarrow \left| (x^2+y^2) \sen\left(\frac{\pi}{x+y} \right)   \frac{1}{\sqrt{x^2+y^2}} \right| < \epsilon. \]
+	
+	Sea $\delta = \dfrac{\epsilon}{2}$, entonces
+	\[ \frac{\epsilon}{2} > \sqrt{x^2+y^2} \]
+	implica que,
+	\begin{align*}
+	\epsilon &> 2\sqrt{x^2+y^2} \\
+	&= 2|\sqrt{x^2+y^2}| \\
+	&= 2\left| \frac{\sqrt{x^2+y^2}\sqrt{x^2+y^2}}{\sqrt{x^2+y^2}} \right| \\
+	&= 2|x^2+y^2| \left| \frac{1}{\sqrt{x^2+y^2}} \right| \\
+	&> \left| \sen\left(\frac{\pi}{x+y} \right) \right| |x^2+y^2| \left| \frac{1}{\sqrt{x^2+y^2}} \right| \\
+	&= \left| (x^2+y^2) \sen\left(\frac{\pi}{x+y} \right)   \frac{1}{\sqrt{x^2+y^2}} \right|.
+	\end{align*}
+	
+	Y por lo tanto (5) es cierto, y $f$ es diferenciable.
+	
+\end{sol}
+
+\subsection*{Ejercicio 5}
+	Sea $f\mathpunct{:} \R^2 \to \R$ una función de clase $\mathcal{C}^2(\R)$, $z=f(x,y)$ y 
+\[ F(x,y,z) = ze^z - 3(x^2+y^2) + 2xy = 0 \] 
+definida alrededor del punto $(x,y)=(0,0)$. Encuentre el $\nabla f(0,0)$.
+\begin{sol}
+	Comenzamos derivando de forma implícita la ecuación $F(x,y,z) = 0$. Primero con respecto de $x$
+	\begin{align*}
+	\pd{z}{x} (ze^z - 3x^2 +-3y^2 + 2xy) &= \pd{z}{x}e^z + \pd{z}{x}e^z z - 6x + 2y \\
+	&= \pd{z}{x} (e^z+ze^z) - 6x+2y \\
+	&=0  
+	\end{align*}
+	de donde se sigue que,
+	\[ \pd{z}{x}(e^z+ze^z) = 6x+2y \]
+	y finalmente
+	\[ \pd{z}{x} = \frac{6x+2y}{e^z+ze^z}. \]
+	
+	La derivada con respecto de $y$ es completamente análoga, por lo tanto se obtiene
+	\[ \pd{z}{y} (e^z+ze^z) - 6y+2x = 0, \]
+	y
+	\[ \pd{z}{y} = \frac{6y+2x}{e^z+ze^z}. \]
+	
+	Ahora, de la ecuación $F(x,y,z) = 0$, al sustituir $(x,y) = (0,0)$, se obtiene $z=0$. Entonces, en las derivadas parciales, el denominador no se anula en $z=0$\footnote{En efecto, el denominador es $1$.} mientras que el numerador, con $(x,y) = (0,0)$, si se anula; por lo tanto, ambas derivadas parciales  en cero son cero. Pero esto es lo mismo que decir que $\grd{f}(0,0) = (0,0)$.
+\end{sol}
+\end{document}

@@ -1,0 +1,239 @@
+\chapter{Números reales, Racionales y Enteros}%
+\label{cha:números_reales_racionales_y_enteros}
+\reversemarginpar
+%\Clase{09/01}
+%\vspace*{-.5\baselineskip}
+%\begin{primerpar}
+	\textsc{Cualquier intento de comprender} el análisis matemático 1983 
+debe comenzar por tener una noción relativamente rigurosa de lo que es un número.
+Esta capítulo definirá de manera axiomática (es decir, dando una lista de propiedades)
+los números reales.
+\P~
+Dicho esto, no nos detendremos en fundamentar las nociones de \emph{número entero} 
+y \emph{número racional}, más bien asumiremos que se esta familiarizado con ambos
+sistemas numéricos.
+\P~
+	Entendemos por número entero, como es de esperar, los \emph{números de contar}
+	y sus negativos, junto con el cero, denotados por
+	\[
+		\dots,-4,-3,-2,-1,0,\,1,\,2,\,3,\,4,\dots.
+	\]
+	Por \emph{número racional} entenderemos los números de la forma 
+	\[
+		\frac{p}{q} 
+	\]
+	donde $p$ y $q$ son ambos enteros y $q \neq 0$ .
+\P~
+El sistema de números racionales es inadecuado para muchos propósitos pues contiene,
+en cierto sentido, \emph{huecos}. Por ejemplo, y una demostración de este hecho se puede
+encontrar en los ejercicios,
+no existe ningún número racional $q$ tal que $q^2=2$. Esto lleva a la inclusión de los
+números \emph{irracionales} y la construcción de los números reales.
+\P~
+Dicho esto, no todo es malo con los números racionales. Este sistema es a la vez un 
+\emph{cuerpo} y un \emph{conjunto ordenado} --- la definición de estos términos se dará
+más adelante en este capítulo.
+\P~
+A partir de ahora nos referiremos a los números enteros y los racionales con los
+símbolos $ \mathbb{Z}, \mathbb{Q}$ respectivamente.
+
+\section{Definición axiomática de los reales}%
+\label{sec:definición_axiomática_de_}
+
+Existen muchas formas de definir los números reales, la más
+común es construirlos a partir de los enteros y los racionales
+(mediante \emph{cortes de dedekind} por ejemplo).
+Sin embargo la definición dada aquí no es esa, la definición que daremos
+es una lista de las propiedades fundamentales de los reales,
+como se verá a continuación.
+\P~
+Las primeras 5 propiedades son las que corresponden a la definición
+de un \emph{cuerpo}. La adición se denotará con el símbolo $+$ y la
+multiplicación simplemente concatenando los valores a multiplicar.
+
+\begin{description}
+	\item[Conmutatividad]%
+
+Sean $x,y\in \mathbb{R}$ entonces
+\[
+	x+y=y+x\quad\text{y}\quad xy=yx.
+\]
+
+\item[Asociatividad]
+
+Sean $x,y,z\in \mathbb{R}$ entonces
+\[
+	x+(y+z)=(x+y)+z\quad\text{y}\quad x(yz)=(xy)z
+\]
+
+\item[Distributividad]%
+
+Sean $x,y,z\in \mathbb{R}$ entonces
+\[
+	x(y+z) = xy+xz
+\]
+
+\item[Inversos y neutros aditivos]%
+
+Dados dos números reales $x,y$  existe un número real $z$ tal que
+\[
+	x+z=y
+\]
+a este $z$ se le denota por $y-x$. El número $x-x=0$ es llamado el
+\emph{cero} (la aparente dependencia de $x$ es irrelevante) y tiene la
+propiedad de que para todo $a\in \mathbb{R}$, $a+0=a$. En vez de
+$0-x$ escribiremos simplemente $-x$ y lo llamaremos el \emph{negativo} de $x$.
+
+\item[Inversos y neutros multiplicativos]
+
+Existe al menos un número real $x\neq0$. Dados dos números reales
+$x,y$  existe un número real $z$ tal que
+\[
+	xz=y
+\]
+este $z$ esta denotado por $y/x$. El número $x/x=1$ es el 
+\emph{neutro de la multiplicación} (cuya aparente
+dependencia de $x$ es irrelevante). Escribiremos $x ^{-1}$ en 
+vez de $1/x$ y lo llamaremos el \emph{recíproco} de $x$.
+
+
+\end{description}
+
+De estas cinco propiedades pueden derivarse todas las leyes usuales
+de la aritmética.
+\P~
+Las cuatro propiedades siguientes tienen que ver con la
+\emph{noción de orden} que existe entre los números naturales.
+Asumimos que existe una relación $<$ con las cuatro propiedades
+siguientes.
+
+\begin{description}
+	\item[Tricotomia]%
+
+Una, y solo una, de las siguientes relaciones se satisface para
+cualquier par de números reales $x,y$ 
+\[
+	x=y,\quad x<y,\quad x>y.
+\]
+
+\item[Propiedad 2]%
+
+Si $x,y\in\mathbb{R}$ son tales que $x<y$ entonces, para cualquier
+$z$ real,
+\[
+	x+z<y+z.
+\]
+
+\item[Propiedad 3]%
+
+Si $x>0$ y $y>0$ entonces 
+\[
+	xy>0
+\]
+
+\item[Transitividad]%
+
+Sean $x,y,z\in \mathbb{R}$. Si $x>y$ y $y>z$ entonces $x>z$.
+
+\end{description}
+
+
+\section{Ejercicios}%
+\label{sec:ejercicios_reales}
+
+\begin{ejer}
+	Demostrar que $ \sqrt{2} $ es irracional
+	\begin{sol}
+		Haremos un argumento por contradicción. Supongamos
+		que existen enteros $ p,q $ tales que
+		\[
+			\frac{p}{q} = \sqrt{2}
+		\]
+		y, además, que $ p,q $ no tienen divisores comunes
+		(esta suposición no pierde generalidad, pues de tener
+		divisores comunes estos simplemente se cancelarían al 
+		dividir).
+\P~
+		Entonces nuestra suposición inicial implica
+		\[
+		\frac{p^2}{q^2} = 2.
+		\]
+		De donde se obtiene
+		\[
+			p^{2} = 2 q^{2} 
+		\]
+		y entonces $ p^{2} $ es par. Pero si $ p^{2}  $ es par 
+		entonces $ p $ también es par. Como $ p $ es par se sigue
+		que $ p^{2}  $ es de la forma $ 4k $ para algún $k\in \mathbb{Z}$
+		y entonces, por la ecuación anterior, $q^{2} $ también es par
+		y $ q $ es par.
+\P~
+		Pero esto contradice la suposición de que $ p,q $ no tenían divisores
+		comunes. Por lo tanto no existen racionales $ p,q $ que satisfacen
+		la primera ecuación.
+	\end{sol}
+\end{ejer}
+
+\begin{ejer}
+	Demostrar que $ \sqrt{2}+\sqrt{3} $ es irracional. 
+	\begin{sol}
+	Supongamos, buscando una contradicción, que $ \sqrt{2}+ \sqrt{3} $ es racional.
+	Entonces su cuadrado debe ser un número racional, pues el producto de 
+	dos racionales es racional, pero
+	\[
+		 ( \sqrt{2}+\sqrt{3} )^2 = 5+ \sqrt{6}
+	\]
+	es irracional, pues $ \sqrt{6} $ es irracional (la demostración
+	de que $ \sqrt{6} $ es irracional es completamente análoga a la de que
+	$ \sqrt{2} $ lo es, veáse el ejercicio anterior).
+	\end{sol}
+\end{ejer}
+
+\begin{ejer}
+	Demostrar las siguientes afirmaciones sobre los números reales
+	($ a,b,c $ y $ d $ representan números reales).
+	\begin{enumerate}
+		\item Si $ a<b $ y $ c<d $ entonces $ a+c<b+d $.
+		\item Si $ a<b $ entonces $ -b<-a $.
+		\item Si $ a<b $ y $ c>d $ entonces $ a-c<b-d $.
+		\item Si $ a<b $ y $ c>0 $ entonces $ ac<bc $
+	\end{enumerate}
+	\begin{sol}
+		Veamos cada parte.
+		\begin{enumerate}
+			\item Nuestra hipótesis implica que
+				\[
+					a+c<b+c
+				\]
+				pero 
+				\[
+					b+c<b+d
+				\]
+				y por transitividad
+				\[
+					a+c<b+d.
+				\]
+			\item Sumando cero a ambos lados convenientemente
+				se obtiene
+				\[
+					a-b+b<b-a+a
+				\]
+				y al restar $ a+b $ a ambos lados
+				\[
+					-b<-a.
+				\]
+			\item Por la parte anterior tenemos que $ c>d $ implica
+				$ -c<-d $, y por la parte \textsc{(i)} se obtiene 
+				\[
+					a-c<b-d.
+				\]
+			\item Como $ a<b $ se tiene que $ a=b-u $ con $ u=b-a $,
+				entonces
+				\[
+					ac = (b-u)c = bc-uc
+				\]
+				y esto implica que $ ac<bc $.
+		\end{enumerate}
+	\end{sol}
+\end{ejer}
+

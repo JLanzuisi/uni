@@ -1,0 +1,193 @@
+\documentclass[mid,fleqn,final,oneside]{tareas}
+\clase{topología 1}
+\DeclareMathOperator{\id}{id}
+\begin{document}
+\chapter[Ejercicios: Espacios topológicos y continuidad]{Ejercicios: Espacios topológicos y continuidad}%
+\label{cha:ejercicios_sobre_espacios_topológicos}
+
+\reversemarginpar\identi{Jhonny Lanzuisi}{15\,10759}
+\vspace{-.3\baselineskip}
+\section*{Página 81, ejercicio 1}%
+
+Sea $ \{ U_i \} $ la familia de todos los conjuntos
+abiertos $ U $ de $X$ tales que para cada $x\in A$,
+$x\in U$ y $U\subset A$.  Entonces, como $ U_i\subset A
+$ para todo $ i $, el conjunto $ A $ puede escribirse
+como 
+\[ A=\bigcup U_i \] 
+y dado que los $ U_i $ son
+conjuntos abiertos su unión ha de ser un conjunto
+abierto.  Luego $ A $ es un conjunto abierto como se
+buscaba.
+
+\section*{Página 81, ejercicio 3}%
+
+Primero que todo, el conjunto vacío pertenece a $
+\mathcal{T}_c $ debido a que $ X\setminus\varnothing=X
+$ y $X\in \mathcal{T}_c$ por definición.  También se
+tiene que $ X $ es un conjunto abierto puesto que $
+X\setminus X=\varnothing $ y el conjunto vacío es
+numerable por ser finito.
+
+\reversemarginpar\marginnote{Este tipo de igualdades se
+siguen de las leyes de De Morgan} 
+Supongamos que $
+\left\{ U_k \right\}$ es una familia de elementos de $
+\mathcal{T}_c $.  Entonces 
+\[
+	X\setminus\bigcup U_k= \bigcap (X\setminus U_k).
+\]
+\normalmarginpar\marginnote{Véase el Corolario 7.3, pag 46.}%
+Pero el lado derecho de la igualdad es numerable puesto
+que estas intersecciones son subconjuntos de todos los
+$ X\setminus U_k $ y estos últimos son numerables.
+
+Supongamos ahora que $ \left\{ U_1,\dots,U_n \right\} $
+son una cantidad finita de elementos de $
+\mathcal{T}_c. $ Entonces
+\[
+	X\setminus\bigcap_{i=1}^{n}U_i =
+	\bigcup_{i=1}^{n} X\setminus U_i.
+\]
+\normalmarginpar\marginnote{Véase el teorema 7.5, pag 46}
+Donde el lado derecho de la igualdad es numerable pues
+la unión de conjuntos numerables es numerable.
+
+Hemos visto que las uniones arbitrarias y las
+intersecciones finitas de elementos de $\mathcal{T}_c$
+pertenecen nuevamente a $\mathcal{T}_c$, esto es, que
+$\mathcal{T}_c$ es una topología sobre $X$.
+
+En el caso del conjunto $ \mathcal{T}_\infty $ se tiene
+que \emph{no es} una topología sobre $ X $ en general.
+Consideremos el siguiente contraejemplo: Hagamos $
+X=\mathbb{Z} $ y consideremos los subconjuntos $
+U_1,U_2 $ de
+$ \mathbb{Z} $ dados por
+\[
+	U_1= \left\{ k\in\mathbb{Z}\colon k>0 \right\}
+	\quad\text{y}\quad 
+	U_2=\left\{ k\in\mathbb{Z}\colon k<0 \right\}.
+\]
+
+\reversemarginpar\marginnote{¿Es este contraejemplo válido?}
+Con estos subconjuntos se tiene que
+$\mathbb{Z}\setminus U_1$ son todos los enteros
+negativos con el cero y, análogamente, $
+\mathbb{Z}\setminus U_2 $ son todos los enteros
+positivos con el cero, de donde se sigue que $ U_1,U_2
+$ pertenecen a $ \mathcal{T}_\infty $. Pero entonces
+\[
+	\mathbb{Z}\setminus \big(U_1\cup U_2\big)= 
+	\mathbb{Z}\setminus U_1\cap \mathbb{Z}\setminus U_2 
+		= \left\{ 0 \right\},
+\]
+y $ U_1\cup U_2 $ \emph{no pertenece} a $ \mathcal{T}_\infty $.
+
+\section*{Página 109, ejercicio 2}
+
+No es cierto, en general, que $ f(x) $ sea un punto
+límite de $ f(A) $. Consideremos el siguiente
+contraejemplo.
+
+%\reversemarginpar\marginnote{¿Este contraejemplo es
+%válido?}
+\normalmarginpar\marginnote{Véase el teorema 18.2, pag
+105}
+Sea $ f\colon X\to Y $ definida por $ f(x)=k, $ para
+todo $x\in X,$ con $ k\in Y $ una constante fija.
+Entonces esta función es continua, pero si $ A $ es un
+subconjunto de $ X $ entonces $ f(A)=k $ y para todo $
+a\in A $ se tiene que $ f(a)=k $ no es un punto límite
+de $ A $ puesto que su todo entorno de $ f(a) $
+intersecta a $ f(A) $ justamente en el punto $ k=f(a). $
+
+\section*{Página 109, ejercicio 3}
+
+Este ejercicio consta de dos partes.
+
+\paragraph{Parte a}%
+Supongamos que la función identidad $ \id $ es continua.
+Entonces para todo elemento $ A $ de $ \mathcal{T} $
+se tiene que $ \id^{-1}(A) $ pertenece a $ \mathcal{T}'.
+$ Pero la inversa de la función identidad es ella
+misma por lo que $ \id^{-1}(A)=A $ y $
+\mathcal{T}\subset\mathcal{T}', $ como se buscaba.
+
+Supongamos ahora que $ \mathcal{T}' $ es más fina que $
+\mathcal{T}$. Entonces todo elemento de $ \mathcal{T} $
+esta en $ \mathcal{T}' $. Como $ \id^{-1}(A)=A $, para
+todo $A\in \mathcal{T}, $ y $ A\in\mathcal{T}' $ se
+sigue que la imagen inversa de abiertos en $
+\mathcal{T} $ son abiertos en $ \mathcal{T}' $ y la
+función $ \id $ es continua.
+
+\paragraph{Parte b}%
+\label{par:parte_b}
+
+Supongamos que $\id$ es un homeomorfismo, entonces la
+función $\id$ es continua y por la parte anterior se
+tiene la contención $\mathcal{T}\subset\mathcal{T}'$,
+queda mostrar que $\mathcal{T}'\subset\mathcal{T}.$
+Esto último en efecto es así puesto que las imágenes directas
+de conjuntos abiertos en $\mathcal{T}'$ son abiertos en
+$\mathcal{T}$, por ser $\id$ homeomorfismo, y la
+sobreyectividad de $\id$ implica que \emph{todo} abierto
+de $\mathcal{T}'$ es abierto en $\mathcal{T}$, es
+decir, que $\mathcal{T}'\subset\mathcal{T}$.
+
+Supongamos ahora que $\mathcal{T}'=\mathcal{T}$. Por la
+parte anterior se tiene que $\id$ es continua, pero como la
+inversa de la identidad es ella misma se sigue
+inmediatamente que $\id^{-1}$ también es continua y que
+$\id$ es un homeomorfismo.
+
+\section*{Página 109, ejercicio 4}
+
+La función $f$ es inyectiva puesto que
+\[
+	f(x_1)=f(x_2)
+\]
+implica que
+\[
+	(x_1,y_0)=(x_2,y_0)
+\]
+y esto, por definición del producto cartesiano, implica
+que $x_1=x_2$. Un razonamiento análogo nos dice que la
+función $g$ también es inyectiva.
+
+Entonces, si restringimos el rango de $f$ y $g$ a sus
+imágenes directas obtenemos dos funciones $f',g'$
+biyectivas. Para ver que $f,g$ son inmersiones solo
+hace falta ver que $f',g'$ y sus inversas son
+continuas.
+
+Para ver que $f'$ es continua, notemos que esta función
+se puede escribir de la forma
+\[
+	f'=(\id_X,\gamma),
+\]
+donde $\id_X$ es la identidad de $X$ y $\gamma:X\to Y$ 
+es la función constantemente igual a $y_0$.
+\normalmarginpar\marginnote{Véase el teorema 18.4, pag
+108}
+Entonces la continuidad de $f'$ se sigue de la
+continuidad de estas dos funciones. Un argumento
+análogo sirve para la función $g'$ y por lo tanto
+$f',g'$ son ambas continuas.
+
+Al igual que antes, una vez que veamos que $f'^{-1}$ es
+continua un argumento completamente análogo nos dará
+como resultado que $g'^{-1}$ es continua. Para ver la
+continuidad de $f'^{-1}$ notemos que esta función esta
+dada, al fijar un $y_0\in Y$, por
+\[
+	f'^{-1}=\pi	
+\]
+donde $\pi$ es la proyección canónica de $X\times\left\{ y_0 \right\}$
+sobre $X$. Entonces la continuidad de $f'^{-1}$ se
+sigue de la continuidad de $\pi$.
+
+Tenemos entonces que $f',g'$ y sus inversas son
+continuas, por lo que $f,g$ son inmersiones.
+\end{document}

@@ -1,0 +1,330 @@
+\input{../../Plantillas/Tareas/tarea.tex}
+\cabe{Álgebra 3: Tarea 3}{Jhonny Lanzuisi, 1510759}
+\begin{document}
+\chapter{Formas Cuadráticas}%
+	\section*{Ejercicio 5.3.1}
+	\marginnote{\sffamily Jhonny Lanzuisi,\\ 1510759}%
+	Encuentre un polinomio cuadrático diagonal \% isométrico a:
+	\begin{enumerate}
+		\item $x^2-xy+y^2+xz-z^2$.
+		\item $xy-xz-yz$.
+		\item $xz+yw$.
+	\end{enumerate}
+\paragraph{solucion}
+	\textsc{consideremos primero} el polinomio $x^2-xy+y^2+xz-z^2$. La matriz simétrica $\mathsf S$ asociada a el ha de cumplir que $s_{ij}=1/2(a_{ij}+a_{ji})$ donde los $a_{ij}$ son los coeficientes de nuestro polinimio cuadrático. Se sigue entonces que
+	\[ S = \begin{pmatrix}
+	\phantom{-}1 & -1/2 & \phantom{-}1/2 \\
+	-1/2 & \phantom{-}1 & \phantom{-}0 \\
+	\phantom{-}1/2 & \phantom{-}0 & -1
+	\end{pmatrix}. \]
+	Por lo que la forma bilineal asociada $\Bform_S$ viene dada, para $v=(a_1,a_2,a_3)$ y $w=(b_1,b_2,b_3)$, por
+	\begin{align*}
+	v^tAw &= (a_1,a_2,a_3) \begin{pmatrix}
+	\phantom{-}1 & -1/2 & \phantom{-}1/2 \\
+	-1/2 & \phantom{-}1 & \phantom{-}0 \\
+	\phantom{-}1/2 & \phantom{-}0 & -1
+	\end{pmatrix} \begin{pmatrix}
+	b_1 \\ b_2 \\ b_3
+	\end{pmatrix} \\
+	&= (a_1,a_2,a_3) \begin{pmatrix}
+	b_1-b_2/2+b_3/2 \\
+	-b_1/2+b_2 \\
+	\phantom{-}b_1/2 - b_3
+	\end{pmatrix} \\
+	&= a_1(b_1-\frac{b_2}{2}+\frac{b_3}{2}) \\
+	&\phantom{=}\hspace{6em}+ a_2(-\frac{b_1}{2}+b_2) \\
+	&\phantom{=}\hspace{10em}+ a_3(\frac{b_1}{2} - b_3). 
+	\end{align*}
+	Ahora solo hace falta diagonalizar la matriz $S$ para obtener el polinomio diagonal buscado. Sea $v_1 = (1,0,0)$ y notemos que $\bform{v_1}{v_1}_S = 1$. El complemento ortogonal $v_1^\perp$ viene dado por
+	\[ b_1-\frac{b_2}{2}+\frac{b_3}{2} = 0 \]
+	que implica
+	\[ v_1^\perp = \gen\left\{ b_2\begin{pmatrix}
+	1/2 \\ 1 \\ 0
+	\end{pmatrix} + b_3\begin{pmatrix}
+	-1/2 \\ \phantom{-}0 \\ \phantom{-}1
+	\end{pmatrix} \right\}. \]
+	Notemos que $v_2=(1/2,1,0)$ es tal que $\bform{v_2}{v_2}_S = 3/4$. Y su complemento ortogonal $v_2^\perp$ viene dado por
+	\[ \frac{3b_2}{4}+ \frac{b_3}{4} = 0\]
+	y nuestro tercer vector $v_3$ es cualquier solución no trivial del sistema
+	\[ \begin{cases}\displaystyle
+	b_1-\frac{b_2}{2}+\frac{b_3}{2} = 0 \\[.5em] \displaystyle
+	\frac{3b_2}{4}+ \frac{b_3}{4} = 0
+	\end{cases} \]
+	como por ejemplo $v_3 = (2,1,-3)$. Entonces la matriz 
+	\[ P = \begin{pmatrix}
+	1 & 1/2 & 2\\
+	0 & 1 & 1\\
+	0 & 0 & -3
+	\end{pmatrix} \]
+	es tal que
+	\[ P^tSP = \begin{pmatrix}
+	1 & 0 & 0 \\
+	0 & 3/4 & 0 \\
+	0 & 0 & -12 \\
+	\end{pmatrix} \]
+	
+	Y finalmente nuestro polinomio $x^2-xy+y^2+xz-z^2$ es isométrico a $u^2+\frac{3}{4}v^2 -12 w^2$.
+	
+	\textsc{consideremos en segundo lugar} el polinomio $xy-xz-yz$. La matriz simétrica $S$ asociada a el es
+	\[ S = \begin{pmatrix}
+	0 & 1 & -1 \\
+	1 & 0 & -1 \\
+	-1 & -1 & 0
+	\end{pmatrix} \]
+	y la forma bilineal $\Bform_S$ viene dada,  para $v=(a_1,a_2,a_3)$ y $w=(b_1,b_2,b_3)$, por
+	\begin{align*}
+	v^tAw &= (a_1,a_2,a_3) \begin{pmatrix}
+	0 & 1 & -1 \\
+	1 & 0 & -1 \\
+	-1 & -1 & 0
+	\end{pmatrix} \begin{pmatrix}
+	b_1 \\ b_2 \\ b_3
+	\end{pmatrix} \\
+	&= (a_1,a_2,a_3) \begin{pmatrix}
+	b_2-b_3 \\
+	b_1-b_3 \\
+	-b_1-b_2
+	\end{pmatrix} \\
+	&= a_1(b_2-b_3) + a_2(b_1-b_3) + a_3(-b_1-b_2).
+	\end{align*}
+	Ahora solo hace falta diagonalizar la matriz $S$ para obtener el polinomio diagonal buscado. Sea $v_1 = (1,1,0)$ notemos que $\bform{v_1}{v_1}_S = 1$, y su complemento ortogonal $v_1^\perp$ esta dado por
+	\[ b_1+b_2-2b_3 = 0 \]
+	que implica
+	\[ v_1^\perp = \gen\left\{ b_2\begin{pmatrix}
+	-1 \\1 \\0 
+	\end{pmatrix}  + b_3\begin{pmatrix}
+	2 \\ 0 \\ 1
+	\end{pmatrix}\right\}. \]
+	Tomemos ahora $v_2 = (-1,1,0)$ y notemos que $\bform{v_2}{v_2}_S = -1$. Su complemento ortogonal $v_2^\perp$ esta dado por
+	\[ b_1-b_2 = 0 \]
+	Nuestro último vector $v_3$ es cualquier solución no trivial al sistema 
+	\[ \begin{cases}
+	b_1+b_2-2b_3 = 0 \\
+	b_1-b_2 = 0
+	\end{cases} \]
+	como por ejemplo $v_3=(1,1,1)$. Y la matriz $P$ dada por
+	\[ P = \begin{pmatrix}
+	1 & -1 & 1\\
+	1 & 1 & 1\\
+	0 & 0 & 1\\
+	\end{pmatrix} \]
+	es tal que
+	\[ P^tSP = \begin{pmatrix}
+	2 & 0 & 0 \\
+	0 & -2 & 0 \\
+	0 & 0 & -2
+	\end{pmatrix} \]
+	y finalmente nuestro polinomio $xy-xz-yz$ es isométrico a $2v^2-2u^2-2w^2$.
+	
+	\textsc{consideremos en tercer lugar} el polinomio $xz+yw$. La matriz simétrica $S$ asociada a el es
+	\[ S = \begin{pmatrix}
+	0 & 0 & 1 & 0 \\
+	0 & 0 & 0 & 1 \\
+	1 & 0 & 0 & 0 \\
+	0 & 1 & 0 & 0
+	\end{pmatrix} \]
+	y la forma bilineal $\Bform_S$ viene dada,  para $v=(a_1,a_2,a_3,a_4)$ y $w=(b_1,b_2,b_3,b_4)$, por
+	\begin{align*}
+	v^tAw &= (a_1,a_2,a_3,a_4)  \begin{pmatrix}
+	0 & 0 & 1 & 0 \\
+	0 & 0 & 0 & 1 \\
+	1 & 0 & 0 & 0 \\
+	0 & 1 & 0 & 0
+	\end{pmatrix} \begin{pmatrix}
+	b_1 \\ b_2 \\ b_3 \\ b_4
+	\end{pmatrix} \\
+	&= (a_1,a_2,a_3,a_4)  \begin{pmatrix}
+	b_3 \\ b_4 \\ b_1\\ b_2 
+	\end{pmatrix} \\
+	&= a_1b_3 + a_2b_4 + a_3b_1 + a_4b_2.
+	\end{align*}
+	Ahora solo hace falta diagonalizar la matriz $S$ para obtener el polinomio diagonal buscado. Sea $v_1 = (1,0,1,0)$ notemos que $\bform{v_1}{v_1}_S = 1$, y su complemento ortogonal $v_1^\perp$ esta dado por
+	\[ b_3+b_1 = 0 \]
+	que implica
+	\[ v_1^\perp = \gen \left\{ b_3\begin{pmatrix}
+	-1 \\ 0 \\ 1 \\ 0
+	\end{pmatrix}+ b_2\begin{pmatrix}
+	0 \\ 1 \\ 0 \\ 0
+	\end{pmatrix}+b_4\begin{pmatrix}
+	0 \\ 0 \\ 0 \\ 1
+	\end{pmatrix} \right\}. \]
+	Tomemos ahora $v_2 = (-1,0,1,0)$ y notemos que $\bform{v_2}{v_2}_S = -1$. Su complemento ortogonal $v_2^\perp$ esta dado por
+	\[ b_1-b_3 = 0. \]
+	Ahora nuestor vector $v_3$ es cualqueir solución al sistema
+	\[ \begin{cases}
+	b_3+b_1 = 0 \\
+	b_1-b_3 = 0
+	\end{cases} \]
+	como por ejemplo $v_3 = (0,1,0,1)$. Su complemento ortogonal $v_3^\perp$ esta dado por
+	\[ b_4+b_2 = 0. \]
+	El último vector $v_4$ es cualquier solución al sistema 
+	\[ \begin{cases}
+	b_3+b_1 = 0 \\
+	b_1-b_3 = 0 \\
+	b_4+b_2 = 0
+	\end{cases} \]
+	como $v_4 = (0,1,0,-1)$. Y la matriz $P$ dada por
+	\[ P = \begin{pmatrix}
+	1 & -1& 0& 0\\
+	0 & 0& 1& 1\\
+	1 & 1& 0& 0\\
+	0 & 0& 1& -1\\
+	\end{pmatrix} \]
+	es tal que 
+	\[ P^tAP =  \begin{pmatrix}
+	2 & 0& 0& 0\\
+	0 & -2& 0& 0\\
+	0 & 0& 2& 0\\
+	0 & 0& 0& -2\\
+	\end{pmatrix} \]
+	y nuestro polinomio $xz+yw$ es isométrico a $2t^2-2u^2+2v^2-2w^2$.
+
+\section*{Ejercicio 5.3.5}
+%Encontrar la forma cuadrática (expresada como un polinomio) asociada a cada una de las siguientes matrices simétricas:
+%\[ S_1=\begin{pmatrix}
+%2 & 4 \\ 4 & 1
+%\end{pmatrix} \quad S_2=\begin{pmatrix}
+%1 & 2 &1 \\
+%1 & 0 & 3 \\
+%1 & 3 & 2
+%\end{pmatrix}\quad S_3=\begin{pmatrix}
+%1 & 3 &4 \\
+%3 & 0 & 1\\
+%4 & 1 & 2
+%\end{pmatrix} \]
+	\begin{sol}
+		Llamemos $S_1,S_2,S_3$ a cada una de las matrices del problema, numeradas en el orden que se leen (de izquierda a derecha). Para cada una de las matrices $S_i$ el polinomio cuadrático asociado a ellas se calcula como:
+		\[ q_1 = v^tS_1v\quad q_2=v^tS_2v\quad q_3=v^tS_3v, \]
+		donde $v$ es un vector de $\R^2$ en el caso de $q_1$ y un vector de $\R^3$ en el caso de $q_2$ y $q_3$.
+		
+		Entonces,
+		\begin{align*}
+		q_1 &=  v^tS_1v 
+		= (x,y) \begin{pmatrix}
+		2 & 4 \\ 4 & 1
+		\end{pmatrix} \begin{pmatrix}
+		x \\ y
+		\end{pmatrix} \\
+		&= (x,y) \begin{pmatrix}
+		2x+4y \\
+		4x+y
+		\end{pmatrix} 
+		= x(2x+4y) + y(4x+y)\\
+		&= 2x^2+4xy+4yx+y^2 
+		= 2x^2+8xy+y^2.
+		\end{align*}
+		Similarmente,
+		\begin{align*}
+		q_2 &= v^tS_2v 
+		= (x,y,z) \begin{pmatrix}
+		1 & 2 &1 \\
+		1 & 0 & 3 \\
+		1 & 3 & 2
+		\end{pmatrix} \begin{pmatrix}
+		x \\ y \\ z
+		\end{pmatrix} \\
+		&= (x,y,z)\begin{pmatrix}
+		x+2y+z \\
+		x+3z \\
+		x+3y+2z
+		\end{pmatrix} \\
+		&=x(x+2y+z) + y(x+3z) + z(x+3y+2z) \\
+		&=x^2+2xy+xz+yx+3yz+zx+3yz+2z^2 \\
+		&=x^2+3xy+2xz+6yz+2z^2.
+		\end{align*}
+		Y finalmente,
+		\begin{align*}
+		q_3 &= v^tS_3v 
+		= (x,y,z)\begin{pmatrix}
+		1 & 3 &4 \\
+		3 & 0 & 1\\
+		4 & 1 & 2
+		\end{pmatrix}\begin{pmatrix}
+		x \\ y \\ z
+		\end{pmatrix} \\
+		&= (x,y,z)\begin{pmatrix}
+		x+3y+4z \\
+		3x+z\\
+		4x+y+2z
+		\end{pmatrix} \\
+		&= x(x+3y+4z) + y(3x+z) + z(4x+y+2z) \\
+		&= x^2+3xy+4xz + 3xy + yz + 4xz + yz + 2z^2 \\
+		&= x^2 +6xy+8xz+2yz+2z^2.
+		\end{align*}
+	\end{sol}
+\section*{Ejercicio 5.3.6}
+%Sea $q$ la forma cuadrática en $\F^2$ dada por $XY$. Encuentre una transformación lineal invertible $T:\F^2\to\F^2$ tal que
+%\[ q\big(T(a,b)\big) = a^2-b^2. \]
+\begin{sol}
+	Consideremos la transformación $T:\F^2\to\F^2$ dada, para todo $(a,b)\in\F^2$, por $T(a,b) = (a-b,a+b)$. Esta $T$ es lineal, pues si $a_1,b_1\in\F^2$ entonces
+	\begin{align*}
+		T(a+a_1,b+b_1) &= (a+a_1-b-b_1,a+a_1+b+b_1)\\
+		 &= (a-b,a+b) + (a_1-b_1,a_1+b_1)\\
+		 &= T(a,b) + T(a_1,b_1).
+	\end{align*}
+	
+	También para esta $T$ se tiene que 
+	\[ q\big(T(a,b)\big) = (a-b)(a+b) = a^2-b^2. \]
+	
+	Además la transformación $T$ es inyectiva, pues $\ker(T)=\{0\}$, y sobreyectiva, puesto que para cualquier vector $v$ en $\F^2$ se pueden hallar elementos $a,b\in\F$ tales que $v=(a-b,a+b)$. La biyectividad implica entonces que $T$ es invertible (más aún, su inversa $T\inv:\F^2\to\F^2$ esta dada por $T\inv(x,y) = 1/2(x+y,y-x)$).
+	
+	Luego la $T$ dada satisface las condiciones del problema.
+\end{sol}
+\section*{Ejercicio 5.3.8}
+%Sea $Q:\V\to\F$ una forma cuadrática y $\Ve W$ un subespacio de $\V$.
+%\begin{enumerate}
+%	\item Demostrar que la restricción $Q|_{\Ve W}:\Ve W\to\F$ es una forma cuadrática.
+%	\item Si $Q$ es no-degenerada, es $Q|_{\Ve W}$ no-degenerada?
+%\end{enumerate}
+\begin{sol} Veamos cada parte.
+	\begin{enumerate}
+		\item Sean $v,w\in\Ve W$ y $k\in\F$. Entonces
+		\[ Q(kv) = k^2Q(v) \] 
+		puesto que $v\in\V$ (por el hecho de que $\Ve W\subseteq\V$) y sabemos que $Q$ es una forma cuadrática sobre $\V$. Por una razón similar se tiene que
+		\[ B_Q\bform{v}{w} = Q(v+w) - Q(v) - Q(w) \]
+		es una forma bilineal simétrica.
+		Y entonces $Q|_{\Ve W}$ es una forma cuadrática sobre $\Ve W$. 
+	\end{enumerate}
+\end{sol}
+\section*{Ejercicio 5.4.4}
+\begin{sol}
+	Consideremos el determinante
+	\[ \det(Q^tPQ) =  \det(P)\det(Q)^2. \]
+	Y como $\det(P)\neq 0$ y $\det(Q)^2$ siempre es mayor que cero, se sigue que $\det(Q^tPQ)\neq 0$ y $Q^tPQ$ es no-singular.
+\end{sol}
+\section*{Ejercicio 5.4.5}
+\begin{sol}
+	Primero notemos que la bilinealidad y la simetría de $\Iprod{v}{w} = v^tSw$ se heredan directamente de la forma bilineal asociada a $S$ y de la simetría de $S$, respectivamente. Queda por demostrar la propiedad positiva definida.
+	
+	Como $S$ es simétrica y real sabemos que es congruente ortogonalmente con una matriz $D$ diagonal cuyos elementos de la diagonal son los valores propios, todos positivos, de $S$. Pero como la congruencia no afecta a la signatura de $S$ se sigue que la signatura de $D$ y la de $S$ son la misma. Como $D$ solo tiene elementos positivos en su diagonal su signatura es $n$, luego la signatura de $S$ también es $n$ y $S$ es positiva definida.
+\end{sol}
+\section*{Ejercicio 5.4.6}
+\begin{sol}
+	Como $P$ es positiva definida, simétrica y real existe una matriz ortogonal $B$ tal que $P=B^tDB$ y $D$ es una matriz diagonal cuyos elementos de la diagonal (los valores propios de $P$) son todos positivos.
+	
+	Consideremos el determinante
+	\[ \det(P) = \det(B^tDB) = \det(D)\det(B)^2. \]
+	Como $\det(D)$ es el producto de la diagonal y $\det(B)^2$ es siempre mayor que cero, se sigue que $\det(P)>0$.
+	
+	Si $A,B\in\Ve M_{n\t n}(\R)$ entonces $\traz(AB) = \traz(BA)$. De esto se sigue que
+	\[ \traz(P) = \traz(B^tDB) = \traz(D) \]
+	y como $\traz(D)>0$ se sigue que $\traz(P)>0$.
+\end{sol}
+\section*{Ejercicio 5.4.7}
+\begin{sol}
+	La siguiente matriz $C=\left( \begin{smallmatrix}
+	1& -2 & 1 & 2 \\
+	0& 1& -2& -3 \\
+	0& 0& 1& 0\\
+	0& 0& 0& 1\\
+	\end{smallmatrix} \right)$,
+	diagonaliza a la matriz $A$:
+	\[ C^tAC = \begin{pmatrix}
+	-1 & 0 & 0 & 0 \\
+	0 & 1 & 0 & 0 \\
+	0 & 0& 0& 0 \\ 
+	0 & 0& 0& 0 \\
+	\end{pmatrix} \]
+	Entonces el rango de $A$ es $2$ y la signatura de $A$ es $0$.
+\end{sol}
+\end{document}

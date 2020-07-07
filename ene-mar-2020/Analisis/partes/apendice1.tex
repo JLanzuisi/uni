@@ -1,0 +1,119 @@
+\chapter{Colofón}%
+\label{cha:Colofón}
+
+%\begin{primerpar}
+	\textsc{La fuente príncipal del texto} es \textquote{Látín M\" odern Roman} a 11pt, junto con Red Hat Sans como acompañante para los comentarios,
+	Time New Roman para los títulos y Latin Modern Math para las matemáticas. Una explicación mas a fondo de cada una de estas fuentes
+	junto con la implementación en \LuaLaTeX{} puede encontrarse más abajo.
+\Nota{¡Todas las fuentes utilizadas se pueden obtener de forma gratuita!
+	Esto muestra que se puede hacer buena tipografía sin gastar dinero
+	(aquellos que sepan lo que puede llegar a costar una familia completa
+	de tipos gráficos entenderán lo que quiero decir).
+}
+
+\section*{Tipos de letra principales}%
+\label{sec:Tipos de letra principales}
+
+\begin{description}
+\item[Latin Modern Roman]  es un tipo gráfico de estilo \emph{Racional} diseñado por Donald Knuth y adaptado al formato \texttt{otf}
+por Bogusław Jackowski \& Janusz M. Nowacki de \textsc{gust}. 
+
+\Nota{Donald Knuth es también el creador de \TeX{} y un computista excepcional. El lector puede ver~\cite{graham_concrete_1994}
+ para convercerse de que Donald es también un gran matemático.
+ `\textsc{gust}' es un grupo de usuarios polacos de \TeX{}. Para más información véase su página web \autocite{latinModernFonts_website}.}
+
+Para hacer estas notas de usó el programa \TeX{} con el formato \LaTeXe{} y el motor \LuaTeX{} que permite usar fuentes en formato
+\texttt{otf}. En este contexto, el código utilizado es:
+
+\begin{small}
+\begin{verbatim}
+\usepackage{unicode-math} % Interfaz para cargar fuentes
+\setmainfont[ % Fuente principal
+	SmallCapsFont={Latin Modern Roman Caps},
+	SmallCapsFeatures={LetterSpace=5},
+	Numbers={OldStyle},
+]{Latin Modern Roman}
+\end{verbatim}
+
+\end{small}
+
+\item[Red Hat Sans] es una sans-serif de estilo \emph{geométrico} usada por la compañía Red Hat:
+	\begin{quote}\small
+	Red Hat Display is made for headlines and big statements. It’s an embodiment of our brand’s personality — open, straightforward, rational, but friendly and approachable, too. The Display styles have even strokes and tight spacing, with tall, open letterforms.
+	\footnote{\url{https://www.redhat.com/en/about/brand/standards/typography}}
+	\end{quote}
+
+El código usado es simplemente:
+
+\begin{small}
+\begin{verbatim}
+\setsansfont[Scale=MatchLowercase]{Inria Sans Light}
+\end{verbatim}
+\end{small}
+
+\item[Times New Roman] no necesita presentación. Diseñada por Stanley Morrison para el periodico inglés The Times (Ver \cref{fig:timesNewRoman}) es quizás
+	el tipo gráfico mas usado en el mundo.
+
+
+
+	\begin{verbatim}
+\newfontfamily{\dispfont}[
+Scale=MatchLowercase,
+SmallCapsFeatures={LetterSpace=7},
+Numbers={OldStyle},
+]{STEP}		
+	\end{verbatim}
+\end{description}
+\begin{figure}
+\includegraphics[width=.75\linewidth]{pictures/times.png}
+\end{figure}
+
+\section*{Matemáticas}%
+\label{sec:Matemáticas}
+Las matemáticas usan \emph{Latin Modern Math} fuente derivada de Latin Modern y diseñada originalmente
+por Donald Knuth para \TeX{}.
+
+\section*{Tipos Secundarios}%
+\label{sec:Tipos Secundarios}
+
+Este documento, afortunadamente, no requiere de casi ningún tipo secundario. El único, que
+se usa esporádicamente en el documento, es \textsc{ibm} Plex Mono una fuente monoespaciada
+diseñada para la compañia \textsc{ibm} por Mike Ab­bink \& Paul van der Laan
+que se puede ver en los bloques de código.
+\begin{small}
+\begin{verbatim}
+\setmonofont[Scale=MatchLowercase]{IBM Plex Mono}
+\end{verbatim}	
+\end{small}
+
+
+
+%\begin{small}
+%\begin{verbatim}
+%% Paquete para usar fuentes en formato otf
+%\usepackage{unicode-math}
+%% Cargar eb garamond
+%\setmainfont[
+	%SmallCapsFeatures={LetterSpace=5}, % Espaciado de las versalitas
+	%Numbers={OldStyle}, % Figuras de texto por defecto
+%]{EB Garamond}
+%% Cargar yasebau
+%\setsansfont[
+	%Scale=MatchLowercase
+%]{Ysabeau}
+%% Fuente monoespaciada
+%\setmonofont[
+	%Scale=MatchLowercase
+%]{Latin Modern Mono}
+%% Fuente de mate
+%\setmathfont[
+	%Scale=MatchLowercase,
+%]{Latin Modern Math}
+%% Tomar 'prestado' el alfabeto bb de stix
+%\setmathfont[
+	%range=bb,
+	%Scale=1.05
+%]{XITS Math}
+%\end{verbatim}
+%\end{small}
+

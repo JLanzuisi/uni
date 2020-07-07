@@ -1,0 +1,90 @@
+\chapter{Sucesiones}
+
+Una \Keyword{sucesión} de números reales es una función cuyo dominio son los naturales,
+y cuyo rango es un subconjunto de los reales. Si el rango es un subconjunto acotado
+de $\mathbb{R}$ diremos que la suseción esta \emph{acotada}.
+
+\begin{defi}
+\normalmarginpar\marginnote{Definición de convergencia.}
+	Una sucesión $\left\{ a_{n} \right\}$ de números reales \Keyword{converge} a un \emph{límite} $L$ si se cumple que:
+
+	Dado $\epsilon>0$ existe un $N\in\mathbb{N}$ tal que, para todo $n>N$,
+	\[
+		\left\lvert a_{n}-L \right\rvert<\epsilon.
+	\]
+\end{defi}
+
+\begin{ejem} Esta es una lista de varias sucesiones, algunas convergentes, otras divergentes.
+	\begin{itemize}
+		\item $\left\{ a_{n} \right\}=1/n$ converge a $0$ y esta acotada.
+		\item $\left\{ a_{n} \right\}=n^2$ no esta acotada y diverge.
+		\item $\left\{ a_{n} \right\}=(-1^n)$ esta acotada, el rango es finito, y diverge.
+		\item $\left\{ a_{n} \right\}=1$ esta acotada, el rango es finito, y converge.
+	\end{itemize}	
+\end{ejem}
+
+El siguiente teorema da varias propiedades sobre las sucesiones convergentes.
+
+\begin{teo}
+	Sean $\left\{ a_{n} \right\}$ una suseción de número reales. Entonces se cumple que
+	\begin{enumerate}
+		\item $\left\{ a_{n} \right\}$ converge a $p$ si, y solo si,
+			$p$ contienen todos salvo una cantidad finita de puntos de $\left\{ a_{n} \right\}$.
+			Esto es, $p$ es un punto de acumulación.
+		\item Si $\left\{ a_{n} \right\}$ converge a dos límites $p_1,p_2$ entonces $p_1=p_{2}$.
+		\item Si $\left\{ a_{n} \right\}$ converge entonces esta acotada.
+	\end{enumerate}
+\end{teo}
+
+El siguiente teomera nos dice como se comporta el álgebra de sucesiones.
+
+\begin{teo}
+	Supongamos que $\{ a_n \}$ y $\{ b_n \}$ son dos sucesiones convergentes a $a,b$ respectivamente. Entonces
+	\begin{itemize}
+		\item $ \lim_{n \to \infty} (\{ a_n \}+\{ b_n \}) = a+b $.
+		\item $ \lim_{n \to \infty} c\{ a_n \}=cs$ y $ \lim_{n \to \infty} (c+\{ a_n \}) =c+a$; para cualquier número $c$.
+		\item $ \lim_{n \to \infty} \{ a_n \}\{ b_n \}= ab$.
+		\item $ \lim_{n \to \infty} \dfrac{1}{\{ a_n \}} = 1/s$.
+	\end{itemize}
+\end{teo}
+
+Un criterio muy útil para determinar convergencia de una sucesión es el siguiente.
+
+\begin{defi}
+	Una sucesión $\{ a_n \}$ es \Keyword{monótona} si se cumple que
+	\[
+		\{ a_n \}\leq\{ a_{n+1} \}\quad\text{o}\quad\{ a_n \}\geq\{ a_{n+1} \}.	
+	\]
+	El el primer caso diremos que es \emph{monótona creciente} y en el segundo caso \emph{monótona decreciente}.
+\end{defi}
+
+\begin{teo}\label{teo_monotono_acotado}
+	Toda sucesión \emph{monótona y acotada} es convergente.
+\end{teo}
+
+\subsection{Subsucesiones}%
+\label{sec:Subsucesiones}
+
+\begin{defi}
+	Dada una sucesión $\{ a_n \}$ consideremos una sucesión de números naturales $\{ n_k \}$ tal que $n_1<n_{2}<\dots$
+	Entonces la sucesión $\{ a_{n_k} \}$ es una \Keyword{subsucesión} de $\{ a_n \}$.
+\end{defi}
+
+Si la sucesión $\{ a_n \}$ converge a $L$ entonces toda subsucesión de $\{ a_n \}$ también converge a $L$.
+
+\begin{teo}
+	\normalmarginpar\marginnote{Teorema de Bolzano-Weierstra{\ss}}
+	Toda sucesión real acotada contiene una subsucesión convergente.a
+\end{teo}
+
+\begin{proof}
+	Basta demostrar, por el teorema~\ref{teo_monotono_acotado}, que toda sucesión real contiene una subsucesión \emph{monótona}.
+	Para esto se usa la noción de \emph{picos}\footnote{Véase el capítulo de sucesiones en~\cite{spivak_calculus_2008}}.
+\end{proof}
+
+\section{Sucesiones de Cauchy}%
+\label{sec:Sucesiones de Cauchy}
+
+\begin{defi}
+	Definición a
+\end{defi}

@@ -1,0 +1,101 @@
+\input{../../Plantillas-Fomato/Tareas/tarea.tex}
+\cabe{Álgebra \textsc{iii}: Tarea 1}{Jhonny Lanzuisi, 1510759}
+
+\begin{document}
+	\titulo{Algebra 3}{Primera Tarea}
+	\subsection*{Ejercicio 1}
+	Sea $\norm$ la norma asociada al producto interno real $\iprod$ sobre un espacio vectorial $\ve V$. Demuestre que:
+	\begin{enumerate}
+		\item Para todo $\Ve x,\Ve y\in \ve V$,
+		\[ \frac{\Norm{\Ve x+\Ve y}^2-\Norm{\Ve x-\Ve y}^2}{4} = \Iprod{\Ve x}{\Ve y}.  \]
+		\item Si $\Ve v_1,\dots,\Ve v_m$ son vectores de $\ve V$ ortogonales dos a dos, entonces
+		\[ \Norm{\sum_{i=1}^{m} \Ve v_i} = \sqrt{\sum_{i=1}^{m}\Norm{\Ve v_i}^2}. \]
+		\item Los vectores $\Ve x,\Ve y\in\ve V$ son ortogonales si, y solo si,
+		\[ \Norm{\Ve x+\Ve y}^2 = \Norm{\Ve x}^2+\Norm{\Ve y}^2. \]
+	\end{enumerate}
+	\begin{sol}
+    \textsc{parte} 1.\quad Solo hace falta desarrollar recordando que como $\iprod$ es un producto interno real se cumple $\Iprod{\Ve x}{\Ve y}=\Iprod{\Ve y}{\Ve x}$ para todo $\Ve x,\Ve y\in\ve V$.
+    \begin{align*}
+    	\Norm{\Ve x+\Ve y}^2-\Norm{\Ve x-\Ve y}^2 &= \Iprod{\Ve x+\Ve y}{\Ve x+\Ve y} - \Iprod{\Ve x-\Ve y}{\Ve x-\Ve y} \\
+    											  &= \Iprod{\Ve x}{\Ve x+\Ve y} + \Iprod{\Ve y}{\Ve x+\Ve y} \\
+    											  &\phantom{=}\hspace{3.5em} - \Iprod{\Ve x}{\Ve x-\Ve y} + \Iprod{\Ve y}{\Ve x-\Ve y} \\
+    											  &= \cancel{\Iprod{\Ve x}{\Ve x}} + \Iprod{\Ve x}{\Ve y} \\
+    											   &\phantom{=}\hspace{1.5em} + \Iprod{\Ve y}{\Ve x} + \cancel{\Iprod{\Ve y}{\Ve y}} - \cancel{\Iprod{\Ve x}{\Ve x}} \\
+    											  &\phantom{=}\hspace{2.5em} + \Iprod{\Ve x}{\Ve y} + \Iprod{\Ve y}{\Ve x} - \cancel{\Iprod{\Ve y}{\Ve y}} \\
+    											  &=4\Iprod{\Ve x}{\Ve y}.
+    \end{align*}
+    Y al dividir ambos lador por $4$ se obtiene el resultado deseado.
+    
+    \textsc{parte} 2.\quad Hay que desarrollar usando la definción de norma, las propiedades de las sumas finitas y el hecho de que los vectores son ortogonales dos a dos:
+    
+    \allowdisplaybreaks
+    \begin{align*}
+    	\Norm{\sum_{i=1}^{m} \Ve v_i}^2 &= \Iprod{\sum_{i=1}^{m} \Ve v_i}{\sum_{i=1}^{m} \Ve v_i} \\
+    									&= \Iprod{\sum_{i=1}^{m} \Ve v_i}{\Ve v_1} + \cdots + \Iprod{\sum_{i=1}^{m} \Ve v_i}{\Ve v_m} \\
+    									&=\sum_{i=1}^{m} \Iprod{\Ve v_i}{\Ve v_1} + \cdots + \sum_{i=1}^{m} \Iprod{\Ve v_i}{\Ve v_m}\footnotemark \\
+    									&= \Iprod{\Ve v_1}{\Ve v_1} + \cdots+\Iprod{\Ve v_m}{\Ve v_m} \\
+    									&= \sum_{i=1}^{m} \Iprod{\Ve v_i}{\Ve v_i} \\
+    									&= \sum_{i=1}^{m} \Norm{\Ve v_i}^2
+    \end{align*}
+    y el resultado deseado se obtiene al tomar raices cuadradas a ambos lados.
+    \footnotetext{Los productos $\Ve v_i\Ve v_k$ son cero para $i\neq k$, por la ortogonalidad.}
+    
+    \textsc{parte} 3.\quad Supongamos que $\Ve x,\Ve y$ son ortogonales. Entonces el resultado se sigue de la parte anterior elevando ambos lados al cuadrado y haciendo $m=2$. Para ver esto claramente, hagamos $\Ve x=\Ve v_1$ y $\Ve y=\Ve v_2$. Entonces
+    \[ \Norm{\sum_{i=1}^{2} v_i}^2 = \sum_{i=1}^{2} \Norm{\Ve v_i}^2  = \Norm{\Ve v_1}^2+\Norm{\Ve v_2}^2. \]
+    
+    Supongamos ahora que $\Ve x,\Ve y\in\ve V$ son tales que 
+   \[ \Norm{\Ve x+\Ve y}^2 = \Norm{\Ve x}^2+\Norm{\Ve y}^2. \]
+   Veamos primero que
+   \[ \Norm{\Ve x+\Ve y}^2 = 2\Iprod{\Ve x}{\Ve y} +\Iprod{\Ve x}{\Ve x}+\Iprod{\Ve y}{\Ve y}. \]
+   Y despejando de la ecuación anterior,
+   \[ \Iprod{\Ve x}{\Ve y} = \Norm{\Ve x+\Ve y}^2-\Iprod{\Ve x}{\Ve x}-\Iprod{\Ve y}{\Ve y}. \]
+   Pero por nuestra hipótesis se tiene finalmente
+   \[ \Iprod{\Ve x}{\Ve y} = \Iprod{\Ve x}{\Ve x}+\Iprod{\Ve y}{\Ve y}-\Iprod{\Ve x}{\Ve x}-\Iprod{\Ve y}{\Ve y} =0.\]
+   Queda demostrado entonces que $\Ve x,\Ve y$ son ortogonales si, y solo si, $\Norm{\Ve x+\Ve y}^2 = \Norm{\Ve x}^2+\Norm{\Ve y}^2$.
+	\end{sol}
+\subsection*{Ejercicio 2}
+Demuestre que la función $\iprod$ definida en $M_{mn}(\Co)$ y dada por
+\[ \Iprod{A}{B} = \traz(AB^\ast)\quad\text{con \,$A,B\in M_{mn}(\Co)$}, \]
+es un producto interno sobre el espacio vectorial $M_{mn}(\Co)$.
+\begin{sol}
+	Para la \textsc{propiedad 4}, notemos que
+	\begin{align*}
+	\Iprod{A}{A}  &= \traz(AA^\ast) 
+	= \sum_{i=1}^{m} AA^\ast_{(ii)} \\
+	&= \sum_{i=1}^{m}\sum_{k=1}^{n} A_{(ik)}A^\ast_{(ki)} 
+	= \sum_{i=1}^{m}\sum_{k=1}^{n} A_{(ik)}\overline{A}_{(ik)} \\
+	&= \sum_{i=1}^{m}\sum_{k=1}^{n} A^2_{(ik)}
+	\end{align*}
+	de donde es claro que $\Iprod{A}{A}>0$ y $\Iprod{A}{A} = 0$ si, y solo si, la suma de los $A^2_{(ik)}$ es cero, es decir, si $A=0$.
+	
+		Para la \textsc{propiedad 1}, veamos que
+	\begin{align*}
+	\overline{\Iprod{B}{A}} &= \overline{\traz(BA^\ast)} \\
+	&= \sum_{i=1}^{m}\sum_{k=1}^{n} \overline{B}_{(ik)}\overline{A^\ast}_{(ki)} \\
+	&= \sum_{i=1}^{m}\sum_{k=1}^{n} \overline{B}_{(ik)} (A)_{(ik)} \\
+	&= \sum_{i=1}^{m}\sum_{k=1}^{n} A_{(ik)}B_{(ik)}^\ast \\
+	&= \Iprod{A}{B}.
+	\end{align*}
+	y entonces $\Iprod{A}{B} = \overline{\Iprod{B}{A}}$ como se buscaba.
+	
+	Para la \textsc{propiedad 2},
+	\begin{align*}
+		\Iprod{\lambda A}{B} &= \traz(\lambda AB^\ast) \\
+							 &= \sum_{i=1}^{m} \lambda AB^\ast_{(ii)} \\
+							 &= \lambda\sum_{i=1}^{m} AB^\ast_{(ii)} \\
+							 &= \lambda\Iprod{A}{B}.
+	\end{align*} 
+	
+	Para la \textsc{propiedad 3} hace falta utilizar el hecho de que para todo $A,B\in M_{mn}(\Co)$ se tiene
+	\[ \traz(A+B) = \traz(A) + \traz(B). \]
+	Con esto en mente, 
+	\begin{align*}
+		\Iprod{A+B}{C} &= \traz\big((A+B)C^\ast\big) \\
+					   &= \traz(AC^\ast + BC^\ast) \\
+					   &= \traz(AC^\ast) + \traz(BC^\ast) \\
+					   &= \Iprod{A}{C} + \Iprod{B}{C}.
+	\end{align*}
+	
+	Por todo lo anterior queda demostrado que $\iprod$ es un producto interno.
+\end{sol}
+\end{document}

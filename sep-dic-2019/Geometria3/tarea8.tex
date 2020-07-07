@@ -1,0 +1,39 @@
+\input{../../Plantillas-Fomato/Tareas/tarea.tex}
+\cabe{Geometría 3: Tarea 8}{Jhonny Lanzuisi, 1510759}
+\pgfplotsset{compat=1.15}
+
+\usepackage{mathrsfs}
+
+\usetikzlibrary{arrows}
+\begin{document}
+		\tituloD{Geometría  3}{Octava Tarea: Senos y Cosenos}
+		\subsection*{Ejercicio 1}
+		Considere un triángulo de lados $a, b$ y $c$. Sean $\alpha,\beta$ y $\gamma$ los ángulos
+		opuestos a dichos lados, respectivamente. Muestre que
+		\[ \frac{a}{\sin(\alpha)} = \frac{b}{\sin(\beta)} = \frac{c}{\sin(\gamma)} = d \]
+		donde $d$ es el radio de la circunferencia circunscrita al triángulo.
+		\begin{sol}
+			Por definición del seno se tiene que
+			\[ \frac{a}{\sin(\alpha)} = \frac{a}{a/d} = \frac{ad}{a} = d. \]
+			Similarmente, para los lados $b$ y $c$:
+			\begin{align*}
+				\frac{b}{\sin(\beta)} &= \frac{b}{b/d} = \frac{bd}{b} = d\quad\text{y}\quad\\[.2em]
+				\frac{c}{\sin(\gamma)} &= \frac{c}{c/d} = \frac{cd}{c} = d.
+			\end{align*}
+			Y entonces se obtiene el resultado buscado:
+			\[ \frac{a}{\sin(\alpha)} = \frac{b}{\sin(\beta)} = \frac{c}{\sin(\gamma)} = d. \]
+		\end{sol}
+	\subsection*{Ejercicio 2}
+	Demuestre que 
+	\[ \cos(\alpha+\beta) = \cos(\alpha)\cos(\beta) - \sin(\alpha)\sin(\beta). \]
+	\emph{Sugerencia}: escriba $\pi/2-(\alpha+\beta)$ como $(\pi/2-\alpha) - \beta$.
+	\begin{sol}
+		Por la definición del coseno se tiene que
+		\[ \cos(\alpha+\beta) = \sin\big(\frac{\pi}{2} - (\alpha+\beta)\big). \]
+		Ahora, escribiendo $\pi/2 - (\alpha+\beta) = (\pi/2 - \alpha) - \beta$ y usando la ecucación para el seno de una suma de ángulos, se tiene
+		\[ \sin( \big(\frac{\pi}{2} - \alpha\big) - \beta ) = \sin\big(\frac{\pi}{2} - \alpha\big)\cos(-\beta) + \sin(-\beta)\cos\big(\frac{\pi}{2} - \alpha\big). \]
+		pero esto es lo mismo que
+		\[ \cos(\alpha)\cos(\beta) - \sin(\alpha)\sin(\beta), \]
+		que es lo que queríamos demostrar.
+	\end{sol}
+\end{document}

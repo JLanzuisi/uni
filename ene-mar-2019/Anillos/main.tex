@@ -1,0 +1,47 @@
+\documentclass[b5paper,draft,10pt,fleqn,twoside]{book}
+\input{../../preamble-book.tex}
+
+\begin{document}
+% Pagina de titulo
+\frontmatter
+\includepdf[pages=-]{portada.pdf}
+\clearpage
+% Indice
+\tableofcontents
+% Prefacio
+\include{tex/prefacio} 
+% Introduccion
+\include{tex/introduccion}
+% Numeros normales de pagina
+\mainmatter
+\part{Teoría de Conjuntos}
+\include{tex/tc-s1}
+\part{Teoría de Grupos}
+\part{Teoría de Anillos}
+% Primera seccion
+%\vspace*{5em}
+\include{tex/seccion1-defbasicas}
+% Ejercicios Seccion 1
+\include{tex/ejercicios-sec1}
+% Segunda seccion
+%\vspace*{5em}
+\include{tex/seccion2-ideales}
+% Ejercicios segunda seccion
+\include{tex/ejercicios-sec2}
+% Tercera seccion
+%\vspace*{5em}
+\include{tex/seccion3-homomorfismos}
+%4ta seccion
+\include{tex/seccion4-idelaesprimosmaxi}
+\backmatter
+% Apencides
+%\pagenumbering{alph}
+\appendix
+%% Apendice A
+\include{tex/apendiceA}
+% Referencias
+\printbibliography[
+heading=bibintoc,
+title={Referencias}
+]
+\end{document}

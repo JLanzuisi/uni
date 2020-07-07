@@ -1,0 +1,62 @@
+\input{../Plantillas-Fomato/Tareas/tarea.tex}
+\tcabe{introducción a la teoría de anillos}{Jhonny Lanzuisi 1510759}
+\cabe{int. a la teoría de anillos: tarea 5}
+\begin{document}
+	\thispagestyle{plain}
+\chapter*{Ideales primos y máximos}
+\subsection*{Ejercicio 1}
+	Sea $A$ un anillo conmutativo unitario e $I$ un ideal de $A$. Demuestre
+que si todo elemento de $A - I$ es invertible, entonces $I$ es un ideal
+maximal. Pruebe además que éste es el único ideal maximal de $A$.
+\begin{sol}
+	Veamos primero que $I$ es un ideal maximal, o lo que es equivalente, que $A/I$ es un cuerpo. Primero notemos que si $A$ es unitario entonces $A/I$ es unitario, y su unidad viene dada por $(1+I)$ donde $1$ es la unidad de $A$. Ahora, para todo $a\in A-I$ tenemos que existe $a\inv\in A$, y por lo tanto 
+	\[ (a+I)(a\inv +I) = (a\inv+I)(a+I) = aa\inv+I = 1+I. \]
+	Por la ecuación anterior todo elemento de $A/I$, que sea distinto de $I$, es invertible. Pero esto es lo mismo que decir que $A/I$ es un cuerpo, puesto que $I$ es el cero de $A/I$. Tenemos entonces que $I$ es un ideal maximal como se buscaba.
+	
+	Supongamos ahora que existe un ideal $I'$ de $A$ tal que $A/I'$ es un cuerpo. Como $A/I'$ es un cuerpo, todo elemento no nulo ---es decir, distinto de $I'$--- es invertible, por lo que si tomamos un $a+I'\in A/I'$ existe un $b+I'\in A/I'$ tal que
+	\[ (a+I')(b+I') = (b+I')(a+I') = ab+I' = 1+I'. \]
+	Pero la ecuación anterior implica que para todo $a\in A-I'$ existe su inverso. Como, por hipótesis, todo elemento de $A-I$ es invertible, debemos tener necesariamente que $A-I'=A-I$ y que $I=I'$. Por lo que $I$ es el único ideal principal de $A$. 
+\end{sol}
+\subsection*{Ejercicio 2}
+Sea $A$ un anillo conmutativo con identidad e $I$ un ideal de $A$. Demuestre
+que $I$ es primo si, y solo si, $A/I$ es un dominio entero.
+\begin{sol}
+	Supongamos que $I$ es un ideal primo de $A$. Sean $ab\in I$, entonces ---como $I$ es primo--- se tiene que $a\in I$ o $b\in I$. Pero esto implica que en el siguiente producto
+	\[ (a+I)(b+I) = I \]
+	se tiene $a+I = I$ o $b+I = I$ ---debido a que si $a\in I$ entonces, como $I$ es un ideal, $a+I=I$--- y, como $I$ es el cero de $A/I$, lo anterior nos dice que $A/I$ no tiene divisores de cero, o lo que es lo mismo, que $A/I$ es un dominio entero.
+	
+	Supongamos ahora que $A/I$ es un dominio entero. Entonces en el siguiente producto
+	\[ (ab+I) = (a+I)(b+I) = I \]
+	se tiene que $(a+I) = I$ o $(b+I) = I$. Esto a su vez implica que $a\in I$ o $b\in I$ siempre que $ab\in I$ (debido a que si $ab+I = I$ entonces $ab\in I$) y que $I$ es un ideal primo.
+\end{sol}
+\subsection*{Ejercicio 3}
+	Sea $h\colon A \to B$ un homomorfismo de anillos. Pruebe que la imagen
+inversa de un ideal primo de $B$ es un ideal primo de $A$. 
+\begin{sol}
+	Sea $B'$ un ideal primo de $B$ y $ab\in h\inv(B')$, entonces $h(ab)\in B'$. Como $h$ es un homomorfismo tenemos que $h(ab)=h(a)h(b)$ y $h(a)h(b)\in B'$. Como $B'$ es primo se sigue que $h(a)\in B'$ o $h(b)\in B'$ y esto es lo mismo que decir que $a\in h\inv(B')$ o $b\in h\inv(B')$. 
+	
+	Entonces $ab\in h\inv(B')$ implica que $a\in h\inv(B')$ o $b\in h\inv(B')$, por lo que $h\inv(B')$ es un ideal primo de $A$.
+\end{sol}
+\subsection*{Ejercicio 4}
+	Demuestre que si $A$ es un anillo conmutativo con unidad, entonces todo
+ideal maximal de $A$ es un ideal primo.
+\begin{sol}
+	Si $I$ es un ideal maximal de $A$, entonces $A/I$ es un cuerpo. En particular $A/I$ es un dominio entero, y por el Ejercicio 2 se tiene que $I$ es un ideal primo. 
+\end{sol}
+\subsection*{Ejercicio 5}
+	Sea $A$ un domino entero tal que todo ideal de $A$ es principal. Demuestre
+que todo ideal primo de $A$ distinto de $\{0\}$ es un ideal maximal.
+\begin{sol}
+	Suponemos que $A$ es conmutativo. Sea $P=(p)$ un ideal primo de $A$. Supongamos que existe algún ideal $I = (i)$ de $A$ tal que
+	\[ P \subseteq I \subseteq R, \]
+	es decir, que contenga a $P$. Como el elemento $p \in (p)\subseteq (i)$ se tiene que existe un $v\in A$ tal que $p=vi$ y como $P$ es primo se sigue que $v\in P$ o $i\in P$.
+	
+	Si $i\in P$ entonces se sigue que $I = (i) \subseteq P$ y que $I = P$. Si $v\in P$ entonces existe un $w\in A$ tal que $v=wp$. De donde se sigue que
+	\[ p = vi = wpi \]
+	como $A$ es un dominio entero y $p\neq 0$,
+	\[ 1=wi \]
+	por lo que $i$ es una unidad y $I=(i)=A$.
+	
+	Tenemos entonces que, siempre que tengamos $P \subseteq I \subseteq R$, se sigue que $I=P$ o $I=R$. Por lo que $I$ es maximal.
+\end{sol}
+\end{document}

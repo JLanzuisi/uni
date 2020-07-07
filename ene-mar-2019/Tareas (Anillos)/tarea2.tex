@@ -1,0 +1,140 @@
+\input{../Plantillas-Fomato/Tareas/tarea.tex}
+\cabe{int. a la teoria de anillos: tarea 2}
+\tcabe{int. a la teoria de anillos: tarea 2}{Jhonny Lanzuisi, 1510759}
+\begin{document}
+ \thispagestyle{plain}
+ \chapter*{Isomorfimos y Subanillos}
+\subsection*{ejercicio 1}
+Sea $h: A \rightarrow A'$ un isomorfismo de anillos, demuestre que: 
+\begin{enumerate}
+	\item Si $A$ es un dominio entero, también lo es $A'$.
+	\item Si en $A$ todo elemento no nulo tiene inverso, entonces igualmente ocurre en $A'$.
+\end{enumerate}
+\begin{sol}
+	Veamos la primera proposición. Supongamos entonces que $A$ es un dominio entero y supongamos además que existen $a,b \in A'$, ambos distintos de cero, tales que $ab=0$. Como $h$ es sobreyectiva, han de existir $x,y \in A$, distintos de cero\footnote{Por la inyectividad de $h$}, tales que $h(x) = a$ y $h(y) = b$. Entonces se tiene que
+	\[ h(x)h(y) = h(xy) = 0, \] 
+	pero por la inyectividad de $h$, $xy=0$; lo cual es imposible pues $ A $ es un dominio entero. Finalmente, no existen $a,b \in A'$, ambos distintos de cero, tales que $ab = 0$ y $A'$ es un dominio entero. 
+	
+	Consideremos ahora la segunda proposición y supongamos que todo elemento no nulo de $A$ es invertible. Sea $a \in A'$ distinto de cero, entonces existe un $x \in A$ tal que $h(x)=a$. Como todo elemento de $A$ es invertible, entonces existe $x^{-1}$. Hagamos $ h(x\inv)=b $, entonces
+	\[ ab = h(x)h(x\inv) = h(xx\inv) = h(1_A) = 1_{A'}. \]  
+	El caso de $ ba = 1_{A'} $ se prueba de forma análoga. Por lo tanto, todo $a \in A'$ es invertible. 
+\end{sol} 
+
+\subsection*{ejercicio 2}
+	Sea A un anillo conmutativo con identidad $e$ y sea $f:\Z \rightarrow A$, dada por $f(n)=ne $, para todo $ n \in \Z$. Pruebe que $f$ es un homomorfismo, además demuestre que el siguiente conjunto 
+\[ f(\Z) = \{f(n)\colon n \in \Z \} = \{ne \in A: n \in \Z \}.\]
+es un subanillo de A.
+
+\begin{sol}
+	Veamos primero que $f$ es un homomorfismo. Sean $a,b \in \Z$, entonces 
+	\begin{align*}
+	f(a+b) &= (a+b)e \\
+	&= \underbrace{(e+e+\cdots+e)}_\text{$a+b$ veces} \\
+	&= \underbrace{(e+e+\cdots+e)}_\text{$a$ veces} + \underbrace{(e+e+\cdots+e)}_\text{$b$ veces} \\
+	&= ae + be \\
+	&= f(a) + f(b).
+	\end{align*}
+	Por otro lado, 
+	\begin{align*}
+	f(ab) &= (ab)e \\
+	&= \underbrace{(e+e+\cdots+e)}_\text{$ab$ veces} \\
+	&= \underbrace{(e+e+\cdots+e)}_\text{$a$ veces}\underbrace{(e+e+\cdots+e)}_\text{$b$ veces}  \\
+	&= (ae)(be) \\
+	&= f(a)f(b).
+	\end{align*}
+	Luego, $f\mathpunct{:} \Z \rightarrow A$ es un homomorfismo. 
+	
+	Veamos ahora que el conjunto $f(\Z)$ es un subanillo de $A$. Primero, sean $ n_1,n_2  $ dos enteros, entonces
+	\begin{align*}
+	n_1e+n_2e &= \underbrace{(e+e+\cdots+e)}_\text{$n_1$ veces} + \underbrace{(e+e+\cdots+e)}_\text{$n_2$ veces} \\
+	&= \underbrace{(e+e+\cdots+e)}_\text{$n_1+n_2$ veces} \\
+	&= (n_1+n_2)e.
+	\end{align*}
+	Si $ n \in \Z $ y $ -n $ es su opuesto, entonces es claro que
+	 \[-ne = \underbrace{(-e-e-\cdots-e)}_\text{n veces}\] es un elemento de $f(\Z)$. Por las dos cosas anteriores, $f(\Z)$ es un subgrupo de $A$. 
+	
+	Queda por ver si es cerrado bajo el producto. Sean $ n_1,n_2 \in \Z $, entonces
+	\begin{align*}
+	(n_1e) (n_2e) &= \underbrace{(e+e+\cdots+e)}_\text{$n_1$ veces} \underbrace{(e+e+\cdots+e)}_\text{$n_2$ veces} \\
+	&= \underbrace{(e+e+\cdots+e)}_\text{$n_1n_2$ veces} \\
+	&= (n_1n_2)e
+	\end{align*}
+	y tenemos que $f(\Z)$ es cerrado bajo el producto. Por todo lo anterior, $f(\Z)$ es un subanillo de $A$.
+\end{sol}
+
+\subsection*{ejercicio 3}
+	Sea $x \in A$, con $A$ un anillo, demuestre que el siguiente conjunto es un subanillo de $A$ \[ c(x) = \{x \in A: ax = xa \}. \]
+\begin{sol}
+	Sean $a,b \in c(x)$, entonces
+	\[ (a-b)x = ax-bx = xa-xb = x(a-b) \]
+	donde las igualdades se siguen la distributividad en $A$ y del hecho de que $a,b \in c(x)$. Se tiene entonces que $(a-b) \in c(x)$. 
+	
+	Veamos ahora que ocurre con el producto. Sean $a,b \in c(x)$, entonces 
+	\[ (ab)x = a(bx) = a(xb) = (ax)b = (xa)b = x(ab) \]
+	de donde $(ab) \in c(x)$. 
+	
+	Por las dos condiciones anteriores queda demostrado que $c(x)$ es un subanillo de $A$.
+\end{sol}
+
+\subsection*{ejercicio 4}
+	Para un conjunto $X \neq \emptyset$,  
+\begin{enumerate}
+	\item Pruebe que el conjunto de partes de $X$, junto con la diferencia simé\-trica y la intersección, es un anillo.
+	\item Halle un subanillo de partes de $X$ que sea isomorfo a $\Z$ o a $\Z_p$ con $p$ primo.
+\end{enumerate}
+	
+	\begin{sol}
+		Veamos primero que el conjunto $\mathcal{P}(X)$ es un anillo con las operaciones dadas. Comencemos con que es un grupo abeliano con la diferencia simétrica. 
+		
+		Primero que nada, es evidente que $\mathcal{P}(X) \neq \emptyset$ dado que $\emptyset \in \mathcal{P}(X)$. Ahora, sean $A,B,C \in \mathcal{P}(X)$, entonces 
+		\begin{align*}
+		A \tri B &= (A-B) \cup (B-A) \\
+				 &= \{ x \in X: (x \in A \; \text{y} \; x \notin B) \; \text{o} \; (x \in B \; \text{y} \; x\notin A ) \}. 
+		\end{align*}
+		Como $A,B \in \mathcal{P}(X)$, necesariamente $A - B$ y $B - A$ también lo están; de donde se sigue que $A \tri B$ esta en $\mathcal{P}(X)$. 
+		
+		Por otro lado, usando la doble contención, se puede ver que 
+		\[ (A \tri B) \tri C = A \tri (B \tri C), \]
+		de donde la diferencia simétrica es asociativa. 
+		
+		El conjunto $\emptyset$ es el elemento neutro, en efecto
+		\[ A \tri \emptyset = (A - \emptyset) \cup (\emptyset - A) = A \cup \emptyset = A, \] y también,
+		\[ \emptyset \tri A = (\emptyset \tri A) \cup (A \tri \emptyset) = \emptyset \cup A = A. \] 
+		
+		En lo que respecta a los inversos, cada elemento es su inverso, como se puede ver por
+		\[ A \tri A = (A-A) \cup (A-A) = \emptyset \cup \emptyset = \emptyset \]
+		por último, la conmutatividad viene dada por
+		\[ A \tri B = (A-B) \cup (B-A) = (B-A) \cup (A-B) = B \tri A. \]
+		Con todo lo anterior, el conjunto $\mathcal{P}(X)$ con la diferencia simétrica es un grupo abeliano. 
+		
+		Veamos ahora que ocurre con la intersección en $\mathcal{P}(X)$. Este conjunto es cerrado bajo la interseccion, en efecto, sean $A,B,C \in \mathcal{P}(X)$ como antes, se tiene que 
+		\[ A \cap B = \{x \in X: x \in A \wedge x \in B \} \subset X \rightarrow (A \cap B) \in \mathcal{P}(X). \]
+		Como la intersección de dos conjuntos siempre es asociativa, en particular lo es para elementos en $\mathcal{P}(X)$. 
+		
+		Por ultimo, veamos que la intersección se distribuye respecto de la diferencia simétrica
+		\begin{align*}
+		(A \tri B) \cap C &= ((A - B) \cup (B - A)) \cap C \\
+		&= ((A-B) \cap C) \cup ((B-A) \cap C) \\
+		&= ((A \cap C) - (B \cap C)) \cup ((B \cap C) - (A \cap C)) \\
+		&= (A \cap C) \tri (B \cap C).
+		\end{align*}
+		En el caso de $C \cap (A \tri B)$ se procede de forma análoga. Y por todo lo dicho anteriormente, el conjunto $\mathcal{P}(X)$ con la diferencia simétrica y la intersección es un anillo. 
+		
+		Consideremos ahora la parte 2. Sea $A\in \Px$, y tomemos el siguiente conjunto
+		\[ \mathcal{C} = \{ A,\emptyset \}. \]
+		
+		Entonces $\mathcal{C}$ es un subanillo de $\Px$, más aún, $\mathcal{C}$ es isomorfo a $\Z_2$.
+		
+		Veamos primero que $\mathcal{C}$ es un subanillo de $\Px$, esto no es muy complicado debido a que
+		\[ A \tri \emptyset = A \quad \text{y} \quad  A \cap \emptyset = \emptyset \cap A = \emptyset. \]
+		
+		Por otro lado, para ver que $\mathcal{C}$ es isomorfo a $\Z_2$ solo hace falta considerar la función, $\phi: \Px \to \Z_2$, definida por
+		\[ \phi(\emptyset) = 0 \quad \text{y} \quad \phi(A) = 1. \]
+		
+		El que $\phi$ es biyectiva es  inmediato. Solo queda ver que $\phi$ es en efecto un homomorfismo:
+		
+		\[ \phi (A \tri \emptyset) = \phi (A) = 1 = 1+0 = \phi(A) + \phi(\emptyset) \]
+		y
+		\[ \phi(A \cap \emptyset) = \phi(\emptyset) = 0 = 01 = \phi(\emptyset)\phi(A). \]
+	\end{sol}
+\end{document}

@@ -1,0 +1,83 @@
+\input{../Plantillas-Fomato/Tareas/tarea.tex}
+\cabe{cálculo ii: primer problemario}
+\tcabe{cálculo ii}{Jhonny Lanzuisi 1510759}
+\begin{document}
+\thispagestyle{plain}
+\chapter*{Primer Problemario}
+\subsection*{Ejercicio 1}
+	Decimos que una aplicación lineal $T : \Rn \rightarrow \Rn$ conserva la norma si $||T(x)|| = ||x||$ y que conserva el producto interno si $\langle T(x),T(y) \rangle = \langle x,y \rangle$. Demostrar que $T$ conserva la norma si, y solo si, $T$ conserva el producto interno.
+	\begin{sol}
+		Supongamos primero que $T$ conserva el producto, entonces tenemos que $\langle T(x),T(y) \rangle = \langle x,y\rangle $ para todo $x,y \in \Rn$. Pero, en particular, haciendo $y=x$ obtenemos
+		$$ \langle T(x),T(x)\rangle  = \langle x,x\rangle  \rightarrow \langle T(x),T(x)\rangle ^{1/2} = \langle x,x\rangle ^{1/2} \rightarrow ||T(x)|| =||x||$$
+		y tenemos entonces que $T$ preserva la norma.
+		
+		Supongamos ahora que $T$ conserva la norma. Notemos que, para todo $x,y \in R^n$,
+		\[ ||x+y||^2 = ||x||^2 + 2 \langle x,y \rangle + ||y||^2. \tag{1} \]
+		De la misma forma,       
+		\[ ||T(x)+T(y)||^2 = ||T(x)||^2 + 2 \langle T(x),T(y) \rangle + ||T(y)||^2, \tag{2} \]
+		pero como $T$ es lineal se tiene necesariamente que $||T(x) + T(y)|| = ||T(x+y)||$.Por otro lado, como $T$ preserva la norma, se sigue que $||T(x+y)||= ||x+y||$. 
+		
+		Juntando las dos cosas anteriores se tiene que $||T(x) + T(y)|| = ||x+y||$. Usando lo anterior podemos igualar (1) y (2), obtenemos entonces que
+		\[||x||^2 + 2 \langle x,y \rangle + ||y||^2 =  ||T(x)||^2 + 2 \langle T(x),T(y) \rangle + ||T(y)||^2.\tag{3} \]
+		Pero $T$ preserva la norma y entonces $||T(x)|| = ||x||$ y $||T(y)|| = ||y||$. Por lo que de (3) se obtiene, finalmente,
+		$$ 2 \langle x,y \rangle =  2 \langle T(x),T(y) \rangle \; \rightarrow \; \langle x,y \rangle = \langle T(x),T(y) \rangle$$
+		y tenemos que $T$ preserva el producto.
+	\end{sol}
+
+\subsection*{Ejercicio 2}
+	\begin{sol}
+		Empecemos estudiando las derivadas parciales de $f$, usando la definición tenemos que 
+		$$\pd{f}{x}(0,0) = \li{x}{0} \frac{f(x,0) - f(0,0)}{x} = \li{x}{0} \frac{0}{x} = 0,$$
+		de la misma manera se obtiene que  
+		$$\pd{f}{y}(0,0) = \li{y}{0} \frac{f(0,y) - f(0,0)}{y} = \li{y}{0} \frac{0}{y} = 0.$$
+		Por lo tanto, si $f$ fuese diferenciable debería ocurrir que el
+		\small
+		$$ \lim_{(x,y) \rightarrow (0,0)} \frac{f(x,y) - f(0,0) - [\frac{\partial f}{\partial x}(0,0)](x-0) - [\frac{\partial f}{\partial y}(0,0)](y-0)}{||(x-0,y-0)||} = 0,$$
+		\normalsize
+		o lo que es lo mismo, que el
+		$$  \lim_{(x,y) \rightarrow (0,0)} \dfrac{f(x,y)}{||(x,y)||} = 0.$$
+		Pero el
+		$$ \lim_{(x,y) \rightarrow (0,0)} \dfrac{f(x,y)}{||(x,y)||} =  \lim_{(x,y) \rightarrow (0,0)} \dfrac{xy^2}{(x^2+y^2)^{3/2}}.$$
+		Este último límite no existe. En efecto, consideremos el limite al aproximarnos por la recta $x=0$
+		$$\lim_{y \rightarrow 0} \frac{0y^2}{(0^2+y^2)^{3/2}} = 0.$$
+		Por otra parte, si nos aproximamos por la recta $y=mx$ obtenemos que
+		\begin{align*} 
+		\lim_{x \rightarrow 0} \frac{x(mx)^2}{(x^2+(mx)^2)^{3/2}} &= \lim_{x \rightarrow 0} \frac{x^3m^2}{(x^2(m^2+1))^{3/2}} \\ 
+		&= \lim_{x \rightarrow 0} \frac{x^3m^2}{x^3(m^2+1)^{3/2}} \\ 
+		&= \frac{m^2}{(m^2+1)^{3/2}} 
+		\end{align*} 
+		que es distinto de cero, para todo $m \neq 0$. Por lo que el limite no existe y $f$ no es diferenciable en $(0,0)$.
+	\end{sol}
+\subsection*{Ejercicio 3}	
+	\begin{sol}
+		Utilizando la regla de la cadena, tenemos que 
+		\[ \pd{g}{s} = \pd{f}{x}\pd{x}{s} + \pd{f}{y} \pd{y}{s}. \tag{$\star$} \]
+		Tomando en cuenta que
+		\[ \pd{x}{s} = 1 \quad \text{y} \quad \pd{y}{s} = 1  \] 
+		entonces ($\star$) se convierte en
+		\[ \pd{g}{s} = \pd{f}{x} + \pd{f}{y}. \]
+		Por la regla de la cadena, igual que antes, calculamos
+		\begin{align*} \pdx{g}{t}{s} &= \pd{}{t}\left(\pd{f}{x}\right) + \pd{}{t}\left(\pd{f}{y}\right) \\
+		&= \pds{f}{x} \pd{x}{t} + \pds{f}{y}\pd{y}{t},					 
+		\end{align*}
+		pero 
+		\[ \pd{x}{t} = 1 \quad \text{y} \quad \pd{y}{t} = -1 \]
+		por lo tanto 
+		\[ \pdx{g}{t}{s} = \pds{f}{x} - \pds{f}{y}. \]
+	\end{sol}
+
+\subsection*{Ejercicio 4}
+\begin{sol}
+	Como $f$ es continua en $a$, sabemos que existe un $\delta$ tal que, para todo $\epsilon > 0$, se tiene que 
+	$$ ||x-a|| < \delta \rightarrow |f(x) - f(a)| < \epsilon.$$
+	Esta n-bola, de radio $\delta$ y centrada en $a$, es la buscada. En efecto, para todos los $x$ en esta n-bola sabemos que
+	$$ -\epsilon < f(x) - f(a) < \epsilon,$$
+	de donde se sigue que
+	$$ -\epsilon + f(a) < f(x) < \epsilon + f(a).$$ 
+	Tomando $\epsilon = \dfrac{|f(a)|}{2}$ tenemos que   	
+	\[ -\frac{|f(a)|}{2} + f(a) < f(x) < \frac{|f(a)|}{2} + f(a). \tag{$\ast$} \]
+	Si $f(a) > 0$ entonces el $|f(a)| = f(a)$ y se tiene que, de $(\ast)$,
+	$$ \frac{f(a)}{2} < f(x) < \frac{3f(a)}{2} $$
+	de donde se sigue claramente que $f(x) > 0$. Ahora, si $f(a)<0$ entonces el $|f(a)| = -f(a)$ y sustituyendo en ($\ast$) obtenemos que $f(x)$ queda acotado por dos expresiones negativas, luego $f(x) <0$. 
+\end{sol}
+\end{document}

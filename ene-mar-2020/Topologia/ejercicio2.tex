@@ -1,0 +1,107 @@
+\documentclass[mid,fleqn,final,oneside]{tareas}
+\clase{topología i}
+\DeclareMathOperator{\id}{id}
+\renewcommand{\theteo}{\arabic{teo}}
+\begin{document}
+\chapter{Segundo Ejercicio}
+\reversemarginpar\identi{Jhonny Lanzuisi}{15\,10759}
+\vspace{-.1em}
+\section*{Enunciado\footnotemark}
+\footnotetext{Ejercicio 4, pag. 109 del Munkres.}
+Sean $X,Y$ dos conjuntos. Dados $x_0\in X$ y $y_0\in Y$, entonces las funciones $f:X\to X\times Y$ y 
+$g: Y\to X\times Y$ definidas por
+\[
+	f(x)=(x,y_0)\quad\text{y}\quad g(y)=(x_0,y)
+\]
+son \emph{inclusiones}.
+
+\section*{Solución}
+
+La función $f$ es inyectiva puesto que
+\[
+f(x_1)=f(x_2)
+\]
+implica
+\[
+(x_1,y_0)=(x_2,y_0)
+\]
+y esto, por definición del producto cartesiano, implica
+que $x_1=x_2$. Un razonamiento análogo nos dice que la
+función $g$ también es inyectiva.
+
+Entonces, si restringimos el rango de $f$ y $g$ a sus
+imágenes directas obtenemos dos funciones $f',g'$
+biyectivas. Para ver que $f,g$ son inclusiones solo
+hace falta ver que $f',g'$ y sus inversas son
+continuas.
+
+Para ver que $f'$ es continua, notemos que esta función
+se puede escribir de la forma
+\[
+f'=(\id_X,\gamma),
+\]
+donde $\id_X$ es la identidad de $X$ y $\gamma:X\to Y$ 
+es la función constantemente igual a $y_0$.
+
+Entonces la continuidad de $f'$ se sigue de la
+continuidad de estas dos funciones\footnote{Véase el teorema 2\cite{cont:funccoord}}. Un argumento
+análogo sirve para la función $g'$ y por lo tanto
+$f',g'$ son ambas continuas.
+
+Al igual que antes, una vez que veamos que $f'^{-1}$ es
+continua un argumento completamente análogo nos dará
+como resultado que $g'^{-1}$ es continua. Para ver la
+continuidad de $f'^{-1}$ notemos que esta función esta
+dada, al fijar un $y_0\in Y$, por
+\[
+f'^{-1}=\pi	
+\]
+donde $\pi$ es la proyección canónica de $X\times\left\{ y_0 \right\}$
+
+sobre $X$. Entonces la continuidad de $f'^{-1}$ se
+sigue de la continuidad de $\pi$\footnote{Véase el teorema~\ref{cont:proy}}.
+
+Tenemos entonces que $f',g'$ y sus inversas son
+continuas, por lo que $f,g$ son inclusiones.
+
+\begin{obs}
+	El hecho de que $f,g$ son inclusiones se puede ver de forma `geométrica' si imaginamos un plano en el que el conjunto $X$ y el cojunto $Y$ forman ejes perpendiculares. Entonces la función $f$ envía a $X$ en \emph{líneas horizontales} de `altura' $y_0$. Análogamente, $g$ envía a $Y$ en \emph{líneas verticales} cuya `distancia del orígen' es $x_0$.
+\end{obs}
+\section*{Resultados Utilizados}
+
+\begin{teo}
+	Las proyecciones sobre la primera y la segunda componente $\pi_1,\pi_2$ ---definidas en el producto cartesiano $X\times Y$--- son funciones continuas.	
+\end{teo}
+
+\begin{proof}[Grosso modo]
+	Si $U$ es abierto entonces su imágen inversa $\pi_1^{-1}(U)$ es el conjunto $U\times Y$ que es abierto en $X\times Y$. De igual forma $\pi_2^{-1}(V)=X\times V$ es abierto.
+\end{proof}
+
+\begin{teo}
+Sea $f:A\to X\times Y$ una función dada, para cada $a\in A$, por
+\[
+	f(a)=(f_1(a),f_2(a)).
+\]
+Entonces $f$ es \emph{continua} si, y solo si, las funciones
+\[
+	f_1:A\to X\quad\text{y}\quad f_2:A\to Y 
+\]
+son continuas. 
+\end{teo}
+
+\begin{proof}[Grosso modo]
+	La demostración se basa en que $f$ se puede escribir como
+	\[
+		f_1(a)=\pi_1(f(a))\quad\text{y}\quad
+		f_2(a)=\pi_2(f(a)).
+	\]
+	De donde la continuidad de $f$ implica que $f_1$ y $f_2$ son continuas
+	al ser estas composición de funciones cotinuas, donde $\pi_1,\pi_2$ son las proyecciones en la primera y segunda componente.
+
+	Por otro lado, si $U\times V$ es un elemento básico de la topología en $X\times Y$ entonces la identidad
+	\[
+		f^{-1}(U\times V) = f_1^{-1}(U)\cap f_2^{-1}(V)
+	\]
+	implica que $f$ es continua si $f_1,f_2$ lo son.
+\end{proof}
+\end{document}

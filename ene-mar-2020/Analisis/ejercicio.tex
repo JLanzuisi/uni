@@ -1,0 +1,66 @@
+\documentclass[fleqn,leqno,bigmar,draft]{tareas}
+
+\title{Límites y Continuidad}
+\author{Jhonny Lanzuisi, 15\,10759}
+\Asignatura{Análisis 1}
+
+\begin{document}
+\maketitle
+\marginnote{
+	\begin{abstract}
+		Ejercicio de \AsignaturaN: Límites y continuidad.
+	\end{abstract}
+	\tableofcontents
+}
+
+\section[Enunciado]{Enunciado\footnotemark}
+\footnotetext{En \cite{spivak_calculus_2008}, Capítulo 6, ejercicio 17(d).}
+Sea $f$ una función cuyas discontinuidades son \emph{todas evitables}. Es decir,
+para todo $x$ el $ \lim_{y\to x}f(y) $ existe pero es distinto de $f(x)$. 
+Sea
+\[
+	g(x) = \lim_{y\to x} f(y),
+\]
+demuestre que $g$ es continua.
+
+\subsection{Solución}
+Sea $a$ un punto en el dominio de $g$. Entonces, para todo $x,y\in\mathbb{R}$,
+\begin{align*}
+	\left\lvert x-a \right\rvert &= \left\lvert x-a+y-y \right\rvert\\
+				     &= \left\lvert (y-a) + (x-y) \right\rvert\\
+				     &\leq \left\lvert y-a \right\rvert + \left\lvert x-y \right\rvert\\
+				     &= \left\lvert y-a \right\rvert + \left\lvert y-x \right\rvert.\tag{1}
+\end{align*}
+
+Como $f$ es continua en $a$ y en $x$, dado $\epsilon>0$ existen constantes
+$\delta,\delta'$ (que dependen de $\epsilon$) tales que
+\[
+	(1)\leq\delta+\delta'
+\]
+implica
+\begin{align*}
+	\epsilon>\left\lvert f(y)- \lim_{y\to a} f(y) \right\rvert + \left\lvert f(y)- \lim_{y\to x} f(x) \right\rvert.\tag{2}
+\end{align*}
+
+Pero 
+\begin{align*}
+	(2)&=\left\lvert f(y)- \lim_{y\to a} f(y) \right\rvert + \left\lvert \lim_{y\to x} f(x) - f(y)\right\rvert\\
+	   &>\left\lvert \cancel{f(y)}- \lim_{y\to a} f(y) + \lim_{y\to x} f(x) - \cancel{f(y)}\right\rvert\\
+	   &= \left\lvert  \lim_{y\to x} f(y) - \lim_{y\to a} f(y)\right\rvert\\
+	   &= \left\lvert g(x)-g(a) \right\rvert
+\end{align*}
+
+Y por lo tanto, siempre que
+\[
+	\left\lvert x-a \right\rvert<\delta+\delta'
+\]
+se tendrá que
+\[
+	\left\lvert g(x)-g(a) \right\rvert < \epsilon.
+\]
+Y se tienen entonces que $ \lim_{x\to a} g(x) = g(a)$, por lo que $g$ es continua en todo su dominio (pues $a$ se eligió como un elemento arbitrario del dominio de $g$).
+\printbibliography[
+heading=bibintoc,
+title={Referencias}
+]
+\end{document}

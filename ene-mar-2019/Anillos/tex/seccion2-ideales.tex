@@ -1,0 +1,288 @@
+%\input{../../Plantillas-Fomato/Libros/Libro-Anillos.tex}
+\chapter{Ideales}
+\epigraph{Las matemáticas son el arte de darle el mismo nombre a cosas distintas}{henri poincaré}
+{\noindent En esta sección estudiaremos un tipo de subanillos, llamados ideales, que poseen una mayor cerradura en su estructura multiplicativa. }
+
+\begin{nota}
+	La palabra \textit{ideal} proviene de los \textit{números ideales} desarrollados por Ernst Kummer
+\end{nota}
+\begin{defi}[ideal]
+		Sea $\id i$ un subconjunto, no vació, de un anillo $\an A$. Entonces $\id i$ es un {\it ideal a ambos lados} si, y solo si,
+		\[a,b \in \id i \;\text{implica que}\; a-b \in \id i\]
+		y; 
+		$r \in \an A$ y $a \in \id i$ implica que los productos $ra$ y $ar$ están en $\id i$ 
+\end{defi} 
+\begin{nota}
+	Los ideales fueron propuestos por primera vez en 1876 por Richard Dedekind\footnotemark en la tercera edición de su libro ` Vorlesungen über Zahlentheorie'
+\end{nota}
+\footnotetext{Dedekind fue un matemático alemán, conocido por sus aportes al álgebra abstracta, la definición de los números reales, la teoría de números algebraica; por nombrar algunos.}
+%
+Si la segunda condición ---de la definición anterior--- se debilita un poco y pedimos solamente que $ra \in\id i$, obtenemos la noción de un {\it ideal a la izquierda}. La noción de {\it ideal a la derecha} se define de forma simétrica.
+
+A partir de ahora adoptaremos la convención de llamar ideal, sin mas, a los ideales a ambos lados. 
+
+Antes de continuar, algunos ejemplos:
+	\begin{ejem} 
+			Consideremos el anillo $n\Z$. Es fácil ver que este anillo es un ideal de $\Z$ (por ejemplo, considere el caso de $2\Z$, los pares).
+	\end{ejem} 
+	\begin{ejem} 
+			Consideremos el anillo formado por las funciones que van de un conjunto $X$, no vació, a un anillo $\an A$. Entonces el conjunto $\id{f}_x$, de todas las funciones que se anulan en $x$, es un ideal.
+			
+			En efecto, tomemos $f$ y $g$ en $\id f_x$ y $h\mathpunct{:} X \to\an A$ una función. Entonces,
+			\[ (f-g)(x) = f(x) - g(x) = 0 - 0 = 0, \]
+			y también
+			\[ (fh)(x) = f(x)h(x) = 0h(x) = 0, \]
+			y, de forma similar, $(hf)(x) = 0$. Y tenemos que $\id f_x$ es un ideal.
+	\end{ejem} 
+%
+\section{Ideales propios}
+	\begin{ejem} 
+	Los subanillos $\an{\{0\}}$ y $\an A$ son ideales. Un ideal $\id i$ es {\it propio} cuando $\id i \neq\an A$. El ideal $\{0\}$ es llamado el {\it ideal trivial} y se denota por $\id 0$.
+\end{ejem} 
+Damos ahora un resultado que, aunque parezca simple, sera muy útil más adelante.
+\begin{teo}  
+		Si $\id i$ es un ideal propio (a izquierda o derecha, o ambos) de un anillo unitario $\an A$, entonces ningún elemento de $\id i$ posee un inverso multiplicativo, es decir, $\id i \cap \an A^{\t} = \emptyset$.
+\end{teo}
+\begin{nota}
+	La idea de la demostración es que, al haber un elemento invertible en $I$, la cerradura fuerza a que $I=A$.
+\end{nota}
+\begin{proof} 
+	Sea $I$ un ideal de $A$ y supongamos que existe un $a \in I$, no nulo, tal que su inverso $a^{-1}$ existe en $A$. Como $I$ es cerrado bajo la multiplicación por cualquier elemento de $A$, se sigue que $aa^{-1}=1 \in A$. Luego, $I$ contiene a $r = r1$ para todo $r \in A$; es decir, $A \subseteq I$, y tenemos la igualdad $I=A$. Esto contradice el hecho de que $I$ era un ideal propio.
+\end{proof}
+%
+Nótese que también hemos establecido el siguiente corolario.
+\begin{cor} 
+		En un anillo con identidad, ningún ideal propio contiene a la identidad.
+\end{cor} 
+%
+El siguiente ejemplo, que nos dará una caracterización para todos los ideales del anillo de matrices reales, es muy interesante. Veremos que \textit{este anillo no posee ideales propios}. 
+
+\begin{nota}
+	El álgebra matricial\ldots ¡Que pesadilla!
+\end{nota}
+\begin{ejem} 
+		Consideremos el anillo $M_{n}(\R)$, de matrices $n\t n$ con entradas reales. Sea $E_{ij}$ la matriz, $n\t n$, que tiene $1$ en el lugar $ij$ y cero en el resto de lugares. 
+		Supongamos que $I \neq \{0\}$ es un ideal de $M_{n}(\R)$. Entonces $I$ posee al menos una matriz $(a_{ij})$, con $a_{rs} \neq 0$. Como $I$ es un ideal se tiene que el producto 
+		\[ E_{rr}(b_{ij})(a_{ij})E_{ss} \]
+		es un miembro de $I$, donde la matriz $(b_{ij})$ es escogida para tener el elemento $a_{rs}^{-1}$ en su diagonal principal y ceros en todos los demás sitios. Es fácil verificar que este producto es igual a $E_{rs}$. Teniendo esto en cuenta, la relación
+		\[ E_{ij} = E_{ir}E_{rs}E_{sj} \quad (i,j = 1,2,\dots,n) \]
+		implica que todas la matrices $E_{ij}$, en total $n^2$ de ellas, están contenidas en $I$. La parte crucial es que la matriz identidad, $(\delta_{ij})$, se puede escribir como
+		\[ (\delta_{ij})  = E_{11} + E_{22} + \dots + E_{nn}, \]
+		de donde se sigue que $(\delta_{ij}) \in I$ y, por el corolario anterior, $I = M_{n}(\R)$. Así, $M_{n}(\R)$ no posee ningún ideal propio.
+\end{ejem}
+%
+Discutiremos ahora maneras de conseguir ideales nuevos a partir de los que ya tenemos. Para empezar con algo sencillo,
+
+ \begin{teo}\label{interideales} 
+ 		Sea $\{I_i\}$ una colección arbitraria de ideales de un anillo $A$, donde $i$ toma valores en un índice de $A$. Entonces $\bigcap I_i$ es también un ideal de $A$. 
+ \end{teo} 
+\begin{nota}
+	¿Será un ideal la $\bigcup I_i$?
+\end{nota}
+\begin{proof} Por el ejercicio~\ref{ejerintsub} sabemos que la intersección de los $I_i$ es un subanillo. Queda por ver que pasa con la cerradura bajo el producto.
+	
+	Sean $x\in \bigcap I_i$ y $a\in A$, entonces el producto $ax \in I_i$ para cada $i$, puesto que los $I_i$ son ideales de $A$. Por el mismo argumento $xa \in I_i$ para cada $i$.
+\end{proof}
+%
+\section{Ideal generado y principal}
+Podemos pensar también en el ideal \textit{generado} por un subconjunto de un anillo. 
+\begin{defi}[ideal generado] 
+	Sea $A$ un anillo y $S \subseteq A$. El ideal generado por $S$, y denota por $\lvert\id s\rvert$, se define como la intersección de todos los ideales de $A$ que contienen a $S$. 
+\end{defi} 
+\begin{nota}
+	Al lector acostumbrado al álgebra lineal, le será imposible no pensar en la definición de \textit{subespacio generado}.
+\end{nota}
+%
+Notemos que la colección de ideales que contienen a $S$ no es vacía, debido a que el propio anillo $A$ es un ideal que contiene a $S$. Por el teorema~\ref{interideales} tenemos que $(S)$ es un ideal. Vale la pena mencionar que, debido a la definición de $(S)$, este es el ideal más pequeño que contiene a $S$.
+
+Si $S$ es finito, digamos que $S=\eb{a_1,\dots,a_n}$, entonces el ideal generado por $S$ se denota comunmente por $(a_1,\dots,a_n)$. Un ideal $(a)$ generado por un solo elemento recibe el nombre de \textit{ideal principal}.
+
+Vale la pena pensar en los ideales laterales generados por un solo elemento de $A$. El ideal derecho generado por $a$ es llamado un \textit{ideal derecho principal}, denotado por $(a)_r$, y definido como 
+\[ (a)_r = \{ ar + na\mid r \in A; \, n \in \Z \}. \]
+
+Cuando el anillo $A$ es unitario, la definición anterior se reduce a todos los múltiplos a la derecha de $a$ por elementos en $A$, es decir,
+\[ (a)_r = aA = \{ ar \mid r\in A \}. \]
+Es evidente que una construcción análoga a la anterior de puede hacer para definir el \textit{ideal principal izquierdo} $(a)_l$.
+
+Si consideremos ahora al ideal a ambos lados $(a)$, la situación es más complicada. En este caso tenemos que, para todo $r,s \in A$ y $n \in \Z$,
+\[ (a) = \{ na + ra + as + \sum_{\text{finita}} r_ias_i \}. \]
+En el caso de que $A$ sea unitario, la definición anterior se reduce al conjunto de todas las \textit{sumas finitas} de la forma $\sum r_ias_i$.
+
+Con todo lo anterior podemos definir un nuevo tipo de anillo.
+
+
+\begin{defi}[anillo principal ideal] 
+	Una anillo $A$ es un \textit{anillo principal ideal} si cada ideal $I$ de $A$ es de la forma $I=(a)$ para algún $a \in A$
+\end{defi} 
+%
+Ejemplos de este tipo de anillo nos los da el siguiente
+\begin{teo} 
+	El anillo $\Z$ de los enteros es un anillo principal ideal; en efecto, si $I$ es un ideal de $\Z$, entonces $I=(n)$ para algún entero $n$ no negativo.
+\end{teo} 
+\begin{proof}
+	Si $I=0$ entonces el teorema es trivialmente cierto, pues el ideal $0$ es el ideal generado por el elemento $0 \in \Z$. Suponemos entonces que $I \neq 0$. Ahora, si $m \in I$, entonces $-m$ también, y el conjunto $I$ tiene enteros positivos. Sea $n$ el menor entero positivo en $I$. Como $I$ es un ideal, cada múltiplo entero de $n$ debe pertenecer a $I$, y por lo tanto $(a) \subseteq I$.
+	
+	Para ver la otra inclusión, $I \subseteq (n)$, sea $k$ un elemento arbitrario de $I$. Por el algoritmo de la división, existen enteros $q$ y $r$ tales que $k = qn+r$, con $0 \leq r \leq n$. Como $k$ y $qn$ son ambos miembros de $I$ se sigue que $r = k-qn \in I$. Si $r>0$, tendríamos una contradicción con el hecho de que $n$ es el menor entero positivo de $I$, por lo tanto $r = 0$ y $k = qn \in (n)$. Se tiene entonces que solo múltiplos de $n$ pertenecen a $I$, por lo que $I \subseteq (n)$. La doble inclusión demuestra que $I=(n)$.
+\end{proof}
+%
+\section{Operaciones con ideales}
+Consideraremos ahora operaciones binarias con los ideales. Dada una cantidad finita de ideales $I_1,I_2,\dots,I_n$ de un anillo $A$, definimos su suma de la forma natural:
+\[ I_1+I_2+\cdots+I_n = \{ a_1+a_2+\dots+a_n \mid a_i \in I_i \}. \]
+
+Se tiene que $I_1+I_2+\dots+I_n$ es también un ideal ({\it verifíquese}) y, más aún, es el ideal más pequeño que contiene a todos los $I_i$.
+
+De una forma mas general, sean los $\{I_i\}$ una colecciones arbitraria, indexada, de ideales de $A$. Entonces tenemos que la 
+\[ \sum I_i = \left\{ \sum_{\text{finita}} a_i \mid a_i \in I \right\}. \]
+Cabe destacar que, aunque $\{I_i\}$ sea una cantidad infinita de ideales, solo se toman \textit{sumas finitas} en la definición anterior.
+
+Podría ocurrir el que caso de que $A = I_1+I_2+\cdots+I_n$, entonces ocurriría que, para todo $x\in A$, $x = a_1+a_2+\cdots+a_n$ con $a_i \in I_i$. Lo que no se puede garantizar es que esta representación de $x$ sea \textit{única}; para esto, necesitamos la siguiente definición.
+\begin{defi}[suma directa interna] 
+	Sean $I_1,I_2,\cdots,I_n$ ideales de $A$. Llamamos a $A$ la \textit{suma directa interna} de $I_1,I_2,\cdots,I_n$, denotado por $A = I_1 \oplus I_2\oplus \cdots \oplus I_n$, siempre que
+	\[ A = I_1+I_2+\cdots+I_n \]
+	y 
+	\[ I_i \cap (I_1+I_2+\cdots+I_{i-1}+I_{i+1}+\cdots+I_n) = \{0\} \]
+	para todo $i$.
+\end{defi} 
+\begin{nota}
+	No casualmente esta definición recuerda a su equivalente para espacios vectoriales. El lector familiarizado con la teoría de espacios vectoriales notará que la diferencia esta en la condición 2.
+\end{nota}
+Con la definición anterior podemos demostrar el siguiente teorema.
+\begin{teo}
+	Sean $I_1,I_2,\cdots,I_n$ ideales de $A$. Las siguientes proposiciones son equivalentes:
+	\begin{enumerate}
+		\item $A$ es la suma interna directa de los $I_1,I_2,\cdots,I_n$ 
+		\item Cada elemento $x\in A$ se puede expresar de forma única como
+		\[ x = \dt{a}{+} \quad (a_i\in I_i). \]
+	\end{enumerate}
+\end{teo} 
+\begin{nota}
+	Si el lector tiene dificultad para seguir esta demostración, haga primero el caso $n=2$ y de allí verá como es el caso general.
+\end{nota}
+\begin{proof}
+	Empecemos asumiendo que se cumple 1, es decir, que $A = \dt{I}{\oplus}$. Supongamos que $x$ posee $2$ representaciones,
+	\[ x = \dt{a}{+} = \dt{b}{+} \]
+	donde $a_i,b_i\in I_i$. Entonces de esta igualdad se sigue que
+	\[ a_1 - b_1 = (a_2-b_2) + (a_3 - b_3) + \cdots + (a_n - b_n) \]
+	pero el lado izquierdo de la igualdad es un elemento en $I_1$ mientras que el lado derecho es un elemento en $I_2+I_3+\cdots+I_n$. Osea que ambos lados pertenecen a $I_1 \cap (I_2+I_3+\cdots+I_n) = 0$, de donde se sigue que $a_1-b_1 = 0$. De forma análoga tenemos que 
+	\[ a_2 - b_2 = (a_1-b_1) + (a_3 - b_3) + (a_4-b_4) +\cdots + (a_n-b_n) \]
+	y, por lo mismo que antes, ambos lados de la igualdad pertenecen a $I_2 \cap (I_1+I_3+I_4+\cdots+I_n)=0$ y entonces $a_2-b_2 = 0$.
+	
+	Repitiendo este argumento $n$ veces obtenemos 
+	\[ a_1-b_1 = a_2-b_2 = \cdots = a_n-b_n = 0 \]
+	de donde se sigue, claramente, 
+	\[ a_1 = b_1,\, a_2=b_2,\, \cdots,\, a_n=b_n \]
+	y queda demostrado que $x$ posee una representación única.
+	
+	Asumamos ahora que se cumple 2, es decir, que $x$ se escribe de forma única con respecto a los $\dt{I}{,}$. Supongamos que \[x\in \{I_i \cap (I_1+I_2+\cdots+I_{i-1}+I_{i+1}+\cdots+I_n)\}\] para algún $1 \leq i \leq n$. Entonces podemos expresar a $x$ de dos formas distintas, a saber, $x = 0+\cdots+x+\cdots+0$ donde $x$ esta en la posición $i$, y $x = x + 0 +\cdots + 0$ donde $x$ esta en cualquier posición que no sea $i$. Como la representación de $x$ es única, llegamos a la conclusión de que $x = 0$. Por último, como el argumento anterior se hizo para todo $1 \leq i \leq n$, tenemos que \[I_i \cap (I_1+I_2+\cdots+I_{i-1}+I_{i+1}+\cdots+I_n) = 0\] y que $A = \dt{I}{\oplus}$.
+\end{proof}
+%
+Si antes consideramos la suma de ideales, es natural pensar ahora en su \textit{producto}. Supongamos que $I$ y $J$ son ideales de un anillo $A$, entonces su producto viene definido por 
+\[ IJ = \left\{\sum_{\text{finita}} a_ib_i \mid a_i\in I, b_i\in J \right\}. \] 
+\begin{nota}
+	De haber definido el producto como la colección, más simple, de productos de la forma $ab$ (con $a\in I$ y $b\in J$) obtendríamos un conjunto que falla en ser un ideal (\textit{¿Por qué?})
+\end{nota}
+Con esta definición $IJ$ es un ideal de $A$. En efecto, supongamos que $x,y \in IJ$ y $a\in A$; entonces,
+\begin{align*}
+x &= a_1b_1+a_2b_2+\cdots+a_nb_n \\
+y &= a'_1b'_1+a'_2b'_2+\cdots+a'_mb'_m
+\end{align*}
+donde $a_i,a'_i\in I$ y $b_i,b'_i\in J$. De aquí se sigue que
+\begin{align*}
+x-y &= a_1b_1+\cdots+a_nb_n+(-a'1)b'_1+\cdots+(-a'_m)b'_m \\
+ax &= (aa_1)b_1+(aa_2)b_2+\cdots+(aa_n)b_n.
+\end{align*}
+Como los elementos $-a'_i$ y $aa_i$ necesariamente pertenecen a $I$, entonces tanto $x-y$ como $ax$ (el caso $xa$ se prueba idénticamente) pertenecen a $IJ$; lo cual hace de $IJ$ un ideal de $A$.
+
+No hay dificultad en extender el producto de ideales a una colección finita cualquiera de estos. Sean los $I_1,I_2,\cdots,I_n$ ideales de $A$, entonces podemos definir su producto, $I_1I_2\cdots I_n$, como el conjunto de todas las sumas que tienen como términos $a_1a_2\cdots a_n$ con $a_i\in I_i$.
+
+\begin{nota}
+	Nótese que, debido a la ley asociativa, la notación $I_1I_2\cdots I_n$ no es ambigua.
+\end{nota}
+	En el caso especial que todos los ideales son iguales, digamos que iguales a $I$, tenemos la siguiente noción de potencia
+\[ I^n = \left\{ \sum_{\text{finita}} a_{i1}a_{i2}\cdots a_{in} \mid a_{ik}\in I \right\}. \]
+
+\begin{obs}
+	Si $I$ es un ideal derecho y $S$ es un subconjunto no vacío del anillo $A$, entonces
+	\[ SI = \left\{ \sum_{\text{finita}} a_ir_i \mid a_i\in A; r_i\in I \right\} \]
+	forma un \textit{ideal derecho} de $A$ (\textit{verifíquese}). En particular, si $S=\eb{a}$ entonces $aI$ esta dado por
+	\[ aI = \eb{ar \mid r\in I}. \]
+\end{obs}
+La última operación de ideales que consideraremos es la de \textit{cociente}, dada por la siguiente 
+
+\begin{defi}[cociente]
+	Sean $I$ y $J$ dos ideales de un anillo $A$. 
+	El \textit{cociente derecho (izquierdo)} de $I$ por $J$, denotado por $I:_rJ \, (I:_lJ)$, consiste en todos los elementos $a\in A$ tales que $aJ \subseteq I \, (Ja \subseteq I)$. En el caso de que $A$ sea un anillo conmutativo simplemente escribimos $I:J$.
+\end{defi} 
+No es para nada evidente que el cociente de ideales sea un ideal, se deja como ejercicio al lector una demostración de este hecho.
+
+El propósito del siguiente teorema es conectar la definición anterior con las operaciones de suma y producto.
+
+\begin{nota}
+	En el siguiente teorema, los subíndices $i$ denotan una colección arbitraria de ideales.
+\end{nota}
+\begin{teo} 
+	Las siguientes relaciones se cumple para ideales de un anillo $A$ (las letras mayúsculas indican ideales):
+	\begin{enumerate}
+		\item $ ( \cap I_i )\mathpunct{:}_r J = \cap (I_i\mathpunct{:}_r J)$,
+		\item $I\mathpunct{:}_r \sum J_i = \cap (I\mathpunct{:}_r J_i)$,
+		\item $I\mathpunct{:}_r(JK) = (I\mathpunct{:}_rK)\mathpunct{:}_r J$.
+	\end{enumerate}
+\end{teo} 
+
+\begin{proof}
+	En lo que se refiere a la parte (1), tenemos que
+	\begin{align*}
+	(\cap I_i)\mathpunct{:}_rJ &= \eb{a\in A\mid aJ \subseteq \cap I_i} \\
+	&= \eb{a\in A\mid aJ \subseteq I_i \; \text{para todo $i$}} \\
+	&= \cap \eb{a\in A\mid aJ \subseteq I_i} \\
+	&= \cap (I_i\mathpunct{:}_rJ). 
+	\end{align*}
+	Si consideramos ahora la parte (2), nótese que la inclusión $J_i \subseteq \sum J_i$ implica que $a(\sum J_i) \subseteq I$ si, y solo si, $aJ_i\subseteq I$ para todo $i$; por lo tanto,
+	\begin{align*}
+	I\mathpunct{:}_r\sum J_i &= \eb{a\in A\mid a\left( \sum J_i \right) \subseteq I} \\
+				 &= \eb{a\in A\mid aJ_i \subseteq I \; \text{para todo $i$}} \\
+				 &= \cap \eb{I\mathpunct{:}_rJ_i}.
+	\end{align*}
+	Por último, para la parte (3), tenemos que
+	\begin{align*}
+	I\mathpunct{:}_r(JK) &= \eb{a\in A\mid a(JK) \subseteq I} \\
+			 &= \eb{a\in A\mid (aJ)K \subseteq I} \\
+			 &= \eb{a\in A\mid aJ \subseteq I:_rK} \\
+			 &= (I_rK)\mathpunct{:}_rJ.
+	\end{align*}
+	Y asi queda demostrado el teorema.
+\end{proof}
+Una observación importante es que, si $I$ es un ideal de $A$ y $J$ un ideal de $I$, entonces $J$ no es necesariamente un ideal de $A$. Para ilustrar esto, esta el siguiente ejemplo.
+\begin{ejem}
+	Consideremos el anillo, $A$, de las funciones continuas de $\R \to \R$. Consideremos además los conjuntos
+	\begin{align*}
+	I &= \eb{fi\mid f\in A \;\text{y}\;f(0)=0}, \\
+	J &= \eb{fi^2+ni^2\mid f\in A\;\text{y}\; f(0)=0 \;\text{con}\; n\in \Z}
+	\end{align*}
+	donde $i$ es la función identidad. Un calculo rutinario prueba que $J$ es un ideal de $I$, y este, a su vez, es un ideal de $A$. Sin embargo, $J$ \textit{no} es un ideal de $A$ debido a que, mientras que $i^2\in J$, $\frac{1}{2}i^2\notin J$. El lector podrá verificar esto último.
+\end{ejem} 
+\section{Anillo regular}
+Una condición que nos asegurará que casos como el del ejemplo anterior no ocurran es la de un \textit{anillo regular} dada por la siguiente definición.
+
+\begin{defi}[anillo regular]\label{anilloregular} 
+	Un anillo $A$ es regular si, para cada elemento $a\in A$, existe un $a'\in A$ tal que $aa'a=a$.
+\end{defi}  
+\begin{nota}
+	La noción de anillo regular se la debemos a Von Neumann\footnotemark.
+\end{nota}
+\footnotetext{Von Neumann fue un matemático Americano-Húngaro, conocido por sus aportes en diversos campos de la física, las matemáticas y la computación (A jack of all trades, master of \textit{all}).}
+En el caso de que el elemento $a$ posea un inverso multiplicativo, entonces la condición de regularidad se satisface haciendo $a' = a^{-1}$. En el caso de que $A$ sea conmutativo la condición de regularidad se convierte en $a^2a'=a$.
+\begin{nota}
+	A $a'$ se le llama tambien \textit{pseudoinversa}
+\end{nota}
+El siguiente teorema nos da la ``transitividad'' en los ideales que buscábamos.
+\begin{teo} 
+	Sea $A$ un anillo regular e $I$ un ideal de $A$. Entonces cualquier ideal $J$ de $I$ es también un ideal de $A$.
+\end{teo} 
+\begin{proof}
+	Para comenzar, nótese que el propio $I$ es un anillo regular. En efecto, si $a\in I$, entonces $aa'a=a$ para algún $a'\in A$. Hagamos $b = a'aa'$, es claro que $b$ pertenece a $I$ y posee la propiedad de que
+	\[ aba = a(a'aa')a = (aa'a)a'a = aa'a = a. \]
+	Queremos demostrar que si $a\in J$ y $r\in A$, entonces $ar,ra\in J$. Sabemos que $ar\in I$; entonces, por lo de arriba, existe un $x\in I$ para el cual $arxar=ar$. Como $rxar$ pertenece a $I$ y $J$ es un ideal de $I$, se sigue que el producto $a(rxar)$ pertenece a $J$, o lo que es lo mismo, $ar\in J$. Un argumento análogo se usa para probar que $ra\in J$.
+\end{proof}
+Aunque la definición~\ref{anilloregular} pueda parecer artificial, se puede usar para demostrar que el conjunto de todas las transformaciones lineales, en un espacio vectorial de dimensión finita sobre un cuerpo, forma un anillo regular. Esta aplicación en si misma seria suficiente para justificar la existencia de la definición.
+ 

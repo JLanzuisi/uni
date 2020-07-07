@@ -1,0 +1,862 @@
+%\input{../../Plantillas/Libros/NotasDeClases}
+\documentclass[mid,fleqn,draft,twoside]{notasdeclase}
+
+\newcommand{\inte}[4]{\int_{#1}^{#2} #3\, d#4}
+%\newcommand{\id}[1]{\mathfrak{#1}}
+\newcommand{\an}[1]{\mathbb{#1}}
+\newcommand{\ve}[1]{\bm{#1}}
+\newcommand{\vcsp}[1]{\mathbb{#1}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Mn}[1]{\vcsp M_{n\t n}(\vcsp #1^n)}
+\newcommand{\norm}{\lVert\phantom{a}\rVert}
+\newcommand{\Norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\iprod}{\langle\phantom{x},\phantom{x}\rangle}
+\newcommand{\Iprod}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\Bform}{(\phantom{a},\phantom{a})}
+\newcommand{\bform}[2]{(#1,#2)}
+\newcommand{\inv}{^{-1}}
+\newcommand{\ort}{^\perp}
+\renewcommand{\t}{\times}
+\newcommand{\dt}[2]{#1_1 #2 #1_2 #2 \dots #2 #1_n}
+\newcommand{\Dt}[2]{(#1_1+#2_1)^2 + \dots + (#1_n+#2_n)^2}
+\newcommand{\pd}[1]{\frac{\partial}{\partial #1}}
+\newcommand{\pdd}[2]{\dfrac{\partial #1}{\partial #2}}
+\newcommand{\pds}[2]{\dfrac{\partial^2 #1}{\partial #2^2}} 
+\newcommand{\pdx}[3]{\dfrac{\partial^2 #1}{\partial #2 \partial #3}}
+\newcommand{\der}[1]{\frac{d}{d#1}}
+\newcommand{\pol}[1]{#1_n x^n + #1_{n-1} x^{n-1} + \dots + #1_1 x + #1_0}
+\newcommand{\Zn}{\mathbb{Z}/n\mathbb{Z}}
+\newcommand{\Rn}{\mathbb{R}^n}
+\newcommand{\Fn}{\mathbb{F}^n}
+\newcommand{\Cn}{\mathbb{C}^n}
+\newcommand{\Rm}{\mathbb{R}^m}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Co}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Ha}{\mathbb{H}}
+\newcommand{\ihat}{\mathbb i}
+\newcommand{\jhat}{\mathbb j}
+\newcommand{\khat}{\mathbb k}
+
+\begin{document}
+\frontmatter
+\begin{titlepage}
+\includepdf[pages=-]{portada.pdf}
+\end{titlepage}
+
+%\begingroup
+% a \clearpage will close the group and restore the meaning
+%\let\clearpage\endgroup
+\tableofcontents
+
+\vspace{1em}
+\begin{flushleft}
+	\begin{tabular}[c]{rlr} 
+%	\addlinespace[.5em]
+	\multicolumn{3}{l}{\LARGE Evaluaciones} \\[1.5em]
+	 { 1}er Parcial: & Semana 4 &({30}\%) \\
+	 { 2}do Parcial: & Semana 8 &({35}\%) \\
+	 { 3}er Parcial: & Semana 12 &({35}\%) \\
+\end{tabular}
+
+\end{flushleft}
+%\twocolumn
+\mainmatter
+\setcounter{chapter}{-1}
+\chapter{Preámbulos y Parametrizaciones}
+
+\noindent
+Este capítulo `cero' consiste de nociones básicas que son necesarias para los capítulos siguientes. 
+
+\section{Integrales impropias}
+%\clase{1}{lunes}{16/9}
+
+\begin{defi}[convergencia]
+	Sean $f$ y $g$ funciones reales y continuas en los intervalos $[a,\infty)$ y $[a,b]\setminus c$ respectivamente. Además, $ g(x) \to \pm\infty$ cuando $x\to c$. Entonces
+	\begin{gather}
+		\inte{a}{\infty}{f(x)}{x} = \lim\limits_{b\to\infty}\inte{a}{b}{f(x)}{x} \quad \text{y} \\
+		\inte{a}{b}{g(x)}{x} = \lim\limits_{\beta\to c^{-}}\inte{a}{\beta}{g(x)}{x} + \lim\limits_{\alpha\to c^{+}}\inte{\alpha}{b}{g(x)}{x}.
+	\end{gather}
+	En caso de que los límites anteriores sean distintos de $\pm\infty$ diremos que las funciones convergen. En caso contrario diremos que divergen.
+	
+\end{defi}
+
+\noindent
+La condición, en la definición anterior, de que los limites no sean infinitos es de especial importancia en la ecuación (2). De no pedir esta condición obtendriamos expresiones sin sentido como $a=\infty-\infty$ para todo $a\in\R$.
+
+El siguiente teorema, que tiene una contraparte directa cuando se trata de series infinitas, permitirá determinar si una integral converge o diverge sin la necesidad de calcular dicha integral. Esto es especialmente útil con funciones que no poseen antiderivadas, como $e^{x^2}$.
+
+\begin{teo}[de comparación]
+	Sean $f$ y $g$ dos funciones reales tales que $f(x)\leq g(x)$ para todo $x$ en el intervalo $[a,\infty)$ y, además, continuas en el intervalo abierto $(a,\infty)$. Entonces
+	\begin{enumerate}
+		\item Si $\inte{a}{\infty}{g(x)}{x}$ converge, entonces $\inte{a}{\infty}{f(x)}{x}$ también converge.
+		\item Si $\inte{a}{\infty}{f(x)}{x}$ diverge, entonces $\inte{a}{\infty}{g(x)}{x}$ también diverge.
+	\end{enumerate}
+\end{teo}
+
+Ahora, un ejemplo del teorema de comparación que involucra un función importante en probabilidades: la campana de Gau{\ss} (dada por $e^{-x^2}$).
+
+\begin{ejem}
+	Queremos determinar la convergencia de
+	\[ \inte{0}{\infty}{e^{-x^2}}{x}. \]
+	Compararemos con la función $e^{-x}$ de la cual conocemos bien su comportamiento. Primero notemos que, para todo $x\geq1$, $x^2\geq x$ implica $-x^2\leq -x$. De la última desigualdad se sigue claramente que $e^{-x^2}\leq e^{-x}$, y ya tenemos acotada la función problematica con una función que conocemos bien.
+%		\marginpar{ 
+%		\begin{minipage}{5.5cm}
+%			\begin{figure}[H]
+%				\includegraphics[width=.95\linewidth]{pics/g1}
+%				\caption{Comparacion de $e^{-x^2}$ (linea continua) con $e^{-x}$ (segmentos de linea).}\label{ch0g1}
+%			\end{figure}
+%	\end{minipage}}
+	Ahora, como la convergencia esta determinada por la `cola' de la forma $[a,\infty)$, podemos considerar la convengencia de $e^{-x^2}$ tomando el intervalo $[1,\infty)$. Queda entonces por determinar la convergencia de $e^{-x}$ y luego, por el teorema de comparación, tendremos que $e^{-x^2}$ converge.
+	
+	La convergencia de $e^{-x}$ es sencilla:
+	\begin{align*}
+		\inte{1}{\infty}{e^{-x}}{x} &= \lim\limits_{b\to\infty}\inte{1}{b}{e^{-x}}{x} \\ 
+		&=  \lim\limits_{b\to\infty}  e^{-x} \bigg|^b_1 \\
+		&= e\inv - \lim\limits_{b\to\infty} e^{-b}  \\
+		&= e\inv.
+	\end{align*}
+
+	El argumento anterior puede verse gráficamente en la figura~\ref{ch0g1}.\\
+
+\begin{center}
+			\begin{figure}[H]\centering
+			\includegraphics[width=.6\linewidth]{pics/g1}
+			\caption{Comparacion de $e^{-x^2}$ (linea continua) con $e^{-x}$ (segmentos de linea).}\label{ch0g1}
+		\end{figure}
+\end{center}
+
+\end{ejem}
+\section{Integración respecto a un parámetro}
+%\clase{2}{jueves}{19/9}
+\noindent
+La continuidad uniforme será fundamental para la \emph{integración respecto a un parámetro}, que es una herramienta útil en el cálculo de integrales complicadas o irresolubles. 
+
+\begin{defi}[continuidad uniforme]\label{cont-uniforme}
+	Si la función $f\colon I\subset\R\to\R$ es continua, decimos que es \textup{\textsf{\textsc{uniformemente continua}}} en un $x_0\in I$, si existe un $\epsilon>0$ tal que para todo $\delta$ se cumple que
+	\[ |x-x_0| <\delta\quad\text{implica}\quad |f(x)-f(x_0)| <\epsilon, \]
+	es decir, que $\epsilon$ no depende de $x$.
+\end{defi}
+
+\begin{ejem}\label{ejeme-x}
+%		\marginpar{
+%		\begin{minipage}{5.5cm}
+%			\begin{figure}[H]\centering
+%				\includegraphics[width=.95\linewidth]{pics/g2}\\ 
+%				\caption{Gráfico de $e^{-x}$ (linea continua) con su asíntota horizontal.}\label{ch0g2}
+%			\end{figure}
+%	\end{minipage}}
+	Queremos ver si la función $f(x) = e^{-x}$ es uniformente continua en el intervalo $[0,\infty)$.
+	
+	Por el teorema del valor medio\footnote{explicar teorema} tenemos
+	\[ |e^x-e^{-x_0}| = |e^{-x_1} (x-x_0)|  = e^{-x_1}| (x-x_0)|. \]
+	Como $x_1\in [x_0,x]\subset[0,\infty)$ y $e^{-x}$ es estrictamente decreciente en $[0,\infty)$, se sigue que $e^{-x_1} \leq e^0=1$ y sustituyendo esto en la ecuación anterior
+	\[ |e^x - e^{x_0}|\leq 1|x-x_0| <\delta. \]
+	Por lo tanto basta con tomar $\epsilon=1$ para tener la continuidad uniforme.
+	
+	Lo que ocurre gráficamente es que $e^{-x}$ esta acotada superior e inferiormente como lo muestra la figura~\ref{ch0g2}
+\end{ejem}
+
+\begin{minipage}{.48\linewidth}
+	\begin{figure}[H]\centering
+		\includegraphics[width=.95\linewidth]{pics/g2}\\ 
+		\caption{Gráfico de $e^{-x}$ (linea continua) con su asíntota horizontal.}\label{ch0g2}
+	\end{figure}
+\end{minipage}
+\begin{minipage}{.48\linewidth}
+	\begin{figure}[H]\centering
+		\includegraphics[width=.95\linewidth]{pics/g3}\\ 
+		\caption{Gráfico de $\dfrac{1}{1+x^2}$ (linea continua) con su asíntota horizontal.}
+	\end{figure}
+\end{minipage}
+\begin{cejem}
+	Sea $f(x) = 1/x$ definida en el intervalo $(0,1)$. Esta función $f$ es continua, sin embargo, no es uniformemente continua. Veamos que
+	\[ \left| \frac 1x - \frac{1}{x_0} \right| = \left| \frac{x-x_0}{xx_0} \right|. \]
+	Si $|x|<1/2$ entonces $1/x>2$, y esto ocurre también para $x_0$: $1/x_0>2$, de donde
+	\[ \left| \frac 1x - \frac{1}{x_0} \right| = \frac{1}{xx_0}|x-x_0| > 4 |x-x_0|\geq\epsilon \]
+	por lo que no existe un único $\epsilon$ que cumpla con la definición~\ref{cont-uniforme}.
+\end{cejem}
+\begin{ejem}
+	Consideremos la función
+	\[ f(x)=\frac{1}{1+x^2}. \]
+	Teniendo en cuenta el gráfico de la función, es decir, que esta acotada; ocurrirá lo mismo que en el ejemplo~\ref{ejeme-x}.
+%		\marginpar{
+%		\begin{minipage}{5.5cm}
+%		\begin{figure}[H]\centering
+%	\includegraphics[width=.95\linewidth]{pics/g3}\\ 
+%	\caption{Gráfico de $\dfrac{1}{1+x^2}$ (linea continua) con su asíntota horizontal.}
+%\end{figure}
+%	\end{minipage}}
+\end{ejem}
+
+A continuación está el teorema central de esta clase:
+\begin{teo}[integración respecto a un parámetro]
+	Sea $f$ una función, que va del subconjunto $I_x\t I_a$ de $\R^2$ a $\R$, definida como $f(x) = (x,a)$ para $x\in I_x$ y un $a$ \emph{fijo} en $I_a$. Si $f$ es uniformemente continua en $I_x$, entonces
+	\begin{gather}
+	\der{a} \inte{u}{v}{f(x,a)}{x} = \inte{u}{v}{\pd{a} f(x,a)}{x} \quad\text{y} \\ 
+	\der{a} \inte{u(a)}{v(a)}{f(x,a)}{x} = \inte{u(a)}{v(a)}{\pd{a} f(x,a)}{x}  \\
+	\hspace{9em} + f(v(a),a)v'(a) - f(u(a),a)u'(a). \nonumber
+	\end{gather}
+\end{teo}
+
+El siguiente es un ejemplo, un tanto complicado, de como usar la técnica del teorema anterior.
+\begin{ejem}
+	Calcular, usando integración respecto a un parámetro,
+	\[ \inte{0}{\infty}{\frac{\arctan(ax)}{x(1+x^2)}}{x}. \]
+	Hagamos
+	\[ g(a)= \inte{0}{\infty}{\frac{\arctan(ax)}{x(1+x^2)}}{x} = \inte{0}{\infty}{f(x,a)}{x} \]
+	donde $f(x,a)$ cumple con:
+	\begin{itemize}
+		\item $\displaystyle\lim\limits_{x\to 0} \frac{\arctan(ax)}{x} = \lim\limits_{x\to0}\frac{1}{1+(ax)^2} = \frac{a}{1+0} = a$
+		\item $\displaystyle\left| \frac{1}{1+x^2} \right| = \frac{1}{1+x^2}\leq\frac{1}{1+0}=1$
+	\end{itemize}
+	por lo que $f(x,a)$ es el producto de una función acotada por una función uniformemente continua, lo que implica que $f(x,a)$ es uniformemente continua. Se cumplen entonces las hipótesis del teorema y podemos aplicarlo:
+	\begin{align*}
+		g'(a) &= \der{a}\inte{0}{\infty}{\frac{\arctan(ax)}{x(1+x^2)}}{x} \\
+		      &= \inte{0}{\infty}{\pd{a}\frac{\arctan(ax)}{x(1+x^2)}}{x} \\
+		      &= \inte{0}{\infty}{\frac{\cancel{x}}{\cancel{x}(1+x^2)(1+a^2x^2)}}{x} \\
+		      &= \inte{0}{\infty}{\frac{1}{(1+x^2)(1+a^2x^2)}}{x}.
+	\end{align*}
+	Pero:
+	\begin{align*}
+		\frac{1}{\cancel{(1+x^2)(1+a^2x^2)}} &= \frac{B}{1+x^2} + \frac{D}{1+a^2x^2} \\
+											 &= \frac{B(1+a^2x^2) + D(1+x^2)}{\cancel{(1+x^2)(1+a^2x^2)}} .
+	\end{align*}
+	De donde se sigue que $1=(B+D) + (a^2B+D)x^2$ y se obtiene el siguiente sistema de ecuaciones:
+	\[ 
+	\begin{cases}
+	B+D  =1 \\
+	a^2B+D=0,
+	\end{cases}
+	 \]
+	 cuyas soluciones son
+	 \[ B=\frac{1}{1-a^2}\quad\text{y}\quad D=\frac{-a^2}{1+a^2x^2}. \]
+	 Volviendo a $g'(a)$, tenemos
+	 
+	 \begin{align*}
+	 	g'(a) &= \frac{1}{1-a^2}\int_{0}^{\infty}\frac{\mathrm dx}{1+x^2} - \frac{a}{1-a^2}\int_{0}^{\infty}\frac{a\,\mathrm dx}{1+a^2x^2} \\
+	 	      &= \frac{1}{1-a^2}\lim\limits_{b\to\infty}\arctan(x)\bigg|_0^b \\
+	 	      &\phantom{=}\hspace{6.5em}- \frac{a}{1-a^2}\lim\limits_{b\to\infty}\arctan(ax)\bigg|_0^b \\
+	 	      &=\frac{\pi}{2}\frac{1}{1-x^2} - \frac{\pi}{2}\frac{a}{1-a^2} \\
+	 	      &=\frac{\pi}{2}\frac{1}{1+a}.
+	 \end{align*}
+	 
+	 Esto implica que
+	 \begin{align*}
+	 	g(a) &= \inte{0}{\infty}{\frac{\pi}{2}\frac{1}{1+t}}{t} \\
+	 		 &= \frac{\pi}{2}\log(1+t)\bigg|_{t=0}^{t=a} \\
+	 		 &= \frac{\pi}{2}\log(1+a).
+	 \end{align*}
+\end{ejem}
+%\clase{3}{viernes}{20/9}
+En el siguiente ejemplo se calcula la integral de la campana de Gau{\ss}.
+\begin{ejem}
+	Sean
+	\[ f(x)=\bigg(\inte{0}{x}{-e^{-t^2}}{t}\bigg)^2\quad\text{y}\quad g(x)=\inte{0}{1}{\frac{e^{-x^2(1+t^2)}}{1+t^2}}{t}. \]
+	\begin{enumerate}
+		\item Demostrar que $f(x)+g(x)=\text{ctte}$.
+		\item Usa la parte anterior para calcular $\inte{0}{\infty}{e^{-t^2}}{t}.$
+	\end{enumerate}
+	Veamos cada parte.
+	\begin{enumerate}
+		\item Empecemos calculando la derivada de $f$:
+		\begin{align*}
+			\frac{\mathrm df}{\mathrm dx} &=\bigg(2\inte{0}{x}{-e^{-t^2}}{t}\bigg)\bigg(\der{t}\inte{0}{x}{-e^{-t^2}}{t}\bigg) \\
+			&= 2\inte{0}{x}{e^{-t^2}e^{-x^2}}{t} \\
+			&=2\inte{0}{x}{e^{-(t^2+x^2)}}{t}.
+		\end{align*}
+		Ahora, para calcular la derivada de $g$, debemos ver primero que es uniformemente continua. Hagamos
+		\[ g(x)=\inte{0}{1}{\phi_x(t)}{t}. \] 
+		Como el intervalo $I_t=[0,1]$ es cerrado y acotado y $\phi_x(t)$ es continua en la variable $t$, por el teorema de Bolzano $\phi_x(t)$ alcanza máximos y mínimos y entonces es uniformemente continua. Podemos usar derivación paramétrica:
+		\begin{align*}
+			\frac{\mathrm dg}{\mathrm dx} &= \inte{0}{1}{\pd{x}\frac{e^{-x^2(1+t^2)}}{1+t^2}}{t} \\
+										  &= \inte{0}{1}{-2x\cancel{(1+t^2)}\frac{e^{-x^2(1+t^2)}}{\cancel{1+t^2}}}{t} \\
+										  &= -2\inte{0}{1}{e^{-x^2+(xt)^2}}{t}.
+		\end{align*}
+		Necesitamos que $f'$ y $g'$ se parezcan más para poder hacer su suma cero. Comencemos haciendo
+		\[ \frac{\mathrm df}{\mathrm dx} = 2\inte{0}{x}{e^{-(u^2+t^2)}}{u}, \]
+		y luego el cambio $u=xt$ en $g'$ para obtener
+		\[ \frac{\mathrm dg}{\mathrm dx} = -2\inte{0}{x}{e^{-(u^2+t^2)}}{u} = -\frac{\mathrm df}{\mathrm dx}\]
+		 y queda demostrado que $f+g$ es constante. Para determinar la constante hagamos 
+		\[ h(x)  = f(x)+g(x) \]
+		y luego $h(x)=h(x_0)$ para cualquier $x_0\in\R$ elegido convenientemente. Elijamos $x_0=0$, entonces
+		\begin{align*}
+			\mathrm{ctte} &= h(0)\\
+						  &= \bigg(\inte{0}{0}{-e^{-t^2}}{t}\bigg)^2 + \inte{0}{1}{\frac{e^{-0^2(1+t^2)}}{1+t^2}}{t} \\
+						  &= \inte{0}{1}{\frac{1}{1+t^2}}{t} \\
+						  &= \arctan(1)-\arctan(0) \\
+						  &=\frac \pi 4.
+		\end{align*}
+		\item Se puede demostrar que 
+		\[ \lim\limits_{x\to\infty}\inte{a}{b}{\phi_x(t)}{t} =\inte{a}{b}{ \lim\limits_{x\to\infty}\phi_x(t)}{t}. \]
+		Pero
+		\[ \lim\limits_{x\to\infty}\frac{e^{-x^2(1+t^2)}}{1+t^2} = \frac{0}{1+t^2} = 0. \]
+		Tomando límites en la respuesta de la parte anterior
+		
+		\[ \lim\limits_{x\to\infty}\bigg(\inte{0}{x}{-e^{-t^2}}{t}\bigg)^2 + \lim\limits_{x\to\infty}\inte{0}{1}{\frac{e^{-x^2(1+t^2)}}{1+t^2}}{t} = \frac{\pi}{4} \]
+		
+		de donde se sigue que
+		\[ \bigg(\inte{0}{\infty}{-e^{-t^2}}{t}\bigg)^2 + 0 = \frac{\pi}{4} \]
+		y finalmente, tomando raíces cuadradas,
+		\[ \inte{0}{\infty}{-e^{-t^2}}{t} = \frac{\sqrt{\pi}}{2}. \]
+	\end{enumerate}
+\end{ejem}
+
+\section{Parametrizaciones clásicas}
+
+\begin{defi}[parametrización]
+	Sean $\Omega$ y $\Lambda$ dos objetos geométricos, con $\Omega\subset\Rn$ y $\Lambda\subset\Rm$ ($1\leq n,m\leq3$) (En general $\Lambda$ y $\Omega$ pueden ser: puntos, líneas, superficies planas o curvilíneas, volúmenes sólidos). Una parametrización es una aplicación $\Phi\colon\Omega\to\Lambda$ cuya acción no conviene estudiar a partir de $\ve v= \Phi(\ve u)$ y su gráfico $\mathcal{G}_\Phi$, sino que conviene estudiarla por el mapeo de la figura~\ref{ch0d1}.
+%	\input{tikz/ch0d1}
+
+El cual se define como
+
+\[
+	\ve v = \begin{pmatrix}
+	v_1 \\ v_2 \\ \vdots \\ v_m
+	\end{pmatrix} = 
+	\Phi\begin{pmatrix}
+	u_1\\u_2\\ \vdots\\ u_n
+	\end{pmatrix} 
+	\iff \begin{cases}
+	v_1 = \phi_1(\dt{u}{,}) \\
+	v_2 = \phi_2(\dt{u}{,}) \\
+	\vdots \\
+	v_m = \phi_m(\dt{u}{,}).
+	\end{cases}
+\]
+
+\end{defi}
+
+Nos interesan principalmente cinco casos concretos:
+
+
+\paragraph{caso 1-2 curvas planas} Tomemos $\Phi\colon\Omega\subset\R_t\to\R^2_{xy}$. Entonces las coordenadas $x,y$ de un vector se escriben con respecto a $\Phi$ y a $\Phi'$, de la siguiente manera
+%\input{tikz/ch0d2}
+\[ 
+\begin{cases}
+x = \phi_1(t) \\
+y = \phi_2(t) \\
+\end{cases} \quad\text{y}
+\quad\begin{cases}\displaystyle
+\frac{\mathrm dx}{\mathrm dt} = \phi_1'(t) \\[.8em] \displaystyle
+\frac{\mathrm dy}{\mathrm dt} = \phi_2'(t)
+\end{cases}
+ \]
+y el mapeo correspondiente esta dado en la figura~\ref{ch0d2}.
+
+  \paragraph{caso 1-3 curvas en el espacio} Tomemos $\Phi\colon\Omega\subset\R^1_t\to\R^3_{xyz}$. Entonces las coordenadas $x,y,z$ de un vector se escriben con respecto a $\Phi$ y a $\Phi'$ de la siguiente manera
+%  \input{tikz/ch0d3}
+ \[ 
+ \begin{cases}
+ x = \phi_1(t) \\
+ y = \phi_2(t) \\
+ z = \phi_3(t) \\
+ \end{cases} \quad\text{y}
+ \quad\begin{cases}\displaystyle
+ \frac{\mathrm dx}{\mathrm dt} = \phi_1'(t) \\[.8em] \displaystyle
+ \frac{\mathrm dy}{\mathrm dt} = \phi_2'(t) \\[.8em] \displaystyle
+ \frac{\mathrm dz}{\mathrm dt} = \phi_3'(t)
+ \end{cases}
+ \]
+ y el mapeo correspondiente es el de la figura~\ref{ch0d3}.
+
+%\clase{4}{martes}{24/9}
+
+
+\paragraph{caso 2-2 regiones planas} Tomemos $\Phi\colon\Omega\subset\R^2_{uv}\to\R^2_{xy}$. Entonces las coordenadas $x,y$ de un vector se escriben con respecto a $\Phi$ de la siguiente manera
+%\input{tikz/ch0d4}
+\[ 
+ \begin{cases}
+x = \phi_1(u,v) \\
+y = \phi_2(u,v) \\
+\end{cases}
+ \]
+ y esta representado por el mapeo de la figura~\ref{ch0d4}.
+
+Es aceptable que aproximemos el área del rectángulo $\Phi(A)$ como el generado por los vectores 
+\[ \ve a = \frac{\partial\Phi}{\partial u}\quad\text{y}\quad\ve b=\frac{\partial\Phi}{\partial v} \]
+debido a que:
+ \begin{align*}
+ 	\big(\Phi(A)\big) &= \lvert\ve a\t\ve b\rvert \\
+ 				   &= \left\lvert \frac{\partial\Phi}{\partial u}\t\frac{\partial\Phi}{\partial v} \right\rvert \\
+ 				   &= \left\lvert\,
+ 				   		\begin{vmatrix}
+ 				   		\ihat& \jhat& \khat\phantom{0} \\[.3em]
+ 				   		\pdd{\phi_1}{u}& \pdd{\phi_2}{u}& 0\phantom{0} \\[.8em]
+ 				   		\pdd{\phi_1}{v}& \pdd{\phi_2}{v}& 0\phantom{0}
+ 				   		\end{vmatrix}\,
+ 				   	  \right\rvert \\
+ 				  &=\left\lvert \pdd{(\phi_1,\phi_2)}{(u,v)}\right\rvert \\
+ 				  &= \text{módulo del Jacobiano de $\Phi$.}
+ \end{align*}
+Por todo lo anterior esta $\Phi$ envía regiones planas en regiones planas.
+
+ 
+\paragraph{caso 2-3 superficies curvas} Tomemos $\Phi\colon\Omega\subset\R^2_{uv}\to\R^3_{xyz}$. Entonces las coordenadas $x,y,z$ de un vector se escriben con respecto a $\Phi$ de la siguiente manera
+\[ 
+ \begin{cases}
+x = \phi_1(u,v) \\
+y = \phi_2(u,v) \\
+z = \phi_3(u,v) \\
+\end{cases}
+ \]
+ Y esta representado por el mapeo de la figura~\ref{ch0d5}
+% \input{tikz/ch0d5}
+ 
+ Por un razonamiento parecido al del caso anterior podemos aproximar el área de $\Phi(A)$ por el valor absoluto del siguiente producto exterior
+ \begin{align*}
+ 	\frac{\partial\Phi}{\partial u}\t\frac{\partial\Phi}{\partial v} &= \begin{vmatrix}
+ 										\ihat& \jhat& \khat \\[.3em]
+ 										\pdd{\phi_1}{u}& \pdd{\phi_2}{u}& \pdd{\phi_3}{u} \\[.8em]
+ 										\pdd{\phi_1}{v}& \pdd{\phi_2}{v}& \pdd{\phi_3}{v}
+ 										\end{vmatrix} \\
+ 																	 &=\pdd{(\phi_2,\phi_3)}{(u,v)}\ihat + \pdd{(\phi_3,\phi_1)}{(u,v)} \jhat + \pdd{(\phi_1,\phi_2)}{(u,v)} \khat \\
+ 																	 &=\text{producto fundamental de $\Phi$.}
+ \end{align*}
+ Y su norma es
+ \[ \sqrt{\left\lvert \pdd{(\phi_2,\phi_3)}{(u,v)} \right\rvert^2 + \left\lvert\pdd{(\phi_3,\phi_1)}{(u,v)}\right\rvert^2  + \left\lvert\pdd{(\phi_1,\phi_2)}{(u,v)}\right\rvert^2 }. \]
+ Por lo tanto $\Phi$ convierte superficies planas en superficies curvas del espacio.
+ 
+
+\paragraph{caso 3-3 sólidos} Tomemos $\Phi\colon\Omega\subset\R^3_{uvw}\to\R^3_{xyz}$. Entonces las coordenadas $x,y,z$ de un vector se escriben con respecto a $\Phi$ de la siguiente manera
+ \[ 
+ \begin{cases}
+ x = \phi_1(u,v,w) \\
+ y = \phi_2(u,v,w) \\
+ z = \phi_3(u,v,w) \\
+ \end{cases}
+ \]
+ El volumen del paralelepipedo $\Phi(A)$ se puede aproximar mediante el valor absoluto del siguiente producto triple:
+
+\[  	\pdd{\Phi}{w} \bigg(\pdd{\Phi}{u}\t\pdd{\Phi}{v}\bigg) = \begin{pmatrix}
+\pdd{\phi_1}{w} \\[.8em] \pdd{\phi_2}{w} \\[.8em] \pdd{\phi_3}{w}
+\end{pmatrix}
+\begin{vmatrix}
+\ihat& \jhat& \khat \\[.3em]
+\pdd{\phi_1}{u}& \pdd{\phi_2}{u}& \pdd{\phi_3}{u} \\[.8em]
+\pdd{\phi_1}{v}& \pdd{\phi_2}{v}& \pdd{\phi_3}{v}
+\end{vmatrix}. \]
+ Como en el caso anterior calculamos el determinante de la derecha solo hace falta hacer el producto interno entre los dos vectores para obtener:
+ \[ \pdd{(\phi_2,\phi_3)}{(u,v)} - \pdd{(\phi_1,\phi_3)}{(u,v)}\pdd{\phi_2}{w} + \pdd{(\phi_1,\phi_2)}{(u,v)}\pdd{\phi_3}{w}, \]
+ que al estudiar cuidadosamente, es lo mismo que el siguiente determinante
+ \[ \begin{vmatrix}
+ \pdd{\phi_1}{u}& \pdd{\phi_2}{u}& \pdd{\phi_3}{u} \\[.8em]
+ \pdd{\phi_1}{v}& \pdd{\phi_2}{v}& \pdd{\phi_3}{v} \\[.8em]
+ \pdd{\phi_1}{w}& \pdd{\phi_2}{w}& \pdd{\phi_3}{w}
+ \end{vmatrix} \]
+ el cual es el Jacobiano de $\Phi$, al igual que en el caso (2-2).
+ 
+ Entonces el volumen del paralelepipedo $\Phi(A)$ queda aproximado por
+ \[ \left\lvert \pdd{(\phi_1,\phi_2,\phi_3)}{(u,v,w)} \right\rvert, \]
+ y $\Phi$ convierte sólidos en sólidos.
+ 
+  Finalmente, algunos ejemplos.
+ 
+ \subsection{Coordenadas Polares}
+ 
+ \begin{ejem}[caso 1-2]
+ 	La circunferencia unitaria en el plano, dada por
+ 	\[ \mathcal{C} = \{ (x,y)\in\R^2:x^2+y^2=1 \}, \]
+ 	puede parametrizarce mediante la siguiente función $\sigma:\R\to\R^2$
+ 	\begin{align}\label{polcoord}
+ 		\sigma= \begin{cases}
+ 		x = \cos(\theta) \\
+ 		y = \sin (\theta)
+ 		\end{cases}\quad (0\leq\theta\leq2\pi).
+ 	\end{align}
+ 	Su mapeo esta dado por la figura~\ref{ch0d6}
+%	\input{tikz/ch0d6}	
+ 	
+ \end{ejem}
+
+%\clase{5}{jueves}{26/9}
+
+\begin{ejem}[caso 2-2]
+	Consideremos el rectángulo $\Omega =  [0,2\pi)\t[0,R] $ que es un subconjunto  de $\R^2_{\theta,\rho}$. Sobre este rectángulo tomemos la función $P\colon\Omega\to\R^2_{x,y}$ definida por
+	\[ P = \begin{cases}
+	x = \rho\cos(\theta) \\
+	y = \rho\sin(\theta).
+	\end{cases} \]
+	Como veremos, esta función $P$ envía el rectángulo $\Omega$ en un disco relleno en $\R^2_{x,y}$ de radio $\rho$ y centrado en el origen.
+	
+	Para ver esto, consideremos las rectas horizontales $\gamma_\theta$ y las rectas verticales $\gamma_\rho$ definidas por
+	\begin{align*}
+		\gamma_\theta &= \{(\theta,\rho_0) : 0\leq\theta<2\pi \} \quad\text{( $\rho$ constante)} \\
+		\gamma_\rho &= \{(\theta_0,\rho): 0\leq\rho<R \} \quad\text{( $\theta$ constante).}
+	\end{align*}
+	Veamos ahora la imágen de estas rectas por $P$. La imágen de $\gamma_\theta$ es
+%	\input{tikz/ch0d7}
+	\begin{align*}
+		P(&\gamma_\theta) = \begin{cases}
+		x = \rho_0\cos(\theta) \\
+		y = \rho_0\sin(\theta)
+		\end{cases} \\
+		&\implies \begin{cases}
+		x^2 = \rho^2_0\cos^2(\theta) \\
+		y^2 = \rho^2_0\sin^2(\theta)
+		\end{cases} \\
+		&\implies x^2+y^2 = \rho_01,
+	\end{align*} 
+	que en el plano $\R^2_{x,y}$ describe círculos concéntricos centrados en el orígen de radio $0\leq\rho<R$.
+	
+	La imágen de $\gamma_\rho$ es
+	\begin{align*}
+		P(&\gamma_\rho) = \begin{cases}
+		x = \rho\cos(\theta_0) \\
+		y = \rho\sin(\theta_0)
+		\end{cases} \\
+		&\implies \frac{y}{x} = \frac{\cancel{\rho}\sin(\theta_0)}{\cancel{\rho}\cos(\theta_0)} \quad \bigg(\rho\neq 0\,\text{y}\, \theta_0\neq \frac{\pi}{2},\frac{3\pi}{2}\bigg) \\
+		&\implies \frac{y}{x} = \tan(\theta_0) \\
+		&\implies y = \underbrace{\tan(\theta_0)}_m x,
+	\end{align*}
+	que como se puede ver son rectas con pendiente $\tan(\theta_0)$. Al dar valores a $\theta_0$ se verá que $P(\gamma_\rho) $ describe segmentos de recta en la dirección radial, conformando así ---junto con el resultado de $P(\gamma_\theta)$)--- un disco relleno en $\R^2_{xy}$. El mapeo que describe lo anterior se puede ver en la figura~\ref{ch0d7}. $\mathbb{VIS}$
+
+	
+\end{ejem}
+\begin{ejem}[cardioides]
+	La curva $\rho = b+a\cos(\theta)$ tiene nombres y gráficos diferentes dependiendo de los valores que tomen $a$ y $b$. 
+	
+	Si $b=a$ entonces $\rho = b\big(1+\cos(\theta)\big)$ describe una \textsc{cardioide}, lo cual se puede ver al darle valores a $\theta$ recordando que este es un ángulo y que $\rho$ es un radio. Su gráfico se puede ver en la figura~\ref{ch0g3}.
+	
+%			\marginnote{
+%		\begin{minipage}{5.5cm}
+%			\begin{figure}[H]\centering
+%		\includegraphics[width=1\linewidth]{pics/c1}\\ 
+%\caption{Gráfico de la cardioide con $b=1$}\label{ch0g3}
+%			\end{figure}
+%	\end{minipage}}
+	Si $b>a$ se obtiene una \textsc{cardioide alargada}, que recibe ese nombre debido a que es mas `grande' que la cardiode original y no pasa por el orígen. El hecho de que no pase por el orígen se puede ver rápidamente de la ecuación $0=b+a\cos(\theta)$ que, como los valores extremos del coseno son $-1$ y $1$, no tiene solución para $b>a$. Ver la figura~\ref{ch0g4}.
+%			\marginnote{
+%		\begin{minipage}{5.5cm}
+%			\begin{figure}[H]\centering
+%		\includegraphics[width=1\linewidth]{pics/c2}\\ 
+%\caption{Gráfico de la cardioide alargada con $b=1.5$ y $a=1$}\label{ch0g4}
+%			\end{figure}
+%	\end{minipage}}[9em]
+
+	Si $b<a$ se obtiene una \textsc{lima\c con}, que se parece a la cardioide pero tiene un bucle cerca del orígen. La causa de este bucle es debido a que, como $b<a$, $\rho$ toma valores negativos cuando $\cos(\theta)<0$.\\
+%	\marginnote{
+%		\begin{minipage}{5.5cm}
+%			\begin{figure}[H]\centering
+%				\includegraphics[width=1\linewidth]{pics/c3}\\ 
+%				\caption{Gráfico de la lima\c con $b=1$ y $a=1.5$}\label{ch0g5}
+%			\end{figure}
+%		\end{minipage}}[22em]
+\begin{minipage}{.32\linewidth}
+	\begin{figure}[H]\centering
+		\includegraphics[width=1\linewidth]{pics/c1}\\ 
+		\caption{Gráfico de la cardioide con $b=1$}\label{ch0g3}
+	\end{figure}
+\end{minipage}
+\begin{minipage}{.32\linewidth}
+	\begin{figure}[H]\centering
+		\includegraphics[width=1\linewidth]{pics/c2}\\ 
+		\caption{Gráfico de la cardioide alargada con $b=1.5$ y $a=1$}\label{ch0g4}
+	\end{figure}
+\end{minipage}
+\begin{minipage}{.32\linewidth}
+	\begin{figure}[H]\centering
+		\includegraphics[width=1\linewidth]{pics/c3}\\ 
+		\caption{Gráfico de la lima\c con $b=1$ y $a=1.5$}\label{ch0g5}
+	\end{figure}
+\end{minipage}
+\end{ejem}
+Para ilustrar la utilidad de las coordenadas polares consideremos su parametrización inversa dada por
+\[ P\inv=\begin{cases}
+\rho = \sqrt{x^2+y^2} \\[.3em]
+\tan(\theta) = \dfrac{y}{x}. 
+\end{cases} \]
+Es claro que utilizar coordenadas polares para estas curvas es mucho mas fácil de entender y dibujar.
+
+%\clase{6}{viernes}{27/9}
+
+¿Tiene sentido calcular la pendiente $m$ de la recta tangente a $\rho = f(\theta)$ en $\theta=\theta_0$ calculando $m = f'(\theta_0)$?
+
+La respuesta es \emph{no}. Si consideramos la circunferencia $\rho = c$ entonces $f'(\theta_0)=0$, lo cual evidentemente no es cierto. En general $\rho'=f'(\theta_0)$ da el ángulo que forma la recta tangente con el radio vector. 
+
+Lo correcto, en general, es calcular 
+\[ m=\frac{\mathrm dy}{\mathrm dx}(x_0,y_0) \]
+sabiendo que $x_0=\phi(\theta_0)\cos\theta_0$ y $y_0=\phi(\theta_0)\sin(\theta_0)$. Para calcular esta derivada usamos la regla de la cadena:
+\[ \pdd{y}{\theta} = \frac{\mathrm dy}{\mathrm dx}\pdd{x}{\theta}, \]
+esto implica que
+\begin{align*}
+\frac{\mathrm dy}{\mathrm dx} &= \frac{\partial y/\partial\theta}{\partial x/\partial\theta} \\
+&= \frac{\phi'(\theta_0)\sin(\theta_0) + \phi(\theta_0)\cos(\theta_0)}{\phi'(\theta_0)\cos(\theta_0) - \phi(\theta_0)\cos(\theta_0).}
+\end{align*}
+
+\begin{ejem}[derivar coordenadas polares]
+	Considere\-mos la circunferencia $\rho=c$. Queremos calcular su recta tangente con $\theta_0=\pi/4$. Veamos primero, usando la formula anterior,
+	\begin{align*}
+		\frac{\mathrm dy}{\mathrm dx}\bigg(\frac \pi 4\bigg) &= \frac{\phi'(\pi/4)\sin(\pi/4) + \phi(\pi/4)\cos(\pi/4)}{\phi'(\pi/4)\cos(\pi/4) - \phi(\pi/4)\cos(\pi/4)} \\
+		&= \frac{\sqrt 2}{2}  \frac{\phi'(\pi/4) + \phi(\pi/4)}{\phi'(\pi/4) - \phi(\pi/4)} \\
+		&= -1.
+	\end{align*}
+	Ahora, para la ecuación de la recta tenemos que
+	\[ y-y_0 = m(x-x_0) \]
+	implica
+    \begin{align*}
+    	&\phantom{\implies}\hspace{.6em} y-y(\theta_0,\rho_0) = \frac{\mathrm dy}{\mathrm dx} \big(x-x(\theta_0,\rho_0)\big) \\
+    	&\implies y-y(\pi/4,c) = \frac{\mathrm dy}{\mathrm dx} \big(x-x(\pi/4,c)\big)\\
+    	&\implies y -\frac{c}{\sqrt 2} = -1\bigg(x-\frac{c}{\sqrt 2}\bigg) \\
+    	&\implies x+y = c\sqrt 2.
+    \end{align*}
+    Lo anterior se puede ver gráficamente en la figura~\ref{ch0d8}.
+%    \input{tikz/ch0d8}
+\end{ejem}
+\begin{ejem}[derivar coordenadas polares]
+	Hallar en coordenadas polares las rectas tangentes a la lemniscata de Bernoulli
+	\[( x^2+y^2)^2 = a(x^2-y^2) \]
+	en el origen.
+	Sustituyendo los valores de coordenadas polares $x=\cos(\theta)$ y $y=\sin(\theta)$ en la ecuación de la lenmiscata obtenemos
+	\begin{align*}
+		&\phantom{\implies}\hspace{.6em} \rho^4 = a^2\big(\rho^2\cos^2(\theta) - \rho^2\sin^2(\theta)\big) \\
+		&\implies \rho^4 = a^2\rho^2\cos(2\theta)\footnotemark \\
+		&\implies \rho^4 - a^2\rho^2\cos(2\theta) = 0 \\
+		&\implies \rho^2 \big(\rho^2 - a^2\cos(2\theta)\big) = 0.
+	\end{align*}
+	\footnotetext{Los $\rho$ no se pueden cancelar porque es un polinomia  de grado 4.}\
+	De la última implicación se sigue que
+	\[ \rho^2 = 0 \quad\text{o}\quad \rho^2 = a^2\cos(2\theta). \]
+	Si $\rho^2 = a^2\cos(2\theta)$ entonces $\rho=\sqrt{\cos(2\theta)}$ y para que esta raiz exista debemos tener $\cos(2\theta)>0$, es decir, $\theta\in[0,\pi/4]\cup[3\pi/4,\pi]$. De donde las rectas tangentes en el origen son $y=\pm x$, como se ve en el gráfico~\ref{ch0g6}.
+		\begin{center}
+			\begin{minipage}{.5\linewidth}
+		\begin{figure}[H]\centering
+			\includegraphics[width=1\linewidth]{pics/l1}\\ 
+			\caption{Gráfico de la lemniscata con $a=1$ y sus rectas tangentes en el origen.}\label{ch0g6}
+		\end{figure}
+	\end{minipage}
+		\end{center}
+\end{ejem}
+
+\begin{samepage}
+	%\clase{7}{martes}{01/10}
+	\subsection{Coordenadas Cilíndricas}
+\end{samepage}
+
+\noindent
+Sea $F(x,y) = 0$ una superficie en $\R^2$ y sea $\sigma\colon\R_t\to\R^2_{xy}$ una parametrización de $F$ dada por $\sigma\big(f(t),g(t)\big)$. Un \textsc{cilindro abstracto} es un punto $(x,y,z)$ tal que $\forall\,z\in\R:(x,y)\in\{F(x,y)=0\}.$ 
+
+Sea $\Phi$ es producto exterior:
+\[ \Phi(t,z) = \underbrace{(f(t),g(t),0)}_{\Phi_t}\t\underbrace{(0,0,z)}_{\Phi_z} \]
+y esto es si, y solo si,
+\begin{align}
+	\Phi = \begin{cases}
+	x=f(t) \\
+	y=g(t) \\
+	z=z.
+	\end{cases}\label{cilincoord}
+\end{align}
+La representación gráfica de lo anterior esta en la figura~\ref{ch0d9}.  
+%\input{tikz/ch0d9}
+
+\begin{ejem}[cilindro]
+	Para el cilindro típico tomemos
+	\[ \sigma(t) = \big(R\cos(t),R\sin(t)\big). \]
+	Entonces el cilindro queda parametrizado, de acuerdo con~(\ref{cilincoord}), por
+	\[ \bm C = \begin{cases}
+	x = R\cos(t) \\
+	y=R\sin(t) \\
+	z=z.
+	\end{cases} \]
+	
+	Su Jacobiano consiste en el producto fundamental:
+	\begin{align*}
+		\Phi_{t}\t\Phi_{z} &= \begin{vmatrix}
+		\ihat& \jhat& \khat \\
+		f'(t)& g'(t)& 0 \\
+		0& 0& z\\
+		\end{vmatrix} \\
+		&= \begin{vmatrix}
+		g'(t) & 0 \\
+		0& 1
+		\end{vmatrix}\ihat - \begin{vmatrix}
+		f'(t)& 0\\
+		0& 1\\
+		\end{vmatrix}\jhat - \begin{vmatrix}
+		f'(t)& g'(t) \\
+		0& 0
+		\end{vmatrix}\khat \\
+		&=(g'(t),-f'(t),0).
+	\end{align*} 
+	Y su norma es
+	\[ \Norm{\Phi_{t}\t\Phi_{z}} = \sqrt{\big(g'(t)\big)^2+\big(f'(t)\big)^2}. \]
+\end{ejem}
+\begin{ejem}[Astroide]
+	Buscamos el cilindro abstracto cuyas curvas `paralelas' estan determinadas por la \emph{astroide}: $x^{2/3} + y^{2/3} = a^{2/3}$.
+	
+	Debemos hallar primero una parametrización de esta curva, notemos que
+	\begin{align*}
+		\phantom{\iff}& a^2 = a^2\cos^2(\theta)+a^2\sin^2(\theta) \\
+				  \iff& a^{2/3} = a^{2/3}\big(\cos^6(\theta)\big)^{1/3} + a^{2/3}\big(\sin^6(\theta)\big)^{1/3} \\
+				  \iff& a^{2/3} = \underbrace{a^{2/3}\big(\cos^3(\theta)\big)}_x\hspace{0pt}^{2/3} + \underbrace{a^{2/3}\big(\sin^3(\theta)\big)}_y\hspace{0pt}^{2/3} .
+	\end{align*}
+	Por lo tanto la función $\sigma$ definida por
+	\[ \sigma = \begin{cases}
+	x = a^{2/3}\cos^3(\theta) \\
+	y = a^{2/3}\sin^3(\theta),
+	\end{cases} \]
+	es una parametrización para la astroide. Luego, por (\ref{cilincoord}), la siguiente $\Phi$
+	\[ \Phi = \begin{cases}
+	x = a^{2/3}\cos^3(\theta) \quad 0\leq\theta\leq2\pi \\
+	y = a^{2/3}\sin^3(\theta) \\
+	z=z\phantom{a^{2/3}\sin^3(\theta)} \quad 0\leq z\leq h
+	\end{cases} \]
+	parametriza el cilindro abstracto que se ve en la figura.
+\end{ejem}
+\subsection{Coordenadas Cónicas}
+\chapter{Integrales de Línea}
+
+\chapter{Integrales de Area}
+\noindent	
+Como ha ocurrido a lo largo de esta guía, las nociones nuevas de integración en varias variables (en este caso dos variables) recuerdan bastante a las respectivas definiciónes del cálculo en una variable. La definición de integral doble por \emph{sumas de Riemann} sigue esa tendencia y es una extensión natural de las ideas que se encuentran en la definición de intgeral para una variable.
+
+\section{Sumas de Riemann}
+
+\begin{defi}[área]
+	Sea $A\subset\R^2$ \emph{acotado}. Supongamos que cada punto $(\bar x_k,\bar y_j)\in A$ tiene la propiedad de pertenecer a un rectángulo de la forma
+	\[ \Delta x_k\Delta y_j = [x_{k-1},x_k]\t[y_{j-1},y_j]. \]
+	Los puntos extremos del rectángulo anterior $\{(x_k,y_j)| 1\leq k\leq n, 1\leq j\leq m \}$ son una 
+	\textup{\textsf{\textsc{partición}}}
+	de $A$.
+	
+	Le asociamos a cada rectángulo antes mencionado un número real no negativo
+	\[ \Delta A_{kj} = (x_k-x_{k-1})(y_j-y_{j-1}), \]
+	llamado el 
+	\textup{\textsf{\textsc{diferencial de área}}}
+	del rectángulo. Entonces podemos extender la noción de área de $\R$ a $\R^2$
+	\[ \textrm{area} A = \lim\limits_{\substack{m\to\infty \\ n\to\infty}} \sum_{k=1}^{n}\sum_{j=1}^{m}\Delta A_{kj}.  \]
+	
+	Si los límites anteriores existen y son iguales los denotaremos por el \textsc{área} de $A$:
+	\[ \textrm{area} A = \iint_A dA = \iint_A dxdy. \]
+\end{defi}
+\begin{defi}[integral doble]
+	Sean $A\subset\R^2$ y $(\bar x_k,\bar y_j)\in A$ como en la definición anterior. Si $f:A\to\R$ es una función \textsc{continua} entonces definimos la integral doble de $f$ sobre $A$ como
+	\begin{align}\label{defiint}
+		\iint_A f(x,y)\,dA = \lim_{\substack{n\to\infty \\ m\to\infty}} \sum_{\substack{1\leq k\leq n \\ 1\leq j\leq m}} f(\bar x_k,\bar y_j)\Delta A_{kj}.
+	\end{align}
+\end{defi}
+\begin{ejem}[integral por definición]
+	Calcular por definición 
+	\[ \iint_{A} xy\,dA \]
+	con $A = [0,1]^2$.
+	
+	Empezamos constuyendo la \emph{partición equi-espaciada} del conjunto $A$ de la siguiente forma:
+%\begin{small}
+		\begin{multline*}
+			x_0=0<x_1=\frac{1}{n}<x_2=\frac{2}{n}\\
+			\hspace{6em}<\cdots<x_k=\frac{k}{n}<\cdots\\
+			<x_n=\frac{n}{n} =1,
+		\end{multline*}
+%\end{small}
+	análogamente,
+%\begin{small}
+	\begin{multline*}
+		y_0=0<y_1=\frac{1}{m}<y_2=\frac{2}{m}\\
+		\hspace{6em}<\cdots<y_k=\frac{k}{m}<\cdots\\
+		<y_n=\frac{m}{m} =1.
+	\end{multline*}	
+%\end{small}
+	
+	Tomamos ahora como \emph{puntos de muestra} $(\bar x_k,\bar y_j)$ a las esquinas superiores derechas de los rectángulos, es decir, a los puntos $(x_k,y_j)$.
+	
+	Podemos entonces, teniendo en cuenta que $f(x,y) = xy$ es continua en $A$, usar la ecuación~\ref{defiint}:
+	{\allowdisplaybreaks
+	\begin{align*}
+		\iint_A xy\, dA &= \lim_{\substack{n\to\infty \\ m\to\infty}} \sum_{\substack{1\leq k\leq n \\ 1\leq j\leq m}} f(\bar x_k,\bar y_j)\Delta x_k\Delta y_j \\ 
+		&=\lim_{\substack{n\to\infty \\ m\to\infty}} \sum_{\substack{1\leq k\leq n \\ 1\leq j\leq m}} \bar x_k\bar y_j \Delta x_k\Delta y_j \\
+		&=\lim_{\substack{n\to\infty \\ m\to\infty}} \sum_{\substack{1\leq k\leq n \\ 1\leq j\leq m}} \frac{k}{n}\frac{j}{m}\frac{1}{n}\frac{1}{m} \\
+		&=\lim_{\substack{n\to\infty \\ m\to\infty}} \left(\frac{1}{n^2}\sum_{1\leq k\leq n} k\right)\left(\frac{1}{n^2}\sum_{1\leq j\leq m} j\right) \\
+		&=\biggl( \lim\limits_{n\to\infty}\frac{1}{n^2} \big(\frac{n^2}{2}+\frac{n}{2}\big) \biggr)\\
+		&\phantom{a}\hspace{6em} \biggl( \lim\limits_{m\to\infty}\frac{1}{m^2} \big(\frac{m^2}{2}+\frac{m}{2}\big) \biggr) \\
+		&= \left( \frac{1}{2}+0 \right)\left( \frac{1}{2}+0 \right) \\
+		&= \frac{1}{4}.
+	\end{align*}}
+\end{ejem}
+
+\section{Ejercicios}
+
+\newcommand{\xk}{x_{k}}\newcommand{\xkk}{x_{k-1}}
+\newcommand{\yj}{y_{j}}\newcommand{\yjj}{y_{j-1}}
+\begin{ejer}
+	Sean $A = [a,b]\t[c,d]$ y $a,c$ mayores que cero. Calular por definición 
+	\[ \iint_{A} \frac{dA}{x^2\sqrt{y}}, \]
+	usando como puntos de muestra
+	\[ \bar x_k = \sqrt{\xkk\xk}\quad\text{y}\quad\bar y_j=\left( \frac{\sqrt{\yjj}}{2} - \frac{\sqrt{\yj}}{2} \right)^2. \] 
+\end{ejer}
+\begin{sol}
+	Tomemos la partición de $A$ dada por
+	\[ a=x_0<x_1<\cdots<x_n=b \]
+	y
+	\[ c=y_0<y_1<\cdots<y_m=d. \]
+	
+	Veamos primero que los puntos sugeridos son en efecto puntos de muestra válidos. Por un lado
+	\begin{align*}
+		 \xkk&<\xk \\
+		\implies \xkk^2 &< \xk\xkk \\
+		\implies \xkk &< \sqrt{\xk\xkk},
+	\end{align*}
+	y también,
+	\begin{align*}
+		 \xkk&<\xk \\
+		\implies\,\phantom{a}\xkk\xk &< \xk^2 \\
+		\implies \sqrt{\xkk\xk} &< \xk.
+	\end{align*}
+	Entonces se tiene que
+	\[ \xkk < \sqrt{\xkk\xk} < \xk. \]
+	
+	Por otro lado
+	{\allowdisplaybreaks
+	\begin{align*}
+	\yjj &< \yj\\
+	\implies \frac{\sqrt{\yjj}}{2} &< \frac{\sqrt{\yj}}{2} \\
+	\implies \sqrt{\yj} &<  \frac{\sqrt{\yj}}{2} + \frac{\sqrt{\yjj}}{2} \\
+	\implies \yjj &< \left( \frac{\sqrt{\yjj}}{2} + \frac{\sqrt{\yj}}{2} \right)^2,
+	\end{align*}}
+	y también,
+	\begin{align*}
+		\yjj &< \yj\\
+		\implies\hspace{4.3em} \frac{\sqrt{\yjj}}{2} &< \frac{\sqrt{\yj}}{2} \\
+		\implies\hspace{1.4em} \frac{\sqrt{\yjj}}{2} + \frac{\sqrt{\yj}}{2} &< \sqrt{\yj} \\
+		\implies \left( \frac{\sqrt{\yjj}}{2} + \frac{\sqrt{\yj}}{2} \right)^2 &< \yj.
+	\end{align*}
+	Por lo tanto
+	\[ \yjj < \frac{\sqrt{\yjj}}{2} + \frac{\sqrt{\yj}}{2} < \yj \]
+	Entonces los puntos $\bar x_k$ y $\bar y_j$ son en efecto puntos de muestra válidos.
+	
+	Por lo tanto podemos calcular la integral doble usando la definición, pues la función $f(x,y) = (1/x^2) (1/\sqrt{y})$ es continua debido a que $x,y$ son mayores que cero (y esto es debido a que $a,c$ lo son).
+	
+	Veamos primero que,
+	\begin{align*}
+		f(\bar x_k,\bar y_j) &= \left( \sqrt{\xkk\xk}^2 \sqrt{\left( \frac{\sqrt{\yjj}}{2} + \frac{\sqrt{\yj}}{2} \right)^2} \right)\inv  \\
+		&= \left( (\xkk\xk) \left( \frac{\sqrt{\yj}}{2} + \frac{\sqrt{\yjj}}{2} \right) \right)\inv \\
+		&= \frac{2}{(\xkk\xk) ( \sqrt{\yj} + \sqrt{\yjj})} \\
+		&= \frac{2(\sqrt{\yj} - \sqrt{\yjj})}{(\xkk\xk)(\sqrt{\yj} - \sqrt{\yjj}) ( \sqrt{\yj} + \sqrt{\yjj} )} \\
+		&= \frac{2(\sqrt{\yj} - \sqrt{\yjj})}{(\xkk\xk)(\yj-\yjj)}.
+	\end{align*}
+	
+	Ahora consideremos la suma:
+	{\allowdisplaybreaks
+	\begin{align*}
+		\sigma&= \sum_{\substack{1\leq k\leq n \\ 1\leq j\leq m}} f(\bar x_k,\bar y_j) (\xk-\xkk)(\yj-\yjj) \\
+		&= \sum_{\substack{1\leq k\leq n \\ 1\leq j\leq m}} \frac{2(\sqrt{\yj} - \sqrt{\yjj})}{(\xkk\xk)\cancel{(\yj-\yjj)}} (\xk-\xkk)\cancel{(\yj-\yjj)} \\
+		&= \sum_{\substack{1\leq k\leq n \\ 1\leq j\leq m}} \frac{2(\sqrt{\yj} - \sqrt{\yjj})(\xk-\xkk)}{(\xkk\xk)} \\
+		&= \sum_{1\leq k\leq n} \frac{\xk-\xkk}{\xk\xkk} \sum_{1\leq j\leq m}2\sqrt{\yj} - 2\sqrt{\yjj} \\
+		&= \left( \sum_{1\leq k\leq n} \frac{\cancel{\xk}}{\cancel{\xk}\xkk} - \frac{\cancel{\xkk}}{\xk\cancel{\xkk}} \right) (2\sqrt{y_m}-2\sqrt{y_0}) \\
+		&= 2(\sqrt{y_m}-\sqrt{y_0}) \left( \sum_{1\leq k\leq n} \frac{1}{\xkk} - \frac{1}{\xk} \right) \\ 
+		&= 2(\sqrt{y_m}-\sqrt{y_0}) \left( \frac{1}{x_0} - \frac{1}{x_n}  \right) \\
+		&= 2(\sqrt{d} - \sqrt{c})\left( \frac{1}{a} - \frac{1}{b} \right).
+	\end{align*}}
+
+	Luego la integral doble
+	\[ \iint_{A} \frac{dA}{x^2\sqrt{y}} = 2(\sqrt{d} - \sqrt{c})\left( \frac{1}{a} - \frac{1}{b} \right) \]
+	siempre que $A = [a,b]\t[c,d]$ y $a,c>0$.
+\end{sol}
+
+\section{Integrales iteradas}
+\section{Integrales por cambio de variable}
+\chapter{Integrales de Volumen}
+\backmatter
+\end{document}

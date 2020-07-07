@@ -1,0 +1,162 @@
+\documentclass[fleqn,leqno,10pt,letterpaper,draft]{article}
+\input{../../preamble-article.tex}
+
+\title{Tercer Ejercicio}
+\author{Jhonny Lanzuisi, 15\,10759}
+\asignatura{Universidad Simon Bolivar, Topología 1}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\marginpar{
+	\begin{abstract}
+		 \Asignatura, Tercera tarea. Espacios topológicos, bases, comparación de topologías y ordenes parciales. 
+	\end{abstract}
+}
+
+\section[Enunciado]{Enunciado}
+
+Sea $X$ un conjunto ordenado parcialmente. Sean $U_L(x)=\left\{ y\mid y\prec x \right\}$ y
+$U_R(x)=\left\{ y\mid x\prec y \right\}$. \textit{Demuestre que:} 
+\begin{enumerate}
+	\item Las familias $\left\{ U_L(x) \right\}$, $\left\{ U_R(x) \right\}$ son bases de dos topologías
+	$\mathcal{T}_L$ y $\mathcal{T}_R$, respectivamente, sobre $X$.
+	\item $G$ esta en $\mathcal{T}_L$ si, y solo si, se cumple que 
+		\[
+			x\in G\implies U_L(x)\subset G.
+		\]
+	\item En $\mathcal{T}_L$ las intersecciones arbitrarias de conjuntos abiertos
+		dan conjuntos abiertos.
+	\item La topología discreta es la única mas fina que $\mathcal{T}_L$ y $\mathcal{T}_R$.
+	\item Las topologías $\mathcal{T}_L$ y $\mathcal{T}_R$ no son comparables. 
+\end{enumerate}
+
+\section{Solución}
+
+\paragraph{Parte 1}%
+
+Primero veamos que las familias $\left\{ U_L(x) \right\}$, $\left\{ U_R(x) \right\}$
+cubren el conjunto $X$. Esto no es muy complicado puesto que, para todo $x\in X$,
+los conjuntos $ U_L(x) $ y $ U_R(x) $ contienen a $x$ 
+(debido a la reflexividad de $\prec$) de donde se sigue que $X$ puede escribirse
+como la unión de los $U_L(x)$ o como unión de los $U_R(x)$.
+
+Tomemos ahora un elemento $y_1$ en $U_L(x_1)\cap U_L(x_2)$, donde
+$x_1,x_2$ son elementos de $X$. Entonces
+\[
+	y_1\in U_L(y_1),
+\]
+por la misma razón que antes, y
+\[
+	U_L(y_1)\subset U_L(x_1)\cap U_L(x_2)
+\]
+puesto que si tomamos un $y\in U_L(y_1)$ entonces $y\prec y_1$, pero como
+$y_1\prec x_1$ y $y_1\prec x_2$, se tiene que $y\prec x_1$ y $y\prec x_2$ por
+transitividad. Hemos descubierto que para todo elemento en la intersección de dos $U_L$
+podemos conseguir otro conjunto $U_L$ tal que contiene a dicho elemento y esta contenido en la
+intersección, es decir, que la familia $\left\{ U_L(x) \right\}$ forma una base para una topología
+sobre $X$ por el teorema~\ref{teo1}. Esta topología es $\mathcal{T}_L$.
+
+Un argumento análogo al anterior nos da como resultado que la familia $\left\{ U_R(x) \right\}$ también es
+base de una topología sobre $X$, y esta topología es $\mathcal{T}_R$.
+
+\paragraph{Parte 2}
+Supongamos que $G$ pertenece a $\mathcal{T}_L$, entonces $G$ se escribe como una unión arbitraria
+de elementos básicos, es decir, 
+\begin{align}
+	G = \bigcup_\alpha U_L(x_\alpha).\label{eq1}
+\end{align}
+Si tomamos un $x\in G$ se sigue que $x$ debe pertenecer a alguno de los $U_L(x_\alpha)$. Como $x$ pertenece
+a este elemento básico se tiene que $x\prec x_\alpha$ pero entonces, por definición de los $U_L$,
+\[
+	U_L(x)\subset U_L(x_\alpha)
+\]
+y por la igualdad en~\ref{eq1},
+\[
+	U_L(x)\subset U_L(x_\alpha)\subset G
+\]
+de donde se tiene, claramente, que $U_L(x)\subset G$.
+
+Supongamos ahora que para cada $x\in G$ se cumple que
+\[
+	x\in G\implies U_L(x)\subset G.
+\]
+Pero como $U_L(x)$ es un elemento de la base de $\mathcal{T}_L$, la implicación anterior
+da de forma inmediata, por el teorema~\ref{teo2}, que $G\in\mathcal{T}_L$.
+
+\paragraph{Parte 3}%
+
+Sea $\mathcal{A}=\left\{ A_\alpha\mid\alpha\in\mathscr{A} \right\}$ una familia de conjuntos abiertos
+de $\mathcal{T}_L$, y consideremos la intersección
+\[
+	\bigcap\mathcal{A}.
+\]
+
+Si tomamos un $x\in\cap\mathcal{A}$ entonces $x$ pertenece a todos los $A_\alpha$. Como estos conjuntos
+$A_\alpha$ son abiertos se sigue, por la parte anterior, que $U_L(x)$ esta contenido en todos
+los $A_\alpha$. Pero esto es lo mismo que decir que
+\[
+	U_L(x)\subset\bigcap\mathcal{A},
+\]
+y, nuevamente por la parte anterior, se tiene que $\cap\mathcal{A}$ es un conjunto abierto. 
+
+\paragraph{Parte 4}%
+
+Sea $\mathcal{T}$ una topología sobre $X$ tal que
+\begin{align}\label{eq2}
+	\mathcal{T}_L\subset\mathcal{T}\quad\text{y}\quad\mathcal{T}_R\subset\mathcal{T}.
+\end{align}
+Sabemos que al menos una tal $\mathcal{T}$ existe: la topología discreta, a la que llamaremos $\mathcal{D}$, por lo que
+tiene sentido preguntarse si existe otra topología con esta propiedad.
+
+Veamos. Dado cualquier $x\in X$, la topología $\mathcal{T}$ debe cumplir (por~\ref{eq2})
+\[
+	U_L(x)\in\mathcal{T}\quad\text{y}\quad U_R(x)\in\mathcal{T}.
+\]
+
+Pero como $\mathcal{T}$ es una topología la intersección $U_L(x)\cap U_R(x)=\left\{ x \right\}$ debe pertenecer también a $\mathcal{T}.$
+Entonces todos los conjuntos de la forma $\left\{ x \right\}$ ($x\in X$) pertenecen a $\mathcal{T}$, es decir, $\mathcal{D}\subset\mathcal{T}$.
+
+Pero como $\mathcal{D}$ siempre es la topología mas fina, se tiene también $\mathcal{T}\subset\mathcal{D}$, por lo que
+$\mathcal{D}=\mathcal{T}$.
+
+Es decir, $\mathcal{D}$ es la única topología más fina que $\mathcal{T}_L$ y $\mathcal{T}_R$.
+\paragraph{Parte 5}%
+
+Notemos primero que se puede establecer un criterio análogo al de la parte 2
+para caracterizar los conjuntos abiertos de $\mathcal{T}_R$, y la demostración de este hecho
+es muy parecida a la de la parte 2.
+
+Tomemos dos elementos $x_1,x_2$ de $X$ tales que $x_1\prec x_2$. Entonces el cojunto $U_L(x_1)$, que
+es abierto en $\mathcal{T}_L$, \emph{no contiene} a ningun elemento $y$ que suceda a $x_1$ (por ejemplo,
+no contiene a $x_2$) por lo que $U_R(x_1)\not\subset U_L(x_1)$ y por lo tanto $U_L(x_1)$ no es abierto
+en $\mathcal{T}_R$. Un ejemplo análogo nos dará un conjunto abierto en $\mathcal{T}_R$ que no es abierto
+en $\mathcal{T}_L$. Entonces se tiene que $\mathcal{T}_L\not\subset\mathcal{T}_R$ y $\mathcal{T}_R\not\subset\mathcal{T}_L$.
+
+\section[Resultados Utilizados]{Resultados Utilizados}%
+\label{sec:resultados_utilizados}
+
+\begin{teo}\label{teo1}
+	Sea $\mathcal{B}=\left\{ U_\alpha \mid \alpha\in \mathscr{M} \right\}$ una familia de subconjuntos de $X$
+	que cubre a $X$ y satisface la siguiente condición:
+	\begin{itemize}
+		\item 	Para cada $\alpha,\beta\in\mathscr{M}\times\mathscr{M}$ y cada $x\in U_\alpha\cap U_\beta$,
+	existe un $U_\gamma$ tal que $x\in U_\gamma\subset U_\alpha\cap U_\beta$.
+	\end{itemize}
+	
+	Entonces el conjunto $\mathcal{T}(\mathcal{B})$ que consiste de $X,\emptyset$ y todas las uniones de miembros
+	de $\mathcal{B}$ es una topología sobre $X$, es decir, $\mathcal{B}$ es la base de \emph{alguna}
+	topología sobre $X$.
+\end{teo}
+
+\begin{teo}\label{teo2}
+	Sea $\mathcal{B}\subset\mathcal{T}$ una base para la topología $\mathcal{T}$. Entonces un conjunto $A$
+	es abierto (es decir, pertenece a $\mathcal{T}$) si, y solo si, para cada $x\in A$ existe un
+	$U\in\mathcal{B}$ tal que $x\in U\subset A$.
+\end{teo}
+
+\printbibliography[
+heading=bibintoc,
+title={Referencias}
+]
+\end{document}

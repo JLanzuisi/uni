@@ -1,0 +1,83 @@
+\documentclass[mid,fleqn,final,oneside]{tareas}
+\clase{topología 1}
+\DeclareMathOperator{\id}{id}
+\begin{document}
+\chapter{Primer Ejercicio}
+\reversemarginpar\identi{Jhonny Lanzuisi}{15\,10759}
+\vspace{-.1em}
+\section*{Enunciado}
+Sea $X$ un conjunto y sea $\mathcal{T}_c$ el la
+colección de todo los conjuntos $U$ de $X$ tales que
+$X\setminus U$ es numerable o es todo $X$. Demuestre
+que $\mathcal{T}_c$ es una topología sobre $X$.
+
+¿Será la colección
+\[
+	\mathcal{T}_\infty = \left\{ U : X\setminus U
+	\text{es infinito o es vacío o es todo $X$} \right\}
+\]
+una topología sobre $X$?
+
+\section*{Solución}
+
+Primero que todo, el conjunto vacío pertenece a $
+\mathcal{T}_c $ debido a que $ X\setminus\varnothing=X
+$ y $X\in \mathcal{T}_c$ por la definición de
+$\mathcal{T}_c$.  También se
+tiene que $ X $ es un conjunto abierto puesto que $
+X\setminus X=\varnothing $ y el conjunto vacío es finito.
+
+Supongamos que $
+\left\{ U_k \right\}$ es una familia de elementos de $
+\mathcal{T}_c $.  Entonces\footnote{Este tipo de igualdades se
+	siguen de las leyes de De Morgan}
+\[
+	X\setminus\bigcup U_k= \bigcap (X\setminus U_k).
+\]
+Pero el lado derecho de la igualdad es numerable\footnote{Véase el Corolario~\ref{num:inter}} puesto
+que estas intersecciones son subconjuntos de todos los
+$ X\setminus U_k $ y estos últimos son numerables.
+
+Supongamos ahora que $ \left\{ U_1,\dots,U_n \right\} $
+son una cantidad finita de elementos de $
+\mathcal{T}_c. $ Entonces
+\[
+	X\setminus\bigcap_{i=1}^{n}U_i =
+	\bigcup_{i=1}^{n} X\setminus U_i.
+\]
+Donde el lado derecho de la igualdad es numerable pues
+la unión de conjuntos numerables es numerable\footnote{Véase el teorema\ref{num:union}}.
+
+Hemos visto que las uniones arbitrarias y las
+intersecciones finitas de elementos de $\mathcal{T}_c$
+pertenecen nuevamente a $\mathcal{T}_c$, esto es, que
+$\mathcal{T}_c$ es una topología sobre $X$.
+
+En el caso del conjunto $ \mathcal{T}_\infty $ se tiene
+que \emph{solo es} una topología sobre $ X $ cuando
+$X$ es finito, en cuyo caso $\mathcal{T}_\infty$
+coindice con la topología indiscreta.
+Uno puede ver fácilmente que existen conjuntos $X$
+para los cuales $\mathcal{T}_\infty$ no es una
+topología: pensemos por ejemplo en el caso
+$X=\mathbb{Z}$ y los subconjuntos de los enteros
+positivos y los enteros negativos, ambos sin incluir al
+cero, cuya unión no pertenece a $\mathcal{T}_\infty$.
+
+Pero podemos decir, como señalábamos antes, bastante
+más: $\mathcal{T}_\infty$ es una topología si y sólo si $X$ es finito, en cuyo caso
+$\mathcal{T}_\infty = \{\varnothing, X\}$, la topología indiscreta. 
+
+
+
+Si $X$ es finito entonces cada $A\subset X$ con $A\not = \varnothing,X$
+tiene complemento finito y por lo tanto $A$ no está en  $\mathcal{T}_\infty$.
+Veamos ahora que si $X$ es infinito entonces $\mathcal{T}_\infty$ no es una topología.
+Sea $(x_n\colon n\in\mathbb{N})$ una sucesión infinita de elementos distintos dos a dos de $X$, 
+la cual podemos elegir inductivamente, ya que  $X \setminus \{x_0, x_1, \ldots,x_n\}$ es
+no vacío para cada $n$. 
+Si $U = X\setminus \{x_{2n}\}_{n\geq 0}$ y $V = \cup X \setminus (\{x_0\} \cup \{x_{2n+1}\}_{n\geq 0})$  entonces
+ambos $U$ y $V$ están en  $\mathcal{T}_\infty$ pero $U\cup V = X \setminus \{x_0\}$ no está
+en    $\mathcal{T}_\infty$. 
+
+\end{document}

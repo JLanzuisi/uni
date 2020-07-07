@@ -1,0 +1,103 @@
+%\input{../../Plantillas-Fomato/Libros/Libro-Anillos.tex}
+%\thispagestyle{plain}
+\section{Ejercicios}%
+\label{cha:Ejercicios}
+
+{\noindent A continuación hay varios ejercicios resueltos, seguidos por otros que si se dejaran enteramente al lector. }
+
+Siempre que no se especifique, $A$ es un anillo.
+\begin{ejer} 
+		Demuestre que $(-1)^2 = 1$ en $A$.
+\end{ejer}
+\begin{sol}
+	Usando el teorema 1.1, se tiene que 
+	\[(-1)^2 =  (-1)(-1)  = -(-1) = 1.\] 
+\end{sol}
+\begin{ejer} 
+		Demuestre que si $u$ es una unidad en $A$, entonces $-u$ también lo es.
+\end{ejer} 
+\begin{sol}
+	Sea $v \in A$ el inverso de $u$. Entonces $(-u)(-v) = -(-uv) = uv = 1$, de igual forma, $(-v)(-u) = 1$ y $-u$ es una unidad.
+\end{sol}
+\begin{ejer} 
+		Sea $A$ un anillo con identidad, y $S$ un subanillo de $A$ que contiene a la identidad de $A$. Demuestre que si $u$ es una unidad en $S$, entonces también lo es en $A$.
+\end{ejer} 
+\begin{sol}
+	Sabemos, por la definición de subanillo, que $S \subset A$. Luego, si $v \in S$ es el inverso de $u$, se sigue que $v \in A$. Pero como el producto en $S$ es el mismo que en $A$, se tiene que necesariamente $uv$ en $S$ es lo mismo que $uv$ en $A$. Pero esto ultimo es lo mismo que decir que $u$ es una unidad en $A$.
+\end{sol}
+\begin{ejer}\label{ejerintsub} 
+		Demuestre que la intersección de una colección de subanillos, de un anillo dado, es también un subanillo.
+\end{ejer} 
+\begin{sol}
+	Sea $A$ un anillo cualquiera y sean $\{S_1,\cdots,S_n\}$ sub\-anillos de $A$. Denotemos por $\bigcap S_i$ la intersección de los $S_i$ con $0 < i \leq n$.
+	
+	Sean $x,y \in \bigcap S_i$, entonces se tiene que $x,y \in S_i$ para todo $0 < i \leq n$, y la diferencia $(x-y)$, como todos los $S_i$ son subanillos, esta en cada uno de ellos. Pero esto último es lo mismo que decir que $(x-y) \in \bigcap S_i$.
+	
+	Sean $x,y$ como antes, por un argumento similar al anterior, es fácil ver que $(xy) \in \bigcap S_i$ para todo $0 < i \leq n$. Por las dos condiciones anteriores, $\bigcap S_i$ es un subanillo de $A$.
+\end{sol}
+\begin{ejer} 
+		El \textit{centro} de un anillo $A$ es 
+		\[\{z \in A: za=az \; \text{para todo} \;  a \in A \},\]
+		es decir, el conjunto de los elementos de $A$ que conmutan con todos los elementos de $A$. Demuestre que el centro de un anillo es un subanillo unitario y que el centro de un anillo de división es un cuerpo. A$A$
+\end{ejer} 
+\begin{sol}
+	Primero que todo, es evidente que si $1 \in A$ entonces $1$ pertenece al centro de $A$.
+	
+	Sean $x,y$ en el centro de $A$ y sea $a$ un elemento de $A$. Entonces se tiene que
+	\[ (x-y)a = xa-ya = ax - ay = a(x-y) \]
+	y se sigue que $x-y$ pertenece al centro de $A$.
+	Consideremos ahora el producto $(xy)$,
+	\[ (xy)a = x(ya) = x(ay) = (xa)y = (ax)y = a(xy) \]
+	por lo que $(xy)$ pertenece al centro de $A$.
+	
+	En el caso de que $A$ sea un anillo de división, entonces el centro de $A$ es un anillo de división conmutativo, es decir, un cuerpo.
+\end{sol}
+\begin{ejer} 
+		Demuestre que si $A$ es un dominio entero y $x^2 = 1$ para algún $x \in A$, entonces $x = \pm 1$.
+\end{ejer} 
+\begin{sol}
+	Tenemos que $x^2=1$, o lo que es lo mismo, que $x^2 - 1 = 0$. Notemos que 
+	\[ (x+1)(x-1) = x^2 - x + x -1 = x^2 -1 \]
+	y entonces tenemos que de la igualdad 
+	\[ (x+1)(x-1) = 0 \]
+	se sigue que $(x+1) = 0$ o $(x-1) = 0$ debido a que $A$ es un dominio entero. Pero entonces tenemos que $x=1$ o $x=-1$.
+\end{sol}
+\begin{ejer} 
+		Demuestre que cualquier subanillo de un cuerpo que contiene a la identidad es un dominio entero.
+\end{ejer} 
+\begin{sol}
+	Sea $C$ un cuerpo y $S$ un subanillo de $C$ que contiene a la identidad. Sean $a,b$ elementos no nulos de $S$ y supongamos que $ab=0$. Como $a$ es un elemento de un cuerpo existe su inverso multiplicativo $a\inv$ y se sigue que
+	\[ a\inv ab = a\inv 0 \]
+	de donde $b=0$, lo cual es una contradicción.
+\end{sol}
+\begin{ejer}\label{ejerNilpo} 
+		Un elemento $x \in A$ es llamado \textit{nilpotente} si $x^m=0$ para algún $m \in \N$.
+		\begin{enumerate}
+			\item Demuestre que si $n=a^kb$, para algunos enteros $a,b$, entonces $\overline{ab}$ es un elemento nilpotente de $\Z/n\Z$.
+			\item Sea $A$ el anillo de funciones de un conjunto no vacío, $X$, a un cuerpo $C$. Demuestre que $A$ no posee elementos nilpotentes distintos de cero.
+		\end{enumerate}
+\end{ejer} 
+\begin{sol} Veamos cada parte por separado,
+	\begin{enumerate}
+		\item Tenemos que \begin{align*}
+		(\overline{ab})^k &= \overline{(ab)^k} = \overline{(a^kb)(b^{k-1})} \\
+		&= (\overline{a^kb}) (\overline{b^{k-1}}) = \overline{(n)} (\overline{b^{k-1}}) \\
+		&=  0\overline{b^{k-1}} = 0.
+		\end{align*}
+		\item Supongamos que existe una $f \in A$, no nula, tal que $f^k = 0$ para algún $k \in \N$. Entonces ocurriría que $f(x)^k = 0$, pero como $f(x)$ es un elemento de $C$ esto es imposible. En un cuerpo no hay elementos nilpotentes, debido a que estos son \textit{siempre divisores de cero} (considérese la ecuación $f(x)f(x)^{k-1} = 0$). 
+	\end{enumerate}
+\end{sol}
+%
+A continuación están los ejercicios no resueltos.
+\begin{ejer} 
+	Describa el centro de $\Ha$, los cuaterniones Hamiltonianos. Demuestre que $\{a+bi\mid a,b \in \R \}$ es un subanillo de $\Ha$ que es un cuerpo, pero no esta contenido en el centro de $\Ha$.
+\end{ejer} 
+\begin{ejer} 
+		Para un elemento fijo $a \in A$ definamos $C(a) = \{r \in A\mid ra=ar\}$. Demuestre que $C(a)$ es un subanillo de $A$ que contiene a $a$. Demuestre que el centro de $A$ es la intersección de los subanillos $C(a)$, para todo $a \in A$.
+\end{ejer} 
+\begin{ejer} 
+		Sea $A$ un anillo tal que, para todo $a,b \in A$, $a+b=ab$. Demuestre que $A$ debe ser el anillo trivial, esto es, que $A = 0$.
+\end{ejer} 
+\begin{ejer} 
+		Un elemento $a$ de $A$ se llama \textit{idempotente} si $a^2 = a$. Demuestre que un elemento, no nulo, que sea idempotente no puede ser nilpotente\footnotemark.
+\end{ejer} \footnotetext{Véase el ejercicio \ref{ejerNilpo}}

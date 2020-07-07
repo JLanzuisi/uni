@@ -1,0 +1,96 @@
+\chapter{Definiciones Básicas}%
+\label{cha:definiciones_básicas}
+
+La definición de una topología que se dará a
+continuación es una de muchas posibles, diferentes
+autores\footnote{Fréchet, Hausdorff, entre otros.} han
+propuesto diferentes manera de definirlas. La forma en
+que se definen en este texto es la manera
+\emph{estándar} de la cual se pueden obtener todos los
+casos de topologías interesantes en los conjuntos
+interesantes.
+
+Aunque la definición de una topología pueda parecer
+abstracta, su significado se irá haciendo más claro
+cuanto más se use.
+
+\begin{defi} Una \Keyword{topología} en un conjunto $X$ es
+	una colección $\mathcal{T}$ de subconjuntos de
+	$X$ (un subconjunto del conjunto de partes de
+	$X$) que posee las siguientes propiedades:
+	\begin{enumerate} \item El conjunto vacío y $X$
+		pertenecen a $ \mathcal{T}$
+	\item La
+		union arbitraria de subconjuntos de $
+		\mathcal{T} $ está en $ \mathcal{T} $.
+	\item Las intersecciones finitas de elementos
+		de $ \mathcal{T} $ estan en $
+		\mathcal{T} $.  \end{enumerate} 
+	Un
+	conjunto $ X $ junto con una topología $
+\mathcal{T} $ definida en $ X $ es llamado un
+\emph{espacio topológico}.  \end{defi}
+
+Si $ X $ es un espacio topológico con una topología $
+\mathcal{T} $, diremos que un subconjunto $ U $ de $ X
+$ es \emph{abierto} si $ U\in \mathcal{T} $. Dicho esto
+la definición anterior puede enunciarse nuevamente en
+términos de conjuntos abiertos: 
+\begin{itemize} \item
+	Tanto el vacío como $ X $ son abiertos.  
+	\item
+	Las uniones arbitrarias e intersecciones
+	finitas de conjuntos abiertos dan conjuntos
+	abiertos.  \end{itemize}
+
+A partir de ahora se usará la frase `es un conjunto
+abierto' como sinónimo de `pertenece a la topología $
+\mathcal{T} $' a no ser que se diga lo contario.
+
+\begin{ejem} 
+	Si $ X $ es un conjunto, entonces el
+	conjunto $ \mathcal{P}(X) $ de las
+	\emph{partes} de $ X $ es una topología. Esta
+	topología, en la que todos los conjuntos son
+	abiertos, se conoce como la topología
+	\emph{discreta}.  \end{ejem}
+
+\begin{ejem} Si
+	consideramos como abiertos solamente a los
+	subconjuntos $ \emptyset,X $ de un conjunto $ X
+	$ cualquiera entonces obtenemos una topología
+	sobre $ X $ llamada \emph{indiscreta} o
+	trivial.  \end{ejem}
+
+\begin{ejem} Sean $ X $ un
+	conjunto y $ \mathcal{T}_f $ la colección de
+	todos los subconjuntos $ U $ de $ X $ tales que
+	$ X\setminus U $ es finito o es todo $ X $.
+	Entonces $ \mathcal{T}_f $ es una topología,
+	llamada la \emph{topología complemento finito}.
+
+	Tanto $ X $ como el vacío pertenecen a $
+	\mathcal{T}_f $ debido a que $ X\setminus X $
+	es finito y $ X\setminus\emptyset $ es todo $ X
+	$. Si $\{ U_\alpha \}$ es una familia indexada
+	de elementos de $ \mathcal{T}_f $ no nulos,
+	entonces\footnotemark \[ X\setminus\bigcup
+	U_\alpha = \bigcap (X\setminus U_\alpha).  \]
+	\footnotetext{Las igualdades de este ejemplo se
+		siguen todas de las leyes de \emph{De
+	Morgan}.} donde el lado derecho de la igualdad
+	es conjunto finito puesto que los $ X\setminus
+	U_\alpha $ son finitos. Se sigue que las
+	uniones arbitrarias de elementos de $
+	\mathcal{T}_f $ pertenecen a $ \mathcal{T}_f $.
+
+	Sean $ U_1,\dots,U_n $ una cantidad finita de
+	elementos no vacíos de $ \mathcal{T}_f $.
+	Entonces \[ X\setminus\bigcap_{i=1}^n U_i =
+		\bigcup_{i=1}^n (X\setminus U_i).  \]
+	Donde el lado derecho de la igualdad es finito
+por ser la unión de conjuntos finitos.  \end{ejem}
+
+
+
+

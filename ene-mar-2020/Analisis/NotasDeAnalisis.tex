@@ -1,0 +1,77 @@
+\documentclass[letterpaper,10pt,fleqn,final,twoside]{book}
+\input{../../preamble-book.tex}
+
+\includeonly{
+partes/metadata,
+partes/introduccion,
+partes/notacion,
+partes/numerosReales,
+partes/construccionReales,
+partes/numerosComplejos,
+%partes/relaciones,
+%partes/defFunciones,
+%partes/conjuntos,
+%partes/sucesioneSeries,
+partes/apendice1,
+}
+
+\author{Jhonny Lanzuisi}
+\begin{document} 
+\frontmatter
+	\begin{titlepage}
+		\includepdf[pages=-]{portada.pdf}
+	\end{titlepage}
+\input{partes/metadata.tex}
+
+\tableofcontents
+\include{partes/introduccion}
+\include{partes/notacion}
+\mainmatter
+
+\part{Sistema de los Números Reales}
+\label{prt:Numeros Reales}
+\include{partes/numerosReales}
+\include{partes/construccionReales}
+\include{partes/numerosComplejos}
+
+
+\part{Funciones} % (fold)%
+\label{prt:Funciones}
+\include{partes/relaciones}
+\include{partes/defFunciones}
+
+% part Funciones (end)
+
+\part[Topología]{Topología}
+\label{prt:topologia}
+\include{partes/conjuntos}
+
+
+\part{Sucesiones y Series}
+\label{prt:sucesionesSeries}
+\include{partes/sucesioneSeries}
+
+\part{Funciones Continuas} % (fold)%
+\label{prt:Funciones Continuas}
+
+\part{Derivadas} % (fold)%
+\label{prt:Derivadas}
+
+\part{Integral de Riemann} % (fold)%
+\label{prt:Integral de Riemann}
+
+\appendix
+\part{Apéndices}
+\include{partes/apendice1}
+
+\backmatter
+\printbibliography[
+heading=bibintoc,
+title={Referencias}
+]
+\printindex
+\listoffigures
+\listoftables
+
+
+\end{document}

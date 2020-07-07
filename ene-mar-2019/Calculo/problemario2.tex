@@ -1,0 +1,53 @@
+\input{../Plantillas-Fomato/Tareas/tarea.tex}
+%\tcabe{Cálculo II}{Jhonny Lanzuisi, 1510759}
+\cabe{Álgebra 3: Tarea 3}{Jhonny Lanzuisi, 1510759}
+\begin{document} 
+	\titulo{Cálculo \textsc{ii}}{Segundo Problemario}	
+
+\subsection*{Ejercicio 1}
+	Verifique las siguientes identidades en el complejo:
+	\begin{enumerate}
+		\item $|z|^2 \geq 2|\Rea(z)||\Ima(z)|$,
+		\item $|z_1\pm z_2|^2 = |z_1|^2 + |z_2|^2 \pm \Rea(z_1\overline{z_2})$,
+		\item $|z_1+z_2|^2 + |z_1-z_2|^2 = 2(|z_1|^2+|z_2|^2)$.
+	\end{enumerate}
+\begin{sol}
+	Veamos cada parte por separado.
+	\begin{enumerate}
+		\item Primero, notemos que para todo $a$ y $b$ en $\R$ la siguiente desigualdad
+		\[ 0\leq (a-b)^2 = a^2+b^2-2ab \]
+		implica que $a^2+b^2\geq 2|ab|$. Ahora sea $z=a+bi$ un número complejo, 
+		\begin{align*}
+			|z|^2 &= a^2+b^2 \\
+				  &\geq 2|ab| \\
+				  &= 2|\Rea(z)||\Ima(z)|.
+		\end{align*}
+		\item Sean $z_1=t+ui$ y $z_2=v+wi$. Notemos primero que $\Rea(z_1\overline{z_2}) = tv+uw$. Ahora
+		\begin{align*}
+			|z_1\pm z_2|^2 &= (t\pm v)^2 + (u\pm w)^2 \\
+						   &= (t^2\pm 2tv + v^2) + (u^2\pm 2uw + w^2) \\
+						   &= (t^2+u^2) + (v^2+w^2) \pm 2(tv+uw) \\
+						   &= |z_1|^2 + |z_2|^2 \pm 2\Rea(z_1\overline{z_2}).
+		\end{align*}
+		\item Sean $z_1$ y $z_2$ igual que antes. Utilizando el resultado de la parte anterior, tenemos que $|z_1+z_2|^2 + |z_1-z_2|^2$ es
+		\[ \big(|z_1|^2 + |z_2|^2 + 2\Rea(z_1\overline{z_2})\big) + \big( |z_1|^2 + |z_2|^2 - 2\Rea(z_1\overline{z_2}) \big) \]
+		que se reduce a
+		\[ |z_1|^2 + |z_2|^2 + |z_1|^2 + |z_2|^2 =  2(|z_1|^2+|z_2|^2). \]
+	\end{enumerate}
+\end{sol}
+\subsection*{Ejercicio 2}
+	Sea $a \in \Co$ tal que $a^{n - 1} = 0 $ y $a\neq0$.
+	\begin{enumerate}
+		\item Demostrar que $\displaystyle \sum_{k=0}^{n-1}a_k = 0$ y que
+		\item Si $a = a_0$ es una raíz enésima de la unidad, y si $a_0 , a_1 , \dots , a_{n-1}$ son todas las raíces de $z^n = 1$ 
+		\[ \text{demuestre que}\; a_0^k = a_k \]
+		para $k = 0, 1, \dots , n - 1$, y que 
+		\[ 1 + a + a_1 + \dots + a_{n-1} = 0. \]
+	\end{enumerate}
+
+\subsection*{Ejercicio 3}
+	Hallar la imagen del siguiente conjunto
+	\[ \Omega = \{ z\in\Co \mid |z|=R \} \]
+	bajo la transformación
+	\[ f(z) = z/(\overline{z}). \]
+\end{document}

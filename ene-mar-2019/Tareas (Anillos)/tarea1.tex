@@ -1,0 +1,78 @@
+\input{../Plantillas-Fomato/Tareas/tarea.tex}
+\cabe{int. a la teoria de anillos: tarea 1}
+\tcabe{int. a la teoria de anillos: tarea 1}{Jhonny Lanzuisi, 1510759}
+\begin{document} \thispagestyle{plain}
+\chapter*{Definiciones Básicas}
+\subsection*{ejercicio 1}
+	Si A y B son anillos, pruebe que el producto cartesiano $A \times B$ es un anillo, el cual llamamos producto directo. 
+\begin{sol}
+	Sean $(a_1,b_1),(a_2,b_2) \in A \times B$ definimos las siguientes operaciones,
+	 \[(a_1,b_1)+(a_2,b_2)=(a_1+b_1,a_2+b_2)\]
+	 y 
+	 \[(a_1,b_1)(a_2,b_2)=(a_1a_2,b_1b_2)\]
+	 donde las sumas y los productos son los de $A$ y $B$ respectivamente. El conjunto $A \times B$ junto con estas operaciones es un anillo.
+	
+	En efecto, tenemos que $(a_1+b_1,a_2+b_2) \in A \times B$ y que $(a_1a_2,b_1b_2) \in A \times B$ ya que $A$ y $B$ son ambos anillos, y por lo tanto el conjunto $A \times B$ es cerrado bajo las operaciones definidas. Cabe descatar también que, evidentemente, $A \times B \neq \emptyset$ ya que necesariamente $(0_a,0_b) \in A \times B$  (con $0_a$ el neutor de $A$ y $0_b$ el neutro de $B$, con respecto a la suma).
+	
+	Nótese también que para la suma se cumple
+	\begin{align*}
+		(a_1,b_1) + (a_2,b_2) &= (a_1 + a_2, b_1+b_2) \\ 
+							  &= (a_2+a_1, b_2+b_1) \\
+							  &= (a_2,b_2) + (a_1,b_1) \\
+	\end{align*}
+	la segunda igualdad se sigue del hecho de que tanto $A$ como $B$ son grupos abelianos respecto a la suma. Por otra parte, sea $(a_3,b_3) \in A \times B$ tenemos que
+	\begin{align*}\small
+	((a_1,b_1) + (a_2,b_2)) + (a_3,&b_3) = (a_1+a_2+a_3,b_1+b_2+b_3) \\
+										&= (a_1+(a_2+a_3),(b_1+(b_2+b_3))) \\
+										&= (a_1,b_1) + ((a_2,b_2) + (a_3,b_3))
+	\end{align*}
+	en donde, igual que antes, la segunda igualdad se sigue del hecho de que la propiedad asociativa se cumple en $A$ y en $B$. Por estos dos hechos, la operación suma en $A \times B$ es conmutativa y asociativa.
+	
+	Consideremos ahora la existencia de elementos distinguidos. Para todo $(a,b) \in A \times B$ es claro que
+	$$ (a,b) + (0_a,0_b) = (0_a,0_b) + (a,b) = (a,b) $$
+	también es fácil ver que, si $-a \in A$ es el inverso aditivo de $a$ y $-b \in B$ es el inverso aditivo de $b$ entonces $(-a,-b)$ es el inverso aditivo de $(a,b)$. Por todo lo anterior, el conjunto $A \times B$ es un grupo abeliano con la suma.
+	
+	Veamos por último las propiedades del producto definido en $A \times B$. Notemos que
+	\begin{align*}
+	((a_1,b_1)(a_2,b_2))(a_3,b_3) &= (a_1a_2a_3,b_1b_2b_3) \\
+								  &= (a_1(a_2a_3),b_1(b_2b_3)) \\
+								  &= (a_1,b_1)((a_2,b_2)(a_3,b_3))
+	\end{align*} 
+	en donde la segunda igualdad se sigue del hecho de que los productos en $A$ y $B$ son asociativos. Para el producto, también se cumple que
+	\begin{align*}
+	(a_1,b_1) ((a_2,b_2)+(a_3,b_3)) &= (a_1(a_2+a_3),b_1(b_2+b_3)) \\
+									&= (a_1a_2+a_1a_3,b_1b_2+b_1b_3) \\
+									&= (a_1a_2,b_1b_2) + (a_1a_3,b_1b_3)
+	\end{align*}
+	en donde la segunda igualdad se sigue de la propiedad distributiva del prodcuto en $A$ y en $B$. La distributividad a la derecha se prueba de forma analoga.
+	Por todo lo anterior, el conjuto $A \times B$ con las operaciones definidas es un anillo.
+\end{sol}
+\subsection*{ejercicio 2}
+	Demuestre que el siguiente conjunto es un anillo conmutativo con unidad: 
+\[ \Z (i) = \{a+ib \in \Co : a,b \in \Z \} \]
+\begin{sol}
+	Sabemos por lo visto en clase que el conjunto de los números complejos $\Co$ es un anillo conmutativo con unidad. Como todos los elementos de $\Z (i)$ son elementos de $\Co$ entonces se sigue que necesariamente $\Z (i)$ es un anillo, ya que si alguna de las propiedades de un anillo fallase para algunos elementos de $\Z (i)$ también fallaría para estos vistos como elementos en $\Co$,bajo las mismas operaciones, lo cual es imposible. Lo mismo sirve para probar que la conmutatividad de $\Z (i)$ se sigue de la conmutatividad en $\Co$ con el producto usual. Por último, notemos que la unidad de $\Co$ es $(1,0)$, que como $1 \in \Z$ y $0 \in \Z$, entonces $(1,0) \in \Z (i)$; y por lo tanto $\Z (i)$ posee unidad.
+\end{sol}
+\subsection*{ejercicio 3}
+	Para cada anillo $A$, determine su conjunto de unidades $U(A)$.
+\begin{sol}
+	\begin{enumerate}
+	\item Consideremos el anillo $A= \Z_6$. Operando en $\Z_6$ podemos ver que $U(A)=\{1,5\}$ debido a que $(1)(1)=1$ y $(5)(5)=1$, para cualquier otro elemento en $\Z_6$ es imposible encontrar un inverso multiplicativo.
+	
+	\item Consideremos el anillo $A = 5\Z$. Este anillo no posee unidad multiplicativa, debido a que la unidad del producto de enteros es el 1 y este elemento no esta en el conjunto $5\Z$, por lo que el conjunto $U(A)=\emptyset$.
+	
+	\item Consideremos el anillo $A = \Z_7$. Este anillo, como 7 es primo, es un cuerpo. Se sigue que todos los elementos no nulos son unidades y que $U(A)=\{1,2,3,4,5,6\}$. En efecto: $(1)(1)=1$, $(2)(4)=1$, $(3)(5)=1$, $(4)(2)=1$, $(5)(3)=1$, $(6)(6)=1$.
+	
+	\item Consideremos el anillo $A = \Z \times \Q \times \Z$. Notemos primero que en $\Z$ las únicas unidades son $-1,1$; en $\Q$ por otra parte las unidades son todos los elementos no nulos. Por como está definido el producto en $A$ se sigue que, por todo lo dicho antes, las unidades son $U(A)=\{(\pm 1, a, \pm 1) \in  A : a \neq 0\}$.
+	\end{enumerate}
+\end{sol}
+\subsection*{ejercicio 4}
+	Si A es un anillo tal que $a+b = ab \; \forall \; a,b \in A$, demuestre que $A=\{0\}$.
+\begin{sol}
+	Supongamos que existe un $a \neq 0$ en $A$. Tenemos entonces que, por la definición de la suma
+	$$a+0 = a0 = 0 $$
+	pero de aqui se sigue que
+	$$a + 0 = 0 \rightarrow a = 0-0 \rightarrow a=0$$
+	y como $a$ era distinto de cero, llegamos a una contradicción. Tenemos entonces que no puede existir ningún $a \neq 0$ en $A$. 
+\end{sol}
+\end{document}

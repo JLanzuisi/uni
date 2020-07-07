@@ -1,0 +1,84 @@
+\chapter{Relaciones}%
+\label{cha:Relaciones}
+
+\begin{primerpar}
+	Antes de definir una función es útil
+comentar la idea de \emph{relación} en profundidad, pues esta será
+la base en la que se construirán las funciones. También se discutirán
+las relaciones de orden, cuya importancia se verá en la parte~\ref{prt:topologia}-Topología.
+\end{primerpar}
+
+\section{Relaciones y sus propiedades}%
+\label{sec:RelacionesPropiedades}
+
+
+Una \Keyword{relación} es, de forma\textsf{a} intuitiva, una regla que nos permite
+asignarle a elementos de un conjunto elementos de \emph{otro conjunto} (los conjuntos pueden ser el mismo, en cuyo caso es una relación de un conjunto en si mismo).
+Decimos entonces que aquellos elementos que asigna esta regla están relacionados.
+
+\begin{nota}
+	Esto e suna prueba de una nota, algo de mate $x=z+r^2$ y mas palabras pa probar
+\end{nota}
+
+Consideremos unos cuantos ejemplos antes de embarcarnos en la definición rigurosa de
+una relación.
+
+\begin{ejem}
+	La relación padre-hijo es una relación en el sentido que las estamos estudiando: si consideramos
+	los conjuntos de las personas mayores de $30$ años y las personas menores de $30$ entonces
+	podemos relacionar a dos individuos, si uno es padre del otro, o si uno es hijo del otro.
+\end{ejem}
+
+\begin{ejem}
+	Tomemos los conjuntos finitos $\mathcal{A}=\{ a,b,c \}$ y $\mathcal{B}=\{ d,e,f \}$.
+	Una relación es pues cualquier regla de asignación entre estos dos conjuntos. Por ejemplo, la regla
+	que asigna a cada elemento de $\mathcal{A}$ el elemento $e$ de $\mathcal{B}$ es una relación.
+\end{ejem}
+
+\marginnote{Notación Importante}
+Si llamamos a nuestra relación $R$ entonces el ejemplo anterior puede escribirse como: $xRe$ para todo $x\in\mathcal{A}$.
+
+\begin{ejem}\label{ejem:nofun}
+	Consideremos los conjuntos finitos $\mathcal{A}=\{ a \}$ y $\mathcal{B}=\{ b,c \}$. La relación $R$ dada por
+	$aRb$ y $aRc$ es una relación entre los dos conjuntos. Nótese que en este caso al elemento $a$ se le asignan
+	dos elementos \emph{distintos} de $\mathcal{B}$.
+\end{ejem}
+
+\begin{ejem}\label{ejem:sifun}
+	Tomemos el conjunto de los números reales. Entonces una relación de $\mathbb{R}$ en $\mathbb{R}$
+	viene dada por $xR2x$ para todo $x\in\mathbb{R}$.
+\end{ejem}
+
+Tomando en cuenta los ejemplos anteriores podemos escribir la relación $aRb$ mediante la notación $(a,b)$.
+Se vuelve entonces evidente que estamos tratando con elementos de un \emph{producto cartesiano}: si
+$a\in\mathcal{A}$ y $b\in\mathcal{B}$ entonces estamos tomando elementos de $\mathcal{A}\times\mathcal{B}$.
+Esta es la idea central de la definición.
+
+\begin{defi}
+	Sean $\mathcal{A},\mathcal{B}$ dos conjuntos (no necesariamente distintos).
+	Una \Keyword{relación} entre ellos es cualquier subconjunto del producto cartesiano
+	$\mathcal{A}\times\mathcal{B}$.
+\end{defi}
+
+Otra forma de decirlo es que una relación entre los dos conjuntos es cualquier elemento de $\mathcal{P}(\mathcal{A}\times\mathcal{B})$.
+
+Existen diversas propiedades que pueden cumplir las relaciones que nos son de interés, en lo que sigue `$R$' siempre denota una relación:
+\begin{description}
+	\item[Reflexividad] Si para todo $x$ se cumple que $xRx$.
+	\item[Simetría] Si, dados dos elementos $x,y$ se cumple que
+		$xRy$ implica $yRx$.
+	\item[Transitividad] Si dado tres elementos $x,y,z$ se cumple que
+		$xRy$ y $yRz$ implica $xRz$.
+\end{description}
+
+\begin{ejem}
+	La relación en el ejemplo~\ref{ejem:sifun}, página~\pageref{ejem:sifun}, no es transitiva ni reflexiva ni simétrica.	
+\end{ejem}
+
+El nombre de alguna de estas propiedades le será familiar al lector de cuando discutimos la relación de orden de los números reales.
+No será entonces una sorpresa que la noción de relación pueda usarse para definir \emph{ordenes.} Estos podrán ser \emph{parciales} o
+\emph{totales}, como veremos a continuación.
+
+\section{Relaciones de orden}%
+\label{sec:Relaciones de orden}
+

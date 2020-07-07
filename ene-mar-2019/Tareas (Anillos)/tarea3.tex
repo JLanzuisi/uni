@@ -1,0 +1,88 @@
+%\input{../Plantillas-Fomato/Tareas/tarea.tex}
+%\cabe{Int. a la Teoría de Anillos: tarea 3}{Jhonny Lanzuisi, 1510759}
+\documentclass[twocolumn,tarea]{customclass}
+\changechapnum{Introduccion a la teoria de Anillos}
+\begin{document}
+\chapter{Subanillos e Ideales, Tarea 2}
+%\identi{Jhonny Lanzuisi}{15-10759}
+\section*{Ejercicio 1}
+ Sean $\id a,\id b$ ideales de $\an A$, demuestre que $\id{a+b}$ es un ideal de $\an A$. 
+\begin{sol}
+Sean $a$ y $b$ en $\id{a+b}$. Entonces se tiene que $a = v_1 + w_1$ y $b = v_2 + w_2$ para algunos $v_1,v_2$ en $\id a$ y $\, w_1,w_2$ en $\id b$. 
+
+Al restar $a$ con $b$,
+\begin{align*}
+a-b &= (v_1 + w_1) - (v_2 + w_2) \\ &= (v_1-v_2) + (w_1-w_2),
+\end{align*}
+se tiene que $(a-b) \in\id{a+b}$ debido a que $(v_1-v_2) $ está en $\id a$ y $(w_1-w_2) $ está en $\id b$ ---pues tanto $\id a$ como $\id b$ son ideales---.
+
+Ahora, tomemos un elemento $z$ de $\an A$. El producto $az$, dado por
+\[ az = (v_1 + w_1)z = v_1z + w_1z, \]
+es un elemento de $\id{a+b}$ puesto que $v_1z$ pertenece a $\id a$ y $w_1z$ pertenece a $\id b$ ---debido a que tanto $\id a$ como $\id b$ son ideales---. Es claro que el producto $za$, dado por
+\[ za = z(v_1 + w_1) = zv_1 + zw_1, \]
+es también un elemento de $\id{a+b}$.
+
+Como $\id{a+b}$ es cerrado bajo al diferencia y el prodcuto por elementos de $\an A$, entonces es un ideal de $\an A$.
+
+\end{sol}
+\section*{Ejercicio 2}
+	Sea $\an R$ un anillo unitario. Demuestre que si $a_1,a_2,\dots,a_n$ son elementos de $\an R$ entonces
+\[ (a_1,a_2,\dots,a_n) = (a_1) + (a_2) + \dots + (a_n). \]
+\begin{sol}
+	Por conveniencia usaremos la notación $\an Ra\an R$ para denotar las sumas finitas de la forma 
+	\[ r_1as_1+r_2as_2+\dots+r_nas_n \quad (r_i,s_i\in\an R). \]
+	
+	El ideal denotado por $(a_1,a_2,\dots,a_n)$ ---al que de ahora en adelante llamaremos $\id a$--- es el ideal mas pequeño que contiene a los $a_1,a_2,\dots,a_n$. Como $\id a$ es un ideal, se tiene que $0\in\id a$ y que, como es cerrado bajo la suma,
+	\[ (a_1+a_2+\dots+a_n) \in\id a\]
+	donde puede ser que algún $a_i$ sea cero. Además, como $\id a$ es cerrado bajo el producto por elementos arbitrarios de $\an R$, debemos tener que
+	\[ \an R(a_1+a_2+\dots+a_n)\an R \in\id a \]
+	donde, al igual que antes, algunos de los $a_i$ pueden ser cero. 
+	
+	Como las condiciones anteriores son las \textit{mínimas necesarias} que debe cumplir $\id a$, tenemos que
+	\begin{align*}
+	\id a &= \an R(a_1+a_2+\dots+a_n)\an R \\
+	  &= \an Ra_1\an R+\an Ra_2\an R+\dots+\an Ra_n\an R \\
+	  &= (a_1) + (a_2) + \dots + (a_n).
+	\end{align*}
+\end{sol}
+\section*{Ejercicio 3}
+	Demuestre que si $\id i$ es un ideal propio (a izquierda o derecha, o ambos) de un anillo unitario $\an A$, entonces ningún elemento de $\id i$ posee un inverso multiplicativo
+\begin{sol}
+	Sea $\id i$ un ideal de $\an A$ y supongamos que existe un $a \in \id i$, no nulo, tal que su inverso $a^{-1}$ existe en $\an A$. Como $\id i$ es cerrado bajo la multiplicación por cualquier elemento de $\an A$, se sigue que $aa^{-1}=1 \in\an A$. Luego, $\id i$ contiene a $r = r1$ para todo $r \in\an A$; es decir, $\an A \subseteq\id i$, y tenemos la igualdad $\id i=\an A$. Esto contradice el hecho de que $\id i$ era un ideal propio.
+\end{sol}
+
+\section*{Ejercicio 4}
+	Considere el anillo $\Px$ de las partes de $X$. Demuestre que el conjunto $J$ dado por
+\[ J = \{ S \; \text{en} \; \Px \;\text{tales que}\; S \; \text{es finito} \} \]
+es un ideal de $\Px$.
+\begin{sol}
+	Sean $S$ y $V$ en $J$. Como el opuesto de $V$ es el mismo conjunto $V$ entonces $S \tri V$, dado por 
+	\[ S\tri V = (S-V) \cup (V-S), \]
+	puede ser considerado como la resta de $S$ con $V$. Dado que la unión de conjuntos finitos es finita, la resta $S\tri V$ estará en $J$ siempre que $S-V$ y $V-S$ sean finitos. Esto en efecto ocurre pues $S-V \subseteq S$ (de la misma forma $V-S\subseteq V$) y $S$ (al igual que $V$) es finito, por lo que $S-V$ (y $V-S$) es finito ---un conjunto finito no puede tener un subconjunto infinito. Luego $S\tri V$ está en $J$ y este es cerrado bajo la diferencia.
+	
+	Sea $A$ un elemento de $\Px$. El producto de $A$ con $V$, dado por
+	\[ AV = A\cap V, \]
+	es también finito pues, al ser uno de los conjunto finitos ---y sabemos que $V$ lo es--- los elementos que este tiene en común con el otro (la intersección) no puede ser infinita.
+	
+	Por lo anterior $J$ es cerrado bajo la diferencia y bajo el producto por elementos de $\Px$. Entonces $J$ es un ideal de $\Px$.
+\end{sol}
+\section*{Ejercicio 5}
+	Sea $h\colon\an A\to\an B$ un homomorfismo de anillos. Demuestre que, si $\an A$ es de característica $n$ (denotado por $\car\an A = n$), $h(\an A)$ es un subanillo de $\an B$ de característica menor o igual que $n$.
+\begin{sol}
+	Veamos primero que $h(A)$ es un subanillo de $A'$. Sean $r$ y $s$ elementos de $h(A)$, entonces existen $a$ y $b$ en $A$ tales que $h(a)=r$ y $h(b)=s$. La diferencia de $r$ y $s$, dada por
+	\[ r-s = h(a) - h(b) = h(a-b), \]
+	es también un elemento de $h(A)$ puesto que $a-b$ pertenece a $A$.
+	
+	Los productos $rs$ y $sr$, dados por
+	\[ rs = h(a)h(b) = h(ab) \]
+	y
+	\[ sr = h(b)h(a) = h(ba), \]
+	son ambos elementos de $h(A)$ debido a que tanto $ab$ como $ba$ pertenecen a $A$. Hemos demostrado entonces que $h(A)$ es un subanillo de $A'$.
+	
+	Consideraremos ahora la característica de $h(A)$. Supongamos que $\car h(A) = m$ y que $n < m$.
+	
+	Como $n$ es la carcaterística de $A$, tenemos que
+	\[ nh(a) = h(na) = h(0) = 0 \]
+	y entonces $\car h(A) = n$ que es una contradicción, pues la característica de $h(A)$ es mayor que $n$. Por lo tanto, debe ocurrir que $\car h(A) \leq n$ como se buscaba. 
+\end{sol}
+\end{document}

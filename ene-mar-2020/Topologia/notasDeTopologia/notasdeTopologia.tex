@@ -1,0 +1,25 @@
+\documentclass[mid,fleqn,draft,twoside]{notasdeclase}
+
+\begin{document} 
+\frontmatter	
+	\begin{titlepage}
+	\centering
+	\includepdf[pages=-]{portada.pdf}
+\end{titlepage}
+\tableofcontents
+\mainmatter
+
+\part{Teoría de Conjuntos}
+\label{part:teoria_de_conjuntos}
+\include{parteUnoTeoriaConjuntos/intro}
+\include{parteUnoTeoriaConjuntos/propiedades}
+\include{parteUnoTeoriaConjuntos/losAxiomas}
+
+\part{Espacios topológicos}%
+\label{part:espacios_topológicos}
+\include{parteDosEspaciosTopologicos/definicionesBasicas}
+\include{parteDosEspaciosTopologicos/ejerciciosResueltos}
+\include{parteDosEspaciosTopologicos/conjuntosCerradospuntosAcumulacion}
+
+\backmatter
+\end{document}

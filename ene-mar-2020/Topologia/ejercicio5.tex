@@ -1,0 +1,104 @@
+\documentclass[fleqn,leqno,letterpaper,11pt,final]{article}
+\input{../../preamble-article.tex}
+
+\title{Espacios conexos}
+\author{Jhonny Lanzuisi, 15\,10759\\\url{jalb97@gmail.com}}
+\asignatura{Topología 1}
+
+\begin{document}
+\maketitle
+%\begin{abstract}
+%Ejercicio del curso \Asignatura: espacios conexos. Imagina que es un resumen muy larg, como prueba de que an mal se veria en un documento como prueba de algo si como prueba
+%\end{abstract}
+\tableofcontents	
+	
+
+\section[Enunciado]{Enunciado}
+
+\hspace{-.6em}\footnotemark Sea $X_{\alpha\in J}$ una familia indexada de espacios conexos. Seaa
+\[
+	X=\prod_{\alpha\in J} X_\alpha,
+\]
+y sea $a=a_\alpha$ un punto fijo de $X$. $\mathcal{V}_t$
+\footnotetext{En \cite{munkres_topology_2014}: \S23, Ejercicio 10}
+\begin{enumerate}
+	\item Dado un subcojunto $K$ de $J$ finito, llamemos $X_K$ al subespacio de $X$ dado por los puntos
+		$x$ tales que $x_\alpha=a_\alpha$ si $\alpha\not\in K$. Demuestre que $X_K$ es conexo.
+	\item Demuestre que la unión $Y$ de todos los $X_K$ es conexa.
+	\item Demuestre que $Y$ es la clausura de $X$ y concluya que $X$ es conexo.
+\end{enumerate}
+
+\subsection{Solución}
+\paragraph{Primera Parte}
+Sean $\alpha_1,\dots,\alpha_n$ los elementos de $K$, llamemos $P$ al producto $\prod_{\alpha\in K}X_\alpha$,
+y consideremos la función 
+$f:P\to X_K$ dada, para $x\in P$, por $f(x)=z$ donde
+\[
+	z_\alpha= \begin{cases}
+		x_\alpha &\text{si}\; \alpha\in K,\\
+		a_\alpha &\text{si}\; \alpha\in J-K.
+	\end{cases}
+\]
+Entonces $P$ y $X_K$ son homeomorfos a traves de esta $f$. Como $P$ es conexo por
+el teorema~\ref{conex:prod}, se tiene que $X_K$ es conexo por el teorema~\ref{conex:contfunct}.
+
+\paragraph{segunda parte}
+Sea $Y$ la union de los $X_K$. Como los elementos de cualquier $X_K$ coninciden con
+$a$ en las coordenadas que pertenecen a $K$, se sigue que el punto $a$ esta en
+todos los $X_K$ de forma casi inmediata. La conexidad de $Y$ es entonces consecuencia del
+teorema~\ref{conex:union}.
+
+\paragraph{tercera parte}
+Elijamos un punto $(x_\alpha)\in X$. Queremos ver que todo entorno de $(x_\alpha)$ contiene
+un punto de $Y$. Elijamos un entorno $U$ de $(x_\alpha)$. Como estamos bajo
+la topología producto, este entorno $U$ es un producto de abiertos donde todos
+menos una cantidad finita de ellos son iguales a los $X_\alpha$. Sea
+$K=\{\alpha_1,\dots,\alpha_n\}$ esta cantidad finita de índices.
+
+Entonces podemos hayar un punto $(y_\alpha)$ que esta en $X_K$ y  en $U$ de la siguiente manera:
+hagamos $y_\alpha=a_\alpha$ para $\alpha\notin K$ y para los $\alpha\in K$ tomamos $y_\alpha$
+tales que pertenecen a $U_\alpha$, donde los $U_\alpha$ son los términos
+del producto, que conforma a $U$, que difieren de los $X_\alpha$.
+
+Luego como $(y_\alpha)\in X_K$ entonces también pertenece a $Y$ y se tiene
+que $X$ es la clausura de $Y$.
+
+Por lo que $X$ es conexo por el teorema~\ref{conex:cerrad}. Todo lo anterior en realidad ha demostrado
+el siguiente teorema.
+\begin{teo}
+	En la topología producto, el producto arbitrario de espacios conexos es conexo.	
+\end{teo}
+%\section{prueba 1}
+%\section{prueba 2}%
+%\section{prueba 3}%
+%\section{prueba 4}%
+%\section{prueba 5}
+%\section{prueba 6}%
+%\section{prueba 7}%
+%\section{prueba 8}%
+
+
+\section{Resultados Utilizados}
+\begin{teo}\label{conex:contfunct}
+	La imagen de un espacio conexo bajo una función continua es conexo
+\end{teo}
+\begin{teo}\label{conex:prod}
+	El producto finito de espacios conexos es conexo.
+\end{teo}
+\begin{teo}\label{conex:union}
+	La unión de una colección de subespacios conexos de un espacio $X$ que tienen un
+	punto en común es conexa.
+\end{teo}
+\begin{teo}\label{conex:cerrad}
+	Sea $A$ un subespacio conexo de $X$. Si $A\subset B\subset\bar A$, entonces $B$
+	también es conexo.
+\end{teo}
+\begin{flushright}\scriptsize
+	(Todos los resultados fueron tomados de \cite{munkres_topology_2014}, Cap 3)
+\end{flushright}
+
+\printbibliography[
+heading=bibintoc,
+title={Referencias}
+]
+\end{document}

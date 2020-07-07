@@ -1,0 +1,38 @@
+\chapter{Conjuntos cerrados y puntos de acumulación}%
+\label{cha:Conjuntos cerrados y puntos de acmulación}
+
+\section{Espacios de Hausdorff}%
+\label{sec:Espacios de Hausdorff}
+
+El conjunto de los números reales (y $\mathbb{R}^2$) con la topología usual
+tienen propiedades que no cumple cualquier espacio topológico. Por ejemplo,
+en $\mathbb{R}$ todo cojunto de un solo elemento es cerrado; esto sin embargo no 
+es cierto para otros espacios topológicos.
+
+Otro ejemplo lo dan las sucesiones convergentes. Una sucesión en un espacio topológico es
+una función de los naturales a este espacio. Decimos que una sucesión \Keyword{converge}
+a un punto $x$ del espacio si, para cada entorno de $x$, existe un número entero $N$
+tal que la cola (los $n>N$) de la sucesión esta totálmente contenida en dicho entorno.
+En $\mathbb{R}$ las sucesiones no puede converger a dos puntos distintos, sin embargo,
+en espacios mas generales esto si puede ocurrir.
+
+Los espacios que se comportan como $\mathbb{R}$ en el sentido antes mencionado reciben un
+nombre especial:
+
+\begin{defi}
+	Un espacio topológico $X$ es llamado de \Keyword{Hausdorff} si para cada par
+	de puntos distintos $x_{1},x_2$ de $X$ se pueden encontrar dos entornos de
+	dichos puntos que son disjuntos.
+\end{defi}
+
+\begin{teo}
+	Todo cojunto de una cantidad finita de puntos en un espacio de hausdorff es cerrado.
+\end{teo}
+
+\begin{proof}
+	Basta hacer la demostración para los conjuntos que tienen un solo elemento.
+	Sea $x$ un punto cualquiera de un espacio de hausdorff $X$. Entonces, si tomamos cualquier otro punto
+	$x'\in X$ la condición de hausdorff nos dice que existe un entorno de $x'$ que no intersecta a $\{x\}$. Luego,
+	$x$ es el único punto tal que cada entorno intersecta al conjunto $\left\{ x \right\}$ y, por lo tanto,
+	$x$ es su propia clausura y es cerrado.
+\end{proof}

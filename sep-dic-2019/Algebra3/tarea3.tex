@@ -1,0 +1,58 @@
+\input{../../Plantillas-Fomato/Tareas/tarea.tex}
+\cabe{Álgebra 3: Tarea 3}{Jhonny Lanzuisi, 1510759}
+\begin{document}
+	\titulo{Álgebra 3}{Tercera Tarea}
+	\subsection*{Ejercicio 4.2.5}
+	Usamos el proceso de ortogonalización de Gram-Schmidt sobre los vectores de la base canónica de $\ve P^2$: $e_1=1,e_2=t$ y $e_3=t^2$.
+	
+	Empezamos haciendo $v_1=e_1$.
+	
+	Hagamos ahora
+	\[ 	v_2 = e_2 - \frac{\Iprod{e_2}{e_1}}{\Iprod{e_1}{e_1}} e_1, \]
+	donde 
+	\[ \Iprod{e_2}{e_1} = \inte{-1}{1}{t}{t} = \frac{t^2}{2}\bigg|^1_{-1} = 0, \]
+	y
+	\[ v_2 = e_2 - 0w_1 = t. \]
+	
+	Hagamos también
+	\[ v_3 = e_3 - \frac{\Iprod{e_3}{e_1}}{\Iprod{e_1}{e_1}} e_1 - \frac{\Iprod{e_3}{e_2}}{\Iprod{e_2}{e_2}} e_2, \]
+	donde 
+	\[ \frac{\Iprod{e_3}{e_1}}{\Iprod{e_1}{e_1}} = \frac{\Iprod{e_3}{e_1}}{2} = \frac{1}{2}\inte{-1}{1}{t^2}{t} = \frac{1}{3} \]
+	y
+	\[ \frac{\Iprod{e_3}{e_2}}{\Iprod{e_2}{e_2}} = \frac{2}{3} \inte{-1}{1}{t^3}{t} = 0, \]
+	por lo tanto
+	\[ v_3 = e_3 - \frac{1}{3}e_1 - 0e_2 = t^2 - \frac{1}{3}. \]
+	
+	Solo queda normalizar los vectores $\{v_1,v_2,v_3\}$ para obtener una base ortonormal $\{u_1,u_2,u_3\}$. Hagamos
+	\begin{align*}
+		u_1 &= \frac{v_1}{\Norm{v_1}} = \frac{1}{\sqrt 2} \\
+		u_2 &= \frac{v_2}{\Norm{v_2}} = \sqrt{\frac{3}{2}}t \\
+		u_1 &= \frac{v_3}{\Norm{v_3}} = t^2 - \frac{1}{3}.
+	\end{align*}
+	
+	\subsection*{Ejercicio 4.2.6}
+	
+	Calculamos directamente:
+	\[ (b_1c_2-c_1b_2,c_1a_2-a_1c_2,a_1b_2-a_2b_1)\cdot(a_1,b_1,c_1)  \]
+	que es
+	\[ a_1b_1c_2-a_1c_1b_2+b_1c_1a_2-b_1a_1c_2+c_1a_1b_2-c_1a_2b_1 = 0. \]
+	
+	Similarmente
+	\[ (b_1c_2-c_1b_2,c_1a_2-a_1c_2,a_1b_2-a_2b_1)\cdot(a_2,b_2,c_2)  \]
+	que es
+	\[ a_2b_1c_2-a_2c_1b_2+b_2c_1a_2-b_2a_1c_2+c_2a_1b_2-c_2a_2b_1 = 0. \]
+	
+	\subsection*{Ejercicio 4.3.1}
+	
+	\paragraph{primera parte} Primero ortonormalizemos los vectores $(1,2,2)$ y $(0,1,-1)$. Hagamos
+	\begin{align*}
+	u_1 &= 1/3(1,2,2)\qquad\text{y}\\
+	u_2 &= 1/\sqrt{2}(0,1,-1).
+	\end{align*}
+	
+	Entonces la proyeccion sobre $W=\gen\{(1,2,2),(0,1,-1)\}$ esta dada por:
+	\begin{align*}
+		\proy{W}{x,y,z} &= 1/9(x+2y+2z)(1,2,2) \\
+						&\phantom{=}\hspace*{6em}	- 1/2(y-z)(0,1,-1)
+	\end{align*}
+\end{document}

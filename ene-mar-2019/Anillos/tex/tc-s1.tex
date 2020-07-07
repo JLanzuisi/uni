@@ -1,0 +1,52 @@
+%\input{../../Plantillas-Fomato/Libros/Libro-Anillos.tex}
+\thispagestyle{plain}
+
+\chapter{Introducción a los Conjuntos}
+\epigraph{En matemáticas el arte de hacer preguntas es más valioso que resolver problemas}{georg cantor}
+
+\noindent El concepto central de este capítulo ---y pieza fundamental en la matemática moder\-na--- es, al menos en la superficie, tremendamente simple. Un \textit{conjunto} es un agregado de objetos, una colección o grupo de estos objetos. Así, tenemos que la colección de los estudiantes inscritos en la Universidad Simón Bolívar es un conjunto, como también lo es la cantidad de dígitos en la expansión decimal de $\pi$.
+ 	
+\marginnote{Esta noción de conjunto, en principio simple e intuitiva, irá revelando su dificultad a medida que se resuelvan problemas y se avance un poco en los conceptos.
+}
+Los conjuntos son una construcción abstracta, pensada por una cabeza humana, que consiste en agrupar todos los objetos que cumplen con una cierta propiedad. Esta propiedad puede ser en principio cualquiera, aunque más adelante daremos formas precisas de enunciar las propiedades para no caer en ambigüedades. Entonces todos los números que tienen la propiedad de ser múltiplos de dos son un conjunto, como también lo es la colección de todos los hijos que son a la vez sus propios padres (este último conjunto, aparentemente contradictorio, es \textit{vacío}. La noción de vacío se verá mejor más adelante).
+
+Es interesante notar que, si nos conformamos con la definición que hemos dado hasta ahora y la tomamos como definitiva, pueden surgir contradicciones e inconsistencias. Quizás el ejemplo mas paradigmático es el siguiente, dicho en la versión del mismo que el autor de esta guía escuchó por primera vez.
+
+\begin{ejem}[Paradoja de Russel\footnotemark]
+	Existe un pueblo, en una tierra muy lejana, donde trabaja un solo barbero. Pero este barbero tiene una exigencia peculiar a sus clientes: solo afeita a aquellos que no se afeitan a ellos mismos. Todo estaría bien con nuestro barbero si no se nos ocurriese la siguiente pregunta: ¿El barbero se afeita a si mismo?
+	
+	Veamos. Si el barbero se afeita a si mismo entonces, por la \textit{propiedad} especial que cumple nuestro barbero, se sigue que el barbero no se afeita a si mismo: una contradicción. De igual forma, si el barbero no se afeita a si mismo entonces el babero sería una persona que no se afeita a si misma y tendríamos, por la condición peculiar de nuestro barbero, que se afeita a si mismo: otra contradicción.
+	 		
+	Tenemos que, sin importar que respuesta demos a nuestra pregunta, siempre llegamos a una contradicción: una paradoja. Los sistemas que se comportan de esta forma se suelen llamar \textit{inconsistentes}.
+	
+	La paradoja de Russel puede formularse formalmente, utilizando notación que no hemos explicado aún, de la siguiente manera: Sea $R = \{ x \mid x \notin x \}$ preguntémonos si $R\in R$. Se deja como un ejercicio al lector volver después de la siguiente sección y desarrollar la paradoja de Russel en lenguaje formal.
+\end{ejem}
+\footnotetext{Bertrand Russel fue un matemático británico del siglo \textsc{xx} que trabajó mucho en el área de filosofía de las matemáticas.}
+La lección que se saca de ejemplos como la paradoja de Russel es que el conjunto nombrado no existe y que, en general, ser capaz de nombrar un conjunto no es condición suficiente para asegurar su existencia. Más aún, no tenemos hasta ahora ninguna manera de definir formalmente la noción de conjunto de tal forma que contradicciones como las del ejemplo anterior no ocurran. Por esta razón es que no intentaremos dar una noción mas formal de la idea de conjunto, en cambio daremos unos cuantos \textit{axiomas} que describen bastante bien como esperamos que se comporte un conjunto. Y partiendo de estos axiomas construiremos el resto de nuestra teoría.
+
+Un \textit{axioma} es una verdad que asumiremos sin demostración.
+
+\section{Propiedades}
+
+En nuestra definición de conjunto aludimos a unas \textit{propiedades} que los elementos del conjunto compartían. Tenemos ahora la tarea de establecer ciertas reglas con las que podamos enunciar estas propiedades, con el fin de evitar ambigüedades. 
+
+Las reglas que vamos a explicar son, en esencia, las de la \textit{lógica}. Si se quiere un estudio riguroso de estas reglas será mejor remitirse a un libro de lógica matemática, aquí se hablará de los conceptos de manera informal.
+
+La relación más básica en la teoría de conjuntos es la de \textit{pertenencia}, que denotamos con el símbolo $\in$. La expresión $X\in Y$ se lee `$X$ pertenece a $Y$' o `$X$ es un miembro de $Y$'.
+
+Las letras $X$ e $Y$ usadas en el párrafo anterior son \textit{variables}, denotan cualquier par de conjuntos. La proposición `$X\in Y$' es verdadera o falsa dependiendo de cuales son los conjuntos $X$ e $Y$.
+
+Todas las demás propiedades de la teoría de grupos se pueden expresar usando la pertenencia y algunas herramientas lógicas: identidad, conectividad y cuantificadores.
+
+Hay veces en las que conviene expresar el mismo conjunto con variables distintas, la relación de igualdad ---o identidad--- de conjuntos la denotaremos con el símbolo `$=$'.
+
+\begin{ejem}
+	Este ejemplo da varios hechos sobre la igualdad de conjuntos. Sean $X,Y$ y $Z$ tres conjuntos, entonces se cumple que:
+	\begin{enumerate}
+		\item $X=X$.
+		\item Si $X=Y$ entonces $Y=X$.
+		\item Si $X=Y$ y $Y=Z$, entonces $X=Z$. 
+		\item Si $X=Y$ y $X\in Z$ entonces $Y\in Z$.
+		\item Si $X=Y$ y $Z\in X$ entonces $Z\in Y$.
+	\end{enumerate}
+\end{ejem}

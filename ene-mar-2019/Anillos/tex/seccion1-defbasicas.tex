@@ -1,0 +1,267 @@
+%\input{../../Plantillas-Fomato/Libros/Libro-Anillos.tex}
+
+\chapter{Definiciones Básicas y Ejemplos} 
+\epigraph{Comunmente en las matemáticas el problema crucial es reconocer y descubrir cuales son los conceptos relevantes, una vez hecho esto esta casi la mitad del trabajo listo}{i. n. herstein}
+
+{\noindent Nuestro punto de partida, y la pieza central la teoría de anillos, es la siguiente definición.}
+
+\begin{defi}[anillo]
+	Un anillo $\an{A}$ es un conjunto con dos operaciones binarias, $+$ y $\t$ (llamadas suma y producto), que satisface, para todo $a,b,c$ en $\an{A}$,
+	\begin{enumerate} 
+		\item $(\an{A},+)$ es un grupo abeliano.
+		\item El producto es asociativo: $(a \t b) \t c = a \t (b \t c)$
+		\item Se cumple la propiedad distributiva:
+		\begin{align*}
+		(a+b) \t c &= (a\t c) + (b\t c) \quad \text{y,} \\
+		c\t (a+b)  &= (c\t a) + (c\t b).
+		\end{align*} 
+	\end{enumerate}
+\end{defi}
+\begin{nota}
+	Los anillos fueron desarrollados a principios del siglo \textsc{xix}, aunque no fue hasta el segundo tercio del siglo \textsc{xx} que adquirieron notoriedad.
+\end{nota}
+%
+Cabe destacar que, las operaciones suma y producto antes descritas son abstractas, y no son aquellas a las que estamos acostumbrados en, por ejemplo, el conjunto $\R$ de los números rea\-les. Otra acotación importante es que, de acuerdo con la definición anterior, siempre que se hable de un anillo $\an A$ deben especificarse las operaciones junto con a las cuales $\an A$ forma un anillo. Los momentos en los que se omitan estas operaciones serán solo los casos en que sean evidentes.
+
+Diremos que un anillo $\an A$ es \textit{conmutativo} cuando, como cabría esperar, el producto sea conmutativo. Además, si $\an A$ posee un elemento $1$ tal que $1 \t a = a\t 1 = a$, para todo $a \in\an A$, diremos que $\an A$ es  unitario.
+
+A partir de ahora, adoptaremos las siguientes convenciones. Sea $\an A$ un anillo. El producto $a\t b$ se denotará simplemente como $ab$, para cuales quiera elementos $a,b \in\an A$. La identidad aditiva será denotada por $0$ y el inverso aditivo (\textit{opuesto}) de un $a \in\an A$ será denotado por $-a$. Estas convenciones son familiares del conjunto $\Z$ de los enteros.
+
+ La condición de que $\an A$ sea un grupo bajo la adición es natural, por otro lado, la condición de que sea abeliano puede parecer un poco forzada. Una de la razones principales de que se le pida una condición tan restrictiva es que, si el anillo es unitario, entonces la conmutatividad de la suma se ve \textit{forzada} por la propiedad distributiva. 
+
+\begin{nota}
+	Para ver esto, se calcula $(1+1)(a+b)$ de forma artificiosa.
+\end{nota}
+%
+ Un anillo $\an A$ unitario (con $1 \neq 0$) es llamado de \textit{división} si todo elemento no nulo $a$ de $\an A$ posee un inverso multiplicativo, es decir, si para todo $a \in\an A$ existe un $b \in\an A$ tal que $ab = ba = 1$. Ahora podemos considerar la siguiente definición. 
+
+\begin{defi}[cuerpo]  
+	Un cuerpo es un anillo de división conmutativo.
+\end{defi} 
+\begin{nota}
+	Los angloparlantes prefieren la palabra \textit{Campo (Field)} en vez de \textit{Cuerpo}.
+\end{nota}
+Es un ejercicio interesante, aunque quizás tedioso, desglosar la definición anterior y darla en función de las propiedades nombradas. A continuación, más ejemplos.
+\begin{ejem}
+	Los ejemplos más sencillos de anillos son los anillos \textit{triviales} formados tomando cualquier grupo conmutativo $\an A$ con el siguiente producto trivial, para todo $a,b \in\an A$, $ab=0$. Es fácil revisar que este $\an A$ es un anillo conmutativo. En el caso de que $\an A=\{0\}$ se obtiene el \textit{anillo cero}, denotado por $\an A=\an0$. 
+\end{ejem}
+\begin{ejem} 
+	El conjunto de los enteros, $\Z$, bajo las operaciones usuales de suma y producto es un anillo conmutativo con identidad, pero \textit{no} un cuerpo. ¿Cuáles son los elementos de $\Z$ invertibles, es decir, con inverso multiplicativo?
+\end{ejem}
+\begin{ejem}
+	Los conjuntos $\Q$ y $\R$, de los racionales y los reales, son anillos conmutativos con unidad (¿Son cuerpos?). 
+\end{ejem}
+\begin{ejem}
+	El grupo cociente $\Zn$ es un anillo conmutativo con identidad al usar el producto \textit{módulo n}, de las clases de equivalencia, esto es, el producto de dos elementos es la clase de su multiplicación usual. 
+\end{ejem} 
+%
+Los ejemplos dados hasta ahora han sido todos de anillos conmutativos, los anillos no conmutativos son también un área importante del álgebra, en este sentido se tiene el siguiente ejemplo. 
+
+\begin{ejem}[Cuarteniones Hamiltonianos] 
+	Sea $\Ha$ el conjunto de los elementos de la forma $a + bi + cj + dk$, donde $a,b,c,d \in \R$, con la suma definida `por componentes':
+	\begin{align*}
+	(a + bi + &cj + dk)+(a' + b'i + c'j + d'k) = \\ (&a+a') + (b+b')i + (c+c')j + (d+d')k 
+	\end{align*}
+	y el producto definido expandiendo $(a + bi + cj + dk)(a' + b'i + c'j + d'k)$ de acuerdo con la propiedad distributiva.  El producto se hace tomando en cuenta que
+	\[  i^2=j^2=k^2=-1 \]
+	junto con las siguientes reglas multiplicativas
+	\[ ij=-ji=k, \; jk=-kj=i, \; ki=-ik=j, \]
+	y que los números reales conmutan con los elementos $i,j,k$. De las relaciones anteriores es claro que los cuaterniones son en efecto no conmutativos. 
+\begin{nota}
+	El lector acostumbrado a la teoría de espacios vectoriales se habrá dado cuenta que los cuaterniones, así definidos, representan un espacio 4-di\-mensional sobre $\R$ con los vectores $\{1,i,j,k\}$ como base.
+\end{nota}
+	El hecho de que los cuaterniones son un anillo se puede ver mediante un chequeo, bastante tedioso, de las propiedades. Nótese que el elemento identidad es $1 + 0i + 0j +0k$. Más aún, los cuaterniones son un anillo no conmutativo de división, donde el inverso de un elemento ---no nulo--- viene dado por  
+	\[ (a + bi + cj + dk)^{-1} = \frac{a - bi - cj - dk}{a^2+b^2+c^2+d^2}. \]
+\end{ejem} 
+\begin{nota}
+	El álgebra no conmutativa se empezó a desarrollar en el siglo diecinueve de la mano de matemáticos como  W. R. Hamilton\footnotemark, I. N. Herstein, entre otros.
+\end{nota}
+\footnotetext{Sir William Rowan Hamilton (1805--1865) fue un matemático irlandés conocido por aportes importantes en las áreas de óptica, mecánica clásica y álgebra.}
+Se pueden obtener ejemplos interesantes de anillos considerando anillos de funciones, como lo muestra el siguiente ejemplo.
+\begin{ejem} \label{ejemap} 
+	Sea $X$ un conjunto no vació y $\an A$ un anillo. La colección, $\an F$, de todas las funciones $f\mathpunct{:} X \to\an A$
+	es un anillo con las operaciones usuales: 
+	\[ (f+g)(x) = f(x)+g(x) \quad \text{y} \quad (fg)(x) = f(x)g(x). \]
+	%
+	El hecho de que $\an F$ sea un anillo se hereda directamente de $\an A$. Más aún, $\an F$ es conmutativo si, y solo si, $\an A$ lo es y $\an F$ tiene un $1$ si, y solo si, $\an A$ tiene un $1$ (en cuyo caso el $1$ de $\an F$ es necesariamente la función constante $f(x)=1$).
+	
+	Si $X$ y $\an A$ poseen estructuras con mas propiedades, se pueden formar anillos mas complejos. Por ejemplo, si tomamos $\an A$ como el anillo de los números reales y tomamos $X$ como el intervalo cerrado $[0,1]$ de $\R$, obtendremos el \textit{anillo de las funciones continuas}, el cual es conmutativo y posee un $1$.  
+\end{ejem}
+\begin{nota}
+	Aunque sea tedioso, puede ser útil para el lector verificar todo lo que se afirma en el ejemplo anterior sobre los anillos de funciones.
+\end{nota}
+Puede ocurrir también que un anillo no posea identidad.
+\begin{ejem}
+	El anillo $2\Z$ de los números pares, bajo la multiplicación y la suma usuales, es un anillo conmutativo \textit{sin} identidad.
+\end{ejem}
+%
+El siguiente teorema nos dará unas cuantas propiedades de los anillos que son familiares del conjunto $\Z$. 
+
+\begin{teo} 
+	Sea $A$ un anillo. Entonces, para todo $a,b \in A$, 
+	\begin{enumerate}
+		\item $0a=a0=0$ 
+		\item $(-a)b=a(-b)=-(ab)$ 
+		\item $(-a)(-b)=ab$ 
+		\item Si $1\in A$ es una identidad, entonces esta identidad es \textit{única} y $-a=-1(a)$
+	\end{enumerate} 
+\end{teo}
+\begin{nota}
+	En la siguiente demostración, como en muchas otras, la clave esta en pensar cuidadosamente en las propiedades que poseen los objetos con que estamos trabajando. Por ejemplo, para probar (2), se quiere ver que ese elemento actúa como inverso aditivo de $(ab)$.
+\end{nota}
+\begin{proof}
+	El teorema se sigue de la propiedad distributiva y de la ley de cancelación (considerando a $A$ como un grupo aditivo). Veamos cada una, para todo $a,b\in A$, 
+	\begin{enumerate}
+		\item $0a = (0+0)a = 0a + 0a$ de donde, por la ley de cancelación, $0a=0$. Igualmente para $a0=0$.
+		\item Primero, $ab + (-a)b = (a+(-a))b = 0b = 0$ y por otro lado $ab + a(-b) = a(b+(-b)) = a0 = 0$. 
+		\item Por la parte anterior, $(-a)(-b) = -(-ab) = ab$.
+		\item Supongamos que existe un $1'$ tal que $1'a = a1' = a$ entonces ocurriría que $(1')1 = 1$ y $(1')1 = 1'$, lo cual es imposible, luego solo existe un elemento identidad en $A$. Por 2, $-a = 1(-a) = (-1)a$.
+	\end{enumerate}
+\end{proof}
+%
+\section{Dominios enteros y divisores de cero}
+A diferencia del conjunto $\Z$, puede ocurrir que en un anillo existan elementos no nulos $a,b$ tales que $ab=0$. Esto motiva la siguiente definición. 
+\begin{defi}[divisor de cero] 
+	Sea $A$ un anillo, 
+	\begin{enumerate}
+		\item Un elemento no nulo $a$ de $A$ es un \textit{divisor de cero} si existe un $b \in A$, no nulo, tal que $ab = 0$ o $ba = 0$.
+		\item Supongamos que $A$ posee una identidad $1$, con $1 \neq 0$. Un elemento $v \in A$ es llamado una \textit{unidad} si existe un $w \in A$ tal que, $vw = wv = 1$. El conjunto de las unidades de $A$ se denota por $A^{\t}$.
+	\end{enumerate}
+\end{defi}
+\begin{nota}
+	Los divisores de cero nos son familiares de las matrices reales.
+\end{nota}
+En la terminología de la definición anterior, un anillo $A$ es un cuerpo si todos los elementos no nulos son unidades, o lo que es lo mismo, si $A^{\t}=  A - \{0\}$. 
+
+Nótese que un divisor de cero no puede ser una unidad. En efecto, supongamos que $a \in A$ es una unidad tal que existe un $b \in A$, no nulo, para el cual $ab = 0$. Entonces, como $a$ es una unidad, existe un $v \in A$ tal que $va = 1$, de donde se sigue que $b = 1b = (va)b = v(ab) = 0$, lo cual es una contradicción. Lo mismo ocurre si $ba = 0$. Una consecuencia de esto es que \textit{en un cuerpo no hay divisores de cero.}
+
+Continuamos con ejemplos, esta vez sobre divisores de cero y unidades.
+\begin{ejem}
+	El anillo $\Z$ de los enteros no posee divisores de cero, y sus únicas unidades son $\pm 1$, es decir, $\Z^{\t} = \{-1,1\}$.
+\end{ejem}
+\begin{ejem} 
+	Si $A$ es el anillo de todas las funciones que van del intervalo cerrado $[0,1]$ a $\R$ entonces sus unidades son todas las funciones que no se anulan en ningun punto (para esta clase de funciones su inverso viene dado por $1/f$). Si $f$ no es una unidad y tampoco se anula, entonces $f$ es un divisor de cero. Esto se debe a que podemos definir la siguiente 
+	\[ g(x) = \begin{cases}
+	\hspace{.5em} 0  \quad \text{si} \; f(x) \neq 0 \\ 
+	\hspace{.5em} 1 \quad \text{si} \; f(x) = 0
+	\end{cases} \]
+	que no se anula, sin embargo, $f(x)g(x) = 0$ para todo $x$.
+\end{ejem} 
+\begin{nota}
+	Siempre que se quiera que una función cumpla un papel específico, y no se le ocurra ninguna ¡defínala por partes!
+\end{nota}
+A los anillos que se parecen mucho a los enteros se les da un nombre especial.
+
+\begin{defi}[dominio entero] 
+	Un anillo conmutativo con identidad es un dominio entero si no posee divisores de cero.
+\end{defi}
+%
+El hecho de que no existan divisores de cero hace que los dominios enteros posean una ley de cancelación, como explica el siguiente teorema.
+\begin{teo}
+	Supongamos que $a,b$ y $c$ son elementos de un anillo y que $a$ no es un divisor de cero. Si $ab=ac$ entonces se tiene que $a=0$ o $b=c$.
+\end{teo}
+\begin{proof}
+	Si $ab = ac$ entonces $a(b-c) = 0$ de donde se sigue que $a = 0$ o $b-c = 0$. 
+\end{proof} 
+\begin{cor}
+	Todo dominio entero finito es un cuerpo.
+\end{cor} 
+\begin{proof}
+	Sea $A$ un dominio entero finito y sea $a$ un elemento, no nulo, de $A$. La función $f\mathpunct{:}A \to A$ definida por $f(x) = ax$ es inyectiva, debido a la ley de cancelación. Como $A$ es finito esta función es sobreyectiva. En particular, existe un $b \in A$ tal que $ab=1$, es decir, $a$ es una unidad en $A$. Como lo anterior es cierto para \textit{cualquier} $a \in A$, se sigue que $A$ es un cuerpo.
+\end{proof}
+%
+\section{Subanillos}
+\noindent Es natural considerar la noción de \textit{subanillo}. 
+
+\begin{defi}[subanillo] 
+	Un subanillo, de un anillo $A$, es un subgrupo de $A$ que es cerrado bajo el producto. 
+\end{defi}
+\begin{nota}
+	También se puede pensar que un subanillo es un subconjunto que tiene el también estructura de anillo.
+\end{nota}
+%
+De la definición anterior se sigue que, para mostrar que un conjunto es un subanillo, hace falta ver que es \textit{no vacío} y \textit{cerrado bajo la diferencia y el producto}.
+
+Continuamos con más ejemplos, esta vez de subanillos.
+\begin{ejem}
+	$\Z$ es un subanillo de $\Q$ y $\Q$ es un subanillo de $\R$. La propiedad `ser un un subanillo de' es claramente transitiva.
+\end{ejem} 
+\begin{ejem} 
+	$2\Z$ es un subanillo de $\Z$, de la misma forma, $n\Z$ es un sub\-anillo de $\Z$ para todo $n$.
+\end{ejem}
+\begin{nota}
+	Es un ejercicio rápido verificar el ejemplo anterior
+\end{nota} 
+\begin{ejem}
+	El anillo de todas las funciones continuas de $\R$ en $\R$ es un sub\-anillo del anillo de las funciones de $\R$ en $\R$. El anillo de las funciones \textit{diferenciables} es un subanillo de los dos.
+\end{ejem} 
+\begin{ejem}
+	Los \textit{cuaterniones enteros}, es decir, los elementos de la forma $a+bi+cj+dk$ con $a,b,c,d \in \Z$, son un subanillo de los cuaterniones reales o racionales.
+\end{ejem}
+\begin{nota}
+	Las subestructuras son muy comunes en el álgebra. El lector podrá pensar en muchos ejemplos, como los subgrupos o los subespacios.
+\end{nota}
+\begin{ejem}
+	Si $A$ es un subanillo, de un cuerpo $C$, que contiene a la identidad de $C$, entonces $A$ es un dominio entero. El converso también es cierto, todo dominio entero esta contenido en un cuerpo.
+\end{ejem} 
+\section{Potencias y múltiplos}
+\noindent Las nociones de múltiplo y de potencias a las que estamos acostumbrados tienen una generalización natural en los anillos.
+
+Sea $a$ un elemento de un anillo $A$ y $n \in \N$. Entonces la \textit{enésima potencia} de $a$, $a^n$, se define mediante las condiciones inductivas  
+\[ a^1=a \quad \text{y} \quad a^n=a^{n-1}a \] 
+de esto las reglas usuales se los exponentes se siguen directamente:
+\[ a^na^m=a^{n+m}, \quad (a^n)^m = a^{nm}, \quad (n,m \in \N). \]
+Nótese que si dos elementos, $a,b$, conmutan, entonces sus potencias también lo hacen y $(ab)^n = a^nb^n$. 
+
+En el caso de que $A$ sea unitario y $a^{-1}$ exista, se pueden considerar \textit{potencias negativas} de $a$ definidas mediante la siguiente expresión
+\[ a^{-n} = (-a)^n, \]
+que junto con la definición de $a^0=1$, nos dan una definición de las potencias para todo elemento de $\Z$.
+
+
+Consideramos ahora el caso de los múltiplos. Para cada $n \in \Z$ definimos el \textit{múltiplo enésimo} de $a$, $na$, de manera recursiva:
+\[ 1a=a \quad \text{y} \quad na=(n-1)a+a, \quad \text{cuando} \; n>1. \]
+%
+Si definimos $0a=0$ y $(-n)a = -(na)$ entonces la definición de múltiplo queda bien definida para cualquier entero. Los múltiplos satisfacen varias identidades fáciles de probar, para $a,b \in A$ y $n,m \in \Z$:
+\[ (n+m)a = na + ma,\; (nm)a = n(ma), \]
+y
+\[n(a+b) = na+nb.\]  
+%
+Además de estas reglas, hay dos propiedades mas que se siguen de la ley distributiva, estas son,
+\[ n(ab) = (na)b = a(nb), \quad \text{y} \quad (na)(mb) = (nm)(ab). \]
+%
+Es bueno decir que la expresión $na$ no significa el producto en el anillo, es una abreviación de la  suma.
+\section{Característica}
+\noindent En los anillos pueden ocurrir cosas extrañas, por ejemplo, podría ocurrir que si $a\in A$ entonces $a+a+\cdots+a = 0$. Esto motiva la siguiente definición. 
+\begin{defi}[característica de un anillo] 
+	Sea $A$ un anillo. La \textit{característica} de $A$, denotada por $\car A$, se define como el numero natural mas pequeño tal que $na=0$ para todo $a \in A$. Si no existe ningún entero que cumpla esa identidad (esto es, si el único entero que lo cumple es $n=0$), entonces se dice que el anillo $A$ es de \textit{característica cero}.
+\end{defi}
+%
+La definición se ilustra con los siguientes ejemplos, 
+\begin{ejem} 
+	Los anillos $\Z$, $\Q$ y $\R$ son de característica cero.
+\end{ejem} 
+\begin{ejem} 
+	El anillo $\Zn$ es de característica $n$.
+\end{ejem}
+\begin{nota}
+	Este ultimo ejemplo también es divertido---y fácil---de verificar.
+\end{nota}
+El siguiente teorema nos dice que, si el anillo es unitario, la característica viene completamente determinada por el $1$. 
+\begin{teo}  
+	Si $A$ es un anillo con identidad, entonces la característica de $A$ es $n$ si, y solo si, $n1=0$.
+\end{teo}
+\begin{proof}
+	Si $\car A = n$, entonces en particular se tiene que $n1=0$. Si hubiese un $m\in A$, con $0<m<n$, tal que $m1=0$ tendríamos que
+	\[ ma = (m1)a = 0a = 0 \; \text{para todo} \; a \in A. \]
+	Lo que haría que $\car A < n$, lo cual es imposible. El recíproco se prueba de forma similar.
+\end{proof}
+%
+Terminamos esta sección con un teorema importante que relaciona la característica de un anillo con su estructura multiplicativa.
+\begin{teo}  
+	La característica de un dominio entero o es un numero primo, o es cero.
+\end{teo}
+\begin{proof}
+	Sea $A$ un anillo con característica $n$ y supongamos que $n$ no es primo. Entonces existe una factorización no trivial $n=n_1n_2$, con $1<n_1,n_2<n$. Se sigue que
+	\[ 0 = n1 = (n_1n_2)1 = (n_1n_2)1^2 = (n_11)(n_21). \]
+	Pero $A$ no tiene divisores de cero, por lo que $n_11 = 0$ o $n_21 = 0$. Como $n_1$ y $n_2$ son ambos menores que $n$, entramos en contradicción con el hecho de que $n$ es la característica de $A$. Por lo tanto la característica de $A$ debe ser un numero primo.
+\end{proof}

@@ -1,0 +1,208 @@
+%\input{../../Plantillas-Fomato/Libros/Libro-Anillos}
+\section{Homomorfismos de Anillos}
+\epigraph{Si la gente no cree que las matemáticas son simples, es solo porque no se dan cuenta de lo complicada que es la vida.}{john von neumann}
+{\noindent En esta sección  nos ocuparemos de funciones que van de un anillo en otro. En particular nos interesaran las funciones, llamadas \textit{homomorfismos}, que preservan las operaciones. }
+\begin{defi}[homomorfismo] \label{defhomo} 
+	Sean $A$ y $A'$ dos anillos. Un \textit{homomorfismo} es una función $f\colon A\to A'$ tal que
+	\[ f(a+b) = f(a) + f(b) \quad \text{y} \quad f(ab) = f(a)f(b) \]
+	para todo $a,b\in A$. Un homomorfismo biyectivo es un \textit{isomorfismo}.
+\end{defi} 
+\begin{nota}
+	La palabra homomorfismo viene del griego, ``homo-morfos''  que significa ``misma forma''.
+\end{nota}
+Es importante notar que, en la definición anterior, las operaciones en el lado derecho de las igualdades son las de $A'$, mientras que las del lado izquierdo son las de $A$, a pesar de que usemos el mismo símbolo para denotarlas.
+
+Si $f$ es un homomorfismo de anillos, la imagen de $f$, $f(A)$, es la \textit{imagen homomórfica} de $A$. En el caso de que $f$ sea un homomorfismo de un anillo en si mismo, le llamaremos \textit{endomorfismo}; si además $f$ es biyectiva le llamaremos \textit{automorfismo}.
+
+Adoptaremos la convención de llamar al conjunto de todos los homomorfismos de $A$ en $A'$ como $\ho{A}{A'}$. En el caso de que $A=A'$ usaremos la notación $\hoo{A}$.
+
+A continuación están unos ejemplos sencillos que ayudan a ilustrar la definición anterior.
+\begin{ejem}
+	Sea $A$ y $A'$ dos anillos cuales quiera y $f\colon A\to A'$ la función que envía a todo elemento de $A$ al $0$ de $A'$. Entonces, para todo $a,b\in A$,
+	\[ f(a+b) = 0 = 0+0 = f(a) + f(b) \]
+	y
+	\[ f(ab) = 0 = 00 = f(a)f(b). \]
+	Entonces $f$ es un homomorfismo. Esta $f$, llamada el \textit{homomorfismo trivial}, es la única función constante que satisface la definición~\ref{defhomo} (\textit{¿Por qué?}).
+\end{ejem} 
+\begin{ejem}
+	Consideremos los anillos $\Z$ y $\Zn$. Definimos $f\colon  \Z \to \Zn$ mediante $f(a) = \overline{a}$; es decir, $f$ es la función que asigna a cada entero su clase de equivalencia. El que $f$ es un homomorfismo es consecuencia directa de la definición de las operaciones en $\Zn$ (\textit{Verifíquese}).
+\end{ejem} 
+\begin{ejem}
+	Consideremos el anillo de funciones de un conjunto $X$ a un anillo $A$. Definamos $\phi_a$ como la función dada por $\phi_a(f) = f(a)$, donde $f\colon X\to A$. Entonces $\phi_a$ es un homomorfismo. En efecto, nótese que
+	\begin{align*}
+		\phi_a(f+g) &= (f+g)(a) \\
+				    &= f(a) + g(a) \\
+				    &= \phi_a(f) + \phi_a(g),
+	\end{align*}
+	y 
+	\begin{align*}
+		\phi_a(fg) &= (fg)(a) \\
+				   &= f(a)g(a) \\
+				   &= \phi_a(f)\phi_a(g).
+	\end{align*}
+\end{ejem} 
+\subsection{Propiedades de los homomorfismos}
+El siguiente teorema nos da de forma mas explícita las características estructurales que preserva un homomorfismo.
+\begin{teo} 
+	Sea $f\colon A\to A'$ un homomorfismo de anillos. Entonces $f$ preserva los \textit{elementos distinguidos}; es decir, se cumple que
+	\[ f(0) = 0 \quad \text{y} \quad f(-a) = -f(a)  \]
+	y, en el caso de que $f$ sea \textit{sobreyectiva} y tanto $A$ como $A'$ sean unitarios, también se cumple que
+	\[ f(1) = 1 \quad \text{y} \quad f(a\inv) = f(a)\inv \]
+	para cualquier elemento invertible $a$ de $A$.
+\end{teo} 
+\begin{proof}
+
+	Veamos cada parte por separado.
+	\begin{enumerate} 
+		\item Veamos que $f(0) = f(0+0) = f(0) + f(0)$ de donde se sigue que $f(0) = 0$.
+		\item Tenemos que $f(a) + f(-a) = f(a-a) = f(0) = 0$ por lo que $f(-a) = -f(a)$.
+		\item Sea $a\in A$ tal que $f(a)=1$; entonces, $f(1) = f(a)f(1) = f(a1) = f(a) = 1$.
+		\item La ecuación $f(a)f(a^{-1}) = f(aa^{-1}) = f(1) = 1$ implica $f(a)^{-1} = f(a^{-1})$. 
+	\end{enumerate}
+	Y asi queda demostrado el teorema.
+\end{proof}
+Vale la pena comentar dos cosas sobre la parte (3) del teorema anterior. Primero, es evidente que
+\[ f(a)1 = f(a) = f(a1) = f(a)f(1) \]
+para todo $a\in A$. Teniendo esto en cuenta uno podría apelar (incorrectamente) a la ley de cancelación para decir que $f(1)=1$; lo que en realidad se necesita es el hecho de que las identidades multiplicativas son únicas. Segundo, si $f$ no es sobreyectiva, entonces solo podemos asegurar que $f(1)$ es el neutro de $f(A)$. En este caso, el elemento $f(1)$ puede no ser una identidad de $A$, en efecto, podría ocurrir que $f(1)\neq 1$.
+
+El siguiente teorema indica la estructura algebraica de las imágenes directas bajo homomorfismos. Veremos, entre otras cosas, que si $ f $ es un homomorfismo de $ A $ en $ A'$, entonces $ f(A) $ es un subanillo de $ A' $.
+
+\begin{teo}\label{teohomoinv}
+	Sea $ f $ un homomorfismo de $ A $ en $ A' $. Entonces,
+	\begin{enumerate}
+		\item para cada subanillo $ S $ de $ A $, $ f(S) $ es un subanillo de $ A' $; y 
+		\item para cada subanillo $ S' $ de $ R' $; $ f^{-1}(S') $ es un subanillo de $ A $.
+	\end{enumerate}
+\end{teo}
+
+\begin{proof} Veamos cada parte por separado.
+	\begin{enumerate}
+		\item Sean $ f(a) $ y $ f(b) $ en $ f(S) $. Luego, tanto $ a $ como $ b  $ pertenecen a $ S $, de la misma forma que $ a-b $ y $ ab $ (Pues $ S $ es un subanillo). Por lo tanto
+		\[ f(a) - f(b) = f(a-b) \in f(S) \]
+		y
+		\[ f(a)f(b) = f(ab) \in f(S). \]
+		Por lo que $ f(S) $ es un subanillo de $ A' $.
+		\item Sean $ a $ y $ b $ en $ f\inv (S')$, entonces $ f(a),f(b)\in S' $. Como $ S' $ es un subanillo, se sigue que
+		\[ f(a-b) = f(a) - f(b) \in S'\] 
+		y
+		\[ f(ab) = f(a)f(b)\in S'. \] 
+		Lo anterior significa que $ a-b $ y $ ab $ pertenecen a $ f\inv(S) $, por lo que $ f\inv(S) $ forma un subanillo.
+	\end{enumerate}
+\end{proof}
+Es interesante considerar que ocurre si, en el teorema~\ref{teohomoinv}, cambiamos la palabra ``subanillo'' por ``ideal''. En este sentido, sea $I$ un ideal de $A'$, $a'\in f\inv(I)$ y $r$ un elemento de $A$; entonces $f(ra') = f(r)f(a') \in I$ de donde se sigue que $ra'$ esta en la imagen inversa, $f\inv(I)$, de $I$. Como podemos hacer lo mismo para $a'r$, es fácil ver que la condición 2 del teorema anterior se cumple para el caso de los ideales.
+
+Lo que no se puede garantizar, sin mayores restricciones, es la parte 1. Piénsese por ejemplo que, en general, si $I$ es un ideal de $A$ entonces necesitaríamos que, para todo $a'\in A'$, $a'f(a) \in f(S)$ con $a\in A$. Pero, como no hemos pedido que $f$ sea \textit{sobreyectiva}, no podemos garantizar que existe un $x\in A$ tal que $f(x) = a'$ y poder entonces utilizar el hecho de que $I$ es un ideal. Podemos resumir la discusión anterior en el siguiente corolario.
+\begin{cor} \label{Cor-imagen-inversa}
+	Sea $f\colon  A\to A'$ un homomorfismo de anillos. Entonces, para cada ideal $I'$ de $A'$ se tiene que $f\inv(I')$ es un ideal de $A$. Si además pedimos que $f$ sea sobreyectiva, entonces ---para cada ideal $I$ de $A$--- tenemos que $f(I)$ es un ideal de $A'$.
+\end{cor}
+\subsection{Núcleo de un homomorfismo}
+Los elementos que un homomorfismo de anillos manda al cero son de especial interés, en este sentido se tiene la siguiente definición.
+\begin{defi}[núcleo]
+	Sea $f\colon  A\to A'$ un homomorfismo de anillos. El \textit{núcleo} de $f$, denotado por $\ker f$, consiste de todos los $a\in A$ tales que $f(a)=0$. 
+\end{defi}
+El núcleo de un homomorfismo no es vació puesto que, como habíamos visto antes, $f(0)=0$. Más aún, el núcleo de $f$ es un ideal de $A$; como lo explica el siguiente teorema.
+\begin{teo}
+	Sea $f\colon A\to A'$ un homomorfismo de anillos, entonces el núcleo de $f$ es un ideal de $A$.
+\end{teo}
+\begin{proof}
+	Como $\ker f = f\inv(0)$, y el $\eb{0}$ es un ideal de $A'$, el teorema se sigue directamente del corolario anterior.
+\end{proof}
+Se puede pensar en el núcleo de un homomorfismo como una suerte de medidor que nos da una idea de cuanto hace falta para que nuestro homomorfismo sea un isomorfismo, o en otras palabras, de que le hace falta para ser \textit{inyectivo}.
+
+\begin{teo}
+	Un homomorfismo de anillos $f\colon A\to A'$, sobreyectivo, es un isomorfismo ---es decir, inyectivo--- si, y solo si, $\ker f=0$.
+\end{teo}
+\begin{proof}
+	Si $f\colon A\to A'$ es un isomorfismo de anillos, entonces $ f(a) = 0 = f(0) $ implica que $a=0$ y es claro que $\ker f = 0$. Por otro lado, consideremos  un homomorfismo de anillos sobreyectivo,$f$, tal que $\ker f=0$; entonces, para todo $a,b\in A$, $f(a) = f(b)$ implica que $f(a) - f(b) = f(a-b) = 0$, y como $\ker f=0$, se tiene que $a-b=0$ o, lo que es lo mismo, que $a=b$.
+\end{proof}
+\subsection{Isomorfismos de anillos 	}
+Dos anillos, $A$ y $A'$, son isomorfos si existe un isomorfismo entre ellos; denotaremos esta relación con $A \simeq A'$. Cabe destacar que, si $f$ es un isomorfismo, entonces $f\inv$ también lo es; y la relación $\simeq$ es reflexiva.
+
+La intuición que uno posee de dos anillos isomorfos es que ambos tienen la misma estructura ---en cierto sentido son igua\-les---aunque los nombres que les ponemos a los elementos y las operaciones de cada anillo sean distintas.
+
+Para ilustrar lo anterior, esta el siguiente ejemplo.
+
+
+\begin{ejem}
+	Consideremos un anillo unitario $A$ y la función $f\colon \Z\to A$ dada por $f(n) = n1$. Veamos que, si $n,m\in \Z$,
+	\[ f(n+m) = (n+m)1 = n1 + m1 = f(n) + f(m) \]
+	y
+	\[ f(nm) = (nm)1 = (n1)(m1) = f(n)f(m), \]
+	por lo que $f$ es un homomorfismo.
+	
+	Como el núcleo de $f$ es un ideal de $\Z$ ---que es un anillo principal ideal--- se sigue que
+	\[ \ker f = \eb{n\in \Z \mid n1=0} = (p) \]
+	para algún $p$ primo, no negativo. No es difícil ver que $p$ es precisamente la característica de $A$. Entonces, si $A$ es de característica cero, el anillo $A$ posee un subanillo isomorfo a los naturales.
+\end{ejem}
+\subsection{Imágenes homomórficas de ideales}
+Hemos visto que siempre que $f$ ---un homomorfismo de ani\-llos--- sea sobreyectiva entonces cada ideal del dominio es un ideal en la imagen. Nos gustaría llegar a la conclusión de que los ideales en el dominio y rango de $f$ están en correspondencia uno a uno. Lamentablemente, esto último en general no es cierto.
+
+El problema esta en que, si $I,J$ son ideales de $A$ tales que $I \subseteq J \subseteq I + \ker f$ entonces $f(I) = f(J)$. Y dos ideales distintos tendrían imágenes iguales. 
+
+\begin{nota}
+	Para ver esto, considere $f(I) \subseteq f(J) \subseteq f(I + \ker f) = f(I) + 0 = f(I)$
+\end{nota}
+Para remediar el problema anterior tenemos dos opciones. La primera es pedir que $\ker f = 0$ y la segunda es considerar solo los ideales que contienen al núcleo; en cualquiera de los dos casos tendríamos que $I \subseteq J \subseteq I + \ker f = I$, y por lo tanto $I=J$. La primera de las opciones lo único que hace es convertir $f$ en un isomorfismo, en cuyo caso no es sorprendente que los ideales de los dos anillos se hallen en correspondencia uno a uno. La segunda opción es la idea central del teorema mas importante de esta sección, pero antes de el, un lema que nos será necesario.
+\begin{lem}
+	Sea $f\colon A\to A'$ un homomorfismo de anillos sobreyectivo. Si $I$ es un ideal de $A$ tal que $\ker  f \subseteq I$, entonces $I = f\inv(f(I))$.
+\end{lem} 
+\begin{proof}
+	Primero que nada, notemos que $I\subseteq f\inv f(I)$ es siempre cierto, pues si $a\in I$ entonces $f(a)\in f(I)$.
+	
+	Sea $a\in f\inv (f(I))$, entonces $f(a)\in f(I)$ por definición. Como $f$ es sobreyectiva, ha de existir un $r\in I$ tal que $f(a) = f(r)$; pero entonces $f(a-r) = 0$ por lo que $a-r\in \ker f$ que por hipótesis es un subconjunto de $I$. Esto último implica que $a\in I$ y que $f\inv (f(I)) \subseteq I$.
+\end{proof}
+Ahora, el teorema prometido.
+\begin{teo}[de correspondencia]
+	Sean $A$ y $A'$ anillos y $f\colon A\to A'$ un homomorfismo sobreyectivo. Entonces hay una correspondencia uno-a-uno entre los ideales de $A$ que contienen al núcleo y los ideales de $A'$. Más específicamente, si $I\in A$ es un ideal, y $\ker f \subsq I$; entonces la correspondencia viene dada por $f(I) = I'$ con $I'$ un ideal de $A'$. 
+\end{teo}
+\begin{proof}
+	Veremos primero que la correspondencia dada es en efecto sobreyectiva. Es decir, queremos producir---dado un ideal $I'\in A'$---un ideal $I\in A$, con $\ker f \subsq I$, tal que $f(I) = I'$. Tomemos $I = f\inv(I')$. Por el corolario~\ref{Cor-imagen-inversa} sabemos que este $I$ es un ideal de $A$, y, como $0\in I'$,
+	\[ \ker f = f\inv (0) \in f\inv(I'). \]
+	Como $f$ es sobreyectiva ---por hipótesis--- entonces 
+	\[f(I) = f\inv(f(I')) = I'.\]
+	Veremos ahora que la correspondencia es inyectiva. Sean $I,J$ ideales de $A$, con $\ker f \subsq I$ y $\ker f \subsq J$, tales que $f(I) = f(J)$. Entonces, por el lema anterior,
+	\[ I = f\inv (f(I)) = f\inv (f(J)) = J.\]
+\end{proof}
+\subsection{Ideal incrustado}
+Para dar el siguiente teorema importante de esta sección, necesitamos la siguiente definición.
+\begin{defi}[ideal incrustado]
+	Decimos que un anillo $A$ esta \textit{incrustado} en un anillo $A'$ si existe un subanillo, $S'$, de $A'$ tal que $A\simeq S'$.
+\end{defi}
+Un ejemplo rápido ayudará a ilustrar la definición.
+\begin{ejem} 
+	Consideremos los cuerpos $\R$ y $\Co$, de los reales y los complejos respectivamente. Entonces la función $f\colon \R\to\Co$ dada por $f(a) = a+0i$ es un isomorfismo de $\R$ a un subanillo de $\Co$. Esta es la extensión clásica de $\R$ a $\Co$.
+\end{ejem}
+\begin{nota}
+	El hecho de que $f$ ---del ejemplo anterior--- es un isomorfismo no es difícil de ver, la inyectividad y la sobreyectividad son evidentes; de igual forma es evidente que preserva sumas y productos. Por otro lado, como $(a-b)+0i$ y $(ab)+0i$ están en $\Co$ entonces el conjunto de los complejos con parte imaginaria cero es en efecto un subanillo de $\Co$.
+\end{nota}
+En general, si un anillo $A$ esta incrustado en un anillo $A'$ diremos que $A'$ es una \textit{extensión} de $A$ y que $A$ puede \textit{extenderse} a $A'$. Existen casos interesantes en los que un anillo $A$ se puede extender a otro que tiene propiedades no presentes en $A$. Como un ejemplo, demostraremos que cualquier anillo puede incrustarse en un anillo con identidad.
+\begin{teo}[de extensión de dorroh]
+	Cualquier anillo puede incrustarse en un anillo unitario.
+\end{teo}
+\begin{proof}
+	Sea $A$ un anillo y consideremos el producto cartesiano
+	\[ A\t\Z = \{ (a,n) \mid a\in A; n\in\Z \}. \]
+	Definamos la suma y el producto de la siguiente manera
+	\begin{align*}
+	(a,n) + (b,m) &= (a+b,n+m)  \\
+	(a,n)(b,m)    &= (ab+ma+nb, nm),
+	\end{align*}
+	entonces $A\,\t\,\Z$ es un anillo con estas operaciones ---la demostración de este hecho no es complicada, aunque si tediosa. Nótese que este anillo que hemos definido posee un elemento neutro dado por $(0,1)$.
+	
+	Ahora, consideremos el subconjunto $A\t\{0\}$ de $A\t\Z$, formado por los elementos de la forma $(a,0)$. Este subconjunto es un subanillo de $A\t\Z$. Por último, considérese la función $f\colon  A\to A\t\{0\}$ dada por $f(a) = (a,0)$. Tanto la inyectividad como la sobreyectividad de $f$ son evidentes, además
+	\[ f(a+b) = (a+b,0) = (a,0) + (b,0) = f(a) + f(b)\]
+	y
+	\[ f(ab) = (ab,0) = (a,0)(b,0) = f(a)f(b) \]
+	por lo que $f$ es un isomorfismo de $A$ en $A\t\{0\}$. 
+	
+	El proceso anterior incrusta cualquier anillo $A$ en $A\t\Z$, un anillo unitario.
+\end{proof}
+Es sensato preguntarse que ocurre con el proceso descrito en el teorema anterior cuando el anillo $A$ es unitario. En este caso, el elemento unidad de $A$ no hace mas que introducir divisores de cero en el anillo extendido.
+
+Aunque el teorema anterior nos permitiría reducir nuestro estudio a anillos unitarios preferiremos, de ahora en adelante, \textit{no} suponer que un anillo es unitario a menos de que sea necesario.
+\subsection{Extensión de homomorfismos}
+Nos interesa ahora resolver el problema de extender funciones. El siguiente teorema discute un situación en la que es posible extender un homomorfismo, de un subanillo al anillo completo, conservando las operaciones.
+\begin{teo}
+	holaaa
+\end{teo}
+\subsection{Ejercicios}

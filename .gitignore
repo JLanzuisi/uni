@@ -1,0 +1,15 @@
+tlcheck*
+*.tmp
+*.ptc
+*.xmpi
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.bbl
+*.bcf
+*.blg
+*.out
+*.xml
+*.thm
+*.toc

@@ -1,0 +1,152 @@
+\input{../../Plantillas-Fomato/Tareas/tarea.tex}
+\cabe{Geometría 3: Tarea 7}{Jhonny Lanzuisi, 1510759}
+\pgfplotsset{compat=1.15}
+
+\usepackage{mathrsfs}
+
+\usetikzlibrary{arrows}
+\begin{document}
+		\tituloD{Geometría  3}{Séptima Tarea: Homotecias entre Circunferencias}
+		\subsection*{Ejercicio 1}
+		Sean $c$ y $c'$ dos circunferencias exteriores de radios desiguales. Si $s$ es
+		una circunferencia tangente exterior a $c$ y $c'$ muestre que los dos puntos
+		de contacto de $s$ con $c$ y $c'$ están alineados con el centro de homotecia
+		positiva $H$ que lleva $c$ en $c'$.
+		\marginnote{
+			\begin{minipage}{8cm}
+				\begin{figure}[H]\hspace*{-3.5em}
+					\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm,scale=.9,rotate=40]
+					\clip(-1.70661973255789,-2.208149168519126) rectangle (7.605482409655437,3.9651486874695467);
+					\draw [shift={(1.4150340051340404,1.4150340051340535)},line width=0.4pt,fill=black,fill opacity=0.1] (0,0) -- (-13.296524637431666:0.28448377216537657) arc (-13.296524637431666:45.00000000000027:0.28448377216537657) -- cycle;
+					\draw [shift={(3.709185254466198,0.8724442366014058)},line width=0.4pt,fill=black,fill opacity=0.1] (0,0) -- (108.43494882292201:0.28448377216537657) arc (108.43494882292201:166.6761696300808:0.28448377216537657) -- cycle;
+					\draw [shift={(3,3)},line width=0.4pt,fill=black,fill opacity=0.1] (0,0) -- (-135.00000000000117:0.28448377216537657) arc (-135.00000000000117:-71.56505117707799:0.28448377216537657) -- cycle;
+					\draw [shift={(3.709032442357553,0.8729026729273407)},line width=0.4pt,fill=black,fill opacity=0.1] (0,0) -- (-71.56505117707799:0.28448377216537657) arc (-71.56505117707799:-13.296524637431663:0.28448377216537657) -- cycle;
+					\draw [shift={(4.650281539872879,0.6502815398728854)},line width=0.4pt,fill=black,fill opacity=0.1] (0,0) -- (166.66804171946822:0.28448377216537657) arc (166.66804171946822:225.00000000000026:0.28448377216537657) -- cycle;
+					\draw [shift={(4,0)},line width=0.4pt,fill=black,fill opacity=0.10000000149011612] (0,0) -- (45.00000000000024:0.28448377216537657) arc (45.00000000000024:108.43494882292204:0.28448377216537657) -- cycle;
+					\draw [line width=0.4pt] (0,0) circle (2cm);
+					\draw [line width=0.4pt] (3,3) circle (2.2426406871192857cm);
+					\draw [line width=0.4pt] (4,0) circle (0.9196369730490939cm);
+					\draw [line width=0.4pt,domain=-1.70661973255789:7.605482409655437] plot(\x,{(-0-0*\x)/-4});
+					\draw [line width=0.4pt] (-0.8891632772909323,1.9595755889984483)-- (5.031437014629185,0.5603841721084944);
+					\draw [line width=0.8pt,domain=-1.70661973255789:7.605482409655437] plot(\x,{(-2.6011261594915416--0.6502815398728854*\x)/0.6502815398728794});
+					\draw [line width=0.8pt,domain=-1.70661973255789:7.605482409655437] plot(\x,{(-0--0.6502815398728854*\x)/0.6502815398728794});
+					\draw [line width=0.4pt] (3,3)-- (4,0);
+					\draw [shift={(1.4150340051340404,1.4150340051340535)},line width=0.4pt] (-13.296524637431666:0.28448377216537657) arc (-13.296524637431666:45.00000000000027:0.28448377216537657);
+					\draw[line width=0.4pt] (1.6636133625784917,1.485617374124072) -- (1.7137853429801244,1.4998635586908649);
+					\draw [shift={(3.709185254466198,0.8724442366014058)},line width=0.4pt] (108.43494882292201:0.28448377216537657) arc (108.43494882292201:166.6761696300808:0.28448377216537657);
+					\draw[line width=0.4pt] (3.518499102506269,1.0468360379459432) -- (3.480011989266651,1.0820343831714458);
+					\draw [shift={(3,3)},line width=0.4pt] (-135.00000000000117:0.28448377216537657) arc (-135.00000000000117:-71.56505117707799:0.28448377216537657);
+					\draw[line width=0.4pt] (2.9687811610521058,2.743486661126126) -- (2.962480110989228,2.6917133266745186);
+					\draw[line width=0.4pt] (2.913206725854955,2.7566060056438113) -- (2.8956888173119184,2.707480612287516);
+					\draw [shift={(3.709032442357553,0.8729026729273407)},line width=0.4pt] (-71.56505117707799:0.28448377216537657) arc (-71.56505117707799:-13.296524637431663:0.28448377216537657);
+					\draw[line width=0.4pt] (3.899760144284253,0.6985563146538248) -- (3.9382556437556975,0.6633671414243077);
+					\draw [shift={(4.650281539872879,0.6502815398728854)},line width=0.4pt] (166.66804171946822:0.28448377216537657) arc (166.66804171946822:225.00000000000026:0.28448377216537657);
+					\draw[line width=0.4pt] (4.401680368744376,0.579775039186675) -- (4.351503985580826,0.5655443693234034);
+					\draw [shift={(4,0)},line width=0.4pt] (45.00000000000024:0.28448377216537657) arc (45.00000000000024:108.43494882292204:0.28448377216537657);
+					\draw[line width=0.4pt] (4.0312188389478925,0.2565133388738744) -- (4.0375198890107695,0.3082866733254819);
+					\draw[line width=0.4pt] (4.086793274145042,0.24339399435618989) -- (4.104311182688077,0.29251938771248553);
+					\begin{scriptsize}
+					\draw (4.12529759683233,2.30566001650485) node[anchor=north west] {$s$};
+					\draw [fill=black] (0,0) circle (1pt);
+					\draw[color=black] (0.14252478651705783,-0.13615902791463286) node {$O'$};
+					\draw[color=black] (-1.1850661502546995,1.2483286632902) node {$c'$};
+					\draw [fill=black] (3,3) circle (1pt);
+					\draw[color=black] (3.23391511071415,2.9836796734989974) node {$O_s$};
+					\draw [fill=black] (1.414213562373095,1.414213562373095) circle (1pt);
+					\draw[color=black] (1.4606329308833028,1.7319510759713403) node {$C'$};
+					\draw [fill=black] (4,0) circle (1pt);
+					\draw[color=black] (4.12529759683233,-0.11719344310360774) node {$O$};
+					\draw [fill=black] (3.709185254466198,0.8724442366014058) circle (1pt);
+					\draw[color=black] (3.8597794094779787,1.144017946829562) node {$D$};
+					\draw[color=black] (3.319260242363763,0.24315266830586932) node {$c$};
+					\draw [fill=black] (7.404918347287662,0) circle (1pt);
+					\draw[color=black] (7.4442749387617235,0.14832474425074377) node {$H$};
+					\draw [fill=black] (-0.6324555320336759,1.8973665961010275) circle (1pt);
+					\draw[color=black] (-0.4454083426247205,2.0448832253532547) node {$D'$};
+					\draw [fill=black] (4.650281539872879,0.6502815398728854) circle (1pt);
+					\draw[color=black] (4.694265141163083,0.9069481366917482) node {$C$};
+					\end{scriptsize}
+					\end{tikzpicture}
+					\vspace{-2.5em}\caption{Homotecia de razón positiva (r=2.176) entre dos circunferencias de radios desiguales.}
+				\end{figure}
+			\end{minipage}
+		}[-10em]
+	\begin{sol}
+		Sean $c,c',s$ y $H$ como en el enunciado. Llamemos $D,C'$ a los puntos de contacto de $s$ con $c$ y $c'$, respectivamente, llamemos también $O,O'$ a los centros de dichas circunferencias y $O_s$ al centro de la circunferencia $s$ (como en la figura 1).
+		
+		Como los puntos $C'$ y $D$ son de tangencia la recta $C'D$ determina sobre las circunferencias $c$ y $c'$ dos puntos de corte $C$ y $D'$\footnote{Nótese que, si los puntos $C,D'$ no existen debe ocurrir que $C'=D$ en cuyo caso $c$ y $c'$ o $s$ y $c'$ serían interiores, contradiciendo el enunciado.}, respectivamente.
+		
+		Si consideramos por un momento los dos triángulos isóceles $\triangle O_sC'D$ y $\triangle ODC$ veremos que, como comparten el vértice $D$, los ángulos en $O$ y $O_s$ son iguales. Pero si estos ángulos son iguales entonces la recta $O_sO$ corta a dos paralelas, estas son, $OC$ y $O_sC'$. Como la recta $O_sC'$ contienen necesariamente al punto $O'$, se sigue que los segmentos $O'C'$ y $OC$ son paralelos.
+		
+		Como $c'$ es la imágen de $c$ por la homotecia de centro en $H$ (y, por consecuencia, $O'$ la imágen de $O$), hemos descubierto que $C'$ es la imágen de $C$ por dicha homotecia; pues la construcción anterior nos dice que $C'$ es un punto sobre la circunferencia $c'$,en el mismo semiplano respecto de la recta $OO'$ que $C$\footnote{$C'$ ha de estar en el mismo semiplano que $C$ respecto de la recta $OO'$ debido a que la homotecia es de razón positiva.}, y sobre la paralela a $OC$ por $O'$; pero estas son justamente las condiciones para que $C'$ sea el homólogo $C$.
+		
+		Finalmente, como desde un principio se tenia que los puntos $C',D,C$ estaban alineados, y hemos decubierto que $C',C,H$ estan alineados, tenemos que $C',D$ y $H$ estan alineados, como se buscaba.
+
+	\end{sol}
+	\subsection*{Ejercicio 2}
+	\marginnote{
+		\begin{minipage}{8cm}
+			\begin{figure}[H]\hspace*{-9em}
+				\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm,scale=.8,rotate=40]
+				\clip(-5.611264188337598,-2.3072695635601828) rectangle (7.799028468045077,6.730101574436827);
+				\draw [shift={(1.414213562373095,1.414213562373095)},line width=0.4pt,fill=black,fill opacity=0.1] (0,0) -- (0.4560590177076437:0.416468716036729) arc (0.4560590177076437:45:0.416468716036729) -- cycle;
+				\draw [shift={(0,0)},line width=0.4pt,fill=black,fill opacity=0.1] (0,0) -- (0.4560590177076437:0.416468716036729) arc (0.4560590177076437:45:0.416468716036729) -- cycle;
+				\draw [shift={(4.685564044490801,1.44025318360065)},line width=0.4pt,fill=black,fill opacity=0.1] (0,0) -- (0.4560590177076437:0.416468716036729) arc (0.4560590177076437:45:0.416468716036729) -- cycle;
+				\draw [shift={(6.626621380061109,1.4557038050108324)},line width=0.4pt,fill=black,fill opacity=0.1] (0,0) -- (135.9121180354153:0.416468716036729) arc (135.9121180354153:180.45605901770767:0.416468716036729) -- cycle;
+				\draw [line width=0.4pt] (0,0) circle (2cm);
+				\draw [line width=0.8pt] (0,0)-- (4,4);
+				\draw [line width=0.4pt] (4,4) circle (3.6568542494923806cm);
+				\draw [line width=0.4pt] (5.647505804590431,2.4021949437002807) circle (1.3618049734623987cm);
+				\draw [line width=0.8pt,domain=-5.611264188337598:7.799028468045077] plot(\x,{(-12.981243443560603--4*\x)/4});
+				\draw [line width=0.4pt] (1.414213562373095,1.414213562373095)-- (6.626621380061109,1.4557038050108324);
+				\draw [line width=0.4pt] (4,4)-- (6.626621380061109,1.4557038050108324);
+				\draw [line width=0.4pt,domain=-5.611264188337598:7.799028468045077] plot(\x,{(-0--0.041490242637737484*\x)/5.212407817688014});
+				\draw [shift={(1.414213562373095,1.414213562373095)},line width=0.4pt] (0.4560590177076437:0.416468716036729) arc (0.4560590177076437:45:0.416468716036729);
+				\draw[line width=0.4pt] (1.7631312672349457,1.5603696024265297) -- (1.8335550241795393,1.5898689866574987);
+				\draw [shift={(0,0)},line width=0.4pt] (0.4560590177076437:0.416468716036729) arc (0.4560590177076437:45:0.416468716036729);
+				\draw[line width=0.4pt] (0.34891770486185025,0.146156040053435) -- (0.419341461806444,0.1756554242844041);
+				\draw [shift={(4.685564044490801,1.44025318360065)},line width=0.4pt] (0.4560590177076437:0.416468716036729) arc (0.4560590177076437:45:0.416468716036729);
+				\draw[line width=0.4pt] (5.034481749352651,1.5864092236540852) -- (5.104905506297245,1.6159086078850542);
+				\draw [shift={(6.626621380061109,1.4557038050108324)},line width=0.4pt] (135.9121180354153:0.416468716036729) arc (135.9121180354153:180.45605901770767:0.416468716036729);
+				\draw[line width=0.4pt] (6.275421259870598,1.5962869775043165) -- (6.204536831942238,1.624661562778231);
+				\begin{scriptsize}
+				\draw (-0.18328858932556333,1.1355384890101068) node[anchor=north west] {$c$};
+				\draw (4.744924550442397,2.8152956436915786) node[anchor=north west] {$c'$};
+				\draw (2.20446538261835,4.009172629663534) node[anchor=north west] {$s$};
+				\draw [fill=black] (0,0) circle (1pt);
+				\draw[color=black] (-0.058347974514544626,0.2262484589965828) node {$O$};
+				\draw [fill=black] (4,4) circle (1pt);
+				\draw[color=black] (4.147986057456419,4.252112714018293) node {$O_s$};
+				\draw [fill=black] (1.414213562373095,1.414213562373095) circle (1pt);
+				\draw[color=black] (1.4548216937522376,1.128597343742828) node {$C$};
+				\draw [fill=black] (5.647505804590431,2.4021949437002807) circle (1pt);
+				\draw[color=black] (5.730567178395989,2.6695315930787236) node {$O'$};
+				\draw [fill=black] (6.626621380061109,1.4557038050108324) circle (1pt);
+				\draw[color=black] (6.785621259022369,1.2674202490884041) node {$D$};
+				\draw [fill=black] (3.361219372697065,1.429711533044787) circle (1pt);
+				\draw[color=black] (3.3011663348484026,1.1424796342773855) node {$N$};
+				\draw [fill=black] (4.684564273201604,1.4392534123114538) circle (1pt);
+				\draw[color=black] (4.828218293649742,1.2118910869501738) node {$C'$};
+				\end{scriptsize}
+				\end{tikzpicture}
+				\vspace{-6.5em}\caption{Homotecia de razón negativa (r=--0.679) entre dos circunferencias de radios desiguales.}
+			\end{figure}
+		\end{minipage}
+	}[-9em]
+	Sean $c$ y $c'$ dos circunferencias exteriores. Sea $s$ una circunferencia tal
+	que, $c$ es tangente exterior a $s$ y $c'$ es tangente interior a $s$. Muestre que
+	los puntos de contacto de las circunferencia $s$ con $c$ y $c$ están alineados
+	con el centro de homotecia negativa $N$ que envía a $c$ en $c'$.
+	
+\begin{sol}
+	Sean $c,c'\!,s$ y $N$ como en el enunciado. Llamemos $C,D$ a los puntos de contacto de $s$ con $c$ y $c'$, respectivamente, llamemos también $O,O'$ a los centros de dichas circunferencias y $O_s$ al centro de la circunferencia $s$ (como en la figura 2).
+	
+	Como los puntos $C$ y $D$ son de tangencia la recta $CD$ determina sobre la circunferencia $c'\!$ otro punto de corte $C'$.
+	
+	Si trazamos la paralela a la recta $CD$ por $O$ y consideramos los dos triángulos isóceles $\triangle CO_sD$ y $\triangle O'C'D$ veremos que los ángulos en $O,C,C'$ son iguales. Por lo que los segmentos $OC$ y $O'C'$ son paralelos.
+	
+	Como $c'$ es la imágen de $c$ por la homotecia de centro en $N$ (y, por consecuencia, $O'$ la imágen de $O$), hemos descubierto que $C'$ es la imágen de $C$ por dicha homotecia;  pues la construcción anterior nos dice que $C'$ es un punto sobre la circunferencia $c'$, en el distinto semiplano respecto de la recta $OO'$ que $C$\footnote{$C'$ ha de estar en el semiplano contrario que $C$ respecto de la recta $OO'$ debido a que la homotecia es de razón negativa.}, y sobre la paralela a $OC$ por $O'$; pero estas son justamente las condiciones para que $C'$ sea el homólogo $C$.
+	
+	Finalmente, como desde un principio se tenia que los puntos $C,D,C'$ estaban alineados, y hemos decubierto que $C,C',H$ estan alineados, tenemos que $C,D$ y $H$ estan alineados, como se buscaba.
+\end{sol}
+\end{document}

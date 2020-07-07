@@ -1,0 +1,189 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools,verbatim,color,titlesec}
+\usepackage{helvet}
+
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\integer}{\mathbb{Z}}
+\renewcommand{\natural}{\mathbb{N}}
+\newcommand{\gaussian}{\mathcal{N}}
+\renewcommand{\(}{\left(}
+\renewcommand{\)}{\right)}
+\renewcommand{\abstractname}{Resúmen}
+\renewcommand{\theenumi}{\alph{enumi}}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries}{Ejercicio~\thesection}{1em}{}
+
+\title{Primer examen parcial}
+\author{Jhonny Lanzuisi}
+\date{22/02/2019}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+	Este es el primer examen parcial de Introducción a las probabilidades (MA3613), en la Universidad Simón Bolívar, del trimestre Enero-Marzo 2019.
+\end{abstract}
+\section{}
+\textit{[3 pts.] Una agencia automotriz vendió 47 autos en marzo de 2018, 23 de ellos tenían dirección hidráulica, 27 eran de cambios automáticos y 20 tenían conectividad wi-fi; 7 tenían dirección hidráulica, cambios automáticos y wi-fi; 3 tenían sólo dirección hidráulica y cambios automáticos; 2 tenían sólo cambios automáticos y y wi-fi; y 4 tenían sólo dirección hidráulica y wi-fi. ¿Cuántos automóviles se vendieron con solamente uno de estos accesorios?} \\
+
+El total de autos vendidos es 47. Para hallar los que se vendieron con un sólo accesorio hallaremos el total de autos vendidos con más de un accesorio. \\
+\begin{itemize}
+\item Los autos vendidos con dirección hidráulica y algún accesorio son: $7+3+4=14$ 
+\item Los autos vendidos con wifi y algún otro accesorio son: $7+2+4=13$ 
+\item Los autos vendidos con cambios automáticos y algún otro accesorio: $7+3+2=12$ 
+\end{itemize} 
+De lo anterior se puede ver que, entre los autos que aparecen en las igualdades, los únicos que se repiten en todas las categorías son los primeros 7. Aparte de estos, los demás son siempre distintos, en tanto que tienen algún accesorio diferente. Luego el total de autos con mas de un accesorio es $7+3+4+2+4+3+2=25$.
+
+Y por último, tenemos que el total de autos vendidos con un sólo accesorio es $47-25=23$.
+
+\section{}
+
+\textit{[3 pts.] De una caja que contiene 10 bolas de color rojo, 30 de color blanco, 20 de color azul y 15 de color naranja, se saca una al azar. Hallar la probabilidad de que la bola extraída: \\
+\textbf{a)} Sea de color rojo o naranja. \textbf{b)} Sea ni de color rojo ni azul. \textbf{c)} No sea de color azul. \textbf{d)} Sea de color blanco. \textbf{e)} Sea de color rojo, blanco o azul.} \\
+
+Tenemos que el total de bolas es $10+30+20+15=75$. Tomando esto en cuenta, consideremos ahora cada caso:
+\begin{enumerate}
+	\item El total de color rojo o naranja, es la suma de las rojas y naranjas, $10+15=25$. Luego la probabilidad de sacar una es $$\dfrac{25}{75} = 0,33 \approx 33\%$$
+	\item El que no sea rojo ni azul es equivalente a pedir que sean blancas y naranjas, el total es entonces $30+15=45$ y la probabilidad buscada es $$ \dfrac{45}{75} = 0,6 \approx 60\% $$
+	\item Igual que antes, el que no sea de color azul equivale a decir que puede ser de cualquiera de los otros, entonces el total es $10+30+15=55$ y la probabilidad buscada es $$ \dfrac{55}{75} = 0,73 \approx 73\% $$
+	\item El total de blancas es $30$, y por tanto la probabilidad es $$ \dfrac{30}{75} = 0,4 \approx 40\% $$
+	\item El total de rojo, blanco, y azul es $10+30+20=60$ y la probabilidad es $$\frac{60}{75} = 0,8 \approx 80\%$$
+\end{enumerate}
+
+\section{}
+
+\textit{[3 pts.] Una caja contiene 200 unidades de cierto producto electrónico, de las cuales cuatro están defectuosas y las 196 restantes están en buenas condiciones. Cuatro unidades se seleccionan aleatoriamente para su venta. Use combinatoria para hallar la probabilidad de que: \\ \textbf{a)}las cuatro unidades vendidas sean defectuosas. \textbf{b)}entre las cuatro unidades vendidas dos estén en buen estado y dos defectuosas. \textbf{c)}se venden menos de tres unidades defectuosas.} \\
+
+Comencemos pensando en el tamaño del espacio muestral. Queremos ver todas las formas de las que se puede elegir 4 de entre 200, esto es el $\binom{200}{4}$, es decir, de 64684950 maneras. Con esto en mente, veamos los distintos casos:
+
+\begin{enumerate}
+	\item La probabilidad será el total de formas que podemos elegir las unidades defectuosas dividido por la cardinalidad del espacio muestral. Entonces la probabilidad es $$\frac{\binom{4}{4}}{\binom{200}{4}} = \frac{1}{\binom{200}{4}} = \frac{1}{64684950} = 0,000000015 \approx 0\%$$
+	\item Siguiendo el mismo razonamiento que en la parte anterior, esta vez buscamos las formas de elegir dos defectuosas y dos en buen estado, con esto en cuenta la probabilidad es $$\frac{\binom{4}{2}\binom{196}{2}}{\binom{200}{4}} = \frac{96660}{64684950} = 0,0015 \approx 0,15\%$$
+	\item La probabilidad es esta caso es la suma de las probabilidades de que se vendan 2 unidades defectuosas, 1 unidad defectuosa y ninguna unidad defectuosa. Tenemos entonces que la probabilidad buscada es
+	$$\frac{\binom{4}{2}\binom{196}{2}}{\binom{200}{4}} + \frac{\binom{4}{1}\binom{196}{3}}{\binom{200}{4}} + \frac{\binom{4}{0}\binom{196}{4}}{\binom{200}{4}} =  0,0015 + 0,078 + 0,92 = 0,9995 \approx 99,95\%$$
+\end{enumerate}
+
+\section{}
+
+\textit{[3 pts.] Una agrupación compuesta por 10 hombres y 10 mujeres tiene 5 matrimonios y 10 solteros. De esta agrupación se va a formar un comité de cuatro personas seleccionadas aleatoriamente. ¿Cuál es la probabilidad de que esté formado por: \\ \textbf{a)}un hombre casado, una mujer casada, un hombre soltero, una mujer soltera? \textbf{b)}dos personas casadas, un hombre soltero y una mujer soltera?}\\
+
+El espacio muestral es la cantidad de formas en que podemos elegir 4 de las 20 personas, esto es el $\binom{20}{4}$, es decir, de 4845 maneras. Con esto en cuenta pasemos a cada caso:
+
+\begin{enumerate}
+	\item Queremos buscar las maneras en que podemos elegir ese comite. Como hay simetría, a cada tipo lo podemos elegir de $\binom{5}{1}$ maneras. La probabilidad es entonces $$ \frac{\binom{5}{1}\binom{5}{1}\binom{5}{1}\binom{5}{1}}{\binom{20}{4}} = \frac{20}{4845} = 0,0041 \approx 0,4\%$$
+	\item Usando un razonamiento completamente análogo al anterior, con la única diferencia de que ahora buscamos elegir 2 de los 10 casados, tenemos que la probabilidad es $$\frac{\binom{10}{2}\binom{5}{1}\binom{5}{1}}{\binom{20}{4}} = \frac{1125}{4845} = 0,23 \approx 23\%$$
+\end{enumerate}
+
+\section{}
+
+\textit{[3 pts.] Una secretaria escribió a máquina cuatro cartas y cuatro sobres y por descuido insertó las cartas al azar dentro de los sobres. Encuéntrese la probabilidad de cada uno de los casos siguientes: \\ \textbf{a)}ninguna carta entró en el sobre correcto. \textbf{b)}al menos una carta entró en el sobre correcto. \textbf{c)}sólo una carta entró en el sobre correcto. \textbf{d)}tres cartas entraron en los sobres correctos.} \\
+
+Suponiendo que ningún sobre tiene más de una carta y que se insertan todas las cartas, se sigue que el espacio muestral es $4!$. Esto es debido a que podemos ver el problema como una selección de 4, donde cada posición corresponde a los sobres marcados con 1,2,3 y 4; respectivamente. Por ejemplo, la selección \{1,3,4,2\} significa que la carta uno quedo dentro del sobre uno, la carta tres dentro del sobre dos, la carta cuatro dentro del sobre tres y la carta dos dentro del sobre cuatro. \\
+Como el espacio muestral es finito y no muy grande, podemos calcularlo explícitamente en la siguiente tabla
+
+\begin{center}
+	\begin{tabular}{||c c c c c c||} 
+	\hline 
+	1234 & 1243 & 1324 & 1342 & 1423 & 1432 \\
+	2134 & 2143 & 2314 & 2341 & 2413 & 2431 \\
+	3124 & 3242 & 3214 & 3241 & 3412 & 3421 \\
+	4123 & 4132 & 4231 & 4312 & 4321 & 4231 \\
+	\hline
+	\end{tabular}
+\end{center}
+
+En la tabla se encuentran entonces todas las formas en las que, dejando fijos los sobres, la secretaria pudo haber metido las cartas. Tomando en cuenta todo lo anterior, podemos pasar ahora a cada caso:
+
+\begin{enumerate}
+	\item La cantidad de configuraciones que hay donde ninguna carta queda en el sobre correcto, obtenida contando desde la tabla, es 9. Luego la probabilidad es $$ \frac{9}{24} = \frac{3}{8} = 0,375 \approx 37,5\% $$
+	\item Contando de nuevo de la tabla, la cantidad de configuraciones en que al menos una esté en su sitio es 15. La probabilidad entonces es $$ \frac{15}{24} = 0,625 \approx 62,5\% $$
+	\item De la misma manera que antes, la cantidad de configuraciones donde sólo una carta entró en el sobre correcto es 9. La probabilidad es $$\frac{9}{24} = 0,375 \approx 37,5\%$$
+	\item Por ultimo, e igual que antes, la cantidad de configuraciones donde tres cartas entraron en el sobre correcto es sólo una. Por lo tanto la probabilidad es $$\frac{1}{24} = 0,04 \approx 4\%$$
+\end{enumerate}
+
+\section{}
+
+\textit{[3 pts.] Se lanza un dado cuatro veces consecutivas. Encuentre la probabilidad de cada uno de los siguientes eventos: \\ \textbf{a)}los números 1,2,3 y 4 aparecen en este orden. \textbf{b)}los números 1,2,3 y 4 aparecen en cualquier orden. \textbf{c)}al menos aparece un seis. \textbf{d)}el mismo número aparece cada vez.}
+
+Consideremos el siguiente modelo matemático para el lanzamiento del dado. Tomemos un posible resultado de lanzar el dado cuatro veces consecutivas, por ejemplo, primero sale el 1, luego el 3, luego el 4 y por último el 5. Podemos pensar en el resultado de ese lanzamiento como una selección ordenada con repetición, de longitud 4, \{1,3,4,5\}. Se sigue entonces que bajo este modelo la cantidad total de posibles resultados es $6^4$. Con esto en cuenta, pasemos a considerar cada caso
+
+\begin{enumerate}
+	\item La selección \{1,2,3,4\} es una sola de todas las posibles, la probabilidad es entonces $$\frac{1}{6^4} = 0,0007 \approx 0,08\%$$
+	\item De las $6^4$ selecciones totales buscamos aquellas donde el 1,2,3 y 4 estén en cualquier sitio. Como han de aparecer los 4 números, no puede haber repetición. Se sigue entonces que la cantidad de selecciones distintas es $4!$, al reordenar los cuatro elementos de todas las formas posibles. La probabilidad es entonces $$\frac{4!}{6^4} = 0,0185 \approx 1,9\% $$
+	\item Calcularemos la probabilidad de este evento a través de su complemento. Consideremos el evento de que no salga ningún 6, siguiendo nuestro modelo hay $5^4$ selecciones con esta propiedad, debido a que al quitar los 6 ahora tenemos una opción menos para cada espacio. La probabilidad de este evento es entonces $\frac{5^4}{6^4} = 0,48$. Entonces la probabilidad buscada es $$1 - 0,48 = 0,52 \approx 52\% $$
+	\item Como se debe repetir el mismo numero cuatro veces, no es difícil ver que solo existen seis selecciones asi. Luego la probabilidad es $$\frac{6}{6^4} = 0,0046 \approx 0,46\% $$
+\end{enumerate}
+
+\section{}
+
+\textit{[3 pts.] Un laberinto está formado por dos niveles en forma de cuadrados, uno dentro del otro. En cada cuadrado hay dos puertas de entrada y dos de salida, las que no pueden distinguirse. Si se confunde una puerta de entrada con una salida y viceversa se muere electrocutado. Calcular la probabilidad de: \\ \textbf{a)}salir del laberinto si uno está dentro del cuadrado pequeño, \textbf{b)}regresar de nuevo al interior del cuadrado pequeño si se ha salido una vez desde éste.}
+
+El problema puede replantearse de la siguiente forma. Tenemos dos filas de cuatro puertas indistinguibles, una detrás de la otra. En cada fila, dos puertas son de tipo \textit{A} y dos de tipo \textit{B}. Con esta nueva imagen del problema, consideremos cada caso:
+
+\begin{enumerate}
+	\item Queremos elegir alguna puerta de tipo \textit{A} y luego de haber pasado por esa, elegir otra en la segunda fila. Es claro que en la primera decisión hay una probabilidad de $\frac{1}{2}$ de elegir una puerta de tipo \textit{A}. Una vez hecha esta decisión, ante la segunda fila se presenta el mismo dilema, la probabilidad en este caso es igualmente $\frac{1}{2}$. Luego la probabilidad total, de elegir la puerta correcta dos veces seguidas, es de $$\frac{1}{2} \frac{1}{2} = \frac{1}{4} = 0,25 \approx 25\%$$
+	\item Aquí podemos considerar dos casos. Primero, si al cruzar en una dirección las dos filas de puertas, estas se vuelven a cerrar de tal forma que la persona no sepa cual uso antes, entonces la probabilidad por la simetría del problema es $$\frac{1}{4} \frac{1}{4} =  \frac{1}{16} = 0,0625 \approx 6,2\%$$
+	Segundo, si al cruzar la primera vez las dos filas, la persona puede reconocer cuál puerta usó, de tal forma que sepa que esa puerta ya no se puede usar en su camino de regreso, la probabilidad de regresar es de $\frac{2}{3}^2 = 0,44$ y la probabilidad total de hacer el camino en los dos sentidos es $$ \frac{1}{4} \frac{2}{3}^2 = \frac{1}{9} = 0,11 \approx 11\%$$
+\end{enumerate}
+
+\section{}
+
+\textit{[3 pts.] De las personas que llegan a un aeropuerto pequeño, 60\% vuela en aerolíneas grandes, 30\% en aeroplanos privados y 10\% en otros aeroplanos comerciales. De las personas que llegan por las aerolíneas principales, 50\% viaja por negocios, mientras que esta cifra es de 60\% para los que llegan en aeroplanos privados y de 90\% para los que llegan en otros aviones comerciales. Para una persona que se seleccione al azar de entre un grupo de llegadas, calcular la probabilidad de que: \\ \textbf{a)}la persona esté en viaje de negocios, \textbf{b)}la persona esté en viaje de negocios y llegue en un aeroplano privado, \textbf{c)}la persona esté en viaje de negocios, y se sabe que llegó en un aeroplano comercial, \textbf{d)} la persona haya llegado en un aeroplano privado, dado que viaja por negocios.} \\
+
+Comenzamos directamente con cada caso:
+
+\begin{enumerate}
+	\item Sabemos que hay un 60\% de probabilidad de que esté en una aerolínea grande, luego la probabilidad de que esté en una aerolínea grande y viaje por negocios es de 30\% (que es el 50\% del 60\%). Por otro lado, la probabilidad de que viaje en un aeroplano privado y por negocios es del 18\% (el 60\% de 30\%) y por último, la probabilidad de que viaje en un aeroplano comercial y de negocios de del 9\% (el 90\% del 10\%). Con todo esto, la probabilidad total de que viaje de negocios es la suma de cada una de estas probabilidades: $$ 30\%+18\%+9\% = 57\%$$
+	\item Suponemos que la persona esta viajando por negocios, y queremos saber la probabilidad de que llegue en aeroplano privado. Debemos interpretarlo de esta forma, ya que si lo tomamos como la intersección lógica de los dos eventos obtendríamos precisamente la probabilidad dada en el enunciado. Con nuestra interpretación, la probabilidad es de 17,1\%, que se obtiene tomando en cuenta que del total el 57\% viaja de negocios, y de esta muestra debe ocurrir que un 30\% viaje en aeroplanos comerciales, luego el 30\% del 57\% es la probabilidad.
+	\item Aquí utilizamos la formula de la probabilidad condicional. Si llamamos a viajar de negocios el evento \textit{A} y viajar en un aeroplano comercial el evento \textit{B}, entonces tenemos que 
+	$$p(A|B) = \frac{ p(A \cap B)}{p(B)} = \frac{0,9}{0,1} = 0,9 \approx 90\%$$
+	\item Aquí utilizamos la formula de la probabilidad condicional de nuevo. Sea el evento \textit{A} como antes, llamemos ahora \textit{C} al evento de que se viaje en avión comercial entonces
+	$$p(C|A) = \frac{p(C \cap A)}{p(A)} = \frac{0,18}{0,57} = 0,316 \approx 31,6 \% $$
+\end{enumerate}
+
+\section{}
+
+\textit{[3 pts.] Se conduce una investigación detallada de accidentes aéreos. La probabilidad de que un accidente por falla estructural se identifique correctamente es de 0.9 y la probabilidad de que un accidente no se deba a una falla estructural y se identifique en forma incorrecta como un accidente por falla estructural es de 0.2. Si 25\% de los accidentes aéreos se deben a fallas estructurales, determine: \\ \textbf{a)}la probabilidad de que un accidente aéreo sea debido a una falla estructural sabiendo que se diagnostica como falla de este tipo, \textbf{b)}la probabilidad de que un accidente aéreo sea debido a una falla estructural sabiendo que se diagnostica correctamente.} \\
+
+Antes de empezar con cualquiera de los casos, convendría ver cuáles son los datos dados y cómo usarlos. Primero, consideremos como espacio muestral el conjunto de todos los accidentes de avión. Sean los eventos \textit{A},\textit{B} y \textit{C} de la siguiente forma
+\begin{itemize}
+	\item $A$ = Accidente es de falla estructural.
+	\item $B$ = Accidente se identifica como falla estructural.
+	\item $C$ = Accidente se identifica correctamente.
+\end{itemize}
+de lo anterior se sigue claramente que
+\begin{itemize}
+	\item $A^c$ = Accidente no es de falla estructural
+	\item $B^c$ = Accidente no se identifica como falla estructural
+	\item $C^c$ = Accidente se identifica incorrectamente
+\end{itemize}
+Con todo lo anterior en cuenta, el problema nos da los siguientes datos. La $p(A) = 0,25$. La $p(A \cap B) = 0,9$. La $p(A^c \cap B^c) = 0,8$. La $p(A \cap C) = 0,9$. La $p(A^c \cap C^c) = 0,2$. Además de todos los datos anteriores, hace falta tener en cuenta la siguiente relación
+\begin{align*} 
+p(A^c \cap B^c) = p((A \cup B)^c) &= 1 - p(A \cup B) \\
+								  &= 1 - (p(A) + p(B) - p(A \cap B)) \\
+								  &= 1 - p(A) - p(B) + p(A \cap B) \\
+\end{align*}
+de la cual se sigue que 
+$$ p(B) = 1 - p(A) + p(A \cap B) - p(A^c \cap B^c) = 1 - 0,25 + 0,9 - 0,8 = 0,85 \quad \text{(1)}$$
+Lo último que hace falta antes de poder comenzar con los casos pedidos en el problema, es darnos cuenta de que la relación (1) se puede utilizar para obtener la $p(C)$ partiendo de la $p(A^c \cap C^c)$:
+$$ p(C) = 1 - p(A) + p(A \cap C) - p(A^c \cap C^c) = 1 - 0,25 + 0,9 - 0,2 = 1,45 $$
+entonces hay algo que claramente esta mal, en alguna de las probabilidades que componen la fórmula anterior, debido a que $P(c)$ da un número mayor a 1. Aún así, $p(B)$ está bien y podemos calcular la parte
+
+\begin{enumerate}
+	\item Lo que se nos pide es la 
+	$$p(A|B) = \frac{p(A \cap B)}{p(B)} = \frac{0,9}{0,85} = 1,06 \approx 106\%$$
+	que se podría interpretar como que siempre que la probabilidad es del 100\%.
+	\item En esta parte se nos pide calcular la 
+	$$p(A|C) = \frac{p(A \cup C)}{p(C)} $$
+	pero como vimos antes, hay un error en $p(C)$. (\textbf{Nota: ¿Osmer, tienes idea de cuál puede ser el error? Llevo un rato buscándolo y no lo consigo.}) 
+\end{enumerate}
+
+\section{}
+
+\textit{(Ver enunciado en el parcial)}
+
+\begin{enumerate}
+	\item Queremos que A gane después de 5 juegos. Supongamos que a gana en el juego $n>5$. Entonces se sigue que A necesariamente gano los juegos $n-1$ y $n-2$. En todos los juegos anteriores,esto es, los $n-3$ juegos anteriores, A debió haber empatado con el otro jugador. 
+\end{enumerate}
+\end{document}

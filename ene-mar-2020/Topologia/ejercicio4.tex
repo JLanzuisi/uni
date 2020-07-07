@@ -1,0 +1,75 @@
+\documentclass[fleqn,leqno,letterpaper,10pt,final]{article}
+\input{../../preamble-article.tex}
+
+\title{Cuarto ejercicio,\\ espacios de hausdorff}
+\author{Jhonny Lanzuisi, 15\,10759}
+\asignatura{Topología 1}
+
+\begin{document}
+\maketitle
+\tableofcontents
+%\marginnote{
+	%\begin{abstract}
+		%Cuarto ejercico del curso de \AsignaturaN: Espacios de Hausdorff y
+		%topología producto.
+	%\end{abstract}
+	%\tableofcontents
+%}
+
+\section[Enunciado]{Enunciado\nota{En \cite{munkres_topology_2014}: Capítulo 2, \S 19, ejercicio 3}}
+Sean $A$ un cojunto de indices y $X_{\alpha} (\alpha\in A)$ una familia de espacio topológicos.
+Demuestre que si los $X_{\alpha}$ son espacios de hausdorff
+entonces el productoo
+\[
+	\prod_{\alpha\in A} X_{\alpha}
+\]
+es un espacio de Hausdorff tanto en la topología caja como en la topología producto.
+
+\subsection{Solución}
+Tomemos dos puntos $x,y$ distintos en $\prod X_{\alpha}$. Basta con construir
+un entorno de $x$ que no contenga a $y$ (tanto en la topología caja como en la producto)
+y el resultado buscado se obtendrá entonces haciendo un argumento simétrico para $y$.
+
+Como $x$ y $y$ son distintos,
+existe al menos un índice $\beta$ en $A$ tal que $x_{\beta}\neq y_{\beta}$.
+Como $X_{\beta}$ es un espacio de Hausdorff, existe  un entorno $U$
+(tanto en la topología producto como en la caja)
+ en $X_{\beta}$ de $x_{\beta}$ que no intersectan a $y_{\beta}$.
+
+Consideremos la famila de conjuntos $U_\alpha$ dada por
+\[
+	U_{\alpha}=
+		\begin{cases}
+			U &\text{si}\;\alpha=\beta,\\
+			X_\alpha &\text{si}\;\alpha\neq \beta.
+		\end{cases}
+\]
+Notemos que cada $U_\alpha$ es abierto en $X_\alpha$ y tomemos el producto
+\[
+	W=\prod_{\alpha\in A} U_\alpha.
+\]
+Evidentemente $W\subset\prod X_{\alpha}$. También, como $x_{\beta}\in U$ 
+(por la forma en que se eligió $W$) y $x_\alpha\in X_{\alpha}$ para
+$\alpha\neq\beta$, se sigue que $x\in W$. Por ser $W$ un producto
+de cojuntos abiertos se sigue que es abierto en la topología
+caja, como además todos menos una cantidad finita de los 
+$W_\alpha$ son iguales a los $X_\alpha$ se tiene que $W$ también
+es abierto en la topología producto.
+
+Entonces, sin importar cual de las dos topologías tomemos (la caja o la producto)
+el cojunto $W$ será un entorno del punto $x$. Solo queda por ver que este entorno
+no intersecta al punto $y$. Esto último podemos verlo medianto un argumento por
+contradicción.
+
+Supongamos que $y\in W$. Entonces se tiene que $y_\alpha\in U_\alpha$ para cada $\alpha\in A$.
+Pero esto implica, en particular, que $y_{\beta}\in U$.
+Lo cual es una contradicción.
+
+Hemos obtenido entonces que $W$ es un entorno de $x$ que no contiene a $y$.
+De manera similar pude construirse un entorno $V$ de $y$ que no contenga a $x$
+y queda demostrado que $\prod X_\alpha$ es un espacio de Hausdorff.
+\printbibliography[
+heading=bibintoc,
+title={Referencias}
+]
+\end{document}

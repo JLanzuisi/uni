@@ -1,0 +1,42 @@
+\input{../../Plantillas-Fomato/Tareas/tarea.tex}
+\cabe{Álgebra 3}{Jhonny Lanzuisi, 1510759}
+\renewcommand{\labelenumi}{\upshape\scshape\roman{enumi}.}
+\newcommand{\bigzero}{\mbox{\normalfont\LARGE $0$}} 
+\begin{document}
+	\tituloD{álgebra iii}{Tarea: Matrices Diagonales de Bloques}
+	\begin{teo}
+		Si $A=A_{11}\oplus A_{22}\oplus\cdots\oplus A_{mm}$ es una matriz bloque diagonal, entonces
+		\begin{enumerate}
+			\item El polinomio característico de $A$, $p_A$, esta dado por
+			\[ p_A(t) = \prod_{i=1}^{m} p_{A_{ii}}(t). \]
+			\item El polinomio minimal de $A$, $m_A$, esta dado por
+			\[ m_A = \mcm(A_{11},\dots,A_{mm}).  \]
+			\item Para cualquier polinomio $f$ se tiene que
+			\[ f(A) = f(A_{11})\oplus f(A_{22})\oplus\cdots\oplus f(A_{mm}). \]
+		\end{enumerate}
+	\end{teo}
+	\begin{proof}
+		Para ver \textsc{(i)}, hagamos $p_A(t) = \det(A-tI_m)$ y supongamos que las matrices $A_{ii}$ son de tamaño $n_i\t n_i$ donde los $n_i$ son números positivos ($0\leq i\leq m$), luego
+%		\begingroup
+%		\setlength\arraycolsep{-3pt}
+		\begin{align*}
+			p_A(t) &=\det\big((A_{11} - tI_{n_1})\oplus(A_{22} - tI_{n_2})\oplus\cdots\oplus(A_{mm} - tI_{n_m})\big)  \\
+			&=\det\big(A_{11} - tI_{n_1}\big)\cdots\det\big(A_{mm} - tI_{n_m}\big) \\
+			&=p_{A_{11}}(t)p_{A_{22}}(t)\cdots p_{A_{mm}}(t).
+		\end{align*}
+	Consideremos (\textsc{iii}). Sea $f(t) = t^n+a_{n-1}t^{n-1}+\cdots+a_1t+a_0$ un polinomio en $t$; entonces, tomando en cuenta que las potencias de una matriz diagonal se obtienen elevando los elementos de la diagonal, tenemos
+%	\begin{small}
+		\begin{align*}
+		f(A)  &= A^n+a_{n-1}A^{n-1}+\cdots+a_1A+a_0I \\
+		&= (A_{11}^n\oplus\cdots\oplus A_{mm}^n) \\
+		&\phantom{=}\hspace{6em} + a_{n-1}(A_{11}^{n-1}\oplus\cdots\oplus A_{mm}^{n-1})+\cdots \\
+		&\phantom{=}\hspace{9em} +a_1(A_{11}\oplus\cdots\oplus A_{mm}) + a_0 I \\
+		&=(A_{11}^n+a_{n-1}A_{11}^{n-1}+\cdots+a_1A_{11}+a_0I)\oplus\cdots\\
+		&\phantom{=}\hspace{5em} \oplus(A_{mm}^n+a_{n-1}A_{mm}^{n-1}+\cdots+a_1A_{mm}+a_0I) \\
+		&= f(A_{11})\oplus f(A_{22})\oplus\cdots\oplus f(A_{mm}).
+		\end{align*}
+%	\end{small}
+%	\endgroup
+	Consideremos ahora (\textsc{ii}). Llamemos $m_i$ al polinomio minimal asociado a $A_{ii}$ ($0\leq i\leq m$), entonces tenemos que $m_A(A_{ii}) = 0$ y $m_i$ divide a $m_a$ de donde se sigue $\mcm(A_{11},\dots,A_{mm})$ divide a $m_A$. Por otro lado, tenemos que $\mcm(A_{11},\dots,A_{mm})(A) = 0$ por lo que $m_A$ divide a $\mcm(A_{11},\dots,A_{mm})$ y se obtiene la igualdad $m_A = \mcm(A_{11},\dots,A_{mm})$.
+	\end{proof}
+\end{document}

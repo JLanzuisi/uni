@@ -1,0 +1,38 @@
+\input{../../Plantillas-Fomato/Tareas/tarea.tex}
+\cabe{Álgebra 3: Tarea}{Jhonny Lanzuisi, 1510759}
+\begin{document}
+	\tituloD{Álgebra 3}{Tarea: Descomposición Primaria}
+	\begin{teo}
+			Sea $T$ una transformación lineal en un espacio $\ve V$ de dimensión finita. Sean $v_1,\dots,v_m$ vectores de $\ve V$. Para cada $1\leq i\leq m$ definimos 
+		\[ F_i = M_{T|_{Z(v_i,T)}}. \]
+		Supongamos además que los $F_i$ son coprimos dos a dos. Si $U=\sum_{1\leq i\leq m}Z(v_i,T)$ demostrar que
+		\[ U=\bigoplus_{1\leq i\leq m}Z(v_i,T)\quad\text{y}\quad U=Z(v,T), \]
+		donde $v=v_1+v_2+\cdots+v_m$.
+	\end{teo}
+	\begin{proof}
+		Por hipótesis los $Z(v_i,T)$ generan a $U$, para ver que $U$ es suma directa de estos solo hace falta ver que son independientes. Para ver esto último supongamos que existe un $u\in \zv{1}\cap(\zv2+\cdots+\zv m)$, esto es,
+		\begin{align}
+			u&\in \zv 1\qquad\text{y} \\
+			u&\in \zv2+\cdots+\zv m
+		\end{align}
+		hagamos $F = \prod_{i\neq 1}F_i = F_2F_3\cdots F_m$. 
+		
+		Por hipótesis $F_1$ y $F$ son coprimos y por el teorema del ideal principal se sigue que $(F_1,F) = \ve F[x]$ y por lo tanto existen $h_1,h_2\in\ve F[x]$ tales que $h_1F_1+h_2F = 1$. De esto último se sigue que el operador $h_1F_1(T)+h_2F(T)$ es la identidad y
+		\[ h_1F_1(T)(u)+h_2F(T)(u) = \id(u) = u. \]
+		Pero por (1) y (2) se tiene que
+		\[ h_1F_1(T)(u)+h_2F(T)(u) = 0 \]
+		y entonces $u=0$. 
+		
+		Por una repeticion del argumento anterior obtenemos $\zv i\cap(\zv1+\cdots+\zv{i-1}+\zv{i+1}+\cdots+\zv m) = 0$ y se tiene entonces que los $\zv i$ son independientes, como se buscaba.
+		
+		Por último, notemos que
+		\allowdisplaybreaks
+		\begin{align*}
+			Z(v,T) &= Z(v_1+\cdots+v_m,T) \\
+				   &= \gen\{v_1+\cdots+v_m,\dots,T^m(v_1+\cdots+v_m,T)\} \\
+				   &= \gen\{ v_1+\cdots+T^m(v_1),\dots,v_m+\cdots+T^m(v_m) \} \\
+				   &=\zv1+\zv2+\cdots+\zv m\\
+				   &= U.
+		\end{align*}
+	\end{proof}
+\end{document}

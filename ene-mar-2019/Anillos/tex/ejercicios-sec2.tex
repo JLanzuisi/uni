@@ -1,0 +1,81 @@
+%\input{../../Plantillas-Fomato/Libros/Libro-Anillos.tex}
+%\thispagestyle{plain}
+\section{Ejercicios}
+{\noindent Igual que la sección anterior, primero algunos ejercicios resueltos. Siempre que no se especifique, $A$ es un anillo.}
+
+\begin{ejer}
+	Si $I$ es un ideal derecho y $J$ es un ideal izquierdo de un anillo $A$, tales que $I\cap J = \eb{0}$, demuestre que $ab = 0$ para todo $a\in I, b\in J$.
+\end{ejer}
+\begin{sol}
+	No es muy complicado. Como $I$ es un ideal a la derecha, y podemos considerar a $b$ como un elemento de $A$, entonces $ab\in I$. De forma análoga, como $J$ es un ideal a la izquierda, y podemos considera a $a$ como un elemento de $A$, entonces $ab\in J$.
+	
+	Pero 
+	\[ \text{si} \; ab\in I \; \text{y} \; ab\in J \; \text{entonces} \; ab \in I\cap J, \]
+	de donde se sigue claramente que $ab=0$.
+\end{sol}
+
+\begin{ejer}
+	Sea $I$ un ideal de $A$. Demuestre que el conjunto, $C(I)$, definido por
+	\[ C(I) = \eb{r\in A \mid (ra-ar)\in I \; \text{para todo} \; a\in A}.\] 
+	es un subanillo de $A$.
+\end{ejer}
+\begin{sol}
+		Primero que nada, notemos que $C(I)\neq \emptyset$, debido a que $0\in C(I)$. Ahora, sean $r_1,r_2\in C(I)$ queremos ver que $r_1-r_2\in C(I)$. Sea $a\in A$, veamos que
+		\[ (r_1-r_2)a - a(r_1-r_2) = (r_1a-ar_1) - (r_2a - ar_2) \]
+		pero como $(r_1a-ar_1)\in I$ y $(r_2a - ar_2)\in I$, su resta también pertenece a $I$; por lo tanto, $r_1-r_2\in C(I)$.
+		
+		Queremos ver ahora que $r_1r_2\in C(I)$. Notemos que, si $a\in A$,
+		\begin{align*}
+		(r_1r_2)a - a(r_1r_2) &= (r_1r_2)a - a(r_1r_2) + r_1ar_2 - r_1ar_2 \\
+							  &= r_1(r_2a) - r_1(ar_2) + (r_1a)r_2 - (ar_1)r_2 \\
+							  &= r_1(r_2a-ar_2) + (r_1a-ar_1)r_2.
+		\end{align*} 
+		Como $I$ es un ideal, y usando el hecho de que $r_1,r_2\in C(I)$, se tiene que $r_1(r_2a-ar_2) \in I$. De la misma forma $(r_1a-ar_1)r_2\in I$. Por lo tanto, su suma, $r_1(r_2a-ar_2) + (r_1a-ar_1)r_2$, pertenece a $I$ y $r_1r_2\in C(I)$. 
+\end{sol}
+
+\begin{ejer} Este ejercicio consta de dos partes,
+	\begin{enumerate}
+		\item Sea $A$ un anillo y sean $I,J$ ideales de $A$. Demuestre, mediante un ejemplo, que $I\cup J$ puede no ser un ideal de $A$.
+		\item Si $\eb{I_i} \; (i = 1,2,\cdots)$ es una colección de ideales de una anillo $A$ tal que $I_1 \subseteq I_2 \subseteq \cdots \subseteq I_n \subseteq \cdots$, demuestre que $\cup I_i$ es también un ideal de $A$.
+	\end{enumerate}
+\end{ejer}
+\begin{sol}
+	Veamos cada parte por separado 
+	\begin{enumerate}
+		\item Tomemos el anillo de los enteros. Y consideremos los ideales $I = 2\Z$ y $J=3\Z$. Entonces tenemos que $9\in \eb{2\Z \cup 3\Z}$ y $2\in \eb{2\Z \cup 3\Z}$, pero claramente $9-2 = 7\notin \eb{2\Z \cup 3\Z}$. Por lo que $2\Z \cup 3\Z$ no es cerrado bajo la diferencia, y no es un ideal. 
+		
+		En general, la unión falla en ser un ideal por la cerradura bajo la \textit{diferencia}. Nótese que, por otra parte, la unión siempre es cerrada bajo el producto (\textit{¿Por qué?}).
+		\item Igual que antes, la unión siempre es cerrada bajo el producto. La cerradura bajo la diferencia viene garantizada por las inclusiones. En efecto, si $x,y\in \cup I_i$, se tiene que $x\in I_j$ e $y\in I_k$ con $j$ y $k$ enteros positivos. Si $j=k$ entonces $x,y$ están en el mismo ideal y la cerradura es evidente. Si $j<k$ entonces $I_j \subseteq I_k$ y por lo tanto $x,y\in I_k$ y la cerradura se sigue de que $I_k$ es un ideal. En caso de que $j>k$ se procede de forma análoga. Así, no importa en cual ideal $x,y$ estén, siempre habrá cerradura con respecto a su diferencia. Por lo tanto $\cup I_i$ es un ideal. 
+		
+		Es interesante considerar como este ejercicio depende el axioma de elección\footnotemark. En el caso finito es claro que no hay ningún problema, pero para el caso infinito necesitamos el axioma de elección para poder asegurar que $x,y$ pertenecen a algún $I_i$.
+	\end{enumerate}
+\footnotetext{Para una buena explicación del axioma de elección véase el capitulo del libro de Halmos~\cite{naivesethalmos}, o el apéndice del Dummit~\cite{abstractalgebra}.}
+\end{sol}
+\begin{ejer}
+	Sea $I$ un ideal izquierdo y $J$ un ideal derecho del anillo $A$. Considere el conjunto
+	\[ IJ = \eb{\sum_{\text{finita}} a_ib_i \mid a_i\in I; b_i\in J}. \]
+	Demuestre que $IJ$ es un ideal \textit{a ambos lados} de $A$ y, siempre que $I$ y $J$ sean ellos mismos ideales \textit{a ambos lados}, que $IJ \subseteq I \cap J$.
+\end{ejer}
+\begin{sol}
+	Veamos primero que $IJ$ es un ideal de $A$. La cerradura bajo la diferencia no es muy complicada de ver ya que, si tanto $\sum a_ib_i$ como $\sum a'_ib'_i$ pertenecen a $IJ$, entonces
+	\[ \sum a_ib_i - \sum a'_ib'_i = \sum a_ib_i + (- a'_ib'_i). \]
+	
+	Y como $-a'_i\in I$ y $-b'_i\in J$ se tiene que la suma anterior esta en $IJ$. Por otro lado, sea $r\in A$, y consideremos el producto
+	\[ r\sum a_ib_i = \sum ra_ib_i. \]
+	
+	Como $I$ es un ideal a la izquierda, el producto $ra_i\in I$, y se tiene que la suma anterior pertenece a $IJ$. Es claro que el caso simétrico, de $a_ib_ir$, se hace de forma análoga. 
+	
+	Supongamos ahora que $I,J$ son ideales a ambos lados y consideremos el producto $a_ib_i$. Como $I$ es un ideal, y podemos considerar a $b_i$ como un elemento de $A$, tenemos que $a_ib_i\in I$. Por un razonamiento similar, se tiene que $a_ib_i \in J$. Luego $a_ib_i \in I \cap J$. Más aún, como $I\cap J$ es un ideal\footnote{Véase el teorema~\ref{interideales}}, cualquier suma finita de $a_ib_i$ pertenece a $I\cap J$. Pero esto último es lo mismo que decir que todo elemento de $IJ$ pertenece a $I\cap J$, o, que $IJ \subseteq I\cap J$.  
+\end{sol}
+Ahora, algunos ejercicios no resueltos.
+\begin{ejer}
+	Diga cual de los siguientes son ideales del anillo $ \Z\t \Z $.
+	\begin{enumerate}
+		\item $\eb{(a,a)\mid a\in \Z}$
+		\item $ \eb{(2a,2b)\mid a,b\in \Z} $
+		\item $ \eb{(2a,0)\mid a\in \Z} $
+		\item $ \eb{(a,-a)\mid a\in \Z} $
+	\end{enumerate}
+\end{ejer}
+
+\clearpage

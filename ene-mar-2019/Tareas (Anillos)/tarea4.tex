@@ -1,0 +1,124 @@
+\input{../Plantillas-Fomato/Tareas/tarea.tex}
+\tcabe{introducción a la teoría de anillos: tarea 4}{Jhonny Lanzuisi 1510759}
+\cabe{int. a la teoría de anillos: tarea 4}
+
+\begin{document}
+\thispagestyle{plain}
+\chapter*{Anillos Cocientes}
+\subsection*{Ejercicio 1}
+    Sea $I$ un ideal de un anillo $A$. Demuestre que $A/I$:
+\begin{enumerate}
+	\item Tiene elemento identidad si, y solo si, existe algún $e\in A$ tal que $ae-a$ y $ea-a$ están en $I$, para todo $a\in A$.
+	\item Es conmutativo si, y solo si, $ab-ba$ esta en $I$ para todo $a,b$ en $A$.
+\end{enumerate}
+\begin{sol}
+	Veamos cada parte por separado. 
+	\begin{enumerate}
+		\item Demostraremos la doble implicación. Supongamos que $A/I$ tiene identidad $(e + I)$. Entonces, para todo $a\in A$, se cumple que
+		\[ (a+I)(e+I) = (ae + I) = (a+I) \]
+		y como, de la ecuación anterior, $a$ y $ae$ están en la misma clase de equivalencia:
+		\[ ae-a\in I. \]
+		Un argumento simétrico se usa para probar que también $ea-a\in I$.
+		
+		Supongamos ahora que existe un $e\in A$ tal que $ae-a$ y $ea-a$ están en $I$, para todo $a\in A$. Si $ae-a$ esta en $I$ eso quiere decir que $ae$ y $a$ están en la misma clase de equivalencia, y por lo tanto,
+		\[ (a+I)(e+I) = (ae + I) = (a+I). \]
+		Donde la primera igualdad se sigue del producto definido en $A/I$. Es claro que un argumento idéntico se puede usar para establecer que
+		\[ (e+I)(a+I) = (ea+I) = (a+I). \]
+		Y entonces $e+I$ es el elemento identidad de $A/I$.
+		\item Demostraremos la doble implicación. Supongamos que $A/I$ es conmutativo. Entonces, para todo $a,b$ en $A$, tenemos que
+		\[ (ab+I) = (ba+I) \]
+		de donde $ab$ y $ba$ están en la misma clase de equivalencia y $ab-ba\in I$.
+		
+		Supongamos ahora que $ab-ba\in I$ para todo $a,b$ en $A$. Esto quiere decir que $ab$ y $ba$ estan en la misma clase de equivalencia, por lo que 
+		\[ (ab+I) = (ba+I), \]
+		o lo que es lo mismo,
+		\[ (a+I)(b+I) = (b+I)(a+I). \]
+		Y entonces $A/I$ es conmutativo.
+	\end{enumerate}
+\end{sol}
+\subsection*{Ejercicio 2}
+	Para los anillos $A$ y $B$, considere el anillo $A\t B$ con las operaciones
+\[ (a_1,b_1) + (a_2,b_2) = (a_1+a_2,b_1+b_2) \]
+y
+\[ (a_1,b_1)(a_2,b_2) = (a_1a_2,b_1b_2). \]
+Demuestre que, para $I = \{ (a,0)\in A\t B \mid a\in A \}$,
+\begin{enumerate}
+	\item $I$ es un ideal de $A\t B$.
+	\item Existe un isomorfismo entre $I$ y $A$.
+	\item $(A\t B)/I$ y $B$ son isomorfos.
+\end{enumerate}
+\begin{sol}
+	Veamos cada parte del Ejercicio.
+	\begin{enumerate}
+		\item Sean $a$ y $a'$ elementos de $A$. Entonces la diferencia, en $A\t B$, dada por
+		\[ (a,0) - (a',0) = (a-a',0) \]
+		es un elemento de $I$, puesto que $a-a'$ esta en $A$ ---porque $A$ es un anillo---.
+		Sea $b$ un elemento de $B$ y $a,a'$ igual que antes. Entonces el producto, en $A\t B$, dado por
+		\[ (a,b)(a',0) = (aa',b0) = (aa',0) \]
+		es un elemento de $I$, debido a que $aa'$ esta en $A$. Como $I$ es cerrado bajo la diferencia y también bajo el producto por elementos de $A\t B$ se tiene que $I$ es un ideal de $A\t B$.
+		\item El isomorfismo entre $I$ y $A$ viene dado por la función $\omega: A\to I$, dada por $\omega(a) = (a,0)$ para todo $a\in A$. Por la definición de $\omega$ el hecho de que sea biyectiva es evidente, veamos que es un homomorfismo. 
+		
+		Sean $a$ y $b$ en $A$. Entonces
+		\begin{align*}
+			\omega(a+b) &= (a+b,0) \\
+						&= (a,0) + (b,0) \\
+						&= \omega(a) + \omega(b), 
+		\end{align*}
+		y también
+		\begin{align*}
+			\omega(ab) &= (ab,0) \\
+					   &= (a,0)(b,0) \\
+					   &= \omega(a)\omega(b).	
+		\end{align*}
+		Tenemos entonces que $\omega$ es un homomorfismo biyectivo, y que $A$ es isomorfo a $I$ como se buscaba.
+		\item Consideremos la función $\phi: B\to (A\t B)/I$ dada por $\phi(b) = (a,b) + I$ (para todo $(a,b)\in A\t B$), es decir, la función que asocia a cada elemento de $B$ `su' clase de equivalencia en $(A\t B)/I$. 
+		
+		Notemos primero que siempre que se varíe, en el par $(a,b)$, a $a$ dejando a $b$ fijo se obtiene la misma clase de equivalencia, puesto que $(a,b)$ y $(a',b)$ están en la misma clase de equivalencia:
+		\[ (a,b) - (a',b) = (a-a',0)\in I. \]
+		En cambio, cuando se varia a se obtienen clases distintas, pues $(a,b)$ esta en una clase distinta de $(a',b')$:
+		\[ (a,b) - (a',b') = (a-a',b-b') \notin I \]
+		siempre que $b\neq b'$.
+		
+		De la discusión anterior se sigue que $\phi$ es uno-a-uno: asigna a cada elemento de $B$ una, y solo una, clase en $(A\t B)/I$. También por la discusión anterior, si tomamos una clase cualquiera, $(a,b) + I$ por ejemplo, de $(A\t B)/I$ entonces siempre podemos encontrar su preimagen por $\phi$, la cual es $b$. La conclusión es que $\phi$ es una función biyectiva.
+		
+		Veamos por último que $\phi$ es un homomorfismo. Sean $b$ y $b'$ elementos de $B$ y $a\in A$, entonces
+		\begin{align*}
+			\phi(b+b') &= (a,b+b') + I \\
+					   &= (a+a,b+b') + I \\
+					   &= (a,b) + (a,b') + I \\
+					   &= [(a,b) + I] + [(a,b') + I] \\
+					   &= \phi(b) + \phi(b')
+		\end{align*}
+		y también
+		\begin{align*}
+			\phi(bb') &= (a,bb') + I \\
+					  &= (aa,bb') + I \\
+					  &= (a,b)(a,b') + I \\
+					  &= [(a,b) + I][(a,b') + I] \\
+					  &= \phi(b)\phi(b').
+		\end{align*}
+		Por todo lo anterior $\phi$ es un isomorfismo y $(A\t B)/I$ es isomorfo a $B$, como se buscaba.
+	\end{enumerate}
+\end{sol}
+\subsection*{Ejercicio 3}
+	Sea $I$ un ideal de un anillo $A$. Demuestre que la función $\pi\colon A\to A/I$, dada por $\pi(a) = a+I$, es un homomorfismo de anillos sobreyectivo. Halle también el núcleo de $\pi$.
+\begin{sol}
+	Veamos primero que $\pi$ es sobreyetiva como función. Esto no es muy difícil de ver, pues dada una clase $a+I \in A/I$ podemos siempre hallar $a\in A$ tal que $\pi(a) = a+I$. También se podría haber llegado a esta conclusión tomando en cuenta que las clases de equivalencia particionan al conjunto $A$, por lo que siempre se puede encontrar un elemento en $A$ que corresponde a una clase dada en $A/I$.
+	
+	Veamos ahora que $\pi$ es un homomorfismo. Sean $a$ y $a'$ elementos de $A$, entonces
+	\begin{align*}
+		\pi(a+a') &= (a+a') + I \\
+				  &= (a+I) + (a'+ I) \\
+				  &= \pi(a) + \pi(a'),
+	\end{align*}
+	y también
+	\begin{align*}
+		\pi(aa') &= (aa') + I \\
+				 &= (a+I)(a'+I) \\
+				 &= \pi(a)\pi(a')
+	\end{align*}
+	por como están definidas las operaciones suma y producto en $A/I$.
+	
+	Consideremos por último el núcleo de $\pi$. El $\ker (\pi)$ es el conjunto de los $a\in A$ tales que $\pi(a) = I$. Supongamos que $a$ no esta en $I$, entonces es claro que $\pi(a) = a+I \neq I$ debido a que $I$ no es cerrado bajo la suma con elementos de $A$. Ahora, si $a\in I$, entonces $\pi(a) = a + I = I$ debido a que $I$ ---por ser un ideal--- es cerrado bajo la suma con elementos de $I$. Tenemos entonces que el $\ker(\pi) = I$.
+\end{sol}
+\end{document}

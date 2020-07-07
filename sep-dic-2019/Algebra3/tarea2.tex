@@ -1,0 +1,212 @@
+\input{../../Plantillas/Tareas/tarea.tex}
+\cabe{Álgebra \textsc{iii}: Tarea 2}{Jhonny Lanzuisi, 1510759}
+\begin{document}
+\chapter{2\textord{da} Tarea}
+	\section*{Ejercicio 1}
+	Sea $\ve V \mathcal V$ un espacio con producto interno y sean $A,B$ subconjuntos no vacios de $\ve V$. Demuestre que:
+	\begin{enumerate}
+		\item $A\ort=\gen(A)\ort$. 
+		\item $(A+ B)\ort$ = $A\ort\cap B\ort$.
+		\item $A\subseteq B\implies B\ort\subseteq A\ort$.
+		\item $(A\cup B)\ort = \big(\gen(A)+\gen(B)\big)\ort$.
+	\end{enumerate}
+	\begin{sol}
+		Veamos cada parte:
+		
+		\begin{enumerate}
+			\item Veamos la doble contención. Sea $\Ve v\in A\ort$ y $\Ve w = (\lambda_1 \Ve w_1+\cdots+\lambda_m \Ve w_m)\in\gen(A)$ (con $\lambda\in F$), entonces
+			\begin{align*}
+			\Iprod{\Ve v}{\Ve w} &= \Iprod{\Ve v}{\lambda \Ve w_1+\cdots+\lambda \Ve w_m} \\
+			&= \lambda_1\Iprod{\Ve v}{\Ve w_1} + \cdots +\lambda_m\Iprod{\Ve v}{\Ve w_m} \\
+			&= \lambda_1 0 + \cdots + \lambda_m 0,
+			\end{align*}
+			y se sigue que $\Ve v\in\gen(A)\ort$ y $A\ort\subseteq\gen(A)\ort$.
+			
+			Tomemos ahora $\Ve u\in\gen(A)\ort$, esto es, $\Iprod{\Ve u}{\Ve v} = 0$ para todo $\Ve v\in\gen(A)$. Entonces la inclusión $A\subseteq\gen(A)$ implica que $\Iprod{\Ve u}{\Ve w} = 0$ para todo $\Ve w\in A$ pues $\Ve w\in\gen(A)$. Por lo tanto $\Ve w\in A\ort$ y $\gen(A)\ort\subseteq A\ort$.
+			
+			Las dos inclusiones implican que $A\ort=\gen(A)\ort$. 
+			
+			\item  Sea $\Ve v\in(A+B)\ort$, entonces para todo $\Ve w=(\Ve w_1+\Ve w_2)\in A+B$ se tiene
+			\begin{align*}
+			\Iprod{\Ve v}{\Ve w} &= \Iprod{\Ve v}{\Ve w_1+\Ve w_2} \\
+			&= \Iprod{\Ve v}{\Ve w_1} + \Iprod{\Ve v}{\Ve w_2} \\
+			&=0
+			\end{align*}
+			pero como los productos internos son estrictamente positivos la igualdad anterior implica que $\Iprod{\Ve v}{\Ve w_1} = 0$ y $\Iprod{\Ve v}{\Ve w_2} = 0$ para todo $\Ve w_1\in A$ y $\Ve w_2\in B$, por lo que $\Ve v\in A\ort$ y $\Ve v\in B\ort$, es decir, $\Ve v\in A\ort\cap B\ort$ y $(A+ B)\ort\subseteq A\ort\cap B\ort$.
+			
+			Veamos ahora la otra inclusión. Sea $\Ve v\in A\ort\cap B\ort$ y $\Ve w=(\Ve w_1+\Ve w_2)\in A+B$ entonces
+			\begin{align*}
+			\Iprod{\Ve v}{\Ve w} &= \Iprod{\Ve v}{\Ve w_1+\Ve w_2} \\
+			&= \Iprod{\Ve v}{\Ve w_1} + \Iprod{\Ve v}{\Ve w_2} \\
+			\end{align*}
+			y $\Iprod{\Ve v}{\Ve w_1} = 0$ puesto que $\Ve w_1\in A$, de igual forma $\Iprod{\Ve v}{\Ve w_2} = 0$ pues $\Ve w_2\in B$. De la discusión anterior se tiene que $\Ve v\in(A+B)\ort$ y $A\ort\cap B\ort\subseteq (A+ B)\ort$.
+			
+			\item Sea $\Ve v\in B\ort$, es decir, $\Iprod{\Ve v}{\Ve w} = 0$ para todo $\Ve w\in B$. Como $A\subseteq B$ se tiene que $\Iprod{\Ve v}{\Ve a} = 0$ para todo $\Ve a\in A$ puesto que la inclusión implica que $a\in B$. Tenemos entonces que $\Ve v\in A\ort$ y $B\ort\subseteq A\ort$.
+			
+			\item Tomemos un $\Ve v\in(A\cup B)\ort$ y sea $\Ve w=(\Ve w_1+\Ve w_2)\in\gen(A)+\gen(B)$. Como $A\cup B$ contiene a $A$ se sigue que $A\ort\subseteq(A\cup B)\ort$
+		\end{enumerate}
+	\end{sol}
+
+\section*{Ejercicio 2\footnote{En el Jacob, 4.1.2.}}
+
+El ejercicio consta de tres partes.
+\begin{enumerate}
+	\item Sea $\ve V$ un espacio vectorial y $S\subset\ve V$. Demuestre que $S\ort$ es un subespacio de $\ve V$.
+	\item Ecuentre $S\ort\subseteq\R^3$ si $S=\{ (1,1,1),(2,1,0) \}$ (producto punto).
+	\item Lo mismo si $S=\{ (1,1,1),(2,1,0),(1,0,-1) \}$ (producto punto).
+\end{enumerate}
+\begin{sol}
+	Veamos cada parte.
+	\begin{enumerate}
+		\item Sean $\Ve w_1,\Ve w_2$ vectores de $ S\ort$, $\Ve v\in S$ y $\lambda$ un escalar. Entonces
+		\begin{align*}
+			\Iprod{\Ve v}{\Ve w_1-\lambda \Ve w_2} &= \Iprod{\Ve v}{\Ve w_1} - \lambda\Iprod{\Ve v}{\Ve w_2} \\
+												   &= 0+\lambda 0 = 0
+		\end{align*}
+		y $\Ve w_1-\lambda \Ve w_2\in S\ort$ por lo que $S\ort$ es un subespacio de $\ve V$.
+		
+		\item El complemento ortogonal de $S$ son todos los vectores $(x,y,z)\in\R^3$ tales que
+		\begin{align*}
+			(x,y,z)\cdot(1,1,1) &= 0\quad\text{y} \\
+			(x,y,z)\cdot(2,1,0) &= 0.
+		\end{align*}
+		Lo anterior se reduce al siguiente sistema de ecuaciones
+		\[ \begin{cases}
+		x+y+z = 0 \\
+		2x+y=0,
+		\end{cases} \]
+		cuyas soluciones son los vectores de $\R^3$ de la forma $(t,-2t,t)$ con $t\in\R$.
+		
+		\item Por un argumento idéntico a la parte anterior, consideramos el sistema de ecuaciones
+		\[ \begin{cases}
+		x+y+z=0 \\
+		2x+y=0 \\
+		x-z=0,
+		\end{cases} \]
+		cuyas soluciones son los vectores de $\R^3$ de la forma $(t,-2t,t)$ con $t\in\R$.
+	\end{enumerate}
+\end{sol}
+
+\section*{Ejercicio 3\footnote{En el Jacob, 4.1.5.}}
+Sea $\iprod$ un producto interno sobre $\Rn$. Demuestre que el producto interno $\iprod'$ definido, para cualquier matríz $A$ invertible $n\t n$, por
+\[ \Iprod{\Ve v}{\Ve w}'=\Iprod{A\Ve v}{A\Ve w} \]
+para todo $\Ve v,\Ve w\in\Rn$.
+
+\begin{sol}
+	Veamos que se cumplen las cuatro propiedades de los productos internos:
+	\begin{enumerate}
+		\item $\Iprod{\Ve v}{\Ve w}' = \Iprod{A\Ve v}{A\Ve w} = \Iprod{A\Ve w}{A\Ve v} = \Iprod{\Ve w}{\Ve v}'$.
+		\item $\Iprod{k\Ve v}{\Ve w}' = \Iprod{Ak\Ve v}{A\Ve w} = \Iprod{kA\Ve v}{A\Ve w} = k\Iprod{A\Ve v}{A\Ve w} = k\Iprod{A\Ve v}{A\Ve w}'.$
+		\item $\Iprod{\Ve v_1+\Ve v_2}{\Ve u}' = \Iprod{A\Ve v_1+A\Ve v_2}{A\Ve u} = \Iprod{A\Ve v_1}{A\Ve u} + \Iprod{A\Ve v_2}{A\Ve u} = \Iprod{\Ve v_1}{\Ve u}' + \Iprod{\Ve v_2}{\Ve u}'$.
+		\item $\Iprod{\Ve v}{\Ve v}' = \Iprod{A\Ve v}{A\Ve v}\geq 0$. Y si $\Iprod{\Ve v}{\Ve v}' = 0$ entonces $A\Ve v=0$ y como $A$ es invertible $\Ve v=0$.
+	\end{enumerate}
+\end{sol}
+\section*{Ejercicio 4\footnote{En el Jacob, 4.1.7.}}
+
+Supongamos que $\{\Ve v_1,\dots,\Ve v_n\}$ es una base para el espacio vectorial $\ve V$. Demuestre que para cualquier sucesión de números reales $r_1,\dots,r_n$ existe un $\Ve w\in\ve V$ tal que $\Iprod{\Ve v_i}{\Ve w} = r_i$.
+
+\begin{sol}
+	Veremos que existe una biyección específica entre la base de $\ve V$ y los $r_1,\dots,r_n$. Consideremos la función $\phi\colon\ve V\to\Rn$ dada por
+	\[ \phi(\Ve w) = \begin{pmatrix}
+	\Iprod{\Ve v_1}{\Ve w} \\
+	\Iprod{\Ve v_2}{\Ve w} \\
+	\vdots \\
+	\Iprod{\Ve v_n}{\Ve w} \\
+	\end{pmatrix}. \]
+	Esta función es lineal puesto que $\iprod$ es lineal. Más aún, si $T(\Ve w) = 0$ y $\Ve w=\lambda_1\Ve v_1,\dots,\lambda_n\Ve v_n$ (con $\lambda_1,\dots,\lambda_n$ escalares) entonces
+	\[ \Iprod{\Ve w}{\Ve w} = \sum_{k=1}^{n} a_k\Iprod{\Ve v_k}{\Ve w} = 0. \]
+	Y tenemos que el $\ker(T) = 0$ y esto implica que $T$ es inyectiva.
+	
+	Como $\ve V$ y $\Rn$ tienen la misma dimesión, se tiene que $T$ es sobreyectiva. Entonces $T$ es un isomorfismo de $\ve V$ en $\Rn$.
+	
+	Por todo la anterior se tiene que existe $\Ve w\in\ve V$ con la propiedad buscada.
+\end{sol}
+
+\section*{Ejercicio 5\footnote{En el jacob, 4.1.11}}
+Esta ejercicio consta de dos partes:
+\begin{enumerate}
+	\item Si $\ve V$ es un espacio real con producto interno, demuestre la \emph{identidad polar}:
+	\[ \Iprod{\Ve u}{\Ve v}  =\frac{1}{4}\Norm{\Ve u+\Ve v}^2-\frac{1}{4}\Norm{\Ve u-\Ve v}^2.  \] 
+	\item Si $\ve V$ es un espacio complejo con producto interno, demuestre demuestre la \emph{identidad polar}:
+	\begin{multline*}
+		\Iprod{\Ve u}{\Ve v} = \frac{1}{4} \big(\Norm{\Ve u+\Ve v}^2+i\Norm{\Ve u+i\Ve v}\\-\Norm{\Ve u-\Ve v}^2-i\Norm{\Ve u-i\Ve v}\big)
+	\end{multline*}
+\end{enumerate}
+
+\begin{sol} Veamos cada parte.
+	\begin{enumerate}
+		\item Solo hace falta desarrollar recordando que como $\iprod$ es un producto interno real se cumple $\Iprod{\Ve u}{\Ve v}=\Iprod{\Ve v}{\Ve u}$ para todo $\Ve u,\Ve v\in\ve V$.
+		\small
+		\begin{align*}
+		\Norm{\Ve u+\Ve v}^2-\Norm{\Ve u-\Ve v}^2 &= \Iprod{\Ve u+\Ve v}{\Ve u+\Ve v} \\
+		&\phantom{=}\hspace{2em}- \Iprod{\Ve u-\Ve v}{\Ve u-\Ve v} \\
+		&= \Iprod{\Ve u}{\Ve u+\Ve v} + \Iprod{\Ve v}{\Ve u+\Ve v} \\
+		&\phantom{=}\hspace{2em} - \Iprod{\Ve u}{\Ve u-\Ve v} + \Iprod{\Ve v}{\Ve u-\Ve v} \\
+		&= \cancel{\Iprod{\Ve u}{\Ve u}} + \Iprod{\Ve u}{\Ve v} \\
+		&\phantom{=}\hspace{0.5em} + \Iprod{\Ve v}{\Ve u} + \cancel{\Iprod{\Ve v}{\Ve v}} - \cancel{\Iprod{\Ve u}{\Ve u}} \\
+		&\phantom{=}\hspace{1.5em} + \Iprod{\Ve u}{\Ve v} + \Iprod{\Ve v}{\Ve u} - \cancel{\Iprod{\Ve v}{\Ve v}} \\
+		&=4\Iprod{\Ve u}{\Ve v}.
+		\end{align*}
+		\normalsize
+		Y al dividir ambos lador por $4$ se obtiene el resultado deseado.
+		\item Por un lado se tiene que
+		\begin{align*}
+		\Norm{\Ve u+\Ve v}^2 &= \Iprod{\Ve u+\Ve v}{\Ve u+\Ve v} \\
+							 &= \Iprod{\Ve u+\Ve v}{\Ve u}+\Iprod{\Ve u+\Ve v}{\Ve v} \\
+							 &= \Iprod{\Ve u}{\Ve u} + \Iprod{\Ve v}{\Ve u} + \Iprod{\Ve u}{\Ve v} + \Iprod{\Ve v}{\Ve v} \\
+							 &=  \Iprod{\Ve u}{\Ve u} + \Iprod{\Ve v}{\Ve v} + \Iprod{\Ve u}{\Ve v} + \Iprod{\Ve v}{\Ve u} \\
+							 &= \Iprod{\Ve u}{\Ve u} + \Iprod{\Ve v}{\Ve v} + \Iprod{\Ve u}{\Ve v} + \overline{\Iprod{\Ve u}{\Ve v}} \\
+							 &= \Iprod{\Ve u}{\Ve u} + \Iprod{\Ve v}{\Ve v} + 2\Rea\Iprod{\Ve u}{\Ve v}
+		\end{align*}
+		y
+		\begin{align*}
+		\Norm{\Ve u-\Ve v}^2 &= \Iprod{\Ve u-\Ve v}{\Ve u-\Ve v} \\
+							 &= \Iprod{\Ve u-\Ve v}{\Ve u}-\Iprod{\Ve u-\Ve v}{\Ve v} \\
+							 &= \Iprod{\Ve u}{\Ve u} - \Iprod{\Ve v}{\Ve u} - \Iprod{\Ve u}{\Ve v} + \Iprod{\Ve v}{\Ve v} \\
+							 &=  \Iprod{\Ve u}{\Ve u} + \Iprod{\Ve v}{\Ve v} - \Iprod{\Ve u}{\Ve v} - \Iprod{\Ve v}{\Ve u} \\
+							 &= \Iprod{\Ve u}{\Ve u} + \Iprod{\Ve v}{\Ve v} - \Iprod{\Ve u}{\Ve v} - \overline{\Iprod{\Ve u}{\Ve v}} \\
+							 &= \Iprod{\Ve u}{\Ve u} + \Iprod{\Ve v}{\Ve v} - 2\Rea\Iprod{\Ve u}{\Ve v}
+		\end{align*}
+		Por lo tanto
+		\begin{equation}
+		\Norm{\Ve u+\Ve v}^2-\Norm{\Ve u-\Ve v}^2 = 4\Rea\Iprod{\Ve u}{\Ve v}.
+		\end{equation}
+		Por otro lado
+		\begin{align*}
+		i\Norm{\Ve u+i\Ve v}^2 &= i(\Iprod{\Ve u+i\Ve v}{\Ve u+i\Ve v}) \\
+							 &= i(\Iprod{\Ve u+i\Ve v}{\Ve u}+\Iprod{\Ve u+i\Ve v}{i\Ve v}) \\
+							 &= i(\Iprod{\Ve u}{\Ve u} - \Iprod{i\Ve v}{\Ve u} \\
+							 &\phantom{=}\hspace{6em}- \Iprod{\Ve u}{i\Ve v} + \Iprod{i\Ve v}{i\Ve v}) \\
+							 &= i(\Iprod{\Ve u}{\Ve u} + (-i^2)\Iprod{\Ve v}{\Ve v}  \\
+							 &\phantom{=}\hspace{6em}-i\Iprod{\Ve u}{\Ve v}  +i\overline{\Iprod{\Ve u}{\Ve v}}) \\
+							 &= i\big(\Iprod{\Ve u}{\Ve u} + \Iprod{\Ve v}{\Ve v} \\
+							 &\phantom{=}\hspace{6em}-i (\Iprod{\Ve u}{\Ve v} - \overline{\Iprod{\Ve u}{\Ve v}})\big) \\
+							 &= i(\Iprod{\Ve u}{\Ve u} + \Iprod{\Ve v}{\Ve v} -i2\Ima\Iprod{\Ve u}{\Ve v}) \\
+							 &= i\Iprod{\Ve u}{\Ve u} + i\Iprod{\Ve v}{\Ve v} + 2\Ima\Iprod{\Ve u}{\Ve v}.
+		\end{align*}
+		y
+		\begin{align*}
+		i\Norm{\Ve u-i\Ve v}^2 &= i(\Iprod{\Ve u-i\Ve v}{\Ve u-i\Ve v}) \\
+		&= i(\Iprod{\Ve u-i\Ve v}{\Ve u}-\Iprod{\Ve u-i\Ve v}{i\Ve v}) \\
+		&= i(\Iprod{\Ve u}{\Ve u} - \Iprod{i\Ve v}{\Ve u} \\
+		&\phantom{=}\hspace{6em} -\Iprod{\Ve u}{i\Ve v} + \Iprod{i\Ve v}{i\Ve v}) \\
+		&= i(\Iprod{\Ve u}{\Ve u} - (-i^2)\Iprod{\Ve v}{\Ve v}  \\
+		&\phantom{=}\hspace{6em} + i\Iprod{\Ve u}{\Ve v}  -i\overline{\Iprod{\Ve u}{\Ve v}}) \\
+		&= i\big(\Iprod{\Ve u}{\Ve u} + \Iprod{\Ve v}{\Ve v} \\
+		&\phantom{=}\hspace{6em} +i (\Iprod{\Ve u}{\Ve v} - \overline{\Iprod{\Ve u}{\Ve v}})\big) \\
+		&= i(\Iprod{\Ve u}{\Ve u} + \Iprod{\Ve v}{\Ve v} +i2\Ima\Iprod{\Ve u}{\Ve v}) \\
+		&= i\Iprod{\Ve u}{\Ve u} + i\Iprod{\Ve v}{\Ve v} - 2\Ima\Iprod{\Ve u}{\Ve v}.
+		\end{align*}
+		Por lo tanto
+		\begin{equation}
+			i\Norm{\Ve u+i\Ve v}^2 - i\Norm{\Ve u-i\Ve v}^2  = 4 \Ima\Iprod{\Ve u}{\Ve v}.
+		\end{equation}
+		Finalmente, usando (1) y (2), se tiene
+		\begin{multline*}
+			 \Norm{\Ve u+\Ve v}^2 + i\Norm{\Ve u+i\Ve v}^2 -\Norm{\Ve u-\Ve v}^2 - i\Norm{\Ve u-i\Ve v}^2 \\
+			 = 4(\Rea\Iprod{\Ve u}{\Ve v}+\Ima\Iprod{\Ve u}{\Ve v}) = 4\Iprod{\Ve u}{\Ve v}
+		\end{multline*}
+		y el resultado deseado se obtiene al dividir ambos lados por $4$.
+	\end{enumerate}
+\end{sol}
+\end{document}

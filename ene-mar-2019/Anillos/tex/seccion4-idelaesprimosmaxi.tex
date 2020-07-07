@@ -1,0 +1,65 @@
+%\input{../../Plantillas-Fomato/Libros/Libro-Anillos.tex}
+\chapter{Ideales Primos y Máximos} 
+\epigraph{El arte de hacer matemáticas es conseguir ese caso especial que contiene todos los gérmenes de la generalidad}{David Hilbert}
+
+\noindent Nos dedicaremos a estudiar ciertos tipos especiales de ideales: primos y máximos. En general, hablaremos de anillos conmutativos y unitarios debido a que nuestras hipótesis nos obligarán a ello. 
+\section{Ideal máximo}
+\noindent Comenzamos con la siguiente definición.
+\begin{defi}[ideal máximo]
+	Un ideal $I$ de un anillo $A$ es \textit{máximo} siempre que $I\neq A$ y que si $J$ es un ideal de $A$ tal que $I\subset J\subseteq R$ entonces $J=R$.
+\end{defi}
+Dicho de otra manera, un ideal máximo es aquel que no esta contenido en ningún ideal propio de $A$ y que es distinto de $A$. 
+
+Normalmente es complicado demostrar que un ideal es máximo solamente con la definición anterior, por esto el siguiente teorema es importante: nos dará una forma de identificar los ideales máximos sin necesidad de construir un argumento sobre conjuntos y contenciones.
+
+\begin{teo}
+	Sea $A$ un anillo conmutativo con unidad. Entonces $I$ es un ideal máximo de $A$ si, y solo si, $A/I$ es un cuerpo.
+\end{teo}
+\begin{proof}
+	Supongamos que $I$ es un ideal máximo de $A$. Observemos que si $A$ es conmutativo y unitario, entonces $A/I$ también es conmutativo y unitario siempre que $I\neq A$, que es el caso cuando $I$ es  máximo. Sea $(a+I) \in A/I$ con $a\notin I$ de tal forma que $a+I$ no sea nulo. Supongamos que $a+I$ no posee inverso multiplicativo en $A/I$. Entonces el conjunto \[ (A/I)(a+I) = \{ (r+I)(a+I) \mid r+I\in A/I \} \] no  contiene al elemento $1+I$. Es fácil ver que $(A/I)(a+I)$ es un ideal de $A/I$, además, es un ideal propio debido a que $a\notin I$ y $(1+I)\notin (A/I)(a+I)$.
+	
+	Si $\phi\mathpunct{:}A\to A/I$ es el homomorfismo natural, entonces el conjunto \[ \phi\inv((A/I)(a+I)) \] es un ideal propio de $A$ que contiene a $I$. Pero esto es una contradicción debido a que $I$ es máximo. Se sigue que el elemento $a+I$ debe necesariamente tener inverso en $A/I$ y que $A/I$ es un cuerpo.
+	
+	Supongamos ahora que $A/I$ es un cuerpo. Si $J$ es un ideal de $A$ tal que $I\subset J\subset A$, y $\phi\mathpunct{:}A\to A/I$ es el homomorfismo natural, entonces $\phi(J)$ es un ideal de $A/I$ tal que $\{ 0+M \}\subset \phi(J)\subset A/I$. Pero esto último es una contradicción, pues los cuerpos no tienen ideal propios. Se sigue que si $A/I$ es un cuerpo entonces $I$ es máximo.
+\end{proof}
+
+El siguiente ejemplo ayudará a ilustrar un poco el teorema anterior.
+
+\begin{ejem}
+	Como $\Zn$ es un cuerpo si, y solo si, $n$ es primo; se sigue que un ideal $n\Z$ de $\Z$ es máximo si, y solo si, $n$ es un número primo.
+\end{ejem}
+
+\section{Ideal primo}
+
+Nos interesa ahora pensar en como son los ideales $I$ de un anillo conmutativo y unitario $A$, tales que $A/I$ es un dominio entero. Después de un poco de inspección, la respuesta es sencilla: $A/I$ es un dominio entero si, y solo si,
+\[ (a+I)(b+I) = I \]
+implica que $a+I = I$ o $b+I = I$, debido a que $I$ es el cero de $A/I$. Pero esto último implica que $a\in I$ o $b\in I$. La siguiente definición formaliza la discusión anterior.
+
+\begin{defi}[ideal primo]
+	Un ideal $I$ de un anillo conmutativo y unitario es \textit{primo} si, y solo si, $ab\in I$ implica que $a\in I$ o $b\in I$ con $a$ y $b$ elementos de $A$.
+\end{defi}
+
+\begin{nota}
+	En cualquier dominio entero el conjunto $\{0\}$ es siempre un ideal primo, como cabría esperar.
+\end{nota}
+
+La discusión anterior a la definición constituye la demostración del siguiente teorema.
+\begin{teo}
+	Sea $A$ un anillo unitario y conmutativo, y sea $I$ un ideal de $A$. Entonces $I$ es primo si, y solo si, $A/I$ es un dominio entero.
+\end{teo}
+\begin{cor}
+	Todo ideal máximo es un ideal primo.
+\end{cor}
+\begin{proof}
+	Sea $A$ un anillo unitario y conmutativo y sea $I$ un ideal máximo de $A$. Como $I$ es máximo, $A/I$ es un cuerpo. En particular, $A/I$ es un dominio entero e $I$ es un ideal primo.
+\end{proof}
+
+A modo de resumen tenemos que, si $A$ es un anillo unitario y conmutativo,
+\begin{enumerate}
+	\item Un ideal $I$ de $A$ es máximo si, y solo si, $A/I$ es un cuerpo.
+	\item Un ideal $J$ de $A$ es primo si, y solo si, $A/J$ es un dominio entero.
+	\item Todo ideal máximo de $A$ es primo.
+\end{enumerate}
+
+
+%\subsection{Ejercicios}

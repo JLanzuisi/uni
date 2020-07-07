@@ -1,0 +1,185 @@
+\usepackage{polyglossia}
+\setmainlanguage[spanishoperators=all]{spanish}
+\PolyglossiaSetup{spanish}{indentfirst=false}
+
+\usepackage[
+includehead,
+includefoot,
+a5paper,
+top=1.5cm,
+bottom=1.5cm,
+inner=1.3cm,
+outer=4.2cm,
+marginparwidth=2.2cm,
+marginparsep=.2cm,
+]{geometry}
+
+\usepackage{fontspec}
+\setmainfont[
+Numbers={Proportional},
+%SmallCapsFont=* Caps,
+%StylisticSet=1,
+%UprightFont=* Regular,
+%BoldFOnt=* Bold,
+ItalicFont=Old Standard Italic,
+ItalicFeatures={Scale=MatchLowercase},
+%Scale=.9
+]{Theano Modern}
+\defaultfontfeatures{Scale=MatchLowercase}
+%\setsansfont[
+%Numbers={OldStyle},
+%SmallCapsFeatures={LetterSpace=8},
+%ItalicFont=* Italic,
+%%BoldFont=* Libre Bold,
+%]{Fira Sans Condensed Light}
+\newfontfamily{\commentfont}[
+Numbers={OldStyle}
+]{TeX Gyre Heros Cn}
+\newfontfamily{\titlefont}{Libre Bodoni}
+\linespread{.93}
+\frenchspacing
+\hfuzz1pc
+
+\usepackage[final]{microtype}
+
+\PassOptionsToPackage{object=vectorian}{pgfornament}
+% \PassOptionsToPackage{all}{nowidow}
+\usepackage{%
+	xcolor,%
+	marginnote,%
+	graphicx,%
+	pdfpages,
+	hyperref,
+	enumitem,
+	metalogo,
+	cleveref,
+	caption,
+	sidenotes,
+	booktabs,
+	csquotes,
+	xparse,
+	pgfornament,
+	% nowidow,
+}
+
+\usepackage[
+backref,
+backend=biber,
+style=trad-abbrv,
+sorting=ynt
+]{biblatex}
+\addbibresource{../../../bib/general.bib}
+
+\graphicspath{{pictures/}}
+
+\renewenvironment{quote}
+{\small\list{}{\rightmargin=1cm \leftmargin=1\parindent}%
+	\item\relax}
+{\endlist}
+
+\hypersetup{colorlinks=true,allcolors=black}
+
+% \setenotez{backref=true,totoc=chapter,reset=true,}%split-title=<name> <ref>,split=chapter}
+
+%\makeindex[columns=3, title=Índice Alfabético, intoc]
+
+\setlist[enumerate]{label=\arabic*,left=-11pt}
+\setlist[description]{font=\normalfont,leftmargin=\parindent}
+\setlist[itemize]{label={\small-},leftmargin=\parindent}
+
+\captionsetup{font={small,sf},indention=.5cm,justification=raggedright}
+%\pgfornament[width=1cm]{98}}[-3pt]
+\usepackage[explicit]{titlesec}
+\titleformat{\chapter}[hang]
+	{\flushright\titlefont\fontsize{13}{13}\selectfont}
+	{}
+	{0em}
+	{#1}
+	[]
+\titlespacing*{\chapter}
+	{0em}
+	{0em}
+	{2.5\baselineskip}
+\titleformat{\section}[hang]
+	{\flushleft\large}
+	{}
+	{5pt}
+	{#1}
+	[]
+\titlespacing*{\section}
+	{0em}
+	{1\baselineskip}
+	{1\baselineskip}
+
+
+\usepackage{titletoc}
+% The following changes chapter entries
+\titlecontents{chapter}
+[.5em]
+{\vspace{.3em}}%
+{\hfill\llap{\thecontentspage\hspace{.5cm}}~}
+{\hfill\llap{\thecontentspage\hspace{.5cm}}~}
+{}                 		
+[\vspace{8pt}]
+% The following changes section entries
+\titlecontents{section}
+[0em]
+{}
+{\contentsmargin{0pt}\large}
+{\contentsmargin{0pt}}
+{\hspace{5pt}\contentspage}
+[\vspace{5pt}]
+% The following changes subsection entries
+\addto\captionsspanish{% Replace "english" with the language you use
+	\renewcommand{\contentsname}%
+	{Contenidos}%
+}
+
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{%
+	\markboth{#1}{}}
+%\renewcommand{\sectionmark}[1]{\markright{#1}}
+	\fancyhead[OL]{Ortodoxia}
+	\fancyhead[EL]{\thepage}
+	\fancyhead[ER]{\scshape\nouppercase{\leftmark}}
+	\fancyhead[OR]{\thepage}
+	\fancyfoot[R]{}
+	\fancyfoot[C]{}
+\fancypagestyle{plain}{%
+	\fancyhead[R]{}
+	\fancyhead[L]{}
+	\fancyfoot[R]{}%
+	\fancyfoot[L]{}
+	\fancyfoot[C]{}
+}
+
+
+\newcommand{\mparformat}{\commentfont\fontsize{9}{9.5}\selectfont}
+\renewcommand*{\marginfont}{\mparformat}
+\let\oldmarginpar\marginpar
+\renewcommand{\marginpar}[1]{
+	\oldmarginpar[\raggedleft\mparformat #1]{\raggedright\mparformat #1}
+}
+% \RenewDocumentCommand{\marginpar}{om}{%
+% 	\IfNoValueTF{#1}
+% 	{\oldmarginpar{\mymparsetup #2}}
+% 	{\oldmarginpar[\raggedleft\mymparsetup #1]{\raggedright\mymparsetup #2}}}
+
+
+\newlength{\savedparindent}
+\setlength{\savedparindent}{\parindent}
+
+\newcommand{\say}[1]{‘#1’}
+% \renewcommand{\endnote}{\sidenote}
+\let\nota=\sidenote
+
+\newcommand{\finalCapituloOrnamento}{
+	\begin{center}\LARGE
+	*	
+	\end{center}
+}
+
+\newcommand{\enraya}{–}
