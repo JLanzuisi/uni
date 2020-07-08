@@ -1,4 +1,5 @@
 tlcheck*
+*.synctex.gz
 *.tmp
 *.ptc
 *.xmpi
