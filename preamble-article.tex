@@ -3,9 +3,9 @@
 \overfullrule=2cm
 
 % Language Setup
-\usepackage[spanish,es-noindentfirst]{babel}
-% \setmainlanguage[spanishoperators=all,]{spanish}
-% \PolyglossiaSetup{spanish}{,indentfirst=false}
+\usepackage{polyglossia}
+\setmainlanguage[spanishoperators=all,]{spanish}
+\PolyglossiaSetup{spanish}{,indentfirst=false}
 \usepackage{csquotes} 
 
 % Page dimensions
@@ -31,20 +31,14 @@
 \DeclareMathOperator{\id}{id}
 
 % Text Fonts
-% \usepackage{fontspec} 
-% \defaultfontfeatures{SmallCapsFeatures={LetterSpace=10},Scale=MatchLowercase,Numbers={OldStyle,Proportional}}
-% \usepackage[osf,scaled=.95]{sourceserifpro} 
-\usepackage{cfr-lm} 
-% \usepackage{classico} 
-% \usepackage[osf,scaled=.95]{sourcesanspro} 
-\usepackage[l]{zlmtt} 
-% \setmathfont{XITS Math}
-% \usepackage[notext]{stix} 
-% \usepackage[lite,subscriptcorrection,slantedGreek,nofontinfo]{mtpro2}
-\usepackage{mathabx} 
-\usepackage[bbgreekl]{mathbbol} 
-\usepackage[cal=euler,scr=boondoxo]{mathalfa} 
-\newcommand{\dispfont}{\fontfamily{URWClassico-LF}\selectfont} 
+\usepackage{unicode-math} 
+\defaultfontfeatures{SmallCapsFeatures={LetterSpace=10},Scale=MatchLowercase,Numbers={OldStyle,Proportional}}
+\setmainfont[
+SmallCapsFont=* Caps,
+]{Latin Modern Roman}
+\setsansfont{Libertinus Sans}
+\setmonofont[BoldFont=* Semibold]{Source Code Pro}
+\newcommand{\dispfont}{} 
 \frenchspacing
 \setlength{\parindent}{1em}
 \linespread{1.02}
@@ -52,11 +46,11 @@
 % Microtype
 \usepackage[
 final,
-tracking=smallcaps,
-expansion=alltext,
-protrusion=true
+% tracking=smallcaps,
+% expansion=alltext,
+% protrusion=true
 ]{microtype}
-\SetTracking{encoding=*,shape=sc}{50}
+% \SetTracking{encoding=*,shape=sc}{50}
 
 % Misc Packages
 \PassOptionsToPackage{final}{graphicx}
@@ -92,7 +86,7 @@ protrusion=true
 \setlist[itemize]{label={\small\textbullet},left=-11pt}
 
 % Margins: notes, figures, etc
-\newcommand{\concretefont}{} 
+\newcommand{\concretefont}{\sffamily} 
 \usepackage{marginnote,sidenotes} 
 \renewcommand*{\marginfont}{\small\concretefont}
 \let\oldmarginpar\marginpar
@@ -124,9 +118,9 @@ protrusion=true
 	% \newsavebox{\tmpbox}\savebox{\tmpbox}{\parbox{.4\textwidth}{\raggedright\dispfont\@title}}%
 	% \rule[-.9\ht\tmpbox]{1pt}{2\ht\tmpbox}\enspace%
 	% \usebox{\tmpbox}%
-	  {\Large\@title\marginnote{\parbox{3cm}{\raggedright\@author}}\par}
-	\smallskip
-	  {\Asignatura\ (0\the\month-\the\year)\par}
+	  {\addfontfeatures{LetterSpace=10}\MakeUppercase{\@title}\marginnote{\parbox{3cm}{\raggedright\@author}}\par\smallskip\titlerule}
+	\medskip
+	  {\small\raggedleft\Asignatura\ (0\the\month-\the\year)\par}
   	% \vskip 1em
   	% {}\par
 	% {}\par
@@ -143,7 +137,7 @@ protrusion=true
 % Section and subsection format
 \usepackage[explicit]{titlesec}
 \titleformat{\section}[hang]
-{\raggedright\large\dispfont}
+{\raggedright\large\itshape}
 	{\thesection}
 	{1em}
 	{#1}
@@ -153,7 +147,7 @@ protrusion=true
 	{1.5\baselineskip}
 	{1.5\baselineskip}
 \titleformat{\subsection}
-{\flushleft\dispfont}
+{\flushleft\itshape}
 	{\thesubsection}
 	{.5em}
 	{#1}
