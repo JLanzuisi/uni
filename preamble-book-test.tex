@@ -5,38 +5,26 @@
 \usepackage[
 includehead,
 includefoot,
-a5paper,
+letterpaper,
 top=1.5cm,
 bottom=1.5cm,
-inner=1.3cm,
-outer=4.2cm,
-marginparwidth=2.2cm,
-marginparsep=.2cm,
+inner=2cm,
+outer=8cm,
+% marginparwidth=2.2cm,
+% marginparsep=.2cm,
 ]{geometry}
 
 \usepackage{fontspec}
 \setmainfont[
-Numbers={Proportional},
-%SmallCapsFont=* Caps,
-%StylisticSet=1,
-%UprightFont=* Regular,
-%BoldFOnt=* Bold,
-ItalicFont=Old Standard Italic,
-ItalicFeatures={Scale=MatchLowercase},
-%Scale=.9
-]{Theano Modern}
+Numbers={OldStyle,Proportional},
+SmallCapsFont=* Caps,
+SmallCapsFeatures={LetterSpace=8},
+]{Latin Modern Roman}
 \defaultfontfeatures{Scale=MatchLowercase}
-%\setsansfont[
-%Numbers={OldStyle},
-%SmallCapsFeatures={LetterSpace=8},
-%ItalicFont=* Italic,
-%%BoldFont=* Libre Bold,
-%]{Fira Sans Condensed Light}
-\newfontfamily{\commentfont}[
-Numbers={OldStyle}
-]{TeX Gyre Heros Cn}
-\newfontfamily{\titlefont}{Libre Bodoni}
-\linespread{.93}
+\setsansfont[UprightFeatures={StylisticSet={1,3}}]{Work Sans}
+\newfontfamily{\chapfont}[UprightFeatures={StylisticSet={1,3}}]{Work Sans Light}
+\setmonofont{JetBrains Mono}
+\linespread{1.03}
 \frenchspacing
 \hfuzz1pc
 
@@ -54,12 +42,13 @@ Numbers={OldStyle}
 	metalogo,
 	cleveref,
 	caption,
-	sidenotes,
+	% sidenotes,
 	booktabs,
 	csquotes,
 	xparse,
 	pgfornament,
 	% nowidow,
+	enotez
 }
 
 \usepackage[
@@ -69,6 +58,8 @@ style=trad-abbrv,
 sorting=ynt
 ]{biblatex}
 \addbibresource{../../../bib/general.bib}
+
+\setenotez{list-name={Notas},reset={true},backref={true},list-heading={\section*{#1}},totoc={false}}
 
 \graphicspath{{pictures/}}
 
@@ -91,17 +82,17 @@ sorting=ynt
 %\pgfornament[width=1cm]{98}}[-3pt]
 \usepackage[explicit]{titlesec}
 \titleformat{\chapter}[hang]
-	{\flushright\titlefont\fontsize{13}{13}\selectfont}
+	{\flushright\chapfont\LARGE}
 	{}
 	{0em}
-	{#1}
+	{\parbox{4cm}{\raggedleft #1}}
 	[]
 \titlespacing*{\chapter}
 	{0em}
 	{0em}
 	{2.5\baselineskip}
 \titleformat{\section}[hang]
-	{\flushleft\large}
+	{\flushleft\sffamily\large}
 	{}
 	{5pt}
 	{#1}
@@ -117,8 +108,8 @@ sorting=ynt
 \titlecontents{chapter}
 [.5em]
 {\vspace{.3em}}%
-{\hfill\llap{\thecontentspage\hspace{.5cm}}~}
-{\hfill\llap{\thecontentspage\hspace{.5cm}}~}
+{\large\hfill\llap{\thecontentspage\hspace{.5cm}}~}
+{\large\hfill\llap{\thecontentspage\hspace{.5cm}}~}
 {}                 		
 [\vspace{8pt}]
 % The following changes section entries
@@ -157,7 +148,7 @@ sorting=ynt
 }
 
 
-\newcommand{\mparformat}{\commentfont\fontsize{9}{9.5}\selectfont}
+\newcommand{\mparformat}{\fontsize{9}{9.5}\selectfont}
 \renewcommand*{\marginfont}{\mparformat}
 \let\oldmarginpar\marginpar
 \renewcommand{\marginpar}[1]{
@@ -174,7 +165,7 @@ sorting=ynt
 
 \newcommand{\say}[1]{‘#1’}
 % \renewcommand{\endnote}{\sidenote}
-\let\nota=\sidenote
+\let\footnote=\endnote
 
 \newcommand{\finalCapituloOrnamento}{
 	\begin{center}\LARGE

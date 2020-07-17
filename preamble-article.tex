@@ -3,6 +3,7 @@
 \overfullrule=2cm
 
 % Language Setup
+\PassOptionsToPackage{no-math}{fontspec}
 \usepackage{polyglossia}
 \setmainlanguage[spanishoperators=all,]{spanish}
 \PolyglossiaSetup{spanish}{,indentfirst=false}
@@ -32,12 +33,15 @@
 
 % Text Fonts
 \usepackage{unicode-math} 
-\defaultfontfeatures{SmallCapsFeatures={LetterSpace=10},Scale=MatchLowercase,Numbers={OldStyle,Proportional}}
 \setmainfont[
+Numbers={OldStyle,Proportional},
 SmallCapsFont=* Caps,
 ]{Latin Modern Roman}
-\setsansfont{Libertinus Sans}
-\setmonofont[BoldFont=* Semibold]{Source Code Pro}
+\defaultfontfeatures{SmallCapsFeatures={LetterSpace=10},Scale=MatchLowercase,}
+\setsansfont[Numbers={OldStyle,Proportional}]{Libertinus Sans}
+\setmonofont[RawFeature={+liga}]{JetBrains Mono}
+\setmathfont{Latin Modern Math}
+\setmathfont[range={cal,frak}]{Neo Euler}
 \newcommand{\dispfont}{} 
 \frenchspacing
 \setlength{\parindent}{1em}
@@ -86,7 +90,7 @@ final,
 \setlist[itemize]{label={\small\textbullet},left=-11pt}
 
 % Margins: notes, figures, etc
-\newcommand{\concretefont}{\sffamily} 
+\newcommand{\concretefont}{} 
 \usepackage{marginnote,sidenotes} 
 \renewcommand*{\marginfont}{\small\concretefont}
 \let\oldmarginpar\marginpar
@@ -96,7 +100,7 @@ final,
 \newcounter{nota}
 \newcommand{\nota}[1]{\refstepcounter{nota}\textsuperscript{\thenota}%
 	\marginpar{%
-		\parbox{3.5cm}{\raggedright\thenota. #1}%
+		\parbox{3.5cm}{\raggedright\itshape\thenota. #1}%
 	}
 }
 
@@ -110,7 +114,7 @@ final,
   \newpage
   \null
   \let \footnote \thanks
-  \begin{flushleft}\dispfont
+  \begin{center}\sffamily
 	% \begin{minipage}{.25\textwidth}
 	% \raggedleft\Asignatura
 	% \end{minipage}
@@ -118,15 +122,15 @@ final,
 	% \newsavebox{\tmpbox}\savebox{\tmpbox}{\parbox{.4\textwidth}{\raggedright\dispfont\@title}}%
 	% \rule[-.9\ht\tmpbox]{1pt}{2\ht\tmpbox}\enspace%
 	% \usebox{\tmpbox}%
-	  {\addfontfeatures{LetterSpace=10}\MakeUppercase{\@title}\marginnote{\parbox{3cm}{\raggedright\@author}}\par\smallskip\titlerule}
-	\medskip
-	  {\small\raggedleft\Asignatura\ (0\the\month-\the\year)\par}
+	  {\large\textsc{\MakeLowercase{\@title}}\marginnote{\parbox{3cm}{\raggedright\normalfont\@author}}\par}
+	\smallskip
+	  {\small\itshape\Asignatura\ (0\the\month-\the\year)\par}
   	% \vskip 1em
   	% {}\par
 	% {}\par
-  \end{flushleft}
+  \end{center}
   % \marginpar{\@author\medskip}
-  \vskip 1\baselineskip
+  \vskip 1.5\baselineskip
 }
 \makeatother
 
@@ -137,7 +141,7 @@ final,
 % Section and subsection format
 \usepackage[explicit]{titlesec}
 \titleformat{\section}[hang]
-{\raggedright\large\itshape}
+{\raggedright\large\sffamily}
 	{\thesection}
 	{1em}
 	{#1}
@@ -147,7 +151,7 @@ final,
 	{1.5\baselineskip}
 	{1.5\baselineskip}
 \titleformat{\subsection}
-{\flushleft\itshape}
+{\flushleft\sffamily}
 	{\thesubsection}
 	{.5em}
 	{#1}
@@ -157,7 +161,7 @@ final,
 	{1\baselineskip}
 	{1\baselineskip}
 \titleformat{\paragraph}[runin]
-	{\addfontfeatures{LetterSpace=10}\scshape}
+	{\scshape}
 	{}
 	{0em}
 	{#1}
