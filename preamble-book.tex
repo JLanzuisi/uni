@@ -1,10 +1,27 @@
-% \usepackage[spanish]{babel}
+% Misc TeX Settings
+\hfuzz1pc
+\overfullrule=2cm
+
+% Language Setup
 \usepackage{polyglossia}
-\setmainlanguage[spanishoperators=all]{spanish}
-\PolyglossiaSetup{spanish}{indentfirst=false}
+\setmainlanguage[spanishoperators=all,]{spanish}
+\PolyglossiaSetup{spanish}{,indentfirst=false}
+\usepackage{csquotes}
 
-\usepackage{amsmath}
+% Page dimensions
+\usepackage[
+	includehead,
+	includefoot,
+	letterpaper,
+	top=2cm,
+	bottom=2cm,
+	left=4.5cm,
+	right=4.5cm,
+	marginparsep=0.5cm,
+	marginparwidth=4cm,
+]{geometry}
 
+\usepackage{mathtools}
 \DeclareMathOperator{\Rea}{Re}
 \DeclareMathOperator{\Ima}{Im}
 \DeclareMathOperator{\car}{car}
@@ -12,157 +29,154 @@
 \DeclareMathOperator{\gen}{gen}
 \DeclareMathOperator{\mcm}{mcm}
 
-
 \usepackage{unicode-math}
-\setmainfont[Numbers={OldStyle,Proportional},SmallCapsFeatures{LetterSpace=10}]{Libertinus Serif}
+\setmainfont[
+Numbers={OldStyle},
+% SmallCapsFont={* Caps},
+% SmallCapsFeatures={LetterSpace=8,RawFeature={+c2sc}}
+]{Latin Modern Sans}
 \defaultfontfeatures{Scale=MatchLowercase}
-\setsansfont{Latin Modern Sans}
-\setmonofont{Luxi Mono}
-\setmathfont{Libertinus Math}
-\newfontfamily{\dispfont}{Libertinus Serif Display}
-\newfontfamily{\commentfont}{etbb Italic}
+\newfontfamily{\titlefont}[SmallCapsFont=* Caps]{Latin Modern Roman}
+% \setsansfont{URW Classico}
+% \newfontfamily{\titlefont}[Numbers={OldStyle},SmallCapsFeatures={LetterSpace=8}]{Bodoni 06}
+\setmonofont{Latin Modern Mono}
+\setmathfont[bold-style=ISO,partial=upright]{NewCMMath-Book.otf}
+% \setmathfont[range={bb}]{XITS Math}
 
-\linespread{1.04}
+% \newcommand{\fakesc}{\footnotesize\MakeUppercase}
+
+\linespread{1.029}
 \frenchspacing
-\hfuzz1pc
 
-\usepackage{microtype}
+\usepackage[final]{microtype}
 
+% Misc Packages
+\PassOptionsToPackage{final}{graphicx}
 \usepackage{%
 	xcolor,%
-	marginnote,%
 	graphicx,%
 	cancel,%
-	%tikz,%
-	pdfpages,
-	imakeidx,
-	hyperref,
-	epigraph,
-	enumitem,
-	metalogo,
-	cleveref,
-	caption,
-	%floatrow,
 	booktabs,
-	%longtable
-	csquotes,
+	hyphenat,
+	authoraftertitle,
+	pdfpages,
+	metalogo
 }
 
+% Bibliography
 \usepackage[
-backref,
-backend=biber,
-style=trad-abbrv,
-sorting=ynt
+	backend=biber,
+	backref=true,
+	style=trad-abbrv,
+	sorting=ynt
 ]{biblatex}
-\addbibresource{../../../bib/general.bib}
+\addbibresource{C:/Users/Jhonny/git/LaTeX/bib/general.bib}
 
-\hypersetup{colorlinks=true,allcolors=black}
-% Color definitions
-\definecolor{darkred}{HTML}{66000c}
-\definecolor{darkblue}{HTML}{142850}
+% References
+\usepackage{url} 
+\usepackage{hyperref} 
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=black}
+\usepackage[spanish,nameinlink]{cleveref} 
 
-\makeindex[columns=3, title=Índice Alfabético, intoc]
+% List Settings
+\usepackage{enumitem} 
+\setlist[enumerate]{left=-11pt,nosep}
+\setlist[description]{font=\normalfont,leftmargin=\parindent}
+\setlist[itemize]{label={\small\textbullet},left=-11pt}
 
-\setlist[enumerate]{label=\arabic*,left=-11pt}
-\setlist[description]{font=\normalfont,leftmargin=\parindent,nosep}
-\setlist[itemize]{label={\footnotesize\textbullet},left=-11pt}
+% Code listings
+\usepackage[final]{listings} 
+\lstset{
+language=R, 
+numbers=left, numberstyle=\tiny\ttfamily, stepnumber=2, numbersep=5pt, 
+basicstyle=\ttfamily, 
+stringstyle=\ttfamily,
+commentstyle=\itshape,
+breaklines=true,
+postbreak=\mbox{$\hookrightarrow$\enspace},
+columns=flexible
+}
 
-%\floatsetup{footposition=bottom}% For all floats
-
-%\floatsetup[longtable]{LTcapwidth=table}% https://tex.stackexchange.com/a/345772/120853
-
-%\floatsetup[table]%
-%{%
-	%style=plaintop,% Always above, no matter where \caption is called
-	%footnoterule=none,%
-	%footskip=.35\skip\footins,%
-%}%
-
-%\floatsetup[figure]%
-%{%
-	%capbesidewidth=figure,
-	%capbesideposition=right,%
-	%capbesidesep=quad,%
-%}%
-
-\captionsetup{font={small},indention=.5cm,justification=raggedright}
+% Caption setup
+\usepackage{caption} 
+\captionsetup{font={rm},justification=raggedright,singlelinecheck=false,skip=3pt}
 
 \usepackage[explicit]{titlesec}
 \titleformat{\part}[display]
-	{\flushleft\fontsize{22}{22}\selectfont}
-	{\LARGE Parte\;\scshape\MakeLowercase{\thepart}}
+{\flushleft\fontsize{40}{40}\selectfont\titlefont}
+	{\thepart}
 	{3em}
 	{#1}
 	[]
-\titleformat{\chapter}[hang]
-{\flushleft\itshape\fontsize{14}{14}\selectfont}
-	{\hspace{-1.2em}\thechapter\;\rule[-5.5pt]{1pt}{23pt}}
-	{.3em}
+\titleformat{\chapter}[display]
+	{\flushleft\Large\titlefont\bfseries}
+	{\addfontfeatures{Numbers={Lining}}\large\thechapter}
+	{1em}
 	{#1}
 	[]
 \titlespacing*{\chapter}
 	{0em}
 	{0em}
-	{1\baselineskip}
-\titleformat{\section}[runin]
-	{\normalfont}
-	{\hspace*{-2.25em}\thesection}
-	{5pt}
-	{\scshape\MakeLowercase{#1.}}
+	{3\baselineskip}
+\titleformat{\section}[hang]
+	{\flushleft\small\bfseries\titlefont}
+	{\hspace{-2.55em}\S\thesection}
+	{.5em}
+	{\addfontfeatures{LetterSpace=8}\MakeUppercase{#1}}
 	[]
 \titlespacing*{\section}
 	{0em}
-	{0em}
-	{.5em}
+	{1.5\baselineskip}
+	{0\baselineskip}
 \titleformat{\subsection}
-	{\flushleft}
-	{\hspace{-1.5em}\thesubsection}
+	{\flushleft\bfseries\titlefont}
+	{\thesubsection}
 	{.5em}
 	{#1}
 	[]
 \titlespacing*{\subsection}
 	{0em}
 	{1\baselineskip}
-	{1\baselineskip}
-\titleformat{\paragraph}[runin]
-	{}
-	{}
-	{1em}
-	{#1}
-	[.]
-\titlespacing*{\paragraph}
-	{0em}
-	{0\parskip}
-	{1\parskip}
+	{0\baselineskip}
+% \titleformat{\paragraph}[runin]
+% 	{}
+% 	{}
+% 	{1em}
+% 	{#1}
+% 	[.]
+% \titlespacing*{\paragraph}
+% 	{0em}
+% 	{0\parskip}
+% 	{1\parskip}
 
 \usepackage{titletoc}
 % The following changes part entries
 \titlecontents{part}
-[1.6em]
+[1em]
 {\vspace{.3em}}%
-{\contentsmargin{0pt}}
-{\contentsmargin{0pt}}
+{\large\contentsmargin{0pt}}
+{\large\contentsmargin{0pt}}
 {}                 		
 [\vspace{4pt}]
 % The following changes chapter entries
 \titlecontents{chapter}
-[2.5em]
+[1em]
 {\vspace{.3em}}%
 {\contentsmargin{0pt}}
 {\contentsmargin{0pt}}
-{\hspace{5pt}\contentspage}                 		
+{\hspace{3pt}\contentspage}                 		
 [\vspace{4pt}]
 % The following changes section entries
 \titlecontents{section}
-[5em]
+[4em]
 {}
 {\contentsmargin{0pt}}
 {\contentsmargin{0pt}}
-{\hspace{5pt}\contentspage}
+{\hspace{3pt}\contentspage}
 [\vspace{5pt}]
 % The following changes subsection entries
 \titlecontents{subsection}
-[6.5em]                              
+[5.5em]                              
 {\vspace{-4pt}}
 {\contentsmargin{0pt}\small\enspace}
 {\contentsmargin{0pt}}        
@@ -178,10 +192,13 @@ sorting=ynt
 \renewcommand{\chaptermark}[1]{%
 	\markboth{#1}{}}
 \renewcommand{\sectionmark}[1]{\markright{#1}}
-	\fancyhead[OL]{\sffamily\nouppercase\rightmark}
-	\fancyhead[EL]{\sffamily\thepage}
-	\fancyhead[ER]{\sffamily\nouppercase{\leftmark}}
-	\fancyhead[OR]{\sffamily\thepage}
+\fancyhead[R]{\ifodd\value{page}{\nouppercase\rightmark}\else{Probabilidad \& Estadística}\fi}
+\fancyhead[L]{}
+\fancyfoot[R]{\thepage}
+	% \fancyhead[OL]{\sffamily\nouppercase\rightmark}
+	% \fancyhead[EL]{\sffamily\thepage}
+	% \fancyhead[ER]{\sffamily\nouppercase{\leftmark}}
+	% \fancyhead[OR]{\sffamily\thepage}
 	\fancyfoot[L]{}
 	\fancyfoot[C]{}
 \fancypagestyle{plain}{%
@@ -195,94 +212,73 @@ sorting=ynt
 \usepackage[thmmarks]{ntheorem}
 	\theoremstyle{plain}
 	\theoremindent0cm
-	\theorempreskip{.5\baselineskip}
-	\theoremheaderfont{\upshape}
-	\theorembodyfont{\normalfont}
+	\theorempreskip{0cm}
+	\theorempostskip{0cm}
+	\theoremheaderfont{\hspace*{\parindent}\upshape}
+	\theorembodyfont{\itshape}
 	\theoremseparator{.}
-	\newtheorem{defi}{Definición}[section]
 	\newtheorem{teo}{Teorema}[section]
 	\newtheorem{cor}{Corolario}[teo]
 	\newtheorem{prop}{Proposición}[section]
 	\newtheorem{lem}{Lema}[section]
-	\theoremindent0cm
-	\newtheorem{ejem}{Ejemplo}[section]
-	\newtheorem{cejem}{Contraejemplo}[section]
-	\newtheorem{ejer}{Ejercicio}[section]
 	\theoremstyle{nonumberplain}
-	\newtheorem{sol}{Solución}
-	\newtheorem{obs}{Observación}
-	\theoremindent0cm
-	\newtheorem{proof}{Demostración}
+	\theoremheaderfont{\hspace*{\parindent}\upshape\footnotesize}
+	\theorembodyfont{\upshape}
+	\newtheorem{proof}{DEMOSTRACIÓN}
+	\theoremstyle{plain}
+	\theorempreskip{1em}
+	\theorempostskip{1em}
+	\theoremheaderfont{\upshape}
+	\theorempostwork{\noindent}
+	\newtheorem{defi}{Definición}[section]
+	% \newtheorem{ejem}{Ejemplo}[section]
+	% \newtheorem{cejem}{Contraejemplo}[section]
+	% \newtheorem{ejer}{Ejercicio}[section]
+	% \newtheorem{sol}{Solución}
+	% \newtheorem{obs}{Observación}
+	
 
-
-\renewcommand*{\marginfont}{\small\sffamily}
-%\renewcommand{\marginnotevadjust}{.7em}
-\setlength{\marginparwidth}{2cm}
-
-\newcounter{NumeroClase}
-\newcommand{\Clase}[1]{%
-	\marginnote{\refstepcounter{NumeroClase}%
-		Clase Nº\,\theNumeroClase,\\ #1/2020.}%
-}
+% \newcounter{NumeroClase}
+% \newcommand{\Clase}[1]{%
+% 	\marginnote{\refstepcounter{NumeroClase}%
+% 		Clase Nº\,\theNumeroClase,\\ #1/2020.}%
+% }
 
 \newlength{\savedparindent}
 \setlength{\savedparindent}{\parindent}
-\newenvironment{nota}{
-\raggedright\setlength{\parindent}{\savedparindent}\commentfont
-}{\par}
+% \newcommand*{\docname}{document}
+\setlength{\parindent}{2em}
+\newcommand{\Nota}[1]{
+\begingroup\medskip
+\fontsize{8}{8.5}\selectfont\narrower\narrower
+\noindent #1
+\par
+\endgroup\medskip
+}
+% \newcommand{\Nota}[1]{
+% \begingroup
+% \makeatletter
+% \ifx\@currenvir\docname
+% 	\raggedright\setlength{\parindent}{\savedparindent}\sffamily
+%     \else
+% 	\raggedright\sffamily
+%    \fi	
+% \makeatother
+% #1
+% \par
+% \endgroup
+% }
+% \newcommand{\Nota}[1]{\marginnote{\commentfont #1}}
+% \newenvironment{primerpar}{
+% 	\fontsize{11}{13}\selectfont
+% }{\par\smallskip}
 
-\makeatletter
-\newcommand*{\docname}{document}
-%\newcommand{\Nota}[1]{
-%\begingroup
-%\ifx\@currenvir\docname
-%	\raggedright\setlength{\parindent}{\savedparindent}\commentfont
-%    \else
-%	\raggedright\sffamily
-%   \fi	
-%\makeatother
-%#1
-%\par
-%\endgroup
-%}
-\newcommand{\Nota}[1]{\marginnote{\commentfont #1}}
-\newenvironment{primerpar}{
-	\fontsize{11}{13}\selectfont
-}{\par\smallskip}
-
-\newcommand{\Keyword}[1]{\textsc{#1}\index{#1}}
+\newcommand{\Keyword}[1]{\textsc{#1}}
 \newcommand{\KKeyword}[1]{\emph{#1}}
 
-\let\mathbb=\mathbf
+% \let\oldamp\&
+% \renewcommand{\&}{\textit{\oldamp}}
 
-\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\mathbb}{\symbf}
 
-%\let\oldemph\emph
-%\renewcommand{\emph}{}
-%\let\oldamp=\&
-%\renewcommand{\&}{\textit{\oldamp}}
-
-% LEGACY MACROS
-\newcommand{\id}[1]{\mathfrak{#1}}
-\newcommand{\an}[1]{\mathscr{#1}}
-\newcommand{\subsq}{\subseteq}
-\newcommand{\inv}{^{-1}}
-\newcommand{\notall}[1]{\marginnote{\small \textcolor{darkgray}{#1}}}
-\newcommand{\ho}[2]{\text{hom}(#1,#2)}
-\newcommand{\hoo}[1]{\text{hom}(#1)}
-\renewcommand{\t}{\times}
-\newcommand{\dt}[2]{#1_1 #2 #1_2 #2 \cdots #2 #1_n}
-\newcommand{\li}[2]{\lim_{#1 \to #2}}
-\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
-\newcommand{\pds}[2]{\dfrac{\partial^2 #1}{\partial #2^2}}
-\newcommand{\pdx}[3]{\dfrac{\partial^2 #1}{\partial #2 \partial #3}}
-\newcommand{\pol}[1]{#1_n x^n + #1_{n-1} x^{n-1} + \dots + #1_1 x + #1_0}
-\newcommand{\Zn}{\mathscr{Z}/n\mathscr{Z}}
-\renewcommand{\Rn}{\mathscr{R}^{\mathrm n}}
-\newcommand{\R}{\mathscr{R}}
-\newcommand{\Co}{\mathscr{C}}
-\newcommand{\Z}{\mathscr{Z}}
-\newcommand{\Q}{\mathscr{Q}}
-\newcommand{\N}{\mathscr{N}}
-\newcommand{\Ha}{\mathscr{H}}
-\newcommand{\eb}[1]{\left\{ #1 \right\}}
+\newcommand{\R}{\texttt{R}}
