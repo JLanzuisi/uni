@@ -33,15 +33,16 @@
 
 % Text Fonts
 \usepackage{unicode-math} 
-\setmainfont[SmallCapsFont={* Caps}, SmallCapsFeatures={LetterSpace=8}]{Latin Modern Roman}
+\setmainfont[SmallCapsFeatures={LetterSpace=6},SmallCapsFont={* Caps}]{Latin Modern Roman}
 \defaultfontfeatures{SmallCapsFeatures={LetterSpace=10},Scale=MatchLowercase}
-\setsansfont[BoldFont={* SemiBold}]{Source Sans Pro}
+\setsansfont{URW Classico}
 \setmonofont{TeX Gyre Cursor}
-\setmathfont{New COmputer Modern Math}
+\setmathfont{NewComputerModern Math}
+\setmathfont[range={\varnothing,cal}]{Libertinus Math}
  
 \frenchspacing
 \setlength{\parindent}{1em}
-\linespread{1.02}
+\linespread{1.03}
 
 % Microtype
 \usepackage[
@@ -54,6 +55,7 @@ final,
 
 % Misc Packages
 \PassOptionsToPackage{final}{graphicx}
+\PassOptionsToPackage{dvipsnames}{xcolor}
 \usepackage{%
 	xcolor,%
 	graphicx,%
@@ -71,19 +73,19 @@ final,
 	style=trad-abbrv,
 	sorting=ynt
 ]{biblatex}
-\addbibresource{C:/Users/Jhonny/Google-Drive/LaTeX/bib/general.bib}
+\addbibresource{C:/Users/Jhonny/git/Misc-LaTeX-files/bib/general.bib}
 
 % References
 \usepackage{url} 
 \usepackage{hyperref} 
-\hypersetup{colorlinks=true,linkcolor=black,urlcolor=black}
+\hypersetup{colorlinks=true,linkcolor=NavyBlue,urlcolor=NavyBlue,citecolor=NavyBlue}
 \usepackage[spanish,nameinlink]{cleveref} 
 
 % List Settings
 \usepackage{enumitem} 
 \setlist[enumerate]{label=\arabic*,left=-11pt}
 \setlist[description]{font=\normalfont,leftmargin=\parindent}
-\setlist[itemize]{label={\small\textbullet},left=-11pt}
+\setlist[itemize]{label={\small\textbullet}}
 
 % Margins: notes, figures, etc
 \newcommand{\concretefont}{} 
@@ -96,7 +98,7 @@ final,
 \newcounter{nota}
 \newcommand{\nota}[1]{\refstepcounter{nota}\textsuperscript{\thenota}%
 	\marginpar{%
-		\parbox{3.5cm}{\raggedright\itshape\thenota. #1}%
+		\raggedright\itshape\thenota. #1%
 	}
 }
 
@@ -118,9 +120,9 @@ final,
 	% \newsavebox{\tmpbox}\savebox{\tmpbox}{\parbox{.4\textwidth}{\raggedright\dispfont\@title}}%
 	% \rule[-.9\ht\tmpbox]{1pt}{2\ht\tmpbox}\enspace%
 	% \usebox{\tmpbox}%
-	  {\Large\@title\marginnote{\parbox{3cm}{\raggedright\normalfont\@author}}\par}
+	  {\Large\@title\marginnote{\parbox{3cm}{\raggedright\normalfont\normalsize\@author}}[.5em]\par}
 	\smallskip
-	  {\small\Asignatura\ (0\the\month-\the\year)\par}
+	  {\small\Asignatura\ (\today)\par}
   	% \vskip 1em
   	% {}\par
 	% {}\par
@@ -137,7 +139,7 @@ final,
 % Section and subsection format
 \usepackage[explicit]{titlesec}
 \titleformat{\section}[hang]
-{\flushleft\bfseries\sffamily}
+{\flushleft\large\sffamily}
 	{\thesection}
 	{1em}
 	{#1}
@@ -160,12 +162,12 @@ final,
 	{\scshape}
 	{}
 	{0em}
-	{#1}
+	{\MakeLowercase{#1}}
 	[.]
 \titlespacing*{\paragraph}
 	{0em}
-	{0\parskip}
-	{1\parskip}
+	{1\baselineskip}
+	{5pt}
 
 % Table of contents setup
 % \addto\captionsspanish{
@@ -192,7 +194,7 @@ final,
 % Abstract redefine
 	\renewenvironment{abstract}{
 		\smallskip
-		{\raggedright\large Resumen}\par\smallskip
+		{\raggedright\large\sffamily Resumen}\par\vspace{1\baselineskip}
 	}{\par\medskip}
 % Header and footer setup
 \usepackage{fancyhdr}

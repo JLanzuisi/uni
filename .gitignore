@@ -1,5 +1,6 @@
 tlcheck*
 *.synctex.gz
+*.synctex(busy)
 *.tmp
 *.ptc
 *.xmpi

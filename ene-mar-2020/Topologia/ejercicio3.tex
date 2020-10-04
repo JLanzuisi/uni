@@ -25,8 +25,7 @@ $U_R(x)=\left\{ y\mid x\prec y \right\}$. \textit{Demuestre que:}
 		\[
 			x\in G\implies U_L(x)\subset G.
 		\]
-	\item En $\mathcal{T}_L$ las intersecciones arbitrarias de conjuntos abiertos
-		dan conjuntos abiertos.
+	\item En $\mathcal{T}_L$ las intersecciones arbitrarias de conjuntos abiertos dan conjuntos abiertos.
 	\item La topología discreta es la única mas fina que $\mathcal{T}_L$ y $\mathcal{T}_R$.
 	\item Las topologías $\mathcal{T}_L$ y $\mathcal{T}_R$ no son comparables. 
 \end{enumerate}
@@ -55,7 +54,7 @@ $y_1\prec x_1$ y $y_1\prec x_2$, se tiene que $y\prec x_1$ y $y\prec x_2$ por
 transitividad. Hemos descubierto que para todo elemento en la intersección de dos $U_L$
 podemos conseguir otro conjunto $U_L$ tal que contiene a dicho elemento y esta contenido en la
 intersección, es decir, que la familia $\left\{ U_L(x) \right\}$ forma una base para una topología
-sobre $X$ por el teorema~\ref{teo1}. Esta topología es $\mathcal{T}_L$.
+sobre $X$ por el teorema~\ref{base1}. Esta topología es $\mathcal{T}_L$.
 
 Un argumento análogo al anterior nos da como resultado que la familia $\left\{ U_R(x) \right\}$ también es
 base de una topología sobre $X$, y esta topología es $\mathcal{T}_R$.
@@ -82,7 +81,7 @@ Supongamos ahora que para cada $x\in G$ se cumple que
 	x\in G\implies U_L(x)\subset G.
 \]
 Pero como $U_L(x)$ es un elemento de la base de $\mathcal{T}_L$, la implicación anterior
-da de forma inmediata, por el teorema~\ref{teo2}, que $G\in\mathcal{T}_L$.
+da de forma inmediata, por el teorema~\ref{base2}, que $G\in\mathcal{T}_L$.
 
 \paragraph{Parte 3}%
 
@@ -136,7 +135,7 @@ en $\mathcal{T}_L$. Entonces se tiene que $\mathcal{T}_L\not\subset\mathcal{T}_R
 \section[Resultados Utilizados]{Resultados Utilizados}%
 \label{sec:resultados_utilizados}
 
-\begin{teo}\label{teo1}
+\begin{teo}\label{base1}
 	Sea $\mathcal{B}=\left\{ U_\alpha \mid \alpha\in \mathscr{M} \right\}$ una familia de subconjuntos de $X$
 	que cubre a $X$ y satisface la siguiente condición:
 	\begin{itemize}
@@ -149,7 +148,7 @@ en $\mathcal{T}_L$. Entonces se tiene que $\mathcal{T}_L\not\subset\mathcal{T}_R
 	topología sobre $X$.
 \end{teo}
 
-\begin{teo}\label{teo2}
+\begin{teo}\label{base2}
 	Sea $\mathcal{B}\subset\mathcal{T}$ una base para la topología $\mathcal{T}$. Entonces un conjunto $A$
 	es abierto (es decir, pertenece a $\mathcal{T}$) si, y solo si, para cada $x\in A$ existe un
 	$U\in\mathcal{B}$ tal que $x\in U\subset A$.
