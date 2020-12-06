@@ -1,61 +1,48 @@
-% Misc TeX Settings
+% This TeX file is auto generated from a Org file.
+% As such, is not properly documented.
+% Please refer to the Org or HTML file instead for explanations.
+
 \hfuzz1pc
 \overfullrule=2cm
 
-% Language Setup
+\usepackage[spanish,es-noindentfirst]{babel}
+\usepackage{csquotes}
 
-\usepackage{polyglossia}
-\setmainlanguage[spanishoperators=all,]{spanish}
-\PolyglossiaSetup{spanish}{,indentfirst=false}
-\usepackage{csquotes} 
-
-% Page dimensions
 \usepackage[
 	includehead,
 	includefoot,
-	top=1.5cm,
-	bottom=1.5cm,
-	left=2.5cm,
-	right=8.5cm,
+	letterpaper,
+	top=2cm,
+	bottom=2cm,
+	left=4.5cm,
+	right=4.5cm,
 	marginparsep=0.5cm,
-	marginparwidth=7cm,
+	marginparwidth=4cm,
 ]{geometry}
 
-% Math
-\usepackage{mathtools} 
+\usepackage{mathtools}
 \DeclareMathOperator{\Rea}{Re}
 \DeclareMathOperator{\Ima}{Im}
 \DeclareMathOperator{\car}{car}
 \DeclareMathOperator{\traz}{tr}
 \DeclareMathOperator{\gen}{gen}
 \DeclareMathOperator{\mcm}{mcm}
-\DeclareMathOperator{\id}{id}
 
-% Text Fonts
-\usepackage{unicode-math} 
-\setmainfont[SmallCapsFeatures={LetterSpace=6},SmallCapsFont={* Caps}]{Latin Modern Roman}
-\defaultfontfeatures{SmallCapsFeatures={LetterSpace=10},Scale=MatchLowercase}
-\setsansfont{URW Classico}
-\setmonofont{TeX Gyre Cursor}
-\setmathfont{NewComputerModern Math}
-\setmathfont[range={\varnothing,cal}]{Libertinus Math}
- 
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{ccfonts}
+\usepackage{sourcesanspro}
+\usepackage{GoMono}
 \frenchspacing
-\setlength{\parindent}{1em}
-\linespread{1.03}
 
-% Microtype
-\usepackage[
-final,
-% tracking=smallcaps,
-% expansion=alltext,
-% protrusion=true
-]{microtype}
-% \SetTracking{encoding=*,shape=sc}{50}
+\usepackage{eulervm}
 
-% Misc Packages
+\usepackage[final]{microtype}
+
 \PassOptionsToPackage{final}{graphicx}
 \PassOptionsToPackage{dvipsnames}{xcolor}
+
 \usepackage{%
 	xcolor,%
 	graphicx,%
@@ -63,38 +50,37 @@ final,
 	booktabs,
 	hyphenat,
 	authoraftertitle,
-	pdfpages
+	pdfpages,
+	metalogo
 }
 
-% Bibliography
 \usepackage[
 	backend=biber,
 	backref=true,
-	style=trad-abbrv,
+	citestyle=authoryear-comp,
+	style=chicago-authordate ,
 	sorting=ynt
 ]{biblatex}
-\addbibresource{C:/Users/Jhonny/git/Misc-LaTeX-files/bib/general.bib}
+\addbibresource{/home/jhonny/git/Misc-LaTeX-files/bib/general.bib}
 
-% References
 \usepackage{url} 
 \usepackage{hyperref} 
-\hypersetup{colorlinks=true,linkcolor=NavyBlue,urlcolor=NavyBlue,citecolor=NavyBlue}
-\usepackage[spanish,nameinlink]{cleveref} 
+\hypersetup{
+colorlinks=true,
+linkcolor=NavyBlue,
+urlcolor=NavyBlue,
+citecolor=NavyBlue
+}
+\usepackage[spanish,nameinlink]{cleveref}
 
-% List Settings
-\usepackage{enumitem} 
-\setlist[enumerate]{label=\arabic*,left=-11pt}
-\setlist[description]{font=\normalfont,leftmargin=\parindent}
-\setlist[itemize]{label={\small\textbullet}}
+\newcommand{\marfont}{}
 
-% Margins: notes, figures, etc
-\newcommand{\concretefont}{} 
-\usepackage{marginnote,sidenotes} 
-\renewcommand*{\marginfont}{\concretefont}
+\renewcommand*{\marginfont}{\marfont}
 \let\oldmarginpar\marginpar
 \renewcommand{\marginpar}[1]{
-	\oldmarginpar{\raggedright\concretefont #1}
+	\oldmarginpar{\raggedright\marfont #1}
 }
+
 \newcounter{nota}
 \newcommand{\nota}[1]{\refstepcounter{nota}\textsuperscript{\thenota}%
 	\marginpar{%
@@ -102,44 +88,58 @@ final,
 	}
 }
 
-% Custom \maketitle
+\renewcommand{\footnote}{\nota}
+
+\usepackage{enumitem} 
+\setlist[enumerate]{left=-11pt,nosep}
+\setlist[description]{font=\normalfont,leftmargin=\parindent}
+\setlist[itemize]{label={\small\textbullet},left=-11pt}
+
 \newcommand{\Asignatura}{}
 \newcommand{\asignatura}[1]{\renewcommand{\Asignatura}{#1}}
-% \setlength{\textparlen}{}
-% \addtolength{\textparlen}{20pt}
+
 \makeatletter
 \def\@maketitle{%
   \newpage
   \null
   \let \footnote \thanks
-  \begin{flushleft}\sffamily
-	% \begin{minipage}{.25\textwidth}
-	% \raggedleft\Asignatura
-	% \end{minipage}
-	% \enspace
-	% \newsavebox{\tmpbox}\savebox{\tmpbox}{\parbox{.4\textwidth}{\raggedright\dispfont\@title}}%
-	% \rule[-.9\ht\tmpbox]{1pt}{2\ht\tmpbox}\enspace%
-	% \usebox{\tmpbox}%
-	  {\Large\@title\marginnote{\parbox{3cm}{\raggedright\normalfont\normalsize\@author}}[.5em]\par}
+  \begin{flushleft}
+	  {\MakeUppercase{\@title}
+	  	\marginnote{
+	  		\parbox{3cm}{\raggedright\normalfont\normalsize\@author}
+  		}[.5em]\par
+  	  }
 	\smallskip
-	  {\small\Asignatura\ (\today)\par}
-  	% \vskip 1em
-  	% {}\par
-	% {}\par
+	  {\Asignatura\ (\today)\par}
   \end{flushleft}
-  % \marginpar{\@author\medskip}
   \vskip 1.5\baselineskip
 }
 \makeatother
 
-% Caption setup
-\usepackage{caption} 
-\captionsetup{font={rm},justification=raggedright,singlelinecheck=false,skip=3pt}
+\usepackage[final]{listings} 
+\lstset{
+language=R, 
+numbers=left, numberstyle=\tiny\ttfamily, stepnumber=2, numbersep=5pt, 
+basicstyle=\ttfamily, 
+stringstyle=\ttfamily,
+commentstyle=\itshape,
+breaklines=true,
+postbreak=\mbox{$\hookrightarrow$\enspace},
+columns=flexible
+}
 
-% Section and subsection format
+\usepackage{caption} 
+\captionsetup{
+font={rm},
+justification=raggedright,
+singlelinecheck=false,
+skip=3pt
+}
+
 \usepackage[explicit]{titlesec}
+
 \titleformat{\section}[hang]
-{\flushleft\large\sffamily}
+{\flushleft\scshape}
 	{\thesection}
 	{1em}
 	{#1}
@@ -149,7 +149,7 @@ final,
 	{1.5\baselineskip}
 	{1.5\baselineskip}
 \titleformat{\subsection}
-{\flushleft\sffamily}
+{\flushleft\itshape}
 	{\thesubsection}
 	{.5em}
 	{#1}
@@ -159,7 +159,7 @@ final,
 	{1\baselineskip}
 	{1\baselineskip}
 \titleformat{\paragraph}[runin]
-	{\scshape}
+	{\bfseries}
 	{}
 	{0em}
 	{\MakeLowercase{#1}}
@@ -169,13 +169,10 @@ final,
 	{1\baselineskip}
 	{5pt}
 
-% Table of contents setup
-% \addto\captionsspanish{
-% 	\renewcommand{\contentsname}{\concretefont Contenido}
-% }
 \let\oldtoc\tableofcontents
 \renewcommand{\tableofcontents}{\marginpar{\bigskip\oldtoc}}
 \usepackage{titletoc}
+
 \titlecontents{section}
 	[0em]
 	{\vspace{-10pt}}
@@ -191,17 +188,12 @@ final,
 	{\contentspage}                 
 	[\vspace{14pt}]
 
-% Abstract redefine
-	\renewenvironment{abstract}{
-		\smallskip
-		{\raggedright\large\sffamily Resumen}\par\vspace{1\baselineskip}
-	}{\par\medskip}
-% Header and footer setup
 \usepackage{fancyhdr}
+
 \renewcommand{\headrulewidth}{0pt}
 \setlength{\headheight}{14pt}
+
 \pagestyle{fancy}
-% \renewcommand{\sectionmark}[1]{\markright{#1}}
 \fancyhf{}
 \fancyhead[L]{\ifodd\value{page}\MyTitle\else\Asignatura\fi}
 \fancyhead[R]{\thepage}
@@ -213,25 +205,25 @@ final,
 	\fancyfoot[C]{}
 }
 
-% Theorem environments
 \usepackage[thmmarks]{ntheorem}
 	\theoremstyle{plain}
 	\theoremindent0cm
-	\theorempreskip{1\parskip}
-	\theoremheaderfont{\normalfont}
-	\theorembodyfont{\normalfont}
+	\theorempreskip{0cm}
+	\theorempostskip{0cm}
+	\theoremheaderfont{\hspace*{\parindent}\upshape}
+	\theorembodyfont{\itshape}
 	\theoremseparator{.}
-	\newtheorem{defi}{Definición}[section]
 	\newtheorem{teo}{Teorema}[section]
 	\newtheorem{cor}{Corolario}[teo]
 	\newtheorem{prop}{Proposición}[section]
 	\newtheorem{lem}{Lema}[section]
-	\newtheorem{ejem}{Ejemplo}[section]
-	\newtheorem{cejem}{Contraejemplo}[section]
-	\newtheorem{ejer}{Ejercicio}[section]
 	\theoremstyle{nonumberplain}
-	\newtheorem{sol}{Solución}
-	\newtheorem{obs}{Observación}
+	\theoremheaderfont{\normalfont}
+	\theorembodyfont{\upshape}
 	\newtheorem{proof}{Demostración}
-\renewcommand{\footnote}{\nota}
-% \author{Jhonny Lanzuisi}
+	\theoremstyle{plain}
+	\theorempreskip{1em}
+	\theorempostskip{1em}
+	\theoremheaderfont{\upshape}
+	\theorempostwork{\noindent}
+	\newtheorem{definition}{Definición}[section]

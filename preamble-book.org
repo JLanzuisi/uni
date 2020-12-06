@@ -1,0 +1,348 @@
+#+TITLE: Preámbulo de LaTeX (Libro)
+#+AUTHOR: Jhonny Lanzuisi
+#+TAGS: :latex:preamble:
+#+PROPERTY: header-args :exports code :tangle preamble-book.tex
+#+HTML_HEAD: <style>pre.src {background-color: #23272E; color: #8fbcbb;}</style>
+
+* Comentarios al inicio del archivo
+Este texto se puede ignorar, es solo para el archivo final.
+#+BEGIN_SRC latex
+% This TeX file is auto generated from a Org file.
+% As such, is not properly documented.
+% Please refer to the Org or HTML file instead for explanations.
+#+END_SRC
+
+* Configuraciones varias de TeX
+Esta parte hace que TeX no reporte overfull (o underfull) boxes si son muy pequeñas.
+Además, hace la marca de una overfull más grande, para que sea más fácil de ver.
+
+#+BEGIN_SRC latex
+\hfuzz1pc
+\overfullrule=2cm
+#+END_SRC
+
+* Configuración de idioma
+Aquí de configura el español, junto con una opción para que los párrafos que siguen a un título no estén identados.
+
+#+BEGIN_SRC latex
+\usepackage[spanish,es-noindentfirst]{babel}
+\usepackage{csquotes}
+#+END_SRC
+
+* Dimensiones de la página
+Los márgenes se configuran aquí. Junto con el tamaño del papel, actualmente en carta.
+
+#+BEGIN_SRC latex
+\usepackage[
+	includehead,
+	includefoot,
+	letterpaper,
+	top=2cm,
+	bottom=2cm,
+	left=4.5cm,
+	right=4.5cm,
+	marginparsep=0.5cm,
+	marginparwidth=4cm,
+]{geometry}
+#+END_SRC
+
+* Tipografías (texto y matemáticas)
+Primero cargamos los paquetes de la AMS para tener algunos símbolos y entornos útiles.
+También se definen algunos operadores.
+
+#+BEGIN_SRC latex
+\usepackage{mathtools}
+\DeclareMathOperator{\Rea}{Re}
+\DeclareMathOperator{\Ima}{Im}
+\DeclareMathOperator{\car}{car}
+\DeclareMathOperator{\traz}{tr}
+\DeclareMathOperator{\gen}{gen}
+\DeclareMathOperator{\mcm}{mcm}
+#+END_SRC
+
+Ahora siguen las fuentes del texto.
+Los paquetes para la codificación de los carácteres van al principio, como es usual.
+
+#+BEGIN_SRC latex
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+#+END_SRC
+
+Las fuentes intentan imitar el libro Concrete Mathematics.
+El comando =\cmfont= permite acceder a la familia de fuentes Computer Modern de una forma cómoda.
+
+#+BEGIN_SRC latex
+\usepackage{ccfonts}
+\usepackage{sourcesanspro}
+\usepackage{GoMono}
+\newcommand{\cmfont}{\fontfamily{cmr}\fontseries{bx}\selectfont}
+\frenchspacing
+#+END_SRC
+
+Ahora, la fuente de matemáticas.
+
+#+BEGIN_SRC latex
+\usepackage{eulervm}
+#+END_SRC
+
+Y por último, ajustes microtipográficos.
+
+#+BEGIN_SRC latex
+\usepackage[final]{microtype}
+#+END_SRC
+
+* Paquetes varios
+Primero, un línea que permite cargar las imágenes del documente según hagan falta.
+Esto se hace pasando la opción "borrador" al paquete que se encarga de las imágenes.
+
+#+BEGIN_SRC latex
+\PassOptionsToPackage{final}{graphicx}
+#+END_SRC
+
+Ahora, diversos paquetes útiles o que sirven de dependencias a otros.
+La mayoría son fáciles de entender, en cualquier caso chequeen la documentación individual de cada paquete (en GNU/Linux, con TeXLive, =texdoc $package-name=).
+
+#+BEGIN_SRC latex
+\usepackage{%
+	xcolor,%
+	graphicx,%
+	cancel,%
+	booktabs,
+	hyphenat,
+	authoraftertitle,
+	pdfpages,
+	metalogo
+}
+#+END_SRC
+
+* Referencias y bibliografía
+El siguiente bloque configura el estylo de la bibliografía,
+y además especifica el comando =biber= para procesar los archivos,
+evidentemente hará falat tener =biber= instalado para usarlo.
+La línea que especifica el lugar del archi =.bib= debe ser editada, evidentemente, si no se tiene una estructura de archivos idéntica.
+
+#+BEGIN_SRC latex
+\usepackage[
+	backend=biber,
+	backref=true,
+	style=trad-abbrv,
+	sorting=ynt
+]{biblatex}
+\addbibresource{/home/jhonny/git/Misc-LaTeX-files/bib/general.bib}
+#+END_SRC
+Nótese la opción =backref=true=, que permite hacer referencias desde la página de la bibliografía al texto.
+
+Ahora, se configura la apriencia de las referencias y los url.
+El paquete =cleveref= es bastante ùtil.
+
+#+BEGIN_SRC latex
+\usepackage{url} 
+\usepackage{hyperref} 
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=black}
+\usepackage[spanish,nameinlink]{cleveref} 
+#+END_SRC
+
+* Listas
+Este bloque se encarga de la apriencia de las listas, nada mas.
+
+#+BEGIN_SRC latex
+\usepackage{enumitem} 
+\setlist[enumerate]{left=-11pt,nosep}
+\setlist[description]{font=\normalfont,leftmargin=\parindent}
+\setlist[itemize]{label={\small\textbullet},left=-11pt}
+#+END_SRC
+
+* Bloques de código
+
+La apaciencia de los bloques de código, dando resaltado a la sintaxis, se configura a continuación.
+Esto de cuanto programe un poco de =R=, por eso es el único lenguaje.
+Escribir código en LaTeX es en general incómodo, solo es recomendable cuando no queda otra opción.
+Se pueden colocar varios =lsset= para configurar man lenguajes.
+
+#+BEGIN_SRC latex
+\usepackage[final]{listings} 
+\lstset{
+language=R, 
+numbers=left, numberstyle=\tiny\ttfamily, stepnumber=2, numbersep=5pt, 
+basicstyle=\ttfamily, 
+stringstyle=\ttfamily,
+commentstyle=\itshape,
+breaklines=true,
+postbreak=\mbox{$\hookrightarrow$\enspace},
+columns=flexible
+}
+#+END_SRC
+
+* Leyendas para figuras y tablas
+La apariencia de las leyendas. Nada interesante.
+
+#+BEGIN_SRC latex
+\usepackage{caption} 
+\captionsetup{
+font={rm},
+justification=raggedright,
+singlelinecheck=false,
+skip=3pt
+}
+#+END_SRC
+
+* Títulos de secciones y la lista de contenidos
+Los paquetes =titlesec= y =titletoc= pueden llegar a ser bastante confusos.
+Lamentablemente no hay mejor manera que ver la documentación original,
+sin la cual lo siguiente seguramente será ininteligible.
+
+El paquete en cuestión, con una opción para describir con mayor dellate el formato.
+
+#+BEGIN_SRC latex
+\usepackage[explicit]{titlesec}
+#+END_SRC
+
+Ahora, la configuración de las partes, capítulos, secciones y subsecciones; en ese orden.
+
+#+BEGIN_SRC latex
+\titleformat{\part}[display]
+{\flushleft\cmfont\fontsize{40}{40}\selectfont}
+	{\thepart}
+	{3em}
+	{#1}
+	[]
+\titleformat{\chapter}[display]
+	{\flushleft\Large\cmfont}
+	{\large\thechapter}
+	{1em}
+	{#1}
+	[]
+\titlespacing*{\chapter}
+	{0em}
+	{0em}
+	{3\baselineskip}
+\titleformat{\section}[hang]
+	{\flushleft\small\cmfont}
+	{\hspace{-2.4em}\S\thesection}
+	{.5em}
+	{\MakeUppercase{#1}}
+	[]
+\titlespacing*{\section}
+	{0em}
+	{1.5\baselineskip}
+	{0\baselineskip}
+\titleformat{\subsection}
+	{\flushleft\cmfont}
+	{\thesubsection}
+	{.5em}
+	{#1}
+	[]
+\titlespacing*{\subsection}
+	{0em}
+	{1\baselineskip}
+	{0\baselineskip}
+#+END_SRC
+
+La siguiente parte configura la lista de contenidos, y sigue el mismo orden que la anterior.
+
+#+BEGIN_SRC latex
+\usepackage{titletoc}
+#+END_SRC
+
+#+BEGIN_SRC latex
+\titlecontents{part}
+[1em]
+{\vspace{.3em}}%
+{\large\contentsmargin{0pt}}
+{\large\contentsmargin{0pt}}
+{}                 		
+[\vspace{4pt}]
+\titlecontents{chapter}
+[1em]
+{\vspace{.3em}}%
+{\contentsmargin{0pt}}
+{\contentsmargin{0pt}}
+{\hspace{3pt}\contentspage}                 		
+[\vspace{4pt}]
+\titlecontents{section}
+[4em]
+{}
+{\contentsmargin{0pt}}
+{\contentsmargin{0pt}}
+{\hspace{3pt}\contentspage}
+[\vspace{5pt}]
+\titlecontents{subsection}
+[5.5em]                              
+{\vspace{-4pt}}
+{\contentsmargin{0pt}\small\enspace}
+{\contentsmargin{0pt}}        
+{\small\contentspage}                 
+[\vspace{3pt}]
+#+END_SRC
+
+* Encabezados y pies de página
+Es normalmente recomendado usar para esto una clase de =koma-script=,
+y probablemente sea lo que haga en un futuro, por ahora funciona.
+
+El paquete que se encarga de todo.
+
+#+BEGIN_SRC latex
+\usepackage{fancyhdr}
+#+END_SRC
+
+Ahora, que no haya una linea horizontal en los encabezados, 
+y además ahcerlos suficientemente grandes.
+
+#+BEGIN_SRC latex
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\headheight}{14pt}
+#+END_SRC
+
+Ahora si, al configuración.
+Las partes comentadas son para documentos con la opción =twoside=.
+La construcción =if... else...= permite colocar cosas diferentes en las páginas pares e impares.
+#+BEGIN_SRC latex
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{%
+	\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\fancyhead[R]{\ifodd\value{page}{\nouppercase\rightmark}\else{}\fi}
+\fancyhead[L]{}
+\fancyfoot[R]{\thepage}
+% \fancyhead[OL]{\sffamily\nouppercase\rightmark}
+% \fancyhead[EL]{\sffamily\thepage}
+% \fancyhead[ER]{\sffamily\nouppercase{\leftmark}}
+% \fancyhead[OR]{\sffamily\thepage}
+\fancyfoot[L]{}
+\fancyfoot[C]{}
+\fancypagestyle{plain}{%
+	\fancyhead[R]{}
+	\fancyhead[L]{}
+	\fancyfoot[R]{}%
+	\fancyfoot[L]{}
+	\fancyfoot[C]{}
+}
+#+END_SRC
+
+* Entornos de teoremas
+Declaración y configuración de los entornos de teoremas.
+
+#+BEGIN_SRC latex
+\usepackage[thmmarks]{ntheorem}
+	\theoremstyle{plain}
+	\theoremindent0cm
+	\theorempreskip{0cm}
+	\theorempostskip{0cm}
+	\theoremheaderfont{\hspace*{\parindent}\upshape}
+	\theorembodyfont{\itshape}
+	\theoremseparator{.}
+	\newtheorem{teo}{Teorema}[section]
+	\newtheorem{cor}{Corolario}[teo]
+	\newtheorem{prop}{Proposición}[section]
+	\newtheorem{lem}{Lema}[section]
+	\theoremstyle{nonumberplain}
+	\theoremheaderfont{\normalfont}
+	\theorembodyfont{\upshape}
+	\newtheorem{proof}{Demostración}
+	\theoremstyle{plain}
+	\theorempreskip{1em}
+	\theorempostskip{1em}
+	\theoremheaderfont{\upshape}
+	\theorempostwork{\noindent}
+	\newtheorem{definition}{Definición}[section]
+#+END_SRC

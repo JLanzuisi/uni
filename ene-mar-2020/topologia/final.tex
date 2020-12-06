@@ -1,8 +1,8 @@
-\documentclass[letterpaper,10pt,final]{article}
+\documentclass[a5paper,10pt,final]{extarticle}
 \input{../../preamble-article.tex}
 
 \title{Ejercicios de topología. Evaluación final.}
-\author{Jhonny Lanzuisi, 15\,10759}
+%\author{Jhonny Lanzuisi, 15\,10759}
 \asignatura{Topología 1}
 
 % Algunos macros útiles. Comentar si algo de error.
@@ -12,17 +12,23 @@
 \DeclareMathOperator{\Id}{Id}
 \renewcommand{\mathbb}{\symbf}
 
+\let\footnote\null
+
 \begin{document}
 	\maketitle
-	\tableofcontents
+%	\tableofcontents
 \noindent Ejercicios del curso de topología 1. Los temas van desde las definiciones básicas hasta espacios conexos.
 Estos diez ejercicios representan la evaluación final del curso.
 
 Los diez ejercicios están distribuidos de la siguiente manera:
-uno en \S\ref{sec:def}, dos en \S\ref{sec:bas}, dos en \S\ref{sec:fun}, uno en \S\ref{sec:prod}, uno en \S\ref{sec:cociente} y tres en \S\ref{sec:conexo}.
+uno en \S\ref{sec:def}, dos en \S\ref{sec:bas}, dos en \S\ref{sec:fun}, uno en \S\ref{sec:prod}, uno en \S\ref{sec:cociente} y tres en \S\ref{sec:conexo}. Solucion
 
 A veces algunos ejercicios comparten parte de un enunciado, en cuyo caso dicha parte del enunciado aparece una sola vez antes de los ejercicios.
 Los párrafos marcados con `\textsc{solución}' corresponden a la solución de cada ejercicio y están colocados inmediatamente después de estos.
+
+\begin{center}
+	\rule{4em}{1pt}
+\end{center}
 
 \section{Definición de espacio topológico}\label{sec:def}
 
@@ -180,7 +186,7 @@ en $\mathcal{T}_L$. Entonces se tiene que $\mathcal{T}_L\not\subset\mathcal{T}_R
 
 \subsection{Continuidad}
 
-Sean $X$ y $Z$ dos espacios topológicos. Si $Y\subset Z$ y $f\colon X\to Y$, entonces $f$ es continua como una función de $X$ a $Y$ si, y solo si, $f$ es continua como una función de $X$ a $Z$.\footnote{Ejercicio tomado del Willard \cite[Nº E7]{willard_general_1970}}
+Sean $X$ y $Z$ dos espacios topológicos. Si $Y\subset Z$ y $f\colon X\to Y$, entonces $f$ es continua como una función de $X$ a $Y$ si, y solo si, $f$ es continua como una función de $X$ a $Z$.%\footnote{Ejercicio tomado del Willard \cite[Nº E7]{willard_general_1970}}
 
 \paragraph{Solución}
 
@@ -395,7 +401,7 @@ el siguiente teorema:
 
 \begin{quote}
 	\small Los resultados provienen principalmente del Munkres \cite{munkres_topology_2014},
-	aunque algunos son del Dugundji \cite{dugundji_topology_1987} y el Willard \cite{willard_general_1970}.
+	aunque algunos son del Dugundji \cite{dugundji_topology_1987} y el Willard %\cite{willard_general_1970}.
 \end{quote}
 
 \begin{teo}\label{teo:interConNum}
