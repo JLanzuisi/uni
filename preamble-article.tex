@@ -8,17 +8,18 @@
 \usepackage[spanish,es-noindentfirst]{babel}
 \usepackage{csquotes}
 
-\usepackage[
+\usepackage
+[
 	includehead,
 	includefoot,
-	letterpaper,
-	top=2cm,
-	bottom=2cm,
-	left=4.5cm,
-	right=4.5cm,
+	top=.5cm,
+	bottom=.5cm,
+	left=1.7cm,
+	right=7.3cm,
 	marginparsep=0.5cm,
-	marginparwidth=4cm,
-]{geometry}
+	marginparwidth=7cm,
+]
+{geometry}
 
 \usepackage{mathtools}
 \DeclareMathOperator{\Rea}{Re}
@@ -28,25 +29,28 @@
 \DeclareMathOperator{\gen}{gen}
 \DeclareMathOperator{\mcm}{mcm}
 
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
+\usepackage{unicode-math}
 
-\usepackage{ccfonts}
-\usepackage{sourcesanspro}
-\usepackage{GoMono}
+\setmainfont[Scale=.95]{DejaVu Serif}
+\defaultfontfeatures{Scale=MatchLowercase}
+\setsansfont{DejaVu Sans}
+\setmonofont{Hack}
+
 \frenchspacing
+\linespread{1.05}
 
-\usepackage{eulervm}
+\setmathfont{DejaVu Math TeX Gyre}
 
 \usepackage[final]{microtype}
 
 \PassOptionsToPackage{final}{graphicx}
 \PassOptionsToPackage{dvipsnames}{xcolor}
 
-\usepackage{%
-	xcolor,%
-	graphicx,%
-	cancel,%
+\usepackage
+{
+	xcolor,
+	graphicx,
+	cancel,
 	booktabs,
 	hyphenat,
 	authoraftertitle,
@@ -54,18 +58,21 @@
 	metalogo
 }
 
-\usepackage[
-	backend=biber,
-	backref=true,
-	citestyle=authoryear-comp,
-	style=chicago-authordate ,
-	sorting=ynt
-]{biblatex}
+\usepackage
+[
+backend=biber,
+backref=true,
+citestyle=authoryear-comp,
+style=chicago-authordate ,
+sorting=ynt
+]
+{biblatex}
 \addbibresource{/home/jhonny/git/Misc-LaTeX-files/bib/general.bib}
 
 \usepackage{url} 
 \usepackage{hyperref} 
-\hypersetup{
+\hypersetup
+{
 colorlinks=true,
 linkcolor=NavyBlue,
 urlcolor=NavyBlue,
@@ -75,18 +82,25 @@ citecolor=NavyBlue
 
 \newcommand{\marfont}{}
 
-\renewcommand*{\marginfont}{\marfont}
+%\renewcommand*{\marginfont}{\marfont}
 \let\oldmarginpar\marginpar
-\renewcommand{\marginpar}[1]{
+\renewcommand
+	{\marginpar}
+	[1]
+	{
 	\oldmarginpar{\raggedright\marfont #1}
-}
+	}
 
 \newcounter{nota}
-\newcommand{\nota}[1]{\refstepcounter{nota}\textsuperscript{\thenota}%
-	\marginpar{%
-		\raggedright\itshape\thenota. #1%
+\newcommand
+	{\nota}
+	[1]
+	{
+	\refstepcounter{nota}\textsuperscript{\thenota}
+	\marginpar{
+		\raggedright\itshape\thenota. #1
+		}
 	}
-}
 
 \renewcommand{\footnote}{\nota}
 
@@ -96,29 +110,48 @@ citecolor=NavyBlue
 \setlist[itemize]{label={\small\textbullet},left=-11pt}
 
 \newcommand{\Asignatura}{}
-\newcommand{\asignatura}[1]{\renewcommand{\Asignatura}{#1}}
+\newcommand
+	{\asignatura}
+	[1]
+	{\renewcommand{\Asignatura}{#1}}
 
 \makeatletter
-\def\@maketitle{%
-  \newpage
-  \null
-  \let \footnote \thanks
-  \begin{flushleft}
-	  {\MakeUppercase{\@title}
-	  	\marginnote{
-	  		\parbox{3cm}{\raggedright\normalfont\normalsize\@author}
-  		}[.5em]\par
-  	  }
+\def\@maketitle
+	{
+	\newpage
+	\null
+	\let \footnote \thanks
+  	\begin{flushleft}\sffamily
+  	\marginpar
+		{
+		\vspace*{.2em}
+		\begin{minipage}{.7\marginparwidth}
+		\begin{center}
+		\includegraphics
+			[width=.35\marginparwidth]
+			{/home/jhonny/git/LaTeX-University/usb-logo.png}\\
+		Universidad Simón Bolívar\\
+		Caracas, Venezuela\\
+		\end{center}
+		\end{minipage}
+		}
+	{
+	\Large\normalfont
+		\MyTitle
+	\par
+	}
 	\smallskip
-	  {\Asignatura\ (\today)\par}
-  \end{flushleft}
-  \vskip 1.5\baselineskip
-}
+	\Asignatura\par
+	\smallskip
+	\@author,\ \today.
+	\end{flushleft}
+	\vskip 1.5\baselineskip
+	}
 \makeatother
 
 \usepackage[final]{listings} 
-\lstset{
-language=R, 
+\lstset
+{
 numbers=left, numberstyle=\tiny\ttfamily, stepnumber=2, numbersep=5pt, 
 basicstyle=\ttfamily, 
 stringstyle=\ttfamily,
@@ -129,7 +162,8 @@ columns=flexible
 }
 
 \usepackage{caption} 
-\captionsetup{
+\captionsetup
+{
 font={rm},
 justification=raggedright,
 singlelinecheck=false,
@@ -139,18 +173,18 @@ skip=3pt
 \usepackage[explicit]{titlesec}
 
 \titleformat{\section}[hang]
-{\flushleft\scshape}
-	{\thesection}
+	{\flushleft\sffamily}
+	{\addfontfeatures{Numbers=Lining}\thesection}
 	{1em}
-	{#1}
+	{\addfontfeatures{LetterSpace=8}\MakeUppercase{#1}}
 	[]
 \titlespacing*{\section}
 	{0em}
 	{1.5\baselineskip}
 	{1.5\baselineskip}
 \titleformat{\subsection}
-{\flushleft\itshape}
-	{\thesubsection}
+	{\flushleft\sffamily}
+	{\addfontfeatures{Numbers=Lining}\thesubsection}
 	{.5em}
 	{#1}
 	[]
@@ -159,7 +193,7 @@ skip=3pt
 	{1\baselineskip}
 	{1\baselineskip}
 \titleformat{\paragraph}[runin]
-	{\bfseries}
+	{\scshape}
 	{}
 	{0em}
 	{\MakeLowercase{#1}}
@@ -170,7 +204,9 @@ skip=3pt
 	{5pt}
 
 \let\oldtoc\tableofcontents
-\renewcommand{\tableofcontents}{\marginpar{\bigskip\oldtoc}}
+\renewcommand
+{\tableofcontents}
+{\marginpar{\bigskip\oldtoc}}
 \usepackage{titletoc}
 
 \titlecontents{section}
@@ -195,35 +231,56 @@ skip=3pt
 
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\ifodd\value{page}\MyTitle\else\Asignatura\fi}
+\fancyhead
+	[L]
+	{
+	\ifodd\value{page}\MyTitle\else\Asignatura\fi
+	}
 \fancyhead[R]{\thepage}
-\fancypagestyle{plain}{%
+\fancypagestyle
+	{plain}
+	{
 	\fancyhead[R]{}
 	\fancyhead[L]{}
 	\fancyfoot[R]{}%
 	\fancyfoot[L]{}
 	\fancyfoot[C]{}
-}
+	}
 
 \usepackage[thmmarks]{ntheorem}
-	\theoremstyle{plain}
-	\theoremindent0cm
-	\theorempreskip{0cm}
-	\theorempostskip{0cm}
-	\theoremheaderfont{\hspace*{\parindent}\upshape}
-	\theorembodyfont{\itshape}
-	\theoremseparator{.}
-	\newtheorem{teo}{Teorema}[section]
-	\newtheorem{cor}{Corolario}[teo]
-	\newtheorem{prop}{Proposición}[section]
-	\newtheorem{lem}{Lema}[section]
-	\theoremstyle{nonumberplain}
-	\theoremheaderfont{\normalfont}
-	\theorembodyfont{\upshape}
-	\newtheorem{proof}{Demostración}
-	\theoremstyle{plain}
-	\theorempreskip{1em}
-	\theorempostskip{1em}
-	\theoremheaderfont{\upshape}
-	\theorempostwork{\noindent}
-	\newtheorem{definition}{Definición}[section]
+  % \usepackage[thmmarks]{ntheorem}
+  % 	\theoremstyle{plain}
+  % 	\theoremindent0cm
+  % 	\theorempreskip{0cm}
+  % 	\theorempostskip{0cm}
+  % 	\theoremheaderfont{\hspace*{\parindent}\upshape}
+  % 	\theorembodyfont{\itshape}
+  % 	\theoremseparator{.}
+  % 	\newtheorem{teo}{Teorema}[section]
+  % 	\newtheorem{cor}{Corolario}[teo]
+  % 	\newtheorem{prop}{Proposición}[section]
+  % 	\newtheorem{lem}{Lema}[section]
+  % 	\theoremstyle{nonumberplain}
+  % 	\theoremheaderfont{\normalfont}
+  % 	\theorembodyfont{\upshape}
+  % 	\newtheorem{proof}{Demostración}
+  % 	\theoremstyle{plain}
+  % 	\theorempreskip{1em}
+  % 	\theorempostskip{1em}
+  % 	\theoremheaderfont{\upshape}
+  % 	\theorempostwork{\noindent}
+  % 	\newtheorem{definition}{Definición}[section]
+
+\theoremstyle{plain}
+\theorempreskip{\medskipamount}
+\theorempostskip{\medskipamount}
+\theorembodyfont{\upshape}
+\theoremseparator{.}
+{
+\theoremheaderfont{\itshape}
+\newtheorem{definition}{Definición}
+}
+{
+\theoremheaderfont{\bfseries}
+\newtheorem{theorem}{Teorema}
+}

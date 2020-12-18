@@ -28,16 +28,17 @@
 \DeclareMathOperator{\gen}{gen}
 \DeclareMathOperator{\mcm}{mcm}
 
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
+\usepackage{unicode-math}
 
-\usepackage{ccfonts}
-\usepackage{sourcesanspro}
-\usepackage{GoMono}
-\newcommand{\cmfont}{\fontfamily{cmr}\fontseries{bx}\selectfont}
+\setmainfont{XCharter}
+\defaultfontfeatures{Scale=MatchLowercase}
+\setsansfont{TeX Gyre Heros}
+\setmonofont{Go Mono}
+
 \frenchspacing
+\linespread{1.04}
 
-\usepackage{eulervm}
+\setmathfont{TeX Gyre Termes Math}
 
 \usepackage[final]{microtype}
 
@@ -95,13 +96,13 @@ skip=3pt
 \usepackage[explicit]{titlesec}
 
 \titleformat{\part}[display]
-{\flushleft\cmfont\fontsize{40}{40}\selectfont}
+{\flushleft\sffamily\fontsize{40}{40}\selectfont}
 	{\thepart}
 	{3em}
 	{#1}
 	[]
 \titleformat{\chapter}[display]
-	{\flushleft\Large\cmfont}
+	{\flushleft\Large\sffamily}
 	{\large\thechapter}
 	{1em}
 	{#1}
@@ -111,7 +112,7 @@ skip=3pt
 	{0em}
 	{3\baselineskip}
 \titleformat{\section}[hang]
-	{\flushleft\small\cmfont}
+	{\flushleft\sffamily}
 	{\hspace{-2.4em}\S\thesection}
 	{.5em}
 	{\MakeUppercase{#1}}
@@ -121,7 +122,7 @@ skip=3pt
 	{1.5\baselineskip}
 	{0\baselineskip}
 \titleformat{\subsection}
-	{\flushleft\cmfont}
+	{\flushleft\sffamily}
 	{\thesubsection}
 	{.5em}
 	{#1}
@@ -205,8 +206,6 @@ skip=3pt
 	\theorembodyfont{\upshape}
 	\newtheorem{proof}{Demostración}
 	\theoremstyle{plain}
-	\theorempreskip{1em}
-	\theorempostskip{1em}
 	\theoremheaderfont{\upshape}
 	\theorempostwork{\noindent}
 	\newtheorem{definition}{Definición}[section]

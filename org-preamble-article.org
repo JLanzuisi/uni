@@ -1,12 +1,12 @@
+# -*- eval: (add-hook 'after-save-hook (lambda ()(org-babel-tangle)) nil t) -*-
 #+TITLE: Preámbulo de LaTeX (Artículo)
 #+AUTHOR: Jhonny Lanzuisi
 #+TAGS: :latex:preamble:
 #+PROPERTY: header-args :exports code :tangle preamble-article.tex
-#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+#+SETUPFILE: /home/jhonny/git/org-mode/style.css.org
+#+LATEX_HEADER: \lstset{language=TeX}
 
-* Comentarios al inicio del archivo
-Este texto se puede ignorar, es solo para el archivo final.
-#+BEGIN_SRC latex
+#+BEGIN_SRC latex :exports none
 % This TeX file is auto generated from a Org file.
 % As such, is not properly documented.
 % Please refer to the Org or HTML file instead for explanations.
@@ -33,17 +33,18 @@ Aquí de configura el español, junto con una opción para que los párrafos que
 Los márgenes se configuran aquí. Junto con el tamaño del papel, actualmente en carta.
 
 #+BEGIN_SRC latex
-\usepackage[
+\usepackage
+[
 	includehead,
 	includefoot,
-	letterpaper,
-	top=2cm,
-	bottom=2cm,
-	left=4.5cm,
-	right=4.5cm,
+	top=.5cm,
+	bottom=.5cm,
+	left=1.7cm,
+	right=7.3cm,
 	marginparsep=0.5cm,
-	marginparwidth=4cm,
-]{geometry}
+	marginparwidth=7cm,
+]
+{geometry}
 #+END_SRC
 
 * Tipografías (texto y matemáticas)
@@ -60,27 +61,35 @@ También se definen algunos operadores.
 \DeclareMathOperator{\mcm}{mcm}
 #+END_SRC
 
-Ahora siguen las fuentes del texto.
-Los paquetes para la codificación de los carácteres van al principio, como es usual.
+Las fuentes utilizan el paquete =fontspec=, por lo que =lualatex= o =xelatex= son necesarios.
+Además, dado que =unicode-math= carga =fontspec= por defecto, es suficiente con:
 
 #+BEGIN_SRC latex
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
+\usepackage{unicode-math}
 #+END_SRC
 
-Las fuentes intentan imitar el libro Concrete Mathematics.
+Ahora, si, las fuentes del texto.
+Se usan por defecto números proporcionales y "oldstyle".
 
 #+BEGIN_SRC latex
-\usepackage{ccfonts}
-\usepackage{sourcesanspro}
-\usepackage{GoMono}
+\setmainfont[Scale=.95]{DejaVu Serif}
+\defaultfontfeatures{Scale=MatchLowercase}
+\setsansfont{DejaVu Sans}
+\setmonofont{Hack}
+#+END_SRC
+
+Algo de espacio entre las lineas. El comando =\frenchspacing= hace que LaTeX coloque un solo espacio después de los puntos.
+
+#+BEGIN_SRC latex
 \frenchspacing
+\linespread{1.05}
 #+END_SRC
 
-Ahora, la fuente de matemáticas.
+Las fuentes de matemáticas estan basadas en Times Roman,
+mas que nada para ser consistente con la versión HTML.
 
 #+BEGIN_SRC latex
-\usepackage{eulervm}
+\setmathfont{DejaVu Math TeX Gyre}
 #+END_SRC
 
 Y por último, ajustes microtipográficos.
@@ -103,10 +112,11 @@ Ahora, diversos paquetes útiles o que sirven de dependencias a otros.
 La mayoría son fáciles de entender, en cualquier caso chequeen la documentación individual de cada paquete (en GNU/Linux, con TeXLive, =texdoc $package-name=).
 
 #+BEGIN_SRC latex
-\usepackage{%
-	xcolor,%
-	graphicx,%
-	cancel,%
+\usepackage
+{
+	xcolor,
+	graphicx,
+	cancel,
 	booktabs,
 	hyphenat,
 	authoraftertitle,
@@ -122,13 +132,15 @@ evidentemente hará falat tener =biber= instalado para usarlo.
 La línea que especifica el lugar del archi =.bib= debe ser editada, evidentemente, si no se tiene una estructura de archivos idéntica.
 
 #+BEGIN_SRC latex
-\usepackage[
-	backend=biber,
-	backref=true,
-	citestyle=authoryear-comp,
-	style=chicago-authordate ,
-	sorting=ynt
-]{biblatex}
+\usepackage
+[
+backend=biber,
+backref=true,
+citestyle=authoryear-comp,
+style=chicago-authordate ,
+sorting=ynt
+]
+{biblatex}
 \addbibresource{/home/jhonny/git/Misc-LaTeX-files/bib/general.bib}
 #+END_SRC
 Nótese la opción =backref=true=, que permite hacer referencias desde la página de la bibliografía al texto.
@@ -139,7 +151,8 @@ El paquete =cleveref= es bastante ùtil.
 #+BEGIN_SRC latex
 \usepackage{url} 
 \usepackage{hyperref} 
-\hypersetup{
+\hypersetup
+{
 colorlinks=true,
 linkcolor=NavyBlue,
 urlcolor=NavyBlue,
@@ -160,22 +173,29 @@ Ahora, cambiamos el comando =marginpar= para que use esa fuente,
 y este alineado a la izquierda.
 
 #+BEGIN_SRC latex
-\renewcommand*{\marginfont}{\marfont}
+%\renewcommand*{\marginfont}{\marfont}
 \let\oldmarginpar\marginpar
-\renewcommand{\marginpar}[1]{
+\renewcommand
+	{\marginpar}
+	[1]
+	{
 	\oldmarginpar{\raggedright\marfont #1}
-}
+	}
 #+END_SRC
 
 El siguiente es un comando que inserta notas al margen numeradas.
 
 #+BEGIN_SRC latex
 \newcounter{nota}
-\newcommand{\nota}[1]{\refstepcounter{nota}\textsuperscript{\thenota}%
-	\marginpar{%
-		\raggedright\itshape\thenota. #1%
+\newcommand
+	{\nota}
+	[1]
+	{
+	\refstepcounter{nota}\textsuperscript{\thenota}
+	\marginpar{
+		\raggedright\itshape\thenota. #1
+		}
 	}
-}
 #+END_SRC
 
 Por último, que el comando =footnote= sea lo mismo que =nota=, para que el documento TeX sea mas portable.
@@ -201,28 +221,47 @@ de eso se encarga el siguiente bloque.
 
 #+BEGIN_SRC latex
 \newcommand{\Asignatura}{}
-\newcommand{\asignatura}[1]{\renewcommand{\Asignatura}{#1}}
+\newcommand
+	{\asignatura}
+	[1]
+	{\renewcommand{\Asignatura}{#1}}
 #+END_SRC
 
 Ahora si, la definicón de =maketitle=
 
 #+BEGIN_SRC latex
 \makeatletter
-\def\@maketitle{%
-  \newpage
-  \null
-  \let \footnote \thanks
-  \begin{flushleft}
-	  {\MakeUppercase{\@title}
-	  	\marginnote{
-	  		\parbox{3cm}{\raggedright\normalfont\normalsize\@author}
-  		}[.5em]\par
-  	  }
+\def\@maketitle
+	{
+	\newpage
+	\null
+	\let \footnote \thanks
+  	\begin{flushleft}\sffamily
+  	\marginpar
+		{
+		\vspace*{.2em}
+		\begin{minipage}{.7\marginparwidth}
+		\begin{center}
+		\includegraphics
+			[width=.35\marginparwidth]
+			{/home/jhonny/git/LaTeX-University/usb-logo.png}\\
+		Universidad Simón Bolívar\\
+		Caracas, Venezuela\\
+		\end{center}
+		\end{minipage}
+		}
+	{
+	\Large\normalfont
+		\MyTitle
+	\par
+	}
 	\smallskip
-	  {\Asignatura\ (\today)\par}
-  \end{flushleft}
-  \vskip 1.5\baselineskip
-}
+	\Asignatura\par
+	\smallskip
+	\@author,\ \today.
+	\end{flushleft}
+	\vskip 1.5\baselineskip
+	}
 \makeatother
 #+END_SRC
 * Bloques de código (PDF)
@@ -234,8 +273,8 @@ Se pueden colocar varios =lsset= para configurar man lenguajes.
 
 #+BEGIN_SRC latex
 \usepackage[final]{listings} 
-\lstset{
-language=R, 
+\lstset
+{
 numbers=left, numberstyle=\tiny\ttfamily, stepnumber=2, numbersep=5pt, 
 basicstyle=\ttfamily, 
 stringstyle=\ttfamily,
@@ -251,7 +290,8 @@ La apariencia de las leyendas. Nada interesante.
 
 #+BEGIN_SRC latex
 \usepackage{caption} 
-\captionsetup{
+\captionsetup
+{
 font={rm},
 justification=raggedright,
 singlelinecheck=false,
@@ -274,18 +314,18 @@ Ahora, la configuración de las secciones y subsecciones; en ese orden.
 
 #+BEGIN_SRC latex
 \titleformat{\section}[hang]
-{\flushleft\scshape}
-	{\thesection}
+	{\flushleft\sffamily}
+	{\addfontfeatures{Numbers=Lining}\thesection}
 	{1em}
-	{#1}
+	{\addfontfeatures{LetterSpace=8}\MakeUppercase{#1}}
 	[]
 \titlespacing*{\section}
 	{0em}
 	{1.5\baselineskip}
 	{1.5\baselineskip}
 \titleformat{\subsection}
-{\flushleft\itshape}
-	{\thesubsection}
+	{\flushleft\sffamily}
+	{\addfontfeatures{Numbers=Lining}\thesubsection}
 	{.5em}
 	{#1}
 	[]
@@ -294,7 +334,7 @@ Ahora, la configuración de las secciones y subsecciones; en ese orden.
 	{1\baselineskip}
 	{1\baselineskip}
 \titleformat{\paragraph}[runin]
-	{\bfseries}
+	{\scshape}
 	{}
 	{0em}
 	{\MakeLowercase{#1}}
@@ -309,7 +349,9 @@ La siguiente parte configura la lista de contenidos, y sigue el mismo orden que 
 
 #+BEGIN_SRC latex
 \let\oldtoc\tableofcontents
-\renewcommand{\tableofcontents}{\marginpar{\bigskip\oldtoc}}
+\renewcommand
+{\tableofcontents}
+{\marginpar{\bigskip\oldtoc}}
 \usepackage{titletoc}
 #+END_SRC
 
@@ -353,41 +395,67 @@ La construcción =if... else...= permite colocar cosas diferentes en las página
 #+BEGIN_SRC latex
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\ifodd\value{page}\MyTitle\else\Asignatura\fi}
+\fancyhead
+	[L]
+	{
+	\ifodd\value{page}\MyTitle\else\Asignatura\fi
+	}
 \fancyhead[R]{\thepage}
-\fancypagestyle{plain}{%
+\fancypagestyle
+	{plain}
+	{
 	\fancyhead[R]{}
 	\fancyhead[L]{}
 	\fancyfoot[R]{}%
 	\fancyfoot[L]{}
 	\fancyfoot[C]{}
-}
+	}
 #+END_SRC
 
 * Entornos de teoremas
 Declaración y configuración de los entornos de teoremas.
+Para esto, usamos el siguiente paquete.
 
 #+BEGIN_SRC latex
 \usepackage[thmmarks]{ntheorem}
-	\theoremstyle{plain}
-	\theoremindent0cm
-	\theorempreskip{0cm}
-	\theorempostskip{0cm}
-	\theoremheaderfont{\hspace*{\parindent}\upshape}
-	\theorembodyfont{\itshape}
-	\theoremseparator{.}
-	\newtheorem{teo}{Teorema}[section]
-	\newtheorem{cor}{Corolario}[teo]
-	\newtheorem{prop}{Proposición}[section]
-	\newtheorem{lem}{Lema}[section]
-	\theoremstyle{nonumberplain}
-	\theoremheaderfont{\normalfont}
-	\theorembodyfont{\upshape}
-	\newtheorem{proof}{Demostración}
-	\theoremstyle{plain}
-	\theorempreskip{1em}
-	\theorempostskip{1em}
-	\theoremheaderfont{\upshape}
-	\theorempostwork{\noindent}
-	\newtheorem{definition}{Definición}[section]
+  % \usepackage[thmmarks]{ntheorem}
+  % 	\theoremstyle{plain}
+  % 	\theoremindent0cm
+  % 	\theorempreskip{0cm}
+  % 	\theorempostskip{0cm}
+  % 	\theoremheaderfont{\hspace*{\parindent}\upshape}
+  % 	\theorembodyfont{\itshape}
+  % 	\theoremseparator{.}
+  % 	\newtheorem{teo}{Teorema}[section]
+  % 	\newtheorem{cor}{Corolario}[teo]
+  % 	\newtheorem{prop}{Proposición}[section]
+  % 	\newtheorem{lem}{Lema}[section]
+  % 	\theoremstyle{nonumberplain}
+  % 	\theoremheaderfont{\normalfont}
+  % 	\theorembodyfont{\upshape}
+  % 	\newtheorem{proof}{Demostración}
+  % 	\theoremstyle{plain}
+  % 	\theorempreskip{1em}
+  % 	\theorempostskip{1em}
+  % 	\theoremheaderfont{\upshape}
+  % 	\theorempostwork{\noindent}
+  % 	\newtheorem{definition}{Definición}[section]
+#+END_SRC
+
+Ahora, los entornos numerados.
+
+#+BEGIN_SRC latex
+\theoremstyle{plain}
+\theorempreskip{\medskipamount}
+\theorempostskip{\medskipamount}
+\theorembodyfont{\upshape}
+\theoremseparator{.}
+{
+\theoremheaderfont{\itshape}
+\newtheorem{definition}{Definición}
+}
+{
+\theoremheaderfont{\bfseries}
+\newtheorem{theorem}{Teorema}
+}
 #+END_SRC

@@ -1,12 +1,11 @@
+# -*- eval: (add-hook 'after-save-hook (lambda ()(org-babel-tangle)) nil t) -*-
 #+TITLE: Preámbulo de LaTeX (Libro)
 #+AUTHOR: Jhonny Lanzuisi
 #+TAGS: :latex:preamble:
 #+PROPERTY: header-args :exports code :tangle preamble-book.tex
-#+HTML_HEAD: <style>pre.src {background-color: #23272E; color: #8fbcbb;}</style>
+#+SETUPFILE: /home/jhonny/git/org-mode/style.css.org
 
-* Comentarios al inicio del archivo
-Este texto se puede ignorar, es solo para el archivo final.
-#+BEGIN_SRC latex
+#+BEGIN_SRC latex :exports none
 % This TeX file is auto generated from a Org file.
 % As such, is not properly documented.
 % Please refer to the Org or HTML file instead for explanations.
@@ -60,29 +59,34 @@ También se definen algunos operadores.
 \DeclareMathOperator{\mcm}{mcm}
 #+END_SRC
 
-Ahora siguen las fuentes del texto.
-Los paquetes para la codificación de los carácteres van al principio, como es usual.
+Las fuentes utilizan el paquete =fontspec=, por lo que =lualatex= o =xelatex= son necesarios.
+Además, dado que =unicode-math= carga =fontspec= por defecto, es suficiente con:
 
 #+BEGIN_SRC latex
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
+\usepackage{unicode-math}
 #+END_SRC
 
-Las fuentes intentan imitar el libro Concrete Mathematics.
-El comando =\cmfont= permite acceder a la familia de fuentes Computer Modern de una forma cómoda.
+Ahora, si, las fuentes del texto.
 
 #+BEGIN_SRC latex
-\usepackage{ccfonts}
-\usepackage{sourcesanspro}
-\usepackage{GoMono}
-\newcommand{\cmfont}{\fontfamily{cmr}\fontseries{bx}\selectfont}
+\setmainfont{XCharter}
+\defaultfontfeatures{Scale=MatchLowercase}
+\setsansfont{TeX Gyre Heros}
+\setmonofont{Go Mono}
+#+END_SRC
+
+Algo de espacio entre las lineas.
+
+#+BEGIN_SRC latex
 \frenchspacing
+\linespread{1.04}
 #+END_SRC
 
-Ahora, la fuente de matemáticas.
+Las fuentes de matemáticas estan basadas en Times Roman,
+mas que nada para ser consistente con la versión HTML.
 
 #+BEGIN_SRC latex
-\usepackage{eulervm}
+\setmathfont{TeX Gyre Termes Math}
 #+END_SRC
 
 Y por último, ajustes microtipográficos.
@@ -201,13 +205,13 @@ Ahora, la configuración de las partes, capítulos, secciones y subsecciones; en
 
 #+BEGIN_SRC latex
 \titleformat{\part}[display]
-{\flushleft\cmfont\fontsize{40}{40}\selectfont}
+{\flushleft\sffamily\fontsize{40}{40}\selectfont}
 	{\thepart}
 	{3em}
 	{#1}
 	[]
 \titleformat{\chapter}[display]
-	{\flushleft\Large\cmfont}
+	{\flushleft\Large\sffamily}
 	{\large\thechapter}
 	{1em}
 	{#1}
@@ -217,7 +221,7 @@ Ahora, la configuración de las partes, capítulos, secciones y subsecciones; en
 	{0em}
 	{3\baselineskip}
 \titleformat{\section}[hang]
-	{\flushleft\small\cmfont}
+	{\flushleft\sffamily}
 	{\hspace{-2.4em}\S\thesection}
 	{.5em}
 	{\MakeUppercase{#1}}
@@ -227,7 +231,7 @@ Ahora, la configuración de las partes, capítulos, secciones y subsecciones; en
 	{1.5\baselineskip}
 	{0\baselineskip}
 \titleformat{\subsection}
-	{\flushleft\cmfont}
+	{\flushleft\sffamily}
 	{\thesubsection}
 	{.5em}
 	{#1}
@@ -340,8 +344,6 @@ Declaración y configuración de los entornos de teoremas.
 	\theorembodyfont{\upshape}
 	\newtheorem{proof}{Demostración}
 	\theoremstyle{plain}
-	\theorempreskip{1em}
-	\theorempostskip{1em}
 	\theoremheaderfont{\upshape}
 	\theorempostwork{\noindent}
 	\newtheorem{definition}{Definición}[section]
