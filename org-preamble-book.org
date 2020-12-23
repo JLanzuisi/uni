@@ -5,6 +5,8 @@
 #+PROPERTY: header-args :exports code :tangle preamble-book.tex
 #+SETUPFILE: /home/jhonny/git/org-mode/style.css.org
 
+# LICENSE: See license notice bellow
+
 #+BEGIN_SRC latex :exports none
 % This TeX file is auto generated from a Org file.
 % As such, is not properly documented.
