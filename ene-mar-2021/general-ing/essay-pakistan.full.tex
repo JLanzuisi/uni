@@ -1,0 +1,252 @@
+\documentclass{scrartcl}
+% So that TeX doesn't complain about small
+% underfull or overfull boxes
+\hfuzz1pc
+% Make the overfull marker bigger
+\overfullrule=2cm
+
+% Font setup.
+\usepackage{kpfonts-otf}
+% 20% bigger line height
+\linespread{1.03}
+% Don't put extra space after periods
+\frenchspacing
+
+\KOMAoptions{
+paper = letter,
+BCOR = 0mm,
+twoside = false,
+fontsize = {11},
+DIV = calc,
+}
+
+% Make bibliography more compact, no indents.
+\KOMAoption{toc}{flat}
+
+% Language support, usually changes between english
+% and spanish.
+%\usepackage[spanish,es-noindentfirst]{babel}
+\usepackage[english]{babel}
+
+% Bibliography
+\usepackage[
+backend=biber,
+style=numeric-comp,
+backref=true,
+backrefstyle=two,
+abbreviate=true
+]{biblatex}
+\addbibresource{~/git/Misc-LaTeX-files/bib/general.bib}
+\addbibresource{~/git/Misc-LaTeX-files/bib/math-books.bib}
+
+% Graphics, mainly to insert images or
+% single page PDFs.
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+% Handy command to typeset URLs
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=Mahogany,
+    filecolor=Mahogany,
+    urlcolor=Mahogany,
+    citecolor=Mahogany,
+}
+\usepackage{url}
+\urlstyle{same}
+\usepackage{metalogo}
+
+
+% Font style and size for title
+\setkomafont{title}{\sffamily}
+% Font style for the subject
+\setkomafont{subject}{\normalfont}
+% Font style for subtitle
+\setkomafont{subtitle}{\normalfont\itshape}
+\setkomafont{section}{\fontseries{m}\sffamily\Large}
+\setkomafont{subsection}{\fontseries{m}\sffamily\large}
+\setkomafont{subsubsection}{\fontseries{m}\sffamily}
+
+% CUSTOM MACROS
+% ToC not in sans-serif
+\let\oldtoc\tableofcontents
+\renewcommand{\tableofcontents}{{\renewcommand{\sffamily}{\rmfamily}\oldtoc}}
+% Macros for writing code
+\newcommand{\icode}[1]{\verb~#1~}
+%
+\begin{document}
+%
+%
+\newcommand{\tpak}{`Train to pakistan'}
+\newcommand{\ks}{Kushwant Singh}
+\title{Essay on \tpak}
+\subtitle{Answer to question No. 2}
+\subject{IDE 143---El mundo de la literatura en inglés}
+\titlehead{Universidad Simón Bolívar\hfill Caracas, Venezuela}
+\author{by \\ Jhonny Lanzuisi}
+\date{\today}
+\maketitle
+
+\section*{After reading \tpak\ what effects of Partition are evident in the story. How has Partition effected the lives of the people in the village?}
+\label{sec:question}
+
+In his 1956 novel \tpak \cite{khushwant_singh_train_1990},
+author \ks\ portraits the period of Indian history know
+as ``The partition of 1947'' trough the lens of a small village
+with mixed religious population.
+
+The \( i = 3yz^2\) author uses this setting to show and criticize
+the partition period, because of it's inhumanity and
+atrocities.
+
+\[ \sum x^2 p = \frac12 qr^r\]
+
+Racism, religious and national fanaticism,
+public slaughter and generalized violence against ethnic groups;
+are all portrayed by \ks, sometimes in a subtle way,
+other times abrupt and disheartening.
+
+The overall atmosphere of the history
+helps emphasize this elements,
+it is mostly a gloomy and sad atmosphere
+with clouded skies.
+
+One of the most important effects of the Partition
+that also plays a major roll in \tpak is
+the hatred and distrust that can quickly arise
+between peoples that, not so long ago,
+were living peacefully.
+
+In the novel we see the history of a village
+being taken apart.
+First the villagers seem to have fallen victims
+to distrust and internal conflict:
+\begin{quote}
+  Our problem is: \emph{what are we to do with all
+    these pigs we have with us?} (...) We have treated them
+  like our own brothers. \emph{They have behaved like snakes}.
+  \cite[p. 171, para. 6, emphasis added by me]{khushwant_singh_train_1990}.
+\end{quote}
+The Sikh population of the village,
+having heard the tales of horror coming from Pakistan,
+begin fearing and being angry at the Muslim part of the village.
+
+This, in a heartwarming scene, is resolved
+by the Muslims interrupting the reunion
+thus making the Sikhs realize their errors
+and they decide to help each other instead.
+
+In this part of the story a new effect of the
+partition comes into play.
+The Muslims must go from the village by decree,
+that's what the partition is all about,
+to Pakistan.
+This means that the gained friendship is destined
+to be doomed from the beginning
+and that, ultimately,
+the will and decisions of the villagers are meaningless.
+At the end the Muslims will be forced to leave or
+face dangerous consequences.
+
+This means that the partition established a system
+of almost forced removals, given that the alternative
+to going away from one's home would likely be death.
+
+Two more elements are left to be portrayed
+before the end of the story:
+the struggle of women and the great levels of poverty.
+At the end we'll be treated to a final element of the partition
+period, the last one to be shown in \tpak.
+
+Trough the character of a young Muslim women,
+who's in love with a Sikh men and carries their child,
+we see the hard times women went trough and
+the destruction of many human relationships.
+
+It is not only the fact that women were
+likely to be raped or violently treated in various ways,
+but also the fact that being forced to move would
+make it so that many would lose their loved ones.
+In the case of our Muslim women, also a father for her child.
+
+The situation of women is then a dire one,
+whether they stay or they leave they're destined
+to great suffering.
+
+To all this we have to add the fact that the villagers
+are poor farmers and country men and women.
+The little they have they've keep for generations,
+and they'll likely inherit it to their children.
+This means they don't keep their saving in a bank,
+or even in money.
+All they have is material in it's most raw form.
+
+This of course contradicts with their impeding
+transport to Pakistan.
+They cannot take they belongings with them,
+so they must loose the little they had.
+
+With this, author \ks, introduces another aspect of
+the partition: the dishonest and wrongful distribution
+of property in the forcefully leaved areas.
+In the story, a group of newcomers (Sikh refugees)
+get to effectively steal all Muslim property.
+
+At the end of the story, as the Muslims get prepared
+to board the jeeps that'll take them away,
+we see our last image from the partition, and
+a very sorrowful one:
+\begin{quote}
+  In the confusion of rain, mud, and soldiers
+  herding the peasants with the muzzles of their sten guns
+  sticking in their backs, the villagers saw little of each other.
+  (...)
+  The skis watched them until they were out of sight,
+  they watched their tears of their faces and turned back to
+  their homes with heavy hearts.
+  \cite[p. 185, para. 1]{khushwant_singh_train_1990}
+\end{quote}
+This last element of the partition is the treatment
+of human being like live stock, to be moved and displaced
+at the will of some foreign peoples,
+living far away.
+
+As we've seen so far,
+\ks\ trough his work gives us a window
+to look at the partition of India
+by the imperial British,
+to witness it's horrors and,
+hopefully,
+also to learn from them.
+%
+\printbibliography
+\newpage
+\section*{Colophon \& Copyright}
+This document was typeset using \LuaTeX\footnote{\TeX\ is
+a typesetting software, free and open source,
+developed by Donald Knuth. \LaTeX\ is available in
+all major operating systems.}
+and the \LaTeXe\ macros in a GNU/Li\-nux operating system.
+The editor used for editing the text was visual studio code.
+The main typefaces used are Times Roman,
+Helvetica and Courier, for text and for maths
+STIX%
+\footnote{In \LaTeX\ this amounts to using the package
+\icode{unicode-math} and then setting the corresponding
+opentype fonts. For text the \TeX\ Gyre family was used,
+and for maths the XITS font derived from STIX.}.
+\medskip
+\begin{quote}\footnotesize
+  \begin{quote}
+  Copyright (C)  2021 Jhonny Lanzuisi.\\
+  Permission is granted to copy, distribute and/or modify this document
+  under the terms of the GNU Free Documentation License, Version 1.3
+  or any later version published by the Free Software Foundation;
+  with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+  A copy of the license can be found at\\
+  \url{https://www.gnu.org/licenses/fdl-1.3.en.html}.\par
+  \end{quote}
+\end{quote}
+\newpage
+\tableofcontents
+\end{document}

@@ -1,0 +1,314 @@
+\documentclass[landscape]{slides}
+\usepackage[landscape]{geometry}
+
+% Font setup.
+\usepackage[T1]{fontenc}
+\usepackage{tgtermes}
+\usepackage[scale=.85]{tgheros}
+\usepackage{zlmtt}
+\usepackage[notext]{stix}
+
+\usepackage{url}
+\usepackage[dvipsnames]{xcolor}
+
+\renewcommand{\sffamily}{\rmfamily}
+
+\newcommand{\colt}[1]{\textcolor{MidnightBlue}{\textbf{#1}}}
+\newcommand{\sldt}[1]{\colt{\large #1}}
+
+\begin{document}
+\raggedright
+{\small Universidad Simón Bolívar}
+\bigskip
+
+{\small ID2131-English for mathematicians I}\\[.5em]
+\colt{\Large Class about subtraction}
+
+{\LARGE
+\[ \alpha - \beta = \gamma \]
+}
+\vfill
+by\\
+Jhonny Lanzuisi
+
+{\small
+  \today\\
+Final evaluation
+Jan-Mar 2021}
+
+\begin{slide}
+  \sldt{What is it?}
+
+  An operation between two numbers.
+  Something we \emph{do} to said numbers.
+
+  {\Large
+    \[ a \;\textcolor{red}{-}\; b = c\]
+  }
+\end{slide}
+
+\begin{slide}
+  \sldt{What is it?}
+
+  An operation between two numbers.
+  Something we \emph{do} to said numbers.
+
+  {\Large
+    \[ \textcolor{blue}{a} - \textcolor{red}{b} = \textcolor{green}{c} \]
+  }
+\end{slide}
+
+\begin{slide}
+  \sldt{What is it?}
+
+  An operation between two numbers.
+  Something we \emph{do} to said numbers.
+  That something is \emph{taking away}, i.e.,
+  we take away 7 units from 10.
+
+  {\Large
+    \[ \textcolor{Gray}{a - b = c} \]
+    \[ 10 - 7 = 3 \]
+  }
+\end{slide}
+
+\begin{slide}
+  \sldt{Visualization}
+
+  Imagine the \emph{real line}.
+
+  \setlength{\unitlength}{2cm}
+  \begin{picture}(10,2)
+    \thicklines
+    \put(0,1){\line(1,0){10}}
+    \put(5,0.75){\line(0,1){0.5}}
+    \put(5,1.30){0}
+    \put(6,0.75){\line(0,1){0.5}}
+    \put(6,1.30){1}
+    \put(7,0.75){\line(0,1){0.5}}
+    \put(7,1.30){2}
+    \put(8,0.75){\line(0,1){0.5}}
+    \put(8,1.30){3}
+    \put(9,0.75){\line(0,1){0.5}}
+    \put(9,1.30){4}
+    \put(0,1){\line(1,0){10}}
+    \put(4,0.75){\line(0,1){0.5}}
+    \put(4,1.30){-1}
+    \put(3,0.75){\line(0,1){0.5}}
+    \put(3,1.30){-2}
+    \put(2,0.75){\line(0,1){0.5}}
+    \put(2,1.30){-3}
+    \put(1,0.75){\line(0,1){0.5}}
+    \put(1,1.30){-4}
+    \put(5.5,0.5){\vector(0,1){0.5}}
+    \put(5.5,0.2){$\frac{1}{2}$}
+    \put(8.14,0.5){\vector(0,1){0.5}}
+    \put(8.14,0.3){$\pi$}
+    \put(8.14,0){\footnotesize $3.141592\dots$}
+  \end{picture}
+\end{slide}
+
+\begin{slide}
+  \sldt{Visualization}
+
+  Imagine the \emph{real line}. Then subtraction means \emph{moving to the left}.
+
+  \setlength{\unitlength}{2cm}
+  \begin{picture}(10,2)
+    \thicklines
+    \put(0,1){\line(1,0){10}}
+    \put(5,0.75){\line(0,1){0.5}}
+    \put(5,1.30){0}
+    \put(6,0.75){\line(0,1){0.5}}
+    \put(6,1.30){\textcolor{green}{1}}
+    \put(7,0.75){\line(0,1){0.5}}
+    \put(7,1.30){2}
+    \put(8,0.75){\line(0,1){0.5}}
+    \put(8,1.30){\textcolor{red}{3}}
+    \put(9,0.75){\line(0,1){0.5}}
+    \put(9,1.30){\textcolor{blue}{4}}
+    \put(0,1){\line(1,0){10}}
+    \put(4,0.75){\line(0,1){0.5}}
+    \put(4,1.30){-1}
+    \put(3,0.75){\line(0,1){0.5}}
+    \put(3,1.30){-2}
+    \put(2,0.75){\line(0,1){0.5}}
+    \put(2,1.30){-3}
+    \put(1,0.75){\line(0,1){0.5}}
+    \put(1,1.30){-4}
+    \put(9,1.8){\vector(-1,0){3}}
+  \end{picture}
+\end{slide}
+
+\begin{slide}
+  \sldt{Properties}
+
+  Changing the order \emph{changes} the result.
+
+  {\Large
+    \[ a - b \;\textcolor{blue}{\neq}\; b - a \]
+  }
+
+  \vfill
+  \hfill
+  (Non-commutativity)
+\end{slide}
+
+\begin{slide}
+  \sldt{Properties}
+
+  Changing the order \emph{changes} the result.
+
+  {\Large
+    \[ \textcolor{Gray}{a - b \neq b - a} \]
+    \[ \underbrace{10 - 7}_3 \neq \underbrace{7 - 10}_{-3} \]
+  }
+
+  \vfill
+  \hfill
+  (Non-commutativity)
+\end{slide}
+
+\begin{slide}
+  \sldt{Properties}
+
+  Changing the order \emph{changes} the result.
+  But only for a \emph{negative sing}.
+  If we get rid of it (absolute value)
+  then we do get the same amount.
+
+  {\Large
+    \[ \textcolor{Gray}{a - b \neq b - a} \]
+    \[ \underbrace{10 - 7}_3 \neq \underbrace{7 - 10}_{-3} \]
+  }
+
+  \vfill
+  \hfill
+  (Non-commutativity)
+\end{slide}
+
+\begin{slide}
+  \sldt{Properties}
+
+  Grouping \emph{also changes} the result.
+
+  {\Large
+    \[ (a-b) - c \neq a - (b-c)\]
+  }
+
+  \vfill
+ \hfill
+ (Non associative)
+\end{slide}
+
+\begin{slide}
+  \sldt{Properties}
+
+  Grouping \emph{also changes} the result.
+
+  {\Large
+    \textcolor{Gray}{\[ (a-b) - c \neq a - (b-c)\]}
+    \[(10 - 7) - 2 \neq 10 - (7-2)\]
+  }
+
+  \vfill
+ \hfill
+ (Non associative)
+\end{slide}
+
+\begin{slide}
+  \sldt{Properties}
+
+  Grouping \emph{also changes} the result.
+  {\Large
+    \textcolor{Gray}{\[ (a-b) - c \neq a - (b-c)\]}
+   \[\overbrace{\underbrace{(10 - 7)}_3 - 2}^1 \neq \overbrace{10 - \underbrace{(7-2)}_5}^5\]
+ }
+
+ \vfill
+ \hfill
+ (Non associative)
+\end{slide}
+
+\begin{slide}
+  \sldt{Properties}
+
+  There is a number, which we call `0',
+  that has the property of \emph{subtracting nothing}.
+  This number 0 is unique.
+
+  {\Large
+    \[ a - 0 = a\]
+  }
+
+  \vfill\hfill
+  (Neutral element)
+\end{slide}
+
+\begin{slide}
+  \sldt{Properties}
+
+  Given any number,
+  there is another number such
+  that their subtraction is zero.
+  This other number (\(b\)) is unique.
+
+  {\Large
+    \[ a - b = 0\]
+  }
+
+  This number \(b\) is, of course,
+  the same number \(a\):
+  {\Large
+    \[ 2 - 2 = 0\]
+  }
+  \hfill (Inverses)
+\end{slide}
+
+\begin{slide}
+  \sldt{Examples and practice}
+  \newcommand{\qmk}{\textcolor{blue}{?}}
+  \begin{eqnarray*}
+    & 9-8 = \qmk \\
+    & 3-8 = \qmk \\
+    & 3-(-4) = \qmk \\
+    & (-2)-7 = \qmk \\
+    & \frac12 - \frac34 = \qmk\\
+    & \pi - (\frac{3\pi}{2} - \frac\pi2) = \qmk
+  \end{eqnarray*}
+\end{slide}
+
+\begin{slide}
+  \sldt{Examples and practice (solutions)}
+  \newcommand{\qmk}{\textcolor{blue}{?}}
+  \begin{eqnarray*}
+    & 9-8 = 1\\
+    & 3-8 = -5 \\
+    & 3-(-4) = 7 \\
+    & (-2)-7 = -9 \\
+    & \frac12 - \frac34 = -\frac14\\
+    & \pi - (\frac{3\pi}{2} - \frac\pi2) = 0
+  \end{eqnarray*}
+\end{slide}
+
+\begin{slide}
+\sldt{License and colophon}
+
+These slides were made with \LaTeXe\
+and the slides document class
+on a GNU/Linux system.
+The typeface used is Times Roman.
+
+\begin{quote}\tiny
+  \begin{quote}
+  Copyright (C)  2021 Jhonny Lanzuisi.\\
+  Permission is granted to copy, distribute and/or modify this document
+  under the terms of the GNU Free Documentation License, Version 1.3
+  or any later version published by the Free Software Foundation;
+  with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+  A copy of the license can be found at
+  \url{https://www.gnu.org/licenses/fdl-1.3.en.html}.\par
+  \end{quote}
+\end{quote}
+\end{slide}
+\end{document}

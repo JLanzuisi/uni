@@ -1,26 +1,19 @@
-\documentclass[fleqn,leqno,letterpaper,10pt,final]{article}
-\input{../../preamble-article.tex}
-
-\title{Cuarto ejercicio, espacios de hausdorff}
+\title{Cuarto ejercicio, espacios de hausdorff\\ \large\em Topología 1}
 \author{Jhonny Lanzuisi, 15\,10759}
-\asignatura{Topología 1}
-
-\begin{document}
 \maketitle
-\tableofcontents
-\marginpar{
-	\begin{abstract}
-		Cuarto ejercico del curso de: Espacios de Hausdorff y
-		topología producto.
-	\end{abstract}
-}
 
-\section[Enunciado]{Enunciado\nota{En \cite{munkres_topology_2014}: Capítulo 2, \S 19, ejercicio 3}}
+\begin{abstract}
+    Cuarto ejercico del curso de: Espacios de Hausdorff y
+    topología producto.
+\end{abstract}
+
+
+\section[Enunciado]{Enunciado}
 Sean $A$ un cojunto de indices y $X_{\alpha} (\alpha\in A)$ una familia de espacio topológicos.
 Demuestre que si los $X_{\alpha}$ son espacios de hausdorff
 entonces el productoo
 \[
-	\prod_{\alpha\in A} X_{\alpha}
+    \prod_{\alpha\in A} X_{\alpha}
 \]
 es un espacio de Hausdorff tanto en la topología caja como en la topología producto.
 
@@ -37,21 +30,21 @@ Como $X_{\beta}$ es un espacio de Hausdorff, existe  un entorno $U$
 
 Consideremos la famila de conjuntos $U_\alpha$ dada por
 \[
-	U_{\alpha}=
-		\begin{cases}
-			U &\text{si}\;\alpha=\beta,\\
-			X_\alpha &\text{si}\;\alpha\neq \beta.
-		\end{cases}
+    U_{\alpha}=
+        \begin{cases}
+            U &\text{si}\;\alpha=\beta,\\
+            X_\alpha &\text{si}\;\alpha\neq \beta.
+        \end{cases}
 \]
 Notemos que cada $U_\alpha$ es abierto en $X_\alpha$ y tomemos el producto
 \[
-	W=\prod_{\alpha\in A} U_\alpha.
+    W=\prod_{\alpha\in A} U_\alpha.
 \]
-Evidentemente $W\subset\prod X_{\alpha}$. También, como $x_{\beta}\in U$ 
+Evidentemente $W\subset\prod X_{\alpha}$. También, como $x_{\beta}\in U$
 (por la forma en que se eligió $W$) y $x_\alpha\in X_{\alpha}$ para
 $\alpha\neq\beta$, se sigue que $x\in W$. Por ser $W$ un producto
 de cojuntos abiertos se sigue que es abierto en la topología
-caja, como además todos menos una cantidad finita de los 
+caja, como además todos menos una cantidad finita de los
 $W_\alpha$ son iguales a los $X_\alpha$ se tiene que $W$ también
 es abierto en la topología producto.
 
@@ -67,8 +60,4 @@ Lo cual es una contradicción.
 Hemos obtenido entonces que $W$ es un entorno de $x$ que no contiene a $y$.
 De manera similar pude construirse un entorno $V$ de $y$ que no contenga a $x$
 y queda demostrado que $\prod X_\alpha$ es un espacio de Hausdorff.
-\printbibliography[
-heading=bibintoc,
-title={Referencias}
-]
 \end{document}

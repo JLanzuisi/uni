@@ -1,0 +1,84 @@
+% So that TeX doesn't complain about small
+% underfull or overfull boxes
+\hfuzz1pc
+% Make the overfull marker bigger
+\overfullrule=2cm
+
+% Font setup.
+\usepackage{unicode-math}
+\setmainfont[Numbers={OldStyle,Proportional}]{Latin Modern Roman}
+\setsansfont[Numbers={OldStyle,Proportional}]{Latin Modern Sans}
+\setmonofont[Scale=MatchLowercase]{Courier 10 Pitch}
+%\newfontfamily{\disp}[Ligatures=TeX,Numbers={OldStyle,Proportional}]{Libertinus Serif Display}
+% 20% bigger line height
+\linespread{1.03}
+% Don't put extra space after periods
+\frenchspacing
+
+\KOMAoptions{
+paper = letter,
+BCOR = 0mm,
+twoside = false,
+fontsize = {11},
+DIV = calc,
+}
+
+% Make bibliography more compact, no indents.
+\KOMAoption{toc}{flat}
+
+% Language support, usually changes between english
+% and spanish.
+%\usepackage[spanish,es-noindentfirst]{babel}
+\usepackage[english]{babel}
+
+% Bibliography
+\usepackage[
+backend=biber,
+style=numeric-comp,
+backref=true,
+backrefstyle=two,
+abbreviate=true
+]{biblatex}
+\addbibresource{~/git/Misc-LaTeX-files/bib/general.bib}
+\addbibresource{~/git/Misc-LaTeX-files/bib/math-books.bib}
+
+% Graphics, mainly to insert images or
+% single page PDFs.
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+% Handy command to typeset URLs
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=Mahogany,
+    filecolor=Mahogany,
+    urlcolor=Black,
+    citecolor=Mahogany,
+}
+\usepackage{url}
+%\urlstyle{same}
+\usepackage{metalogo}
+
+
+% Font style and size for title
+\setkomafont{title}{\normalfont}
+% Font style for the subject
+\setkomafont{subject}{\normalfont}
+% Font style for subtitle
+\setkomafont{subtitle}{\normalfont\itshape}
+\setkomafont{section}{\normalfont\large\bfseries}
+\setkomafont{subsection}{\normalfont\bfseries}
+\setkomafont{subsubsection}{\small\bfseries}
+% Footnotes
+\deffootnote{2.0em}{1.5em}{\thefootnotemark.\ }
+
+% CUSTOM MACROS
+% ToC not in sans-serif
+\let\oldtoc\tableofcontents
+\renewcommand{\tableofcontents}{{\renewcommand{\sffamily}{\rmfamily}\oldtoc}}
+% Macros for writing code
+\newcommand{\icode}[1]{\verb~#1~}
+% Urls
+\let\oldurl\url
+\newcommand{\umark}{\text{\textcolor{Mahogany}{\texttt{o}}}}
+\renewcommand{\url}[1]{\oldurl{#1}\(^{\umark}\)}
