@@ -6,12 +6,12 @@
 
 % Font setup.
 \usepackage{unicode-math}
-\setmainfont[Numbers={OldStyle,Proportional}]{Latin Modern Roman}
-\setsansfont[Numbers={OldStyle,Proportional}]{Latin Modern Sans}
-\setmonofont[Scale=MatchLowercase]{Courier 10 Pitch}
-%\newfontfamily{\disp}[Ligatures=TeX,Numbers={OldStyle,Proportional}]{Libertinus Serif Display}
+\setmainfont{Charis SIL}
+\setsansfont[Scale=MatchLowercase]{Go}
+\setmonofont[Scale=MatchLowercase]{Input}
+\setmathfont[Scale=MatchLowercase]{XITS Math}
 % 20% bigger line height
-\linespread{1.03}
+\linespread{1.04}
 % Don't put extra space after periods
 \frenchspacing
 
@@ -19,7 +19,7 @@
 paper = letter,
 BCOR = 0mm,
 twoside = false,
-fontsize = {11},
+fontsize = {10},
 DIV = calc,
 }
 
@@ -61,14 +61,16 @@ abbreviate=true
 
 
 % Font style and size for title
-\setkomafont{title}{\normalfont}
+\setkomafont{title}{\sffamily}
 % Font style for the subject
 \setkomafont{subject}{\normalfont}
 % Font style for subtitle
-\setkomafont{subtitle}{\normalfont\itshape}
-\setkomafont{section}{\normalfont\large\bfseries}
-\setkomafont{subsection}{\normalfont\bfseries}
-\setkomafont{subsubsection}{\small\bfseries}
+\setkomafont{subtitle}{\sffamily}
+\setkomafont{author}{\large}
+\setkomafont{date}{\normalsize}
+\setkomafont{section}{\fontseries{m}\Large}
+\setkomafont{subsection}{\fontseries{m}\large}
+\setkomafont{subsubsection}{\fontseries{m}}
 % Footnotes
 \deffootnote{2.0em}{1.5em}{\thefootnotemark.\ }
 
@@ -79,6 +81,6 @@ abbreviate=true
 % Macros for writing code
 \newcommand{\icode}[1]{\verb~#1~}
 % Urls
-\let\oldurl\url
-\newcommand{\umark}{\text{\textcolor{Mahogany}{\texttt{o}}}}
-\renewcommand{\url}[1]{\oldurl{#1}\(^{\umark}\)}
+% \let\oldurl\url
+% \newcommand{\umark}{\text{\textcolor{Mahogany}{\texttt{o}}}}
+% \renewcommand{\url}[1]{\oldurl{#1}\(^{\umark}\)}
