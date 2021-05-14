@@ -6,21 +6,30 @@
 
 % Font setup.
 \usepackage{unicode-math}
-\setmainfont{Charis SIL}
-\setsansfont[Scale=MatchLowercase]{Go}
-\setmonofont[Scale=MatchLowercase]{Input}
-\setmathfont[Scale=MatchLowercase]{XITS Math}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont[
+    StylisticSet={1,2}
+]{League Spartan}
+\newfontfamily{\light}[
+    StylisticSet={1,2}
+]{League Spartan Light}
+\setmonofont[
+    Scale=MatchLowercase
+]{Source Code Pro}
+\setmathfont[
+    Scale=.85
+]{TeX Gyre DejaVu Math}
 % 20% bigger line height
 \linespread{1.04}
 % Don't put extra space after periods
 \frenchspacing
 
 \KOMAoptions{
-paper = letter,
-BCOR = 0mm,
-twoside = false,
-fontsize = {10},
-DIV = calc,
+    paper = letter,
+    BCOR = 0mm,
+    twoside = false,
+    fontsize = {10},
+    DIV = calc,
 }
 
 % Make bibliography more compact, no indents.
@@ -33,14 +42,18 @@ DIV = calc,
 
 % Bibliography
 \usepackage[
-backend=biber,
-style=numeric-comp,
-backref=true,
-backrefstyle=two,
-abbreviate=true
+    backend=biber,
+    style=numeric-comp,
+    backref=true,
+    backrefstyle=two,
+    abbreviate=true
 ]{biblatex}
-\addbibresource{~/git/Misc-LaTeX-files/bib/general.bib}
-\addbibresource{~/git/Misc-LaTeX-files/bib/math-books.bib}
+\addbibresource{
+    ~/git/Misc-LaTeX-files/bib/general.bib
+}
+\addbibresource{
+    ~/git/Misc-LaTeX-files/bib/math-books.bib
+}
 
 % Graphics, mainly to insert images or
 % single page PDFs.
@@ -61,15 +74,15 @@ abbreviate=true
 
 
 % Font style and size for title
-\setkomafont{title}{\sffamily}
+\setkomafont{title}{\light}
 % Font style for the subject
 \setkomafont{subject}{\normalfont}
 % Font style for subtitle
-\setkomafont{subtitle}{\sffamily}
+\setkomafont{subtitle}{\normalfont}
 \setkomafont{author}{\large}
 \setkomafont{date}{\normalsize}
-\setkomafont{section}{\fontseries{m}\Large}
-\setkomafont{subsection}{\fontseries{m}\large}
+\setkomafont{section}{\light\Large}
+\setkomafont{subsection}{\light\large}
 \setkomafont{subsubsection}{\fontseries{m}}
 % Footnotes
 \deffootnote{2.0em}{1.5em}{\thefootnotemark.\ }
@@ -77,7 +90,12 @@ abbreviate=true
 % CUSTOM MACROS
 % ToC not in sans-serif
 \let\oldtoc\tableofcontents
-\renewcommand{\tableofcontents}{{\renewcommand{\sffamily}{\rmfamily}\oldtoc}}
+\renewcommand{\tableofcontents}{%
+    {
+        \renewcommand{\sffamily}{\rmfamily}
+        \oldtoc
+    }
+}
 % Macros for writing code
 \newcommand{\icode}[1]{\verb~#1~}
 % Urls
