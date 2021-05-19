@@ -1,0 +1,19 @@
+# LICENSE
+
+See copying file.
+
+# SOURCE FILES DOCS
+
+The kotlin .kt files are documented with comments
+in said files.
+
+# COMPILING
+
+Using 'make' compiles the required .jar files,
+'make clean' removes said files.
+
+# USAGE
+
+The runSortlib.sh shell script has a --help flag
+which explains how it works. The script is also
+documented trought code comments.
