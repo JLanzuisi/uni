@@ -39,6 +39,7 @@
 % and spanish.
 %\usepackage[spanish,es-noindentfirst]{babel}
 \usepackage[english]{babel}
+\usepackage{csquotes}
 
 % Bibliography
 \usepackage[
@@ -48,12 +49,8 @@
     backrefstyle=two,
     abbreviate=true
 ]{biblatex}
-\addbibresource{
-    ~/git/Misc-LaTeX-files/bib/general.bib
-}
-\addbibresource{
-    ~/git/Misc-LaTeX-files/bib/math-books.bib
-}
+\addbibresource{~/git/Misc-LaTeX-files/bib/general.bib}
+\addbibresource{~/git/Misc-LaTeX-files/bib/math-books.bib}
 
 % Graphics, mainly to insert images or
 % single page PDFs.
@@ -74,15 +71,15 @@
 
 
 % Font style and size for title
-\setkomafont{title}{\light}
+\setkomafont{title}{\fontseries{m}\light}
 % Font style for the subject
 \setkomafont{subject}{\normalfont}
 % Font style for subtitle
 \setkomafont{subtitle}{\normalfont}
 \setkomafont{author}{\large}
 \setkomafont{date}{\normalsize}
-\setkomafont{section}{\light\Large}
-\setkomafont{subsection}{\light\large}
+\setkomafont{section}{\fontseries{m}\light\Large}
+\setkomafont{subsection}{\fontseries{m}\light\large}
 \setkomafont{subsubsection}{\fontseries{m}}
 % Footnotes
 \deffootnote{2.0em}{1.5em}{\thefootnotemark.\ }
@@ -102,3 +99,5 @@
 % \let\oldurl\url
 % \newcommand{\umark}{\text{\textcolor{Mahogany}{\texttt{o}}}}
 % \renewcommand{\url}[1]{\oldurl{#1}\(^{\umark}\)}
+% emph to bold
+\renewcommand{\emph}{\textbf}
