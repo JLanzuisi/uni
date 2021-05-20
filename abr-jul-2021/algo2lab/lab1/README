@@ -14,6 +14,6 @@ Using 'make' compiles the required .jar files,
 
 # USAGE
 
-The runSortlib.sh shell script has a --help flag
+The runSortlib.sh shell script has a -h flag
 which explains how it works. The script is also
 documented trought comments.
