@@ -1,10 +1,12 @@
-CC = kotlinc
-CFLAGS = -include-runtime -d
+KC = kotlinc
+KFLAGS = -include-runtime
+SRC = Sortlib.kt Main.kt
+PROG = TestSort.jar
 
-all: Main.kt Sortlib.kt
-		$(CC) Main.kt $(CFLAGS) TestSort.jar
+all: $(SRC)
+	$(KC) $(SRC) $(KFLAGS) -d $(PROG)
 
 # Clean executables
 .PHONY: clean
 clean:
-	rm *.jar
+	rm $(PROG)
