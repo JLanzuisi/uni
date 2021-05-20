@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-# runSortlib.sh shell script wrapper around Main.kt & Sortlib.kt
+# runSortlib.sh shell script wrapper around TestSort.jar
 # Copyright (C) 2021  Jhonny Lanzuisi
 
 # This program is free software: you can redistribute it and/or modify
