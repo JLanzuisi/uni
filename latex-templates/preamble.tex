@@ -19,6 +19,9 @@
 \setmathfont[
     Scale=.85
 ]{TeX Gyre DejaVu Math}
+\setmathfont[
+    range=\setminus%
+]{XITS Math}
 % 20% bigger line height
 \linespread{1.04}
 % Don't put extra space after periods
@@ -90,7 +93,7 @@
 \renewcommand{\tableofcontents}{%
     {
         \renewcommand{\sffamily}{\rmfamily}
-        \oldtoc
+        \oldtoc%
     }
 }
 % Macros for writing code
@@ -101,3 +104,10 @@
 % \renewcommand{\url}[1]{\oldurl{#1}\(^{\umark}\)}
 % emph to bold
 \renewcommand{\emph}{\textbf}
+% mathrm to symup
+\AtBeginDocument{\renewcommand{\mathrm}{\symup}}
+% math macros
+\renewcommand{\Rn}{\mathbb{R}^{\mathrm{n}}}
+\newcommand{\Rm}{\mathbb{R}^{\mathrm{m}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
