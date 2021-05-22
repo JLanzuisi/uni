@@ -3,8 +3,8 @@
 \input{/home/jhonny/git/uni/latex-templates/preamble.tex}
 
 \begin{document}
+
 %
-\newcommand{\R}{\mathbb{R}}
 \title{Primera tarea}
 \subtitle{Primera evaluación del curso}
 \subject{Análisis III}
@@ -20,25 +20,155 @@ en \(\R\).
 
 \subsection{Solución}
 
+Supongamos que el intervalo cerrado no es conexo.
+Entonces existen dos conjuntos abiertos \(U,V\) que forman
+una separación de \([a,b]\), es decir, 
+\(U\cap[a,b]\neq\emptyset\), \(V\cap[a,b]\neq\emptyset\),
+\([a,b]\cap U\cap V = \emptyset\) y \([a,b]\subset U\cup V\).
+
+Supongamos que \(b\in V\).
+El intervalo \(U\cap[a,b]\) esta acotado superiormente
+por lo que tiene un supremo, llamémosle \(c\).
+Además, este último conjunto es cerrado pues
+su complemento, dado por \(V\cup(\Rn\setminus[a,b])\),
+es abierto al ser la unión de dos conjuntos abiertos.
+Esto implica que \(c \in U\cap[a,b]\).
+
+Tenemos además que \(c\neq b\) pues \(c\not\in V\) y
+\(b\in V\).
+
+Ahora, como \(c\neq b\) y ningún entorno de \(c\)
+puede estar totalmente contenido en \(U\), tenemos
+que cualquier entorno de \(c\) intersecta al conjunto \(V\cap[a,b]\).
+Pero esto significa que \(c\) es un punto de acumulación 
+de \(V\cap[a,b]\). Al ser \(V\cap[a,b]\) cerrado, por una razón
+similar a la dicha antes para \(U\cap[a,b]\), contiene a todos
+sus puntos de acumulación y \(c \in V\cap[a,b]\).
+
+Pero entonces \(c\) es un elemento de \(V\cap[a,b]\) y \(U\cap[a,b]\),
+lo que contradice el hecho de que \([a,b]\cap U\cap V = \emptyset\).
 \section{Segundo ejercicio}
 
-Demuestre que todo conjunto conexo por caminos es conexo.
+Demuestre que todo conjunto \(A\) conexo por caminos es conexo.
 
 \subsection{Solución}
 
+Supongamos que \(A\) no es conexo.
+Entonces, como en el ejercicio anterior,
+existen dos conjuntos abiertos \(U,V\)
+que separan a \(A\).
+
+Tomemos un \(x \in U\) y \(y\in V\).
+Como \(A\) es conexo por caminos, existe un camino
+\(\phi \colon [a,b]\to \Rn\) contenido en \(A\) tal que
+\(\phi(a) = x\) y \(\phi(b) = y\).
+
+Hagamos \(U_0=\phi^{-1}(U)\) y \(V_0 = \phi^{-1}(V)\),
+entonces tenemos que tanto \(U_0\) como \(V_0\) son
+subconjuntos de \([a,b]\).
+
+Primero, los conjuntos \(U_0, V_0\) son abiertos
+puesto que \(\phi\) es continua, y las imágenes
+inversas de conjuntos abiertos por funciones continuas
+son abiertas.
+
+Segundo, es claro que \(U_0\cap[a,b]\neq\emptyset\)
+y \(V_0\cap[a,b]\neq\emptyset\) puesto que 
+\(\phi^{-1}(x) = a \in U_0\) y, de la misma forma,
+\(\phi^{-1}(y) = b \in V_0\).
+
+Tercero, \([a,b] \subseteq U_0\cup V_0\).
+Para ver esto supongamos lo contrario,
+que existe un \(c\in [a,b]\) que no pertenece
+ni a \(V_0\) ni a \(U_0\).
+Entonces \(\phi(c)\) no pertenece ni a \(U\) ni
+a \(V\) pero si pertenece a \(A\), pues \(A\)
+es conexo por caminos. Y esto implica que
+\(A\not\subset U\cup V\), lo cual es una contradicción,
+pues \(U,V\) forman una separación de \(A\).
+
+Cuarto, \([a,b]\cap U_0\cap V_0 = \emptyset\).
+Para demostrar este hecho, supongamos lo contrario:
+existe un \(c\in[a,b]\cap U_0\cap V_0\). Pero entonces,
+\(\phi(c)\in V\), \(\phi(c)\in U\) y \(\phi(c)\in A\)
+contradiciendo el hecho de que \(A\cap U\cap V = \emptyset\).
+
+Los cuatro hechos demostrados anteriormente
+implican que \(U_0,V_0\) forman una separación de
+\([a,b]\). Pero esto es imposible, por el ejercicio anterior.
+Entonces \(A\) tiene que ser conexo.
+
 \section{Tercer ejercicio}
 
-Sean \(f\colon A\subseteq\R^n\to\R^m\) y \(x_0\in A^*\).
+Sean \(f\colon A\subseteq\Rn\to\Rm\) y \(x_0\in A^*\).
 Entonces
-\[\lim_{x\to x_0} = L\]
-si, y solo si, para cada suceción \(\{x_k\}\subset A\)
+\[\lim_{x\to x_0}f(x) = L\]
+si, y solo si, para cada sucesión \(\{x_k\}\subset A\)
 que converge a \(x_0\)
 \[\lim_{k\to\infty} f(x_k) = L.\]
 
 \subsection{Solución}
 
+\subsubsection{Primera implicación}
+
+Supongamos que \(f\) es continua, que \(x_k\to x_0\)
+y sea \(\epsilon>0\).
+Queremos hallar un natural \(N\) para el cual \(k\geq N\)
+implica \(d(f(x_k),f(x_0)) < \epsilon\).
+Como \(f\) es continua existe un \(\delta >0\) tal que
+si \(d(x,x_0) < \delta\) 
+entonces \(d(f(x),f(x_0)) < \epsilon\).
+Ahora, elegimos el primer natural \(N\) para el cual
+se cumpla que \(d(x_N,x_0) < \delta\). Este \(N\)
+existe debido a la propiedad arquimediana de los reales.
+Entonces, para todo \(k\geq N\) se tendrá que
+\(d(f(x_k),f(x_0)) < \epsilon\).
+
+\subsubsection{Segunda implicación}
+
+Supongamos ahora que para toda sucesión \(x_k\to x_0\)
+de \(A\) se tiene que \(f(x_k)\to f(x_0)\).
+Supongamos que la función \(f\) no es continua.
+Esto significa que existe un \(\epsilon > 0\) tal que
+para todo \(\delta > 0\) existe un \(x\in B(x_0,\delta)\)
+para el cual \(d(f(x),f(x_0)) \geq \epsilon\).
+
+Sea \(\epsilon\) como en el párrafo anterior.
+Entonces podemos elegir cualquier \(\delta\),
+tomemos \(\delta = \frac{1}{n}\).
+Entonces existe un \(x_n\) que cumple \(d(x_n,x_0) <\delta\)
+para el cual \(d(f(x_n),f(x_0))\geq\frac{1}{n}\).
+Dando valores a \(n\) podemos construir de esta forma
+una sucesión.
+
+Pero, por construcción, \(x_n\to x_0\) y nuestras hipótesis
+nos dan como resultado que \(f(x_n)\to f(x_0)\).
+Pero eso es imposible, puesto
+que \(f(x_n)\not\in B(x_0,\epsilon)\) para todo \(n\).
+
 \section{Cuarto ejercicio}
 
+Sean \(A\subseteq\Rn\), \(x_{0}\in A^{\ast}\)
+y \(f\colon A \to\Rn\) tal que
+\(\lim_{x\to x_{0}} f(x)\)  existe.
+Luego, existen \(\epsilon>0\) y \(M>0\) tales
+que \(\left\lVert f(x) \right\rVert_{\Rn} < M\) 
+para todo \(x\in B(x_0,\epsilon)\).
+
+\subsection{Solución}
+
+\section{Quinto Ejercicio}
+
+Sea \(A\subseteq\Rn\) un compacto y \(f\colon A\to\Rm\)
+una función continua sobre \(A\). Entonces, \(f(A)\) es
+uniformemente continua.
+
+\subsection{Solución}
+
+\section{Sexto Ejercicio}
+
+Sea \(E\subseteq\Rn\) y \(f \colon E\to\Rm\) una función continua.
+Si \(E\) es conexo entonces \(f(E)\) también es conexo.
 
 \subsection{Solución}
 
