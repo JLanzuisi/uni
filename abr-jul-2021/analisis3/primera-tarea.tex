@@ -22,7 +22,7 @@ en \(\R\).
 
 Supongamos que el intervalo cerrado no es conexo.
 Entonces existen dos conjuntos abiertos \(U,V\) que forman
-una separación de \([a,b]\), es decir, 
+una separación de \([a,b]\), es decir,
 \(U\cap[a,b]\neq\emptyset\), \(V\cap[a,b]\neq\emptyset\),
 \([a,b]\cap U\cap V = \emptyset\) y \([a,b]\subset U\cup V\).
 
@@ -40,7 +40,7 @@ Tenemos además que \(c\neq b\) pues \(c\not\in V\) y
 Ahora, como \(c\neq b\) y ningún entorno de \(c\)
 puede estar totalmente contenido en \(U\), tenemos
 que cualquier entorno de \(c\) intersecta al conjunto \(V\cap[a,b]\).
-Pero esto significa que \(c\) es un punto de acumulación 
+Pero esto significa que \(c\) es un punto de acumulación
 de \(V\cap[a,b]\). Al ser \(V\cap[a,b]\) cerrado, por una razón
 similar a la dicha antes para \(U\cap[a,b]\), contiene a todos
 sus puntos de acumulación y \(c \in V\cap[a,b]\).
@@ -73,7 +73,7 @@ inversas de conjuntos abiertos por funciones continuas
 son abiertas.
 
 Segundo, es claro que \(U_0\cap[a,b]\neq\emptyset\)
-y \(V_0\cap[a,b]\neq\emptyset\) puesto que 
+y \(V_0\cap[a,b]\neq\emptyset\) puesto que
 \(\phi^{-1}(x) = a \in U_0\) y, de la misma forma,
 \(\phi^{-1}(y) = b \in V_0\).
 
@@ -111,40 +111,33 @@ que converge a \(x_0\)
 
 \subsubsection{Primera implicación}
 
-Supongamos que \(f\) es continua, que \(x_k\to x_0\)
-y sea \(\epsilon>0\).
+Supongamos que el límite \(\lim_{x\to x_0}f(x) = L\),
+que \(x_k\to x_0\) y sea \(\epsilon>0\).
 Queremos hallar un natural \(N\) para el cual \(k\geq N\)
-implica \(d(f(x_k),f(x_0)) < \epsilon\).
-Como \(f\) es continua existe un \(\delta >0\) tal que
-si \(d(x,x_0) < \delta\) 
-entonces \(d(f(x),f(x_0)) < \epsilon\).
-Ahora, elegimos el primer natural \(N\) para el cual
-se cumpla que \(d(x_N,x_0) < \delta\). Este \(N\)
-existe debido a la propiedad arquimediana de los reales.
+implica \(d(f(x_k),L) < \epsilon\).
+Como el límite de \(f\) existe, existe un \(\delta >0\) tal que
+si \(d(x,x_0) < \delta\)
+entonces \(d(f(x),L) < \epsilon\).
+Como la sucesión $x_k$ converge a $x_0$, existe $N$ tal que
+\(d(x_k,x_0) < \delta\).
 Entonces, para todo \(k\geq N\) se tendrá que
-\(d(f(x_k),f(x_0)) < \epsilon\).
+\(d(f(x_k),L) < \epsilon\).
 
 \subsubsection{Segunda implicación}
 
 Supongamos ahora que para toda sucesión \(x_k\to x_0\)
 de \(A\) se tiene que \(f(x_k)\to f(x_0)\).
-Supongamos que la función \(f\) no es continua.
+Supongamos que $L$ no es el límite de la función \(f\)
+cuando $x\to x_0$.
 Esto significa que existe un \(\epsilon > 0\) tal que
-para todo \(\delta > 0\) existe un \(x\in B(x_0,\delta)\)
-para el cual \(d(f(x),f(x_0)) \geq \epsilon\).
+para cada \(k\in\N\) existe un \(x_k\in A\) tal que
+\[ 0 < d(x_k,x_0) < \frac{1}{k} \]
+y
+\[ d(f(x_k),L) \geq \epsilon.\]
 
-Sea \(\epsilon\) como en el párrafo anterior.
-Entonces podemos elegir cualquier \(\delta\),
-tomemos \(\delta = \frac{1}{n}\).
-Entonces existe un \(x_n\) que cumple \(d(x_n,x_0) <\delta\)
-para el cual \(d(f(x_n),f(x_0))\geq\frac{1}{n}\).
-Dando valores a \(n\) podemos construir de esta forma
-una sucesión.
-
-Pero, por construcción, \(x_n\to x_0\) y nuestras hipótesis
-nos dan como resultado que \(f(x_n)\to f(x_0)\).
-Pero eso es imposible, puesto
-que \(f(x_n)\not\in B(x_0,\epsilon)\) para todo \(n\).
+Entonces la sucesión \(x_k\) converge a \(x_0\)
+pero la sucesión \(f(x_k)\) no converge a \(L\),
+lo cual es una contradicción.
 
 \section{Cuarto ejercicio}
 
@@ -152,10 +145,20 @@ Sean \(A\subseteq\Rn\), \(x_{0}\in A^{\ast}\)
 y \(f\colon A \to\Rn\) tal que
 \(\lim_{x\to x_{0}} f(x)\)  existe.
 Luego, existen \(\epsilon>0\) y \(M>0\) tales
-que \(\left\lVert f(x) \right\rVert_{\Rn} < M\) 
+que \(\left\lVert f(x) \right\rVert_{\Rn} < M\)
 para todo \(x\in B(x_0,\epsilon)\).
 
 \subsection{Solución}
+
+Por la definición de límite,
+dado \(\epsilon=1\) existe \(\delta>0\)
+tal que, si \(\lVert x-x_0\rVert<\delta\)
+entonces
+\[\lVert f(x) - L \rVert < 1.\]
+Por la desigualdad triangular,
+\[\lVert f(x)\rVert \leq \lVert f(x) - L \rVert + \lVert L\rVert 
+    < 1 + \lVert L\rVert\]
+por lo que basta con tomar \(M=1+\lVert L\rVert\).
 
 \section{Quinto Ejercicio}
 
@@ -165,12 +168,42 @@ uniformemente continua.
 
 \subsection{Solución}
 
+Sea \(\epsilon>0\). Queremos encontrar \(\delta>0\)
+tal que 
+\[d(x,y)<\delta\implies d(f(x),f(y)) < \epsilon.\]
+
+Como \(f\) es continua en cada \(x\in A\) existe un
+\(\delta_k>0\) tal que 
+\[f(B(x,\delta_k))\subseteq B(f(x),\frac{\epsilon}{2}).\]
+Pero \(\{B(x_i,\frac{\delta_x}{2})\}_{x\in A}\) es un cubrimiento
+abierto de \(A\), y como \(A\) es compacto existe un subcubrimiento
+finito \(\{ B(x_i,\frac{\delta_x}{2})\}_{i=1}^n\).
+
+Ahora, sea \(\delta = \min(\frac{\delta_{x_i}}{2})\).
+Entonces, si \(d(x,y) < \delta\)
+\[d(f(x),f(y))\leq d(f(x),f(x_i)) + d(f(x_i),f(y)) < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon.\]
+
 \section{Sexto Ejercicio}
 
 Sea \(E\subseteq\Rn\) y \(f \colon E\to\Rm\) una función continua.
 Si \(E\) es conexo entonces \(f(E)\) también es conexo.
 
 \subsection{Solución}
+
+Supongamos que \(f(E)\) no es conexo. Entonces existen
+abiertos \(U,V\) que separan a \(f(E)\), es decir,
+\(f(E)\subset V\cup U\), \(f(E)\cap V\neq\emptyset\),
+\(f(E)\cap U\neq\emptyset\) y \(f(E)\cap U\cap V = \emptyset\).
+
+Como los conjuntos \(U,V\) son abiertos y la función
+\(f\) es continua, sus preimágenes por \(f\) deben ser
+también conjuntos abiertos, es decir, \(U'=f^{-1}(U)\) y \(V'=f^{-1}(V)\)
+son ambos conjuntos abiertos.
+Además, podemos aplicar \(f^{-1}\) a las expresiones
+del párrafo anterior que definen la separación de \(f(E)\)
+para obtener que \(U',V'\) forman una separación de \(E\). Por ejemplo,
+\(f^{-1}(f(E))\subset f^{-1}(U)\cup f^{-1}(V)\).
+Pero esto es una contradicción puesto que \(E\) es conexo.
 
 %\printbibliography
 \input{/home/jhonny/git/uni/latex-templates/postamble.tex}
