@@ -14,29 +14,91 @@
  */
 
 fun bubbleSort(A: Array<Int>): Array<Int> {
-    var B = A
+    var B = A // Copy A to another array, so it can be modified
     val N = B.size
+    var temp: Int
+
     for (i in 0..N-2){
         for (j in N-1 downTo i+1){
             if (B[j] < B[j-1]){
                 // Swap the values
-                var temp = B[j]
+                temp = B[j]
                 B[j] = B[j-1]
                 B[j-1] = temp
             }
         }
     }
+
     return B
 }
 
-// fun insertionSort(A: Array<Int>): Array<Int> {
- 
-// }
+fun insertionSort(A: Array<Int>): Array<Int> {
+    var B = A // Copy A to another array, so it can be modified
+    val N = B.size
+    var j: Int
+    var temp: Int
 
-// fun selectionSort(A: Array<Int>) {
-//  // Realizar!
-// }
+    for (i in 1..N-1){
+        j = i
+        while (j != 0 && B[j] < B[j-1]){
+            // Swap the values
+            temp = B[j]
+            B[j] = B[j-1]
+            B[j-1] = temp
+            j--
+        }
+    }
 
-// fun shellSort(A: Array<Int>) {
-//  // Realizar!
-// }
+    return B
+}
+
+fun selectionSort(A: Array<Int>): Array<Int> {
+    var lowint: Int // current lowest integer found
+    var lowindex: Int // position of lowint
+    var B = A // Copy A to another array, so it can be modified
+    val N = B.size
+    var temp: Int
+
+    for (i in 0..N-2){
+        lowindex = i
+        lowint = B[i]
+        for (j in i+1..N-1){
+            if (B[j] < lowint){
+                lowint = B[j]
+                lowindex = j
+            }
+        }
+        temp = B[i]
+        B[i] = B[lowindex]
+        B[lowindex] = temp
+    }
+
+    return B
+}
+
+fun shellSort(A: Array<Int>): Array<Int> {
+    var j: Int
+    var incr: Int
+    var B = A // Copy A to another array, so it can be modified
+    val N = B.size
+    var temp: Int
+
+    incr = N / 2
+    while (incr > 0){
+        for (i in incr+1..N-1){
+            j = i - incr
+            while(j > 0){
+                if (B[j] > B[j+incr]){
+                    temp = B[j]
+                    B[j] = B[j+incr]
+                    B[j+incr] = temp
+                } else {
+                    break
+                }
+            }
+        }
+        incr = incr / 2
+    }
+
+    return B
+}
