@@ -1,0 +1,17 @@
+# LICENSE
+
+Everything is under the GNU GPLv3. See copying file.
+
+# SOURCE FILES DOCS
+
+The kotlin .kt files are documented with comments
+in said files.
+
+# COMPILING
+
+Use make. If compiled previously then first make clean.
+
+# USAGE
+
+The runSortlib.sh shell script has a -h flag
+which explains how it works.
