@@ -5,25 +5,11 @@
 \overfullrule=2cm
 
 % Font setup.
-\usepackage{unicode-math}
+\usepackage[neoeuler]{fontsetup}
 \defaultfontfeatures{Ligatures=TeX}
-\setmainfont[
-    StylisticSet={1,2}
-]{League Spartan}
-\newfontfamily{\light}[
-    StylisticSet={1,2}
-]{League Spartan Light}
-\setmonofont[
-    Scale=MatchLowercase
-]{Source Code Pro}
-\setmathfont[
-    Scale=.85
-]{TeX Gyre DejaVu Math}
-\setmathfont[
-    range=\setminus%
-]{XITS Math}
+\newfontfamily{\light}{League Spartan Light}
 % 20% bigger line height
-\linespread{1.06}
+\linespread{1.04}
 % Don't put extra space after periods
 \frenchspacing
 
@@ -104,8 +90,6 @@
 % \renewcommand{\url}[1]{\oldurl{#1}\(^{\umark}\)}
 % emph to bold
 \renewcommand{\emph}{\textbf}
-% mathrm to symup
-\AtBeginDocument{\renewcommand{\mathrm}{\symup}}
 % math macros
 \renewcommand{\Rn}{\mathbb{R}^{\mathrm{n}}}
 \newcommand{\Rm}{\mathbb{R}^{\mathrm{m}}}
