@@ -20,9 +20,13 @@ tlcheck*
 *.html
 auto
 venv
+.venv
 .ipynb_checkpoints
 .idea
 COPYING
 .vscode
 *.jar
 *.odg
+*_region*
+*.pygtex
+*.pygstyle
