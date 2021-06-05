@@ -30,3 +30,4 @@ COPYING
 *_region*
 *.pygtex
 *.pygstyle
+*.pyg
