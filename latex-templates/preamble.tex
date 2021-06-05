@@ -6,8 +6,8 @@
 
 % Font setup.
 \usepackage[default]{fontsetup}
-\defaultfontfeatures{Ligatures=TeX}
-\newfontfamily{\light}{League Spartan Light}
+% \defaultfontfeatures{Ligatures=TeX}
+% \newfontfamily{\light}{League Spartan Light}
 % 20% bigger line height
 \linespread{1.04}
 % Don't put extra space after periods
@@ -58,38 +58,31 @@
 %\urlstyle{same}
 \usepackage{metalogo}
 
+\usepackage{minted}
 
 % Font style and size for title
-\setkomafont{title}{\fontseries{m}\light}
+% \setkomafont{title}{\fontseries{m}\light}
 % Font style for the subject
-\setkomafont{subject}{\normalfont}
+% \setkomafont{subject}{\normalfont}
 % Font style for subtitle
-\setkomafont{subtitle}{\normalfont}
-\setkomafont{author}{\large}
-\setkomafont{date}{\normalsize}
-\setkomafont{section}{\fontseries{m}\light\Large}
-\setkomafont{subsection}{\fontseries{m}\light\large}
-\setkomafont{subsubsection}{\fontseries{m}\normalfont}
+% \setkomafont{subtitle}{\normalfont}
+% \setkomafont{author}{\large}
+% \setkomafont{date}{\normalsize}
+% \setkomafont{section}{\fontseries{m}\light\Large}
+% \setkomafont{subsection}{\fontseries{m}\light\large}
+% \setkomafont{subsubsection}{\fontseries{m}\normalfont}
 % Footnotes
 \deffootnote{2.0em}{1.5em}{\thefootnotemark.\ }
 
 % CUSTOM MACROS
 % ToC not in sans-serif
-\let\oldtoc\tableofcontents
-\renewcommand{\tableofcontents}{%
-    {
-        \renewcommand{\sffamily}{\rmfamily}
-        \oldtoc%
-    }
-}
-% Macros for writing code
-\newcommand{\icode}[1]{\verb~#1~}
-% Urls
-% \let\oldurl\url
-% \newcommand{\umark}{\text{\textcolor{Mahogany}{\texttt{o}}}}
-% \renewcommand{\url}[1]{\oldurl{#1}\(^{\umark}\)}
-% emph to bold
-\renewcommand{\emph}{\textbf}
+% \let\oldtoc\tableofcontents
+% \renewcommand{\tableofcontents}{%
+%     {
+%         \renewcommand{\sffamily}{\rmfamily}
+%         \oldtoc%
+%     }
+% }
 % math macros
 \renewcommand{\Rn}{\mathbb{R}^{\mathrm{n}}}
 \newcommand{\Rm}{\mathbb{R}^{\mathrm{m}}}
