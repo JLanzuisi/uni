@@ -15,28 +15,24 @@
             operating systems.
         }
         and the \LaTeXe\ macros in a Linux operating system.
-        The editor used for editing the text was Visual Studio Code%
+        The editor used for editing the text was \TeX Maker%
         \footnote{%
-            VS Code is an open source text editor
-            developed by Microsoft.
-            It's closer to an IDE than a traditional text editor
-            like vi or emacs.
-            The LaTeX Workshop extension provides the LaTeX
-            integration for VS Code.
+            \TeX Maker (©2003--2021 Pascal Brachet)
+            is a \LaTeX\ editor closer to an IDE than to,
+            say, vi or emacs.
         }.
-        The main typeface used are Spartan MB%
+        The main typeface used is the Computer Modern family%
         \footnote{%
-            Spartan is a geometric typeface
-            by Matt Bailey. It's author describes it has
-            ``An open-source typeface based on an ATF classic. 
-            Built from necessity.''
+            Specifically, the New Computer Modern family,
+            which is a new opentype version of the original
+            typefaces. It bundles a new slightly darker "book"
+            weight, complete Cyrillic, many new glyphs, 
+            and some more improvements.
         }
-        for text and TeX Gyre DejaVu Math for maths%
+        for text and New Computer Modern Math for math%
         \footnote{%
-            In \LuaLaTeX\ this amounts to using the package
-            \icode{unicode-math}
-            and then setting the corresponding
-            opentype fonts
+            In \LuaLaTeX\ this amounts to using the following:
+            \mintinline{latex}|\usepackage[default]{fontsetup}|
         }.
 
         \medskip
