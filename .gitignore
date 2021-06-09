@@ -31,3 +31,4 @@ COPYING
 *.pygtex
 *.pygstyle
 *.pyg
+*.kdev4
