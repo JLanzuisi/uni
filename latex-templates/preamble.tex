@@ -5,11 +5,10 @@
 \overfullrule=2cm
 
 % Font setup.
-\usepackage[default]{fontsetup}
-% \defaultfontfeatures{Ligatures=TeX}
-% \newfontfamily{\light}{League Spartan Light}
+\usepackage[T1]{fontenc}
+\usepackage{cfr-lm}
 % 20% bigger line height
-\linespread{1.04}
+\linespread{1.05}
 % Don't put extra space after periods
 \frenchspacing
 
@@ -26,8 +25,8 @@
 
 % Language support, usually changes between english
 % and spanish.
-%\usepackage[spanish,es-noindentfirst]{babel}
-\usepackage[english]{babel}
+\usepackage[spanish,es-noindentfirst]{babel}
+%\usepackage[english]{babel}
 \usepackage{csquotes}
 
 % Bibliography
@@ -61,16 +60,16 @@
 \usepackage{minted}
 
 % Font style and size for title
-% \setkomafont{title}{\fontseries{m}\light}
+\setkomafont{title}{\fontseries{m}}
 % Font style for the subject
-% \setkomafont{subject}{\normalfont}
+\setkomafont{subject}{\normalfont\bfseries}
 % Font style for subtitle
-% \setkomafont{subtitle}{\normalfont}
-% \setkomafont{author}{\large}
-% \setkomafont{date}{\normalsize}
-% \setkomafont{section}{\fontseries{m}\light\Large}
-% \setkomafont{subsection}{\fontseries{m}\light\large}
-% \setkomafont{subsubsection}{\fontseries{m}\normalfont}
+\setkomafont{subtitle}{\normalfont\itshape}
+\setkomafont{author}{\large}
+\setkomafont{date}{\normalsize}
+\setkomafont{section}{\fontseries{m}\Large}
+\setkomafont{subsection}{\fontseries{m}\large}
+\setkomafont{subsubsection}{\fontseries{m}\normalsize}
 % Footnotes
 \deffootnote{2.0em}{1.5em}{\thefootnotemark.\ }
 
@@ -88,3 +87,8 @@
 \newcommand{\Rm}{\mathbb{R}^{\mathrm{m}}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
+\newcommand{\devpart}[2]{\frac{\partial  #1}{\partial #2}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\norm}[1]{\left\lvert #1 \right\rvert}
+\DeclareMathOperator{\img}{img}
+\DeclareMathOperator{\gen}{span}
