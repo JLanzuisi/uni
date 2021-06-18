@@ -9,9 +9,173 @@
 \subtitle{Segunda evaluación del curso}
 \subject{Análisis III}
 \titlehead{Universidad Simón Bolívar\hfill Caracas, Venezuela}
-\author{\textit{\large hecho por} \\ Jhonny Lanzuisi}
+\author{{\normalsize hecho por} \\ Jhonny Lanzuisi}
 \date{\today}
 \maketitle
+
+\section{Primer ejercicio}
+
+Sean \(A\subseteq\Rn\) abierto y conexo,
+\(f\colon A\to\Rm\) diferenciable en \(A\)
+tal que \(f'(x)=0\) para todo \(x\in A\).
+Entonces, \(f\) es constante en \(A\).
+
+\subsection{Solución}
+
+Como \(f'(x) = 0\) se tiene,
+de la definición de la derivada,
+\[
+\lim_{h\to0}
+\frac{1}{\norm{h}}
+\big(f(a+h)-f(a)\big) = 0.
+\]
+
+Esto implica que, dado \(\epsilon>0\)
+existe \(\delta>0\) para el cual
+\(\norm{h}<\delta\) implica
+\[
+\norm{\frac{1}{\norm{h}} f(a+h)-f(a)} < \epsilon
+\]
+pero esto es lo mismo que
+\[
+\norm{f(a+h)-f(a)} < \norm{h}\epsilon.
+\]
+
+La última ecuación implica que
+el lado derecho de la ecuación se puede
+hacer arbitrariamente pequeño,
+es decir,
+\[
+f(a+h) - f(a) = 0,
+\]
+de donde se sigue que \(f\)
+es constante, pues \(a\) es
+un elemento cualquiera de \(A\).
+
+\section{Segundo ejercicio}
+
+Si \(f'(x_0)\) es inyectiva, existe un
+entorno de \(x_0\) en el cual
+\[x_0\neq x\implies f(x_0)\neq f(x)\]
+
+\subsection{Solución}
+
+Supongamos que para todo \(x_0\in A\),
+y todo entorno de \(x_0\), \(f(x) = f(x_0)\).
+Luego, como \(f\) es diferenciable en \(x_0\),
+existe un \(x\) en el entorno de \(x_0\) tal que
+\[
+f(y) = f(x_0) - f'(x_0)(x-x_0)
+\]
+pero como \(f(y)=f(x_0)\),
+\[
+0 = f'(x_0)(x-x_0).
+\]
+
+La función \(f\) es por hipótesis inyectiva,
+por lo que el \(\det(f'(x_0))\neq 0\).
+A su vez esto implica que \(x = x_0\)
+lo cual es una contradicción.
+
+\section{Tercer ejercicio}
+
+Sea \(f\colon A\to\Rn\) diferenciable en todo
+\(A\subseteq\Rn\). Sean \(\varphi\colon \Rn\to A\times\Rn\)
+y \(F\colon A\times\Rn\to\Rn\) donde
+\[\varphi(x) = (x,f(x))\qquad F(x,y) = f(x)-y.\]
+
+Muestre que \(F,\varphi\) son diferenciables,
+diga quién es \(F', \varphi'\) y concluya que
+el \(\ker(F)\) coincide con la imagen de \(\varphi'\)
+y que \(\varphi'\) es inyectiva.
+
+\subsection{Solución}
+
+La función \(\varphi\) se escribe como
+\(\varphi=(f_1,f_2)\) donde \(f_1\) es la función
+identidad y \(f_2 = f\). Como ambas funciones son
+diferenciables, se sigue que \(\varphi\) también lo es.
+
+Por otra parte, \(F\) es la resta de dos funciones
+\(f(x),y\)
+diferenciables y, por lo tanto, es diferenciable. 
+
+Como \(\varphi\) es diferenciable su derivada
+es la matriz jacobiana. En este caso, como
+\(\varphi\colon \Rn\to A\times\Rn\) se tiene que las dimensiones
+de la matriz son \(2n\times n\).
+Como la función identidad es una transformación lineal,
+su matriz jacobiana es ella misma.
+Tenemos entonces:
+\[
+\varphi' = 
+    \begin{pmatrix}
+    I_{n} \\
+    f'
+    \end{pmatrix}
+\]
+donde \(I_{n}\) es la identidad de tamaño \(n\)
+y \(f'\) la matriz jacobiana de \(f\).
+Nótese que, debido a que \(f\colon A\to\Rn\),
+\(f'\) es de tamaño \(n\times n\) y \(\phi'\)
+tiene entonces el tamaño correcto.
+
+Ahora, como \(F\) es diferenciable su derivada
+es su matriz jacobiana de tamaño
+\(2\times 2n\). Supongamos que las funciones
+componentes de \(f\) son \(f_1,\dots,f_n\)
+y que \(y = (y_1,\dots,y_n)\).
+Entonces, \(F\) se puede escribir de la siguiente
+forma:
+\[
+F(x,y) = \big(f_1(x)-y_1, f_2(x)-y_2, \dots, f_n(x)-y_n\big).
+\]
+
+Al calcular las derivadas parciales, de la ecuación anterior,
+se llega a la conclusión de que
+\[
+F' = 
+    \begin{pmatrix}
+    f' & -I_n
+    \end{pmatrix}
+\]
+donde \(f'\) es el jacobiano de \(f\) y \(-I_n\)
+el negativo de la matriz identidad de tamaño \(n\)
+(este signo `-' proviene del \(-y\) en la definición de \(F\)).
+Notemos que, nuevamente, la matriz \(F'\) tiene las dimensiones
+correctas.
+
+Como la matriz \(\varphi'\) tiene \(n\) pivotes entonces
+es inyectiva. Más aún:
+\[
+\ker(F') = \img(\varphi') = 
+    \gen \left\{
+        (\varphi'_1), (\varphi'_2),\dots, (\varphi'_n)
+    \right\}
+\]
+donde \(\varphi'_i\) son las columnas de la matriz \(\varphi'\).
+
+\section{Cuarto ejercicio}
+
+Sean \(A\subseteq\Rn\), \(f\colon A\times[a,b]\to\Rm\),
+\(\partial_1 f\colon A\times[a,b]\to\mathcal{L}(\Rn,\Rm)\) continua
+y \(\alpha,\beta\) de clase \(C^1([a,b])\).
+
+Sea \(\Phi\colon A\to\Rm\),
+\[\Phi(x) = \int_{\alpha(x)}^{\beta(x)} f(x,t) dt.\]
+
+Muestre que \(\Phi\in C^1(A)\) 
+y calcule \(\Phi'(x)h\), \(x\in A\) y \(h\in\Rn\).
+
+\section{Quinto ejercicio}
+
+Sea
+\[\Phi(x,y) = \int_a^x f(x+y,t) dt.\]
+
+Calcule
+\[\devpart{\Phi}{x}, \devpart{\Phi}{y}.\]
+
+\section{test}
 
 \input{/home/jhonny/git/uni/latex-templates/postamble.tex}
 \end{document}

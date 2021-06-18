@@ -3,7 +3,7 @@
     \begin{center}
     \begin{minipage}{0.4\paperwidth}
         \section*{Colophon \& Copyright}
-        This document was typeset using \LuaTeX%
+        This document was typeset using \TeX%
         \footnote{%
             \TeX\ is
             a typesetting software, free and open source,
@@ -15,27 +15,26 @@
             operating systems.
         }
         and the \LaTeXe\ macros in a Linux operating system.
-        The editor used for editing the text was Geany%
+        The editor used for editing the text was vi%
         \footnote{%
-            Geany is a text editor, halfway between an IDE
-            and a more traditional text editor.
-            It is free software, fast, and lightweight.
-            It provides \LaTeX\ syntax highliting.
-            The \texttt{latexmk} tool was used along side it
-            to compile the document.
+            vi is the standard text editor in UNIX-like
+						operating systems. It has had a cuople of versions
+						trought the years, the current most popular is vim
+						(vi improved). The version of vi used here is
+						nvi.
         }.
         The main typeface used is the Computer Modern family%
         \footnote{%
-            Specifically, the New Computer Modern family,
-            which is a new opentype version of the original
-            typefaces. It bundles a new slightly darker ``book"
-            weight, complete Cyrillic, many new glyphs, 
-            and some more improvements.
+						The computer modern family, designed by Donald Knuth,
+						is the default \TeX\ typeface. It is based on the
+						Monotype Modern typeface, and shares a lot of similarities
+						with said font and with other Modern fonts used in
+						mathematical typesetting before Times Roman came along.
         }
-        for text and New Computer Modern Math for math%
+        for text and for math%
         \footnote{%
-            In \LuaLaTeX\ this amounts to using the following:
-            \mintinline{latex}|\usepackage[default]{fontsetup}|
+            In \LaTeX\ this amounts to using the following:
+            \mintinline{latex}|\usepackage{crf-lm}|
         }.
 
         \medskip
