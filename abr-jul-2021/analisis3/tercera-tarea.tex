@@ -12,10 +12,10 @@
 \author{{\normalsize hecho por} \\ Jhonny Lanzuisi}
 \date{\today}
 \maketitle
+\thanks{Una preuba}
 
-\section{Primer ejercicio}
-
-\subsection{Enunciado}
+\exercise
+%
 Sea \(f\colon U\subseteq\R^{2}\to\R\) continua en el abierto \(U\)
 tal que
 \[
@@ -23,17 +23,101 @@ tal que
 \]
 para cualquier \((x,y)\in U\). Demuestre que \(f\in C^\infty (U)\).
 
-\subsection{Solución}
+\solution
+%
+La función \(z = f(x,y)\) cumple la relación
+\[
+(x^2+y^2)z + z^3 = 1,
+\]
+por lo que no puede ser 0 nunca, de lo contrario tendríamos
+\(0=1\).
 
-\section{Segundo ejercicio}
+Por el teorema de la función implícita \(f\) debe ser
+de clase \(C^1\) y,
+\[
+\devp{z}{x} = \frac{2xz}{x^2+y^2+3z^2},
+\devp{z}{y} = \frac{2yz}{x^2+y^2+3z^2}.
+\]
+Los denominadores nunca se hacen cero puesto que
+\(z\) nunca es cero. Esto significa que podemos
+repetir el proceso anterior para obtener las derivadas segundas,
+que serán nuevamente continuas. Siguiendo de esta forma se obtiene
+que \(f\in C^\infty(U)\).
 
-\subsection{Enunciado}
+\exercise
+%
 Determine los puntos críticos de \(f(x,y) = \iprod{x}{y}\),
-\(f\colon\R^{2m}\to\R\), restrista a la esfera unitaria
+\(f\colon\R^{2m}\to\R\), restricta a la esfera unitaria
 \(\norm{x}^2+\norm{y}^2 = 1\) y muestre de aquí la desigualdad
 de Cauchy-Schwarz.
 
-\subsection{Solución}
+\solution
+%
+Utilizando el método de los multiplicadores de Lagrange,
+hallar los puntos críticos de \(f\) se reduce a resolver
+el siguiente sistema de ecuaciones:
+\[
+\Delta f(x,y) = \lambda\Delta g(x,y), \quad g(x,y) = 1,
+\]
+donde \(g(x,y) = \norm{x}^2 + \norm{y}^2\).
+
+Si hacemos \(x = x_1,\dots, x_m\) y \(y = y_1,\dots y_m,\)
+el sistema de ecuaciones es el siguiente:
+\[
+\begin{pmatrix}
+    y_1 \\ \vdots \\ y_m \\ x_1 \\ \vdots \\ x_m
+\end{pmatrix}
+= \lambda
+\begin{pmatrix}
+    2x_1 \\ \vdots \\ 2x_m \\ 2y_1 \\ \vdots \\ 2y_m
+\end{pmatrix}
+, \quad
+\norm{x}^2+\norm{y}^2 = 1.
+\]
+
+De la primera ecuación se tiene que \(y_1 = \lambda 2x_1\),
+al sustituir esto en la ecuación \(m+1\) se obtiene
+\(x_1 = 2\lambda(2\lambda x_1) = 4\lambda^2x_1\).
+Se puede continuar de esta forma, para obtener las
+\(m\) ecuaciones siguientes:
+\[
+\begin{matrix}
+    x_1 (1-4\lambda^2) = 0 \\
+    \vdots \\
+    x_m (1-4\lambda^2) = 0.
+\end{matrix}
+\]
+
+De las ecuaciones anteriores se sigue que
+\(x = 0\) o \(1-4\lambda^2 = 0\), es decir,
+\(\lambda = \frac12\). Además, el procedimiento
+anterior se puede hacer para obtener \(m\) ecuaciones
+de la forma \(y_i (1-4\lambda^2) = 0\), por lo que
+también hay que considerar el caso \(y = 0\).
+
+Si \(\lambda=\frac12\) entonces se puede sustituir 
+en el sistema de ecuaciones para obtener que \(x = y\).
+
+Si \(x = 0\) o \(y = 0\) la restricción nos dice que
+\(\norm{y} = 1\) o \(\norm{x} = 1\), respectivamente.
+
+Los puntos críticos son de la forma \((x,x)\) o
+\((0,y)\), con \(\norm{y} = 1\), o \((x,0)\) con
+\(\norm{x} = 1\).
+
+Ahora, como \(f(x,x) = \norm{x}^2\) y \(f(x,0) = f(y,0) = 0\)
+se sigue que los puntos de la forma \((x,x)\) son valores
+máximos de \(f\) y los puntos de la forma \((x,0)\) o
+\((0,y)\) son valores mínimos. De esto se deduce la 
+desigualdad de Cauchy-Schwarz, en la esfera unitaria:
+\[
+f(x,y) \leq f(x,x) \implies f(x,y)^2\leq f(x,x)^2,
+\]
+como la esfera es unitaria se tiene que \(f(x,x) = f(y,y) = 1\)
+y
+\[
+f(x,y)^2 \leq f(x,x)f(y,y).
+\]
 
 \input{C:/Users/Jhonny Lanzuisi/git/uni/latex-templates/postamble.tex}
 \end{document}

@@ -5,9 +5,13 @@
 \overfullrule=2cm
 
 % Font setup.
-\usepackage[default]{fontsetup}
+\usepackage{unicode-math}
+\setmainfont{Besley}
+\setsansfont[Scale=MatchLowercase]{Latin Modern Sans}
+\setmonofont[Scale=MatchLowercase]{Courier 10 Pitch}
+\setmathfont[Scale=MatchLowercase]{TeX Gyre Schola Math}
 % 20% bigger line height
-\linespread{1.05}
+\linespread{1.1}
 % Don't put extra space after periods
 \frenchspacing
 \KOMAoptions{
@@ -71,15 +75,26 @@
 % Footnotes
 \deffootnote{2.0em}{1.5em}{\thefootnotemark.\ }
 
+\newcounter{exer}
+\newcommand{\exercise}{%
+    \stepcounter{exer}%
+    \begin{center}%
+        \addfontfeatures{LetterSpace=7}\large\Roman{exer}%
+    \end{center}%
+}
+\newcommand{\solution}{
+    \begin{center}
+        \emph{Solución}
+    \end{center}
+}
+\newcommand\footertext[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
 % CUSTOM MACROS
-% ToC not in sans-serif
-% \let\oldtoc\tableofcontents
-% \renewcommand{\tableofcontents}{%
-%     {
-%         \renewcommand{\sffamily}{\rmfamily}
-%         \oldtoc%
-%     }
-% }
 % math macros
 \renewcommand{\Rn}{\mathbb{R}^{\mathrm{n}}}
 \newcommand{\Rm}{\mathbb{R}^{\mathrm{m}}}
@@ -89,5 +104,6 @@
 \renewcommand{\vec}[1]{\mathbf{#1}}
 \newcommand{\norm}[1]{\left\lvert #1 \right\rvert}
 \newcommand{\iprod}[2]{\left\langle #1 , #2 \right\rangle}
+\newcommand{\devp}[2]{\frac{\partial #1}{\partial #2}}
 \DeclareMathOperator{\img}{img}
 \DeclareMathOperator{\gen}{span}
