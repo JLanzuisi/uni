@@ -6,19 +6,19 @@
 
 % Font setup.
 \usepackage{unicode-math}
-\setmainfont{Besley}
-\setsansfont[Scale=MatchLowercase]{Latin Modern Sans}
-\setmonofont[Scale=MatchLowercase]{Courier 10 Pitch}
-\setmathfont[Scale=MatchLowercase]{TeX Gyre Schola Math}
+\setmainfont[Numbers={OldStyle,Proportional}]{Fira Sans}
+\setmonofont[Scale=MatchLowercase]{Fira Mono}
+\setmathfont[Scale=MatchLowercase]{Fira Math}
+\newfontfamily{\lightfont}{Fira Sans Light}
 % 20% bigger line height
-\linespread{1.1}
+\linespread{1.12}
 % Don't put extra space after periods
 \frenchspacing
 \KOMAoptions{
-    paper = letter,
+    paper = a5,
     BCOR = 0mm,
     twoside = false,
-    fontsize = {10},
+    fontsize = {9},
     DIV = calc,
 }
 
@@ -62,9 +62,9 @@
 \usepackage{minted}
 
 % Font style and size for title
-\setkomafont{title}{\fontseries{m}}
+\setkomafont{title}{\lightfont}
 % Font style for the subject
-\setkomafont{subject}{\normalfont\bfseries}
+\setkomafont{subject}{\normalfont\scshape}
 % Font style for subtitle
 \setkomafont{subtitle}{\normalfont\itshape}
 \setkomafont{author}{\large}
@@ -87,11 +87,12 @@
         \emph{Solución}
     \end{center}
 }
-\newcommand\footertext[1]{%
-  \begingroup
-  \renewcommand\thefootnote{}\footnote{#1}%
-  \addtocounter{footnote}{-1}%
-  \endgroup
+
+\newcommand{\mycopyright}{
+    Copyright \copyright 2021 Jhonny Lanzuisi \url{jalb97@gmail.com}.
+    This work is licensed under the Creative Commons Attribution-ShareAlike
+    International (CC BY-SA 4.0)  License. To view a copy of the license,
+    visit \url{https://creativecommons.org/licenses/by-sa/4.0/}.
 }
 
 % CUSTOM MACROS
