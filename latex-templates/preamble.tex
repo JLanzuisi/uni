@@ -6,19 +6,19 @@
 
 % Font setup.
 \usepackage{unicode-math}
-\setmainfont[Numbers={OldStyle,Proportional}]{Fira Sans}
-\setmonofont[Scale=MatchLowercase]{Fira Mono}
-\setmathfont[Scale=MatchLowercase]{Fira Math}
-\newfontfamily{\lightfont}{Fira Sans Light}
+\setmainfont{Reforma 1969 Blanca}
+\setsansfont[Scale=MatchLowercase]{League Spartan Light}
+\setmonofont[Scale=MatchLowercase]{Consolas}
+\setmathfont[Scale=MatchLowercase]{KpMath-Light.otf}
 % 20% bigger line height
-\linespread{1.12}
+\linespread{1.15}
 % Don't put extra space after periods
 \frenchspacing
 \KOMAoptions{
     paper = a5,
     BCOR = 0mm,
     twoside = false,
-    fontsize = {9},
+    fontsize = {10},
     DIV = calc,
 }
 
@@ -39,8 +39,8 @@
     backrefstyle=two,
     abbreviate=true
 ]{biblatex}
-\addbibresource{C:/Users/Jhonny Lanzuisi/git/Misc-LaTeX-files/bib/general.bib}
-\addbibresource{C:/Users/Jhonny Lanzuisi/git/Misc-LaTeX-files/bib/math-books.bib}
+\addbibresource{~/git/Misc-LaTeX-files/bib/general.bib}
+\addbibresource{~/git/Misc-LaTeX-files/bib/math-books.bib}
 
 % Graphics, mainly to insert images or
 % single page PDFs.
@@ -59,19 +59,20 @@
 %\urlstyle{same}
 \usepackage{metalogo}
 
-\usepackage{minted}
+%\usepackage{minted}
 
 % Font style and size for title
-\setkomafont{title}{\lightfont}
+\setkomafont{title}{\normalfont\itshape}
 % Font style for the subject
 \setkomafont{subject}{\normalfont\scshape}
 % Font style for subtitle
-\setkomafont{subtitle}{\normalfont\itshape}
+\setkomafont{subtitle}{\normalfont}
 \setkomafont{author}{\large}
 \setkomafont{date}{\normalsize}
 \setkomafont{section}{\fontseries{m}\Large}
 \setkomafont{subsection}{\fontseries{m}\large}
 \setkomafont{subsubsection}{\fontseries{m}\normalsize}
+
 % Footnotes
 \deffootnote{2.0em}{1.5em}{\thefootnotemark.\ }
 
@@ -84,15 +85,14 @@
 }
 \newcommand{\solution}{
     \begin{center}
-        \emph{Solución}
+        Solución
     \end{center}
 }
 
 \newcommand{\mycopyright}{
-    Copyright \copyright 2021 Jhonny Lanzuisi \url{jalb97@gmail.com}.
+    Copyright 2021 Jhonny Lanzuisi \url{jalb97@gmail.com}.
     This work is licensed under the Creative Commons Attribution-ShareAlike
-    International (CC BY-SA 4.0)  License. To view a copy of the license,
-    visit \url{https://creativecommons.org/licenses/by-sa/4.0/}.
+    International (CC BY-SA 4.0)  License.
 }
 
 % CUSTOM MACROS

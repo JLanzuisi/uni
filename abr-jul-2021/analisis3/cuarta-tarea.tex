@@ -1,0 +1,98 @@
+\documentclass{scrartcl}
+
+\input{/home/jhonny/git/uni/latex-templates/preamble.tex}
+
+\begin{document}
+
+%
+\title{Cuarta tarea}
+\subtitle{Cuarta evaluación del curso}
+\subject{Análisis III}
+\titlehead{Universidad Simón Bolívar\hfill Caracas, Venezuela}
+\author{{\normalsize hecho por} \\ Jhonny Lanzuisi\footnote{\mycopyright}}
+\date{\today}
+\maketitle
+
+\exercise
+Mostrar que $λ ≡ μ$ es una relación de equivalencia.
+
+\solution
+Reflexividad. Si tomamos el homeomorfimo $\varphi$ como la función identidad,
+entonces claramente $\lambda = \lambda\circ\varphi$ y $\lambda\equiv\lambda$.
+
+Simetría. Sean $\lambda,\mu$ dos caminos y supongamos que $\lambda\equiv\mu$.
+Entonces existe un homeomorfismo $\varphi$ tal que $\mu = \lambda\circ\varphi$.
+Como $\varphi$ es homeomorfismo tiene inversa $\varphi^{-1}$, de donde se sigue que
+$\lambda = \mu\circ\varphi^{-1}$ y $\mu\equiv\lambda$.
+
+Transitividad. Sean $\lambda,\mu,\nu$ tres caminos, y supongamos que
+$\lambda\equiv\mu$ y $\mu\equiv\nu$. Entonces existen dos homeomorfismos $\varphi,\xi$
+tales que $\mu = \lambda\circ\varphi$ y $\nu = \mu\circ\xi$.
+Por lo tanto,
+$$
+\nu = \mu\circ\xi = (\lambda\circ\varphi)\circ\xi = \lambda\circ(\varphi\circ\xi),
+$$
+y obtenemos que $\lambda\equiv\nu$.
+
+\exercise
+Sea $λ\colon [a, b] → R^2$ el gráfico de una función $f\colon [a,b]\to\R$ de clase $C^1$ y $\omega = Adx + Bdy$
+una forma diferencial continua. Muestre que
+$$
+\int_\lambda Ady + Bdy = \int_a^b A(t,f(t)) + B(t,f(t)) f'(t) dt.
+$$
+
+\solution
+Dado que $\lambda(c) = (c,f(c))\; (c\in[a,b])$, $\lambda$ tiene que ser continua
+puesto que sus funciones componentes son la identidad y $f$, ambas continuas.
+
+La derivada $\lambda' = (1,f'(c))$ es nuevamente continua, por lo que $\lambda$
+es de clase $C^1$ y por lo tanto es rectificable.
+
+Como $\lambda$ es continua y rectificable:
+\begin{align*}
+\int_\lambda \omega &= \int_a^b \iprod{\omega(\lambda(c))}{\lambda'(c)} dc\\
+					&= \int_a^b \iprod{\big(A(c,f(c)), B(c,f(c))\big)}{\big(1,f'(c)\big)} dc\\
+					&= \int_a^b A(c,f(c)) + B(c,f(c)) f'(c)\, dc
+\end{align*}
+
+
+\exercise
+Sean $P$ y $Q$ dos particiones de un bloque $n$−dimensional $A$ y $f\colon A → R$
+una función acotada. Si $P ⊂ Q$, entonces
+$$
+s(f,P)\leq s(f,Q)\leq S(f,Q)\leq S(f,P).
+$$
+
+\solution
+Sea $R$ un subrectángulo de $P$. Como $Q$ es un refinamiento de $P$
+se tiene que existen $k$ subrectángulos de $Q$, llamémosles $U_1,\dots,U_k$, en $R$.
+Es claro que $v(R) = v(U_1) + \dots + v(U_k)$.
+Además, $m_R(f)\leq m_{U_i}(f)\; (0 < i \leq k)$ puesto que los valores
+de $f(x)$ en $R$ incluyen todos los valores de $f(x)$ en $U_i$ y posiblemente
+valores menores.
+Entonces,
+\begin{align*}
+m_R(f)v(R) &= m_R(f)v(U_1) + \dots + m_R(f)v(U_k)\\
+		   &\leq m_{U_1}(f)V(U_1) + \dots + m_{U_k}(f)v(U_k).
+\end{align*}
+
+La suma de los elementos de la derecha de la desigualdad anterior, para todos los 
+subrectángulos $R$ de $P$, es $s(f,P)$ y la suma a la izquierda es $s(f,Q)$, por lo que
+se obtiene el resultado buscado: $s(f,P)\leq s(f,Q)$.
+
+Un argumento completamente análogo se puede usar cuando se consideran las sumas superiores,
+para llegar a la conclusión de que $S(f,Q)\leq S(f,P)$.
+
+\exercise
+Sea $A ⊂ \Rn$ un conjunto limitado con volumen. $f\colon A → R$ es integrable
+si el conjunto de discontinuidades de $f$ es finito.
+
+\exercise
+Si $f\colon A → R$ es integrable sobre $A$ y es tal que $f(x) ≥ 0$ para todo $x ∈ A$
+y $ \int_A f(x) dx = 0$, entonces el conjunto
+$$
+\{ x\in A\colon f(x)\neq 0\}
+$$
+posee volumen cero.
+
+\end{document}

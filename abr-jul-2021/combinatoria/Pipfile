@@ -9,6 +9,7 @@ networkx = "*"
 matplotlib = "*"
 pydot = "*"
 graphviz = "*"
+pygraphviz = "*"
 
 [dev-packages]
 
