@@ -10,6 +10,7 @@ matplotlib = "*"
 pydot = "*"
 graphviz = "*"
 pygraphviz = "*"
+sympy = "*"
 
 [dev-packages]
 
