@@ -19,7 +19,7 @@ def lexicographic_partition(N: int) -> None:
   number_of_partitions = sympy.partition(N)
   current_partition = []
 
-  for i in range(0, number_of_partitions):
+  for i in range(0, number_of_partitions-1):
     if i == 0:
       current_partition = [N]
     if i > 0 and len(current_partition) != N:
