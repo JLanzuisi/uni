@@ -1,0 +1,113 @@
+% So that TeX doesn't complain about small
+% underfull or overfull boxes
+\hfuzz1pc
+% Make the overfull marker bigger
+\overfullrule=2cm
+
+% Font setup.
+\usepackage{unicode-math}
+\setmainfont[Numbers=OldStyle]{Libertinus Sans}
+\newfontfamily{\tfont}[Ligatures=TeX]{Libertinus Serif}
+\setmathfont{Libertinus Math}
+% 20% bigger line height
+\linespread{1.05}
+% Don't put extra space after periods
+\frenchspacing
+\KOMAoptions{
+    paper = letter,
+    BCOR = 0mm,
+    twoside = false,
+    headsepline=true,
+    fontsize = {10},
+    DIV = 7,
+}
+
+% Make bibliography more compact, no indents.
+\KOMAoption{toc}{flat}
+
+% Language support, usually changes between english
+% and spanish.
+\usepackage[spanish,es-noindentfirst]{babel}
+%\usepackage[english]{babel}
+\usepackage{csquotes}
+
+% Bibliography
+\usepackage[
+    backend=biber,
+    style=numeric-comp,
+    backref=true,
+    backrefstyle=two,
+    abbreviate=true
+]{biblatex}
+\addbibresource{~/git/Misc-LaTeX-files/bib/general.bib}
+\addbibresource{~/git/Misc-LaTeX-files/bib/math-books.bib}
+
+% Graphics, mainly to insert images or
+% single page PDFs.
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+% Handy command to typeset URLs
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=Mahogany,
+    filecolor=Mahogany,
+    urlcolor=Black,
+    citecolor=Mahogany,
+}
+\usepackage{url}
+%\urlstyle{same}
+\usepackage{metalogo}
+
+%\usepackage{minted}
+
+% Font style and size for title
+\setkomafont{title}{\normalfont\tfont\itshape}
+% Font style for the subject
+\setkomafont{subject}{\normalfont}
+% Font style for subtitle
+\setkomafont{subtitle}{\normalfont\tfont\large\scshape}
+\setkomafont{author}{\normalsize}
+\setkomafont{date}{\normalsize}
+\setkomafont{section}{\fontseries{m}\tfont\Large}
+\setkomafont{subsection}{\normalfont\bfseries\small}
+\setkomafont{subsubsection}{\normalfont\small}
+
+% Footnotes
+\deffootnote{2.0em}{1.5em}{\thefootnotemark.\ }
+
+% Headings
+\pagestyle{headings}
+
+\newcounter{exer}
+\newcommand{\exercise}{%
+    \stepcounter{exer}%
+    \begin{center}%
+        \addfontfeatures{LetterSpace=7}\large\Roman{exer}%
+    \end{center}%
+}
+\newcommand{\solution}{
+    \begin{center}
+        Solución
+    \end{center}
+}
+
+\newcommand{\mycopyright}{
+    Copyright 2021 Jhonny Lanzuisi \url{jalb97@gmail.com}.
+    This work is licensed under the Creative Commons Attribution-ShareAlike
+    International (CC BY-SA 4.0)  License.
+}
+
+% CUSTOM MACROS
+% math macros
+\renewcommand{\Rn}{\mathbb{R}^{\mathrm{n}}}
+\newcommand{\Rm}{\mathbb{R}^{\mathrm{m}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\devpart}[2]{\frac{\partial  #1}{\partial #2}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\norm}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\iprod}[2]{\left\langle #1 , #2 \right\rangle}
+\newcommand{\devp}[2]{\frac{\partial #1}{\partial #2}}
+\DeclareMathOperator{\img}{img}
+\DeclareMathOperator{\gen}{span}
