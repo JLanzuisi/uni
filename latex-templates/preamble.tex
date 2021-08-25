@@ -6,25 +6,18 @@
 
 % Font setup.
 \usepackage{unicode-math}
-\setmainfont[Numbers={OldStyle,Proportional}]{STEP}
-\setmathfont[Scale=MatchLowercase]{STIX Two Math}
-\setmathfont[
-	range={up/{latin},it/{latin}},
-]{XITS Math}
-\setmathfont[
-	range={up/{Latin},it/{Latin}},
-]{TeX Gyre Termes Math}
-\setmonofont[Scale=MatchLowercase]{Courier 10 Pitch}
-% 20% bigger line height
-\linespread{1.08}
+\setmainfont{Source Serif 4}
+\newfontfamily{\tfont}{Source Serif 4 Display}
+\setmathfont[Scale=MatchUppercase]{New Computer Modern Math}
+\linespread{1.05}
 % Don't put extra space after periods
 \frenchspacing
 \KOMAoptions{
     paper = a5,
     BCOR = 0mm,
     twoside = false,
-    fontsize = {10},
-    DIV = calc,
+    fontsize = {8},
+    DIV = 10,
 }
 
 % Make bibliography more compact, no indents.
@@ -67,7 +60,7 @@
 %\usepackage{minted}
 
 % Font style and size for title
-\setkomafont{title}{\normalfont\itshape\bfseries}
+\setkomafont{title}{\tfont\itshape}
 % Font style for the subject
 \setkomafont{subject}{\normalfont}
 % Font style for subtitle
@@ -80,6 +73,7 @@
 
 % Footnotes
 \deffootnote{2.0em}{1.5em}{\thefootnotemark.\ }
+\setkomafont{footnote}{\sffamily}
 
 \newcounter{exer}
 \newcommand{\exercise}{%

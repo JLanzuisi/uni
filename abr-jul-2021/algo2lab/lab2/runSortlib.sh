@@ -67,12 +67,12 @@ while getopts ":s:t:n:g:a:h" opt; do
         help
         ;;
     \? )
-        echo "Invalid option: $OPTARG." 
+        echo "Invalid option: $OPTARG."
         echo "Use the -h flag to get help."
         exit 1
         ;;
     : )
-        echo "Invalid option: $OPTARG requires an argument." 
+        echo "Invalid option: $OPTARG requires an argument."
         echo "Use the -h flag to get help."
         exit 1
         ;;
