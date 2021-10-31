@@ -1,0 +1,136 @@
+\documentclass{scrartcl}
+
+\input{~/git/uni/latex-templates/preamble.tex}
+
+\begin{document}
+%
+\title{Primera Tarea}
+\subtitle{Ruina del jugador}
+\subject{Aplicación a los procesos estocásticos discretos}
+\titlehead{Universidad Simón Bolívar\hfill Caracas, Venezuela}
+\author{Jhonny Lanzuisi}
+\date{\today}
+\maketitle
+
+\exercise
+Muestre que si $L\to\infty$ entonces $p_k\to1$.
+
+\solution
+Como sabemos, la probabilidad de que se vaya sin nada, $p_k$,
+esta dada por:
+\begin{equation}\label{eq:pk}
+	p_k = \frac{
+		\left(\frac{1-p}{p}\right)^L - \left(\frac{1-p}{p}\right)^k
+	}{
+		\left(\frac{1-p}{p}\right)^L - 1
+	}
+\end{equation}
+
+Como $p < 1/2$ esta fijo, por conveniencia hagamos la siguiente sustitución.
+\[
+	\alpha = \frac{1-p}{p}.
+\]
+Nótese además que, como $p < 1/2$, se tiene $\alpha > 1$ y $\lim_{L\to\infty} \alpha^L = \infty$.
+
+Con todo lo anterior, podemos calcular el límite buscado.
+\[
+	\lim_{L\to\infty} \frac{
+		\alpha^L - \alpha^k
+	}{
+		\alpha^L - 1
+	}
+	=
+	\lim_{L\to\infty} \frac{
+		1 - \frac{\alpha^k}{\alpha^L}
+	}{
+		1 - \frac{1}{\alpha^L}
+	}
+	=
+	\frac{1 - 0}{1 - 0}
+	=
+	1
+\]
+
+\exercise
+Encuentre $p_k$ cuando $p=1/2$.
+
+\solution
+Una simple evaluación de $p=1/2$ en la ecuación~\ref{eq:pk} da una división por $0$,
+por lo tanto el valor de $p_k$ puede hallarse considerando el límite cuando $p\to1/2$.
+
+Hagamos $\alpha$ igual que en el ejercicio anterior. Entonces $p\to1/2$ implica que
+$\alpha\to1$. Una evaluación del límite con la sustitución propuesta demuestra rápidamente
+que se sigue teniendo una división por $0$. Hace falta, entonces, aplicar la regla de L'Hopital.
+\begin{align*}
+	\lim_{\alpha\to1} \frac{
+		\alpha^L - \alpha^k
+	}{
+		\alpha^L - 1
+	}
+	=
+	\lim_{\alpha\to1} \frac{
+		L\alpha^{L-1} - k\alpha^{k-1}
+	}{
+		L\alpha^{L-1}
+	}
+	=
+	\frac{L - k}{L}
+	= 1 - \frac{k}{L}.
+\end{align*}
+
+\exercise
+Muestre que con probabilidad uno, el jugador no se queda en
+el casino por siempre.
+
+\solution
+Queremos ver que el juego siempre termina. Llamemos $q_k$ a la probabilidad
+de que el jugador se queda jugando para siempre. Queremos ver que $q_k = 0$ para
+todo $k$. Como aplican las mismas condiciones que para $p_k$, se tienen que la misma
+recurrencia es válida:
+\[
+	q_k = pq_{k+1} + (1-p)q_{k-1},
+\]
+pero con la diferencia de que $q_0=0$, pues si tiene $0$ dinero no puede jugar para siempre,
+y $q_L = 0$ pues si llega a $L$ se retira y no sigue jugando.
+
+Con estas condiciones inciales se puede despejar $q_k$ de la misma forma que
+se hizo en clases, pero tomando en cuenta las diferencias causadas por el cambio
+en la condición incial. Se tiene entonces que de la recursión anterior y de la parte (i)
+del teorema visto en clases se llega a la siguiente recursión.
+\[
+	q_{k+1}-q_k = \left(\frac{p-1}{p}\right)^k(q_1).
+\]
+
+Ahora, aplicando la parte (ii) del teorema, obtenemos:
+\begin{equation}\label{eq:qk}
+	q_k = (q_1) \frac{
+		\left(\frac{p-1}{p}\right)^k - 1
+	}{
+		\frac{p-1}{p} - 1
+	},
+\end{equation}
+que al hacer $k=L$ se tiene $q_k=0$, volviendo a la recurrencia anterior:
+\[
+	0 = (q_1) \frac{
+		\left(\frac{p-1}{p}\right)^L - 1
+	}{
+		\frac{p-1}{p} - 1
+	},
+\]
+de donde se sigue que $q_1 = 0$ o  $\frac{
+		\left(\frac{p-1}{p}\right)^L - 1
+	}{
+		\frac{p-1}{p} - 1
+}$ es cero.
+
+La segunda posibilidad implica, despues de despejar, que $p = 1/2$ lo cual es imposible
+pues estamos suponiendo que $p<1/2$. Se tiene entonces que $q_1=0$ y de~(\ref{eq:qk})
+se obtiene $q_k = 0$ como se buscaba.
+
+\exercise
+Dado que se va con nada, ¿Cúal es la probabilidad de que nunca haya
+tenido más de los $\$ k$ iniciales?
+
+%\printbibliography
+\input{/home/jhonny/git/uni/latex-templates/postamble.tex}
+\end{document}

@@ -1,0 +1,136 @@
+---
+title: "Segunda tarea"
+subtitle: "Caminos al azar"
+author: "Jhonny Lanzuisi"
+date: "10/26/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Enunciado
+
+Programar un paseo al azar dado $p$ y $S_0$ con criterio de parada $N$ dado.
+Tome $S_0=0$, $N=100$ y $p=0.17$ haga $50$ simulaciones y responda las preguntas.
+
+### Script principal
+
+La simulación se realiza con la función `rbinom` que implementa un proceso de
+Bernoulli con probabilidad $p$ de obtener $1$ y probabilidad $1-p$ de obtener $-1$.
+En nuestro caso, tenemos $p=0.17$.
+
+```{r}
+# Stopping point for the walk
+N <- 100
+# Number of simulations
+simulations <- 50
+# Probability of getting 1
+p <- 0.17
+
+collection_of_all_data <- list()
+
+for(k in 1:simulations) {
+  # values_of_S is the collection of values of the
+  # current random walk. data_of_S lists the data 
+  # needed for the questions, in the same order they're asked.
+  values_of_S <- c(0)
+  data_of_S <- c(0)
+  
+  # Generate values of S up to N
+  for(i in 1:N) {
+    # The factor of two and the -1 are needed because rbinom
+    # would print 1 and 0 otherwise.
+    values_of_S[i+1] <- values_of_S[[i]] + 2*rbinom(1,1,p)-1
+  }
+  
+  # Get last element.
+  data_of_S[1] <- values_of_S[N+1]
+  # Check if the walk returns to zero.
+  # The first zero needs to be removed.
+  values_of_S_minus_first <- tail(values_of_S, -1)
+  if(0 %in% values_of_S_minus_first) {
+    data_of_S[2] <- 1
+  } else {
+    data_of_S[2] <- 0
+  }
+  # Get max value
+  data_of_S[3] <- max(values_of_S)
+  # Get min value
+  data_of_S[4] <- min(values_of_S)
+  
+  # Gather all data in a single list
+  collection_of_all_data[[k]] <- data_of_S
+}
+```
+
+### ¿Cuál es el $S_{100}$ que más se repite?
+
+El siguiente script tiene como salida todos los valores finales
+de cada simulación y, debajo, la frecuencia con la que ocurren.
+Por lo que el que más se repite es el primero que aparece,
+de izquierda a derecha.
+
+```{r}
+last_elements <- c(0)
+
+for(i in 1:length(collection_of_all_data)) {
+  last_elements[i] <- collection_of_all_data[[i]][1]
+}
+
+sort(table(last_elements),decreasing=TRUE)
+```
+
+### ¿En cuántas de las simulaciones el paseo vuelve a cero?
+
+Por como se hizo el script principal contar cuántas vuelven a cero
+es bastante sencillo. El siguiente script imprime dicha cantidad.
+
+```{r}
+amount_returns_to_zero <- 0
+
+for(i in 1:length(collection_of_all_data)) {
+  amount_returns_to_zero <- amount_returns_to_zero + collection_of_all_data[[i]][2]
+}
+
+print(amount_returns_to_zero)
+```
+
+### ¿Cuál es el valor más alto al que llega cada simulación del paseo?
+
+El siguiente script imprime el valor más alto al que llega cada simulación
+en orden, es decir, el primer número corresponde a la primera simulación el
+segundo a la segunda y así, sucesivamente.
+
+Es de esperar que los valores estén cerca de $0$ puesto que la probabilidad
+de tener $-1$ es mayor que la de tener $1$.
+
+```{r}
+max_values <- c(0)
+
+for(i in 1:length(collection_of_all_data)) {
+  max_values[i] <- collection_of_all_data[[i]][3]
+}
+
+print(max_values)
+```
+
+### ¿Cuál es el valor más bajo al que llega cada simulación del paseo?
+
+El siguiente script imprime el valor más bajo al que llega cada simulación
+en orden, es decir, el primer número corresponde a la primera simulación el
+segundo a la segunda y así, sucesivamente.
+
+Es de esperar que los valores sean grandes y negativos puesto que la probabilidad
+de tener $-1$ es mayor que la de tener $1$.
+
+```{r}
+min_values <- c(0)
+
+for(i in 1:length(collection_of_all_data)) {
+  min_values[i] <- collection_of_all_data[[i]][4]
+}
+
+print(min_values)
+```
