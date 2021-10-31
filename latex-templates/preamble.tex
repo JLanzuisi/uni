@@ -6,18 +6,19 @@
 
 % Font setup.
 \usepackage{unicode-math}
-\setmainfont{Source Serif 4}
-\newfontfamily{\tfont}{Source Serif 4 Display}
-\setmathfont[Scale=MatchUppercase]{New Computer Modern Math}
+\setmainfont{STIX Two Text}
+\setsansfont[Scale=MatchLowercase]{Source Sans 3}
+\setmonofont[Scale=MatchLowercase]{Ubuntu Mono}
+\setmathfont[Scale=.93]{STIX Two Math}
 \linespread{1.05}
 % Don't put extra space after periods
 \frenchspacing
 \KOMAoptions{
-    paper = a5,
+    paper = letter,
     BCOR = 0mm,
     twoside = false,
     fontsize = {8},
-    DIV = 10,
+    DIV = calc,
 }
 
 % Make bibliography more compact, no indents.
@@ -60,7 +61,7 @@
 %\usepackage{minted}
 
 % Font style and size for title
-\setkomafont{title}{\tfont\itshape}
+\setkomafont{title}{\itshape}
 % Font style for the subject
 \setkomafont{subject}{\normalfont}
 % Font style for subtitle
@@ -86,12 +87,6 @@
     \begin{center}
         Solución
     \end{center}
-}
-
-\newcommand{\mycopyright}{
-    Copyright 2021 Jhonny Lanzuisi \url{jalb97@gmail.com}.
-    This work is licensed under the Creative Commons Attribution-ShareAlike
-    International (CC BY-SA 4.0)  License.
 }
 
 % CUSTOM MACROS
