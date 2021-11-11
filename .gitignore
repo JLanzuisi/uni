@@ -1,3 +1,4 @@
+*.Rhistory
 tlcheck*
 *.synctex.gz
 *.synctex(busy)
