@@ -1,0 +1,123 @@
+\documentclass{scrartcl}
+
+\input{~/git/uni/latex-templates/preamble.tex}
+
+\newcommand{\comment}[1]{\text{\small #1}}
+
+\begin{document}
+%
+\title{Primer Parcial}
+\subtitle{Septiembre-Diciembre 2021}
+\subject{Análisis IV}
+\titlehead{Universidad Simón Bolívar\hfill Caracas, Venezuela}
+\author{Jhonny Lanzuisi}
+\date{\today}
+\maketitle
+
+\exercise
+Sean $z, w ∈ \Cplx$. Demuestre que
+\[
+    |z + w| = |z| + |w|
+\]
+si y sólo si $z \overline{w}$ es un número real no negativo.
+
+\solution
+Sean $z = a_1 + ia_2$ y $w = b_1 + ib_2$, entonces:
+\allowdisplaybreaks
+\begin{gather*}
+    |z + w| = |z| + |w| \\
+    \iff\comment{(Definición del valor absoluto)} \\
+    \sqrt{(a_1 + b_1)^2 + (a_2 + b_2)^2}
+        = \sqrt{a_1^2 + a_2^2} + \sqrt{b_1^2 + b_2^2} \\
+    \iff\comment{(Elevando al cuadrado)}\\
+    (a_1 + b_1)^2 + (a_2 + b_2)^2
+        = a_1^2 + a_2^2 + b_1^2 + b_2^2
+            + 2 \sqrt{a_1^2 + a_2^2} \sqrt{b_1^2 + b_2^2}\\
+    \iff\comment{(Expandiendo lado izquierdo)}\\
+    a_1^2 + 2a_1b_1 + b_1^2 + a_2^2 + 2a_2b_2 + b_2^2
+            = a_1^2 + a_2^2 + b_1^2 + b_2^2
+                + 2 \sqrt{a_1^2 + a_2^2} \sqrt{b_1^2 + b_2^2}\\
+    \iff\comment{(Simplificando)}\\
+    a_1b_1 + a_2b_2 = \sqrt{a_1^2 + a_2^2} \sqrt{b_1^2 + b_2^2}\\
+    \iff\comment{(Elevando al cuadrado)}\\
+    (a_1b_1 + a_2b_2)^2 = (a_1^2 + a_2^2) (b_1^2 + b_2^2)\\
+    \iff\comment{(Expandiendo multiplicaciones)}\\
+    a_1^2b_1^2 + 2a_1b_1a_2b_2 + a_2^2b_2^2
+        = a_1^2b_1^2 + a_1^2b_2^2 + a_2^2b_1^2 + a_2^2b_2^2\\
+    \iff\comment{(Simplificando)}\\
+    2a_1b_1a_2b_2 = a_1^2b_2^2 + a_2^2b_1^2\\
+    \iff\\
+    0 = (a_1b_2)^2 + 2(a_1b_2)(a_2b_1) + (a_2b_1)^2\\
+    \iff\\
+    0 = (a_1b_2 - a_2b_1)^2\\
+    \iff\\
+    0 = a_1b_2 - a_2b_1
+\end{gather*}
+
+Pero el lado derecho de la última igualdad es la parte compleja
+de $z\overline{w}$. Tomando en cuenta esto y que todas las implicaciones son dobles,
+hemos demostrado lo que buscábamos.
+
+\exercise
+Considere $S$ como el conjunto que consiste en retirar del
+plano complejo la circunferencia de centro en el origen y radio $\sqrt5$.
+Considerando $S ∪ ∂S$, es $S$ un conjunto conexo?
+
+\solution
+Sea $C = \{ z\in\Cplx\colon |z| \leq \sqrt{5} \}$ la circunferencia del enunciado.
+Entonces $S = \Cplx\setminus C$, es decir, $S = \{ z\in\Cplx\colon |z| > \sqrt{5} \}$.
+La frontera de $S$ es el conjunto en el cual cualquier bola abierta centrada en cualquiera de
+sus puntos, contiene elementos dentro y fuera de $S$.
+Se sigue que $\partial S = \{z\in\Cplx\colon |z| = \sqrt{5}\}$.
+Obtenemos entonces $S\cup\partial S = \{ z\in\Cplx\colon |z| \geq \sqrt{5} \}$.
+
+Queremos ahora demostrar que, dados dos puntos $s_1,s_2\in S\cup\partial S$, existe un conjunto
+de segmentos contiguos (polígono) que los unen.
+
+Consideremos la circunferencia $C_1$ de centro en el orígen y radio $|s_1|$ y también la
+circunferencia $C_2$ de centro en el orígen y radio $|s_2|$.
+Distinguimos ahora dos casos:
+\begin{enumerate}
+    \item Existe una recta $\ell$ que pasa por el orígen y contiene a los puntos $s_1$ y $s_2$, ó,
+    \item No existe tal recta $\ell$, y por lo tanto los puntos $s_1,s_2$ no son 
+        diametralmente opuestos con respecto al orígen.
+\end{enumerate}
+
+Podemos construir un polígono que uno a los puntos $s_1,s_2$ dependiendo del caso que nos encontremos.
+
+\begin{description}
+    \item[Caso 2] (Figura 1) Tomemos la recta $L_1$ tangente a $C_1$ en $s_1$ y la recta $L_2$ tangente a $C_2$ en $s_2$.
+        Estas rectas, no paralelas, se intersectan en un punto $w$. El polígono $[s_1,w]\cup[w,s_2]$ esta totalmente
+        contenido en $S\cup\partial S$. De no estar totalmente contenido, algún punto de dicho polígono estaría en la región
+        $C^\ast = \{z\in\Cplx\colon |z| < \sqrt{5}\}$, pero esto es imposible puesto que $C^\ast\subset C_1$ y $C^\ast\subset C_2$
+        por lo que los segmentos $[s_1,w],[w,s_2]$ nunca intersectan a $C^\ast$ pues dichos segmentos tocan a $C_1,C_2$
+        en $s_1,s_2$, respectivamente, y no en ningún otro punto. Al $s_1,s_2$ no ser puntos de $C^\ast$, se tiene que el
+        polígono propuesto esta completamente contenido en $S\cup\partial S$.
+    \item[Caso 1] (Figura 2) En este caso $L_1$ y $L_2$ son paralelas. Tomemos una perpendicular $P$ a $L_1$ tal que $|s_1-w_1| > \sqrt{5}$,
+        donde $w_1$ es la intersección de $P$ con $L_1$. Como $L_1$ y $L_2$ son paralelas, $P$ intersecta a $L_2$ en un punto
+        $w_2$. El polígono $[s_1,w_1]\cup[w_1,w_2]\cup[w_2,s_2]$ esta totalmente contenido en $S\cup\partial S$. Los segmentos
+        $[s_1,w_1],[w_2,s_2]$ no contienen ningún punto de $C^\ast$ por las mismas razones que el caso anterior. El segmento
+        $[w_1,w_2]$, al ser $|s_1-w| > \sqrt{5}$, es tal que $|z| > \sqrt{5}\;\forall z\in[w_1,w_2]$, y entonces dicho segmento
+        no posee nigún punto de $C^\ast$.
+\end{description}
+
+Hemos demostrado que, en cualquier caso, existe un polígono que une a dos puntos cualesquiera de $S\cup\partial S$
+por lo que este conjunto es conexo.
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=.65\textwidth]{caso2.png}
+    \end{center}
+    \caption{Segundo caso.}
+\end{figure}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=.65\textwidth]{caso1.png}
+    \end{center}
+    \caption{Primer caso.}
+\end{figure}
+
+%\printbibliography
+\input{/home/jhonny/git/uni/latex-templates/postamble.tex}
+\end{document}

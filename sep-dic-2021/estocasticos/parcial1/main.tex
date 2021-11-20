@@ -1,0 +1,164 @@
+\documentclass{scrartcl}
+
+\input{~/git/uni/latex-templates/preamble.tex}
+
+\begin{document}
+%
+\title{Primer Parcial}
+\subtitle{Paseos aleatorios \& cadenas de Markov}
+\subject{Aplicación a los procesos estocásticos discretos}
+\titlehead{Universidad Simón Bolívar\hfill Caracas, Venezuela}
+\author{Jhonny Lanzuisi}
+\date{\today}
+\maketitle
+
+\exercise
+Sea $S_n$ con $n ∈ \N$ un paseo al azar simétrico. Dado $n ∈ \N$, ¿cuál es la probabilidad
+de que $S$ no visite el cero durante el intervalo $(0, n]$?.
+
+\solution
+Si $n$ es par, entonces el lema principal asegura que:
+\[
+	\Prob(S_1\neq0, \dots, S_n\neq0) = \Prob(S_n=0).
+\]
+Además, por lo visto en clases,
+\[
+	\Prob(S_n=0) = \binom{2n}{n}\frac{1}{2^{2n}}.
+\]
+
+Si $n$ es impar, podemos tomar el primer par $m$ tal que $m<n$.
+Como el paseo no puede hacerse cero en $n$ impar, obtendremos la probabilidad
+buscada usando las mismas igualdades de antes pero con $m$ en lugar de $n$.
+
+\exercise
+Sea $\mathcal{X}$ una cadena de Markov de tres estados, $E = \{1, 2, 3\}$, dada por la matriz
+de transición
+\[
+	P =
+	\begin{pmatrix}
+		0.3 & 0.2 & 0.5 \\
+		0.5 & 0.1 & 0.4 \\
+		0.5 & 0.2 & 0.3
+	\end{pmatrix}	
+\]
+
+\begin{enumerate}[label=\alph*]
+\item Halle $\Prob(X_2 = 3 \mid X_0 = 1)$.
+\item Halle la distribución de $π_1$ , es decir, la probabilidad de que para el paso uno la cadena esté en cada estado.
+\item Halle la distribución estacionaria de la cadena, es decir, $π$ tal que $πP = π$.
+\item Encuentre $\Prob(X_0 = 3, X_1 = 2, X_2 = 1, X_3 = 1, X_4 = 3)$.
+\end{enumerate}
+
+\solution[a]
+Por un teorema visto en clases,
+\[
+	\Prob(X_{0+2} = 3\mid X_0 = 1) = P^2(1,3).
+\]
+Calculando el cuadrado de la matriz $P$, obtenemos,
+\[
+	P^2 =
+	\begin{pmatrix}	
+		0.44 & 0.18 & 0.38 \\
+		0.4 & 0.19 & 0.41 \\
+		0.4 & 0.18 & 0.42
+	\end{pmatrix},
+\]
+de donde se sigue que $\Prob(X_{0+2} = 3\mid X_0 = 1) = 0.38$.
+
+\clearpage
+\solution[d]
+Por un teorema visto en clases, se tiene que:
+\begin{align*}
+	\Prob(X_0 = 3, X_1 = 2, X_2 = 1, X_3 = 1, X_4 = 3) &= \pi_3 p_{32} p_{21} p_{11} p_{13}\\
+	&= (\frac13) (0.2) (0.5) (0.3) (0.5)\\
+	&= 0.005.
+\end{align*}
+
+\solution[c]
+Queremos ver las soluciones al sistema de ecuaciones $\pi P = \pi$, dado por:
+\[
+	\begin{cases}
+		x_1(0.3) + x_2(0.5) + x_3(0.5) = x_1\\
+		x_1(0.2) + x_2(0.1) + x_3(0.2) = x_2\\
+		x_1(0.5) + x_2(0.4) + x_3(0.3) = x_3,
+	\end{cases}
+\]
+bajo la condición adicional $x_1 + x_2 + x_3 = 1$ que debe cumplir
+la distribución de probabilidad.
+
+El sistema anterior tiene como solución:
+\[
+	x_1 = \frac{55}{53}x_3, \quad x_2 = \frac{24}{53}x_3, \quad x_3=x_3.	
+\]
+
+Ahora podemos despejar $x_3$ de la ecuación:
+\[
+	\frac{55}{53}x_3 + \frac{24}{53}x_3	+ x_3 = 1
+\]
+y obtenemos $x_3 = 0.40152$.
+
+Se sigue que los valores buscados de $\pi$ son $(0.41667, 0.18182, 0.40152)$.
+
+\clearpage
+\solution[b]
+La distribución $\pi_1$ viene dada por:
+\[
+	(1/3, 1/3, 1/3)
+	\begin{pmatrix}
+		0.3 & 0.2 & 0.5 \\
+		0.5 & 0.1 & 0.4 \\
+		0.5 & 0.2 & 0.3
+	\end{pmatrix}
+	= (0.4333, 0.1667, 0.4).
+\]
+
+\exercise
+Considere una cadena de Markov con espacio de estados $E = \{0, 1, 2, 3\}$ y matriz
+de transición
+\[
+	P = \begin{pmatrix}
+		1 & 0 & 0 & 0 \\
+		0.5 & 0.2 & 0.1 & 0.2\\
+		0.2  & 0.1 & 0.6 & 0.1\\
+		0 & 0 & 0 & 1 \\
+		\end{pmatrix}.
+\]
+
+\begin{enumerate}[label=\alph*]
+	\item Comenzando en el estado 1, determine la probabilidad de que la cadena de Markov termine en el estado 0.
+	\item Determine el tiempo medio de absorción.
+\end{enumerate}
+
+\solution[a]
+Sea $h_i = \Prob(\text{llegar al 0, partiendo del estado $i$})$.
+Las probabilidades de llegar al estado cero partiendo de los otros estados
+vienen dadas por el siguiente sistema linear.
+\[
+	\begin{cases}
+		h_0 = 1\\
+		h_3 = 0\\
+		h_1 = (0.5)h_0 + (0.1)h_2 + (0.2)h_1 + (0.2)h_3\\
+		h_2 = (0.1)h_1 + (0.1)h_3 + (0.2)h_0 + (0.6)h_2 \\
+	\end{cases}	
+\]
+
+Las soluciones del sistema anterior son $h_2=0.677$ y $h_1 = 0.709$.
+De estas, $h_1$ es la probabilidad buscada.
+
+\solution[b]
+Sea $k_i = E(\text{tiempo en llegar al $\{0,3\}$ desde el estado $i$})$.
+Los tiempos estimados para llegar al estado cero partiendo de los otros estados
+vienen dadas por el siguiente sistema linear.
+\[
+	\begin{cases}
+		k_0 = 0\\
+		k_3 = 0\\
+		k_1 = (0.5)k_0 + (0.1)k_2 + (0.2)k_1 + (0.2)k_3 + 1\\
+		k_2 = (0.1)k_1 + (0.1)k_3 + (0.2)k_0 + (0.6)k_2 + 1\\
+	\end{cases}	
+\]
+
+Las soluciones del sistema anterior son $k_2=2.9$ y $k_1 = 1.61$.
+
+\input{/home/jhonny/git/uni/latex-templates/postamble.tex}
+\end{document}
