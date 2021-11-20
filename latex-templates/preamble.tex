@@ -9,7 +9,7 @@
 \setmainfont{STIX Two Text}
 \setsansfont[Scale=MatchLowercase]{Source Sans 3}
 \setmonofont[Scale=MatchLowercase]{Ubuntu Mono}
-\setmathfont[Scale=.93]{STIX Two Math}
+\setmathfont[Scale=MatchLowercase]{STIX Two Math}
 \linespread{1.05}
 % Don't put extra space after periods
 \frenchspacing
@@ -17,7 +17,7 @@
     paper = letter,
     BCOR = 0mm,
     twoside = false,
-    fontsize = {8},
+    fontsize = {10},
     DIV = calc,
 }
 
@@ -26,7 +26,7 @@
 
 % Language support, usually changes between english
 % and spanish.
-\usepackage[spanish,es-noindentfirst]{babel}
+\usepackage[spanish,es-noindentfirst,es-nodecimaldot]{babel}
 %\usepackage[english]{babel}
 \usepackage{csquotes}
 
@@ -58,7 +58,9 @@
 %\urlstyle{same}
 \usepackage{metalogo}
 
-%\usepackage{minted}
+\usepackage{enumitem}
+
+\usepackage{ifthen}
 
 % Font style and size for title
 \setkomafont{title}{\itshape}
@@ -83,9 +85,17 @@
         \addfontfeatures{LetterSpace=7}\large\Roman{exer}%
     \end{center}%
 }
-\newcommand{\solution}{
+
+\newcounter{solutionsParts}[exer]
+\newcommand{\solution}[1][None]{
+    \stepcounter{solutionsParts}
+    \medskip
     \begin{center}
-        Solución
+        \ifthenelse{\equal{#1}{None}}{
+            Solución
+        }{
+            Solución (#1)
+        }
     \end{center}
 }
 
@@ -94,11 +104,13 @@
 \renewcommand{\Rn}{\mathbb{R}^{\mathrm{n}}}
 \newcommand{\Rm}{\mathbb{R}^{\mathrm{m}}}
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\Cplx}{\mathbb{C}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\devpart}[2]{\frac{\partial  #1}{\partial #2}}
 \renewcommand{\vec}[1]{\mathbf{#1}}
 \newcommand{\norm}[1]{\left\lvert #1 \right\rvert}
 \newcommand{\iprod}[2]{\left\langle #1 , #2 \right\rangle}
 \newcommand{\devp}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\Prob}{\mathbb{P}}
 \DeclareMathOperator{\img}{img}
 \DeclareMathOperator{\gen}{span}
