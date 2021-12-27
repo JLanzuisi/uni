@@ -1,0 +1,61 @@
+\documentclass{scrartcl}
+
+\input{~/git/uni/latex-templates/preamble.tex}
+
+\begin{document}
+%
+\title{Cuarta Tarea}
+\subtitle{Procesos de Poisson y nacimiento}
+\subject{Aplicación a los procesos estocásticos discretos}
+\titlehead{Universidad Simón Bolívar\hfill Caracas, Venezuela}
+\author{Jhonny Lanzuisi}
+\date{\today}
+\maketitle
+
+\section*{Proceso de Poisson}
+\exercise
+Sean $X$ y $Y$ variables aleatorias independientes distribuidas Poisson con parámetros $α$ y $β$, 
+respectivamente. Determine la distribución condicional de $X$, dado que $N = X + Y = n$.
+
+\solution
+Sabemos que: 
+\begin{gather*}
+    p_X(j) = P\{X=j\} = \frac{\alpha^j e^{-\alpha}}{j!},\\
+    p_Y(j) = P\{Y=j\} = \frac{\beta^j e^{-\beta}}{j!},\\
+    p_{X+Y}(j) = P\{{X+Y}=j\} = \frac{(\alpha+\beta)^j e^{-(\alpha+\beta)}}{j!}.
+\end{gather*}
+
+Buscamos la función $p_{X\mid N}$, dada por:
+\begin{align*}
+    p_{X\mid N}(k\mid n) &= P\{X = k\mid N = n\}\\
+                         &= \frac{P\{X = k\mid Y = n-k\}}{P\{N = n\}}\\
+                         &= \frac{p_X(k) p_Y(n-k)}{p_{X+Y}(n)}\\
+                         &= \frac{\alpha^k e^{-\alpha}}{k!}\frac{\beta^{n-k} e^{-\beta}}{(n-k)!}
+                                \bigg/ \frac{(\alpha+\beta)^n e^{-(\alpha+\beta)}}{n!}.
+\end{align*}
+
+\section*{Proceso de nacimiento y muerte}
+\setcounter{exer}{0}
+\exercise
+Un proceso de nacimiento puro comienza desde $X(0) = 0$ y tiene parámetros de nacimiento 
+$λ_0 = 1, λ_1 = 3, λ_2 = 2, λ_3 = 5$. Determine $P_n (t)$ para $n = 0, 1, 2, 3$.
+
+\solution
+Como se tiene un proceso de nacimiento puro $\mu_i = 0 \,\forall i$.
+\[
+    P'_n(t) = -\lambda_n P_n(t) + \lambda_{n-1} P_{n-1}(t).
+\]
+
+Hagamos $n=1$. 
+\[
+  P'_1(t) = -\lambda_1 P_1(t) + \lambda_0 P_{0}(t) = 3P_1(t) + 1.
+\]
+La solución a la anterior ecuación diferencial es $P_1 = e^{3t}/3 - 1/3$.
+
+Hagamos $n=2$. 
+\[
+  P'_2(t) = -2 P_2(t) + 3 e^{3t}/3 - 1/3
+\]
+La solución a la anterior ecuación diferencial es $P_1 = e^{3t}/3 - 1/3$.
+\input{/home/jhonny/git/uni/latex-templates/postamble.tex}
+\end{document}
