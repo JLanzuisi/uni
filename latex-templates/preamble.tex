@@ -4,28 +4,21 @@
 % Make the overfull marker bigger
 \overfullrule=2cm
 
-% Font setup.
-\usepackage{unicode-math}
-\setmonofont{Latin Modern Mono}
-\linespread{1.03}
-% Don't put extra space after periods
-\frenchspacing
-\KOMAoptions{
-    paper = letter,
-    BCOR = 0mm,
-    twoside = false,
-    fontsize = {11},
-    DIV = calc,
-}
-
-% Make bibliography more compact, no indents.
-\KOMAoption{toc}{flat}
-
 % Language support, usually changes between english
 % and spanish.
 \usepackage[spanish,es-noindentfirst,es-nodecimaldot]{babel}
 %\usepackage[english]{babel}
 \usepackage{csquotes}
+
+\usepackage{mathtools}
+
+% Font setup.
+\usepackage{fontspec}
+\setmainfont[Scale=.87]{TeX Gyre Heros}
+\usepackage[euler-digits,euler-hat-accent]{eulervm}
+\linespread{1.05}
+% Don't put extra space after periods
+\frenchspacing
 
 % Bibliography
 \usepackage[
@@ -59,55 +52,43 @@
 
 \usepackage{ifthen}
 
-% Font style and size for title
-\setkomafont{title}{}
-% Font style for the subject
-\setkomafont{subject}{\normalfont}
-% Font style for subtitle
-\setkomafont{subtitle}{\normalfont}
-\setkomafont{author}{\large}
-\setkomafont{date}{\normalsize}
-\setkomafont{section}{\normalfont\bfseries\large}
-\setkomafont{subsection}{\normalfont\bfseries\normalsize}
-\setkomafont{subsubsection}{\normalfont\normalsize}
-
-% Footnotes
-\deffootnote{2.0em}{1.5em}{\thefootnotemark.\ }
-\setkomafont{footnote}{\sffamily}
+% CUSTOM MACROS
 
 \newcounter{exer}
 \newcommand{\exercise}{%
     \stepcounter{exer}%
     \begin{center}%
-        \addfontfeatures{LetterSpace=7}\large\Roman{exer}%
+        \large\Roman{exer}%
     \end{center}%
 }
 
 \newcounter{solutionsParts}[exer]
-\newcommand{\solution}[1][None]{
-    \stepcounter{solutionsParts}
-    \medskip
-    \begin{center}
-        \ifthenelse{\equal{#1}{None}}{
-            Solución
-        }{
-            Solución (#1)
-        }
-    \end{center}
+\newcommand{\solution}[1][None]{%
+    \stepcounter{solutionsParts}%
+    \medskip%
+    \begin{center}%
+        \ifthenelse{\equal{#1}{None}}{%
+            Solución%
+        }{%
+            Solución (#1)%
+        }%
+    \end{center}%
 }
 
-% CUSTOM MACROS
 % math macros
-\renewcommand{\Rn}{\mathbb{R}^{\mathrm{n}}}
-\newcommand{\Rm}{\mathbb{R}^{\mathrm{m}}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\Cplx}{\mathbb{C}}
-\newcommand{\N}{\mathbb{N}}
+\renewcommand{\Rn}{\mathbf{R}^{\mathrm{n}}}
+\newcommand{\Rm}{\mathbf{R}^{\mathrm{m}}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Cplx}{\mathbf{C}}
+\newcommand{\N}{\mathbf{N}}
 \newcommand{\devpart}[2]{\frac{\partial  #1}{\partial #2}}
 \renewcommand{\vec}[1]{\mathbf{#1}}
 \newcommand{\norm}[1]{\left\lvert #1 \right\rvert}
 \newcommand{\iprod}[2]{\left\langle #1 , #2 \right\rangle}
 \newcommand{\devp}[2]{\frac{\partial #1}{\partial #2}}
-\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\Prob}{\mathbf{P}}
 \DeclareMathOperator{\img}{img}
 \DeclareMathOperator{\gen}{span}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\cis}{cis}
+

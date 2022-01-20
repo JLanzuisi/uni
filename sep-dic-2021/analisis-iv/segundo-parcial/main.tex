@@ -1,0 +1,142 @@
+\documentclass[11pt,letter]{article}
+
+\input{/home/jhonny/git/uni/latex-templates/preamble.tex}
+
+\errorstopmode
+
+\begin{document}
+
+\begin{flushleft}
+	\begin{center}
+		\small Análisis IV. Septiembre-Diciembre 2021. Universidad Simón Bolívar.
+	\end{center}
+
+	\vspace{2\baselineskip}
+	{\Large\addfontfeatures{LetterSpace=7} SEGUNDO PARCIAL}
+
+	\vspace{.5\baselineskip}
+	Jhonny Lanzuisi.\\\today.
+\end{flushleft}
+
+\setcounter{exer}{1}
+
+\exercise Calcule:
+\[
+	\int_\alpha \frac{z^7+1}{z^2(z^4+1)}.
+\]
+Donde $\alpha=1+9e^{it}$ con $t\in[0,2\pi]$.
+
+\solution Dado que $\alpha(0)=\alpha(2\pi)=10$ podemos usar el teorema
+del residuo para calcular la integral.
+
+Los polos de la función se dan cuando $z^2(z^4+1)=0$, es decir,
+\[
+	z_1=0,\;
+	z_2=\cis\frac{\pi}{4},\;
+	z_3=-\cis\frac{\pi}{4},\;
+	z_4=\cis\frac{-\pi}{4},\;
+	z_5=-\cis\frac{-\pi}{4}.
+\]
+
+Veamos ahora los residuos de $f$ en estos puntos.
+
+\begin{align*}
+	\Res(f, z_1)&=\lim_{z\to0} \frac{d}{dz} (z^2f(z))\\
+		      &=\lim_{z\to0} \frac{d}{dz} \frac{z^7+1}{z^4+1}\\
+		      &=\lim_{z\to0} \frac{z^3(3z^7+7z^3-4)}{(z^4+1)^2}\\
+		      &= 0.
+\end{align*}
+
+Para los demás residuos nos será útil la siguiente expresión:
+\[\frac{A(z)}{B'(z)} = \frac{z^7+1}{6z^5+2z},\]
+nótese que $B'$ es impar.
+
+\[
+	\Res(f, z_2) = \frac{A(z_2)}{B'(z_2)}
+			   = \frac{\cis^7\frac{\pi}{4} + 1}
+			   		{6\cis^5\frac{\pi}{4}+2\cis\frac{\pi}{4}}
+\]
+
+\[
+	\Res(f, z_3) = \frac{A(z_3)}{B'(z_3)}
+			   = \frac{-\cis^7\frac{\pi}{4} + 1}
+			   		{-6\cis^5\frac{\pi}{4}-2\cis\frac{\pi}{4}}
+\]
+
+\[
+	\Res(f, z_4) = \frac{A(z_4)}{B'(z_4)}
+			   = \frac{\cis^7\frac{-\pi}{4} + 1}
+			   		{6\cis^5\frac{-\pi}{4}+2\cis\frac{-\pi}{4}}
+\]
+
+\[
+	\Res(f, z_5) = \frac{A(z_5)}{B'(z_5)}
+			   = \frac{-\cis^7\frac{-\pi}{4} + 1}
+			   		{-6\cis^5\frac{-\pi}{4}-2\cis\frac{-\pi}{4}}
+\]
+
+Ya tenemos todo lo que necesitamos para calcula al integral sobre $f$.
+
+\begin{align*}
+	\int_\alpha f &= 2\pi i \sum_{k=1}^5\Res(f, z_k)\\
+			     &= 2\pi i \left(
+			     		\frac{2\cis^7\frac{\pi}{4}}{6\cis^5\frac{\pi}{4}+2\cis\frac{\pi}{4}}
+			     		+ \frac{2\cis^7\frac{-\pi}{4}}{6\cis^5\frac{-\pi}{4}+2\cis\frac{-\pi}{4}}
+			     			\right)\\
+			     &= 2\pi i \left(
+			     		\frac{\cis^6\frac{\pi}{4}}{3\cis^4\frac{\pi}{4}+1}
+			     		+ \frac{\cis^6\frac{-\pi}{4}}{3\cis^4\frac{-\pi}{4}+1}
+			     			\right)\\
+			     &= 2\pi i \left(
+			     		\frac{\cis (2\pi)}{3\cis(\pi)+1}
+			     		+ \frac{\cis(-2\pi)}{3\cis(-\pi)+1}
+			     			\right)\\
+			     &= 2\pi i \left(-\frac12 -\frac12\right)\\
+			     &= -2\pi i.
+\end{align*}
+
+\exercise Sean $D\subset C$ un conjunto abierto y $L\subset C$ una
+recta. Si $f : D\to C$ es una función contínua, la cual es analítica
+en todos los puntos $z\in D, z\not\in L$ entonces f es analítica en
+todo $D$.
+
+\solution Para la demostración se hará uso del teorema de Morera.
+Veremos que la integral de $f$ es cero en todos los rectángulos que
+hay en $D$, con lo que tendremos que es analítica en $D$.
+
+Podemos suponer, sin pérdida de generalidad, que $L$ es paralela al
+eje real. De no ser este el caso, se puede conseguir una
+transformación lineal $g$ que envíe un segmento de la recta real en
+$L$. Entonces el que $f$ sea analítica implicará que $g$ es analítica
+en al región correspondiente.
+
+Queremos entonces ver que $\int_\Gamma f=0$ para todo rectángulo $D$ con
+frontera $\Gamma$ cuyos lados sean paralelos al eje real o imaginario.
+Para esto consideramos tres casos.
+
+\begin{description}
+	\item[$L$ no toca la región $\Gamma$.] En este caso
+	$\int_\Gamma f=0$ debido a que $f$ es analítica en $D$ y
+	$\Gamma$ es una curva cerrada.
+
+	\item[Uno de los lados de $\Gamma$ coincide con $L$.]
+	Llamemos $\Gamma_\epsilon$ al rectángulo que tiene los mismos
+	lados que $\Gamma$ excepto por que el lado inferior (o el superior)
+	esta elevado (o bajado) una cantidad $\epsilon$ en la dirección positiva del
+	eje imaginario. Entonces,
+	\[\int_\Gamma f = \lim_{\epsilon\to0} \int_{\Gamma_\epsilon} f,\]
+	debido a la continuidad de $f$. Pero las integrales de la derecha son
+	cero para cada $\epsilon$ por lo que tenemos $\int_\Gamma f=0$.
+
+	\item[$\Gamma$ esta alrededor de $L$.] En esta caso, la recta
+	$L$ divide a $\Gamma$ en dos regiones: $\Gamma_1,\Gamma_2$ cada una de
+	las cuales es del caso anterior. Puesto que
+	\[\int_\Gamma f=\int_{\Gamma_1} f + \int_{\Gamma_2} f,\]
+	se tiene que $\int_\Gamma f=0$.
+\end{description}
+
+Entonces, por el teorema de Morera, $f$ es analítica en $D$.
+
+
+\input{/home/jhonny/git/uni/latex-templates/postamble.tex}
+\end{document}

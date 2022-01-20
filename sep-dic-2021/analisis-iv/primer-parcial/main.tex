@@ -1,21 +1,23 @@
-\documentclass{scrartcl}
+\documentclass{article}
 
 \input{~/git/uni/latex-templates/preamble.tex}
+
+\errorstopmode
 
 \newcommand{\comment}[1]{\text{\small #1}}
 
 \begin{document}
 %
 \title{Primer Parcial}
-\subtitle{Septiembre-Diciembre 2021}
-\subject{Análisis IV}
-\titlehead{Universidad Simón Bolívar\hfill Caracas, Venezuela}
+% \subtitle{Septiembre-Diciembre 2021}
+% \subject{Análisis IV}
+% \titlehead{Universidad Simón Bolívar\hfill Caracas, Venezuela}
 \author{Jhonny Lanzuisi}
 \date{\today}
 \maketitle
 
 \exercise
-Sean $z, w ∈ \Cplx$. Demuestre que
+Sean $z, w \in \Cplx$. Demuestre que
 \[
     |z + w| = |z| + |w|
 \]
@@ -61,7 +63,7 @@ hemos demostrado lo que buscábamos.
 \exercise
 Considere $S$ como el conjunto que consiste en retirar del
 plano complejo la circunferencia de centro en el origen y radio $\sqrt5$.
-Considerando $S ∪ ∂S$, es $S$ un conjunto conexo?
+Considerando $S \cup \partial S$, es $S$ un conjunto conexo?
 
 \solution
 Sea $C = \{ z\in\Cplx\colon |z| \leq \sqrt{5} \}$ la circunferencia del enunciado.
@@ -79,7 +81,7 @@ circunferencia $C_2$ de centro en el orígen y radio $|s_2|$.
 Distinguimos ahora dos casos:
 \begin{enumerate}
     \item Existe una recta $\ell$ que pasa por el orígen y contiene a los puntos $s_1$ y $s_2$, ó,
-    \item No existe tal recta $\ell$, y por lo tanto los puntos $s_1,s_2$ no son 
+    \item No existe tal recta $\ell$, y por lo tanto los puntos $s_1,s_2$ no son
         diametralmente opuestos con respecto al orígen.
 \end{enumerate}
 
@@ -106,14 +108,14 @@ por lo que este conjunto es conexo.
 
 \begin{figure}
     \begin{center}
-        \includegraphics[width=.65\textwidth]{caso2.png}
+        \includegraphics[width=.65\textwidth]{caso2}
     \end{center}
     \caption{Segundo caso.}
 \end{figure}
-
+%
 \begin{figure}
     \begin{center}
-        \includegraphics[width=.65\textwidth]{caso1.png}
+        \includegraphics[width=.65\textwidth]{caso1}
     \end{center}
     \caption{Primer caso.}
 \end{figure}

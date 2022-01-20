@@ -1,6 +1,10 @@
 TEXFILE = main.tex
-LATEX = latexmk
-LATEXFLAGS = -lualatex
+PSFILE = main.ps
+LATEX = texfot latexmk
+LATEXFLAGS = -latex -ps
 
-all: $(TEXFILE)
-	$(LATEX)  $(LATEXFLAGS) main.tex
+ps: $(TEXFILE)
+	$(LATEX) $(LATEXFLAGS) $(TEXFILE)
+
+pdf: $(TEXFILE) $(PSFILE)
+	ps2pdf $(PSFILE)
